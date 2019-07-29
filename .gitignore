@@ -3,7 +3,7 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**
 **/src/test/**
-!src/main/java/com/liuming/eshop/generator/MysqlGenerator
+!src/main/java/com/liuming/eshop/generator/MysqlGenerator.class
 
 ### STS ###
 .apt_generated
