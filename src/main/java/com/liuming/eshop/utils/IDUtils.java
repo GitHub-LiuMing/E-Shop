@@ -68,7 +68,7 @@ public class IDUtils {
 	 * @Description ID生成 yyyyMMddHHmmssSSS+4位随机数
 	 * @Title getId
 	 * @return String
-	 * @author 炸了毛的猫
+	 * @author Ming Liu
 	 * @date 2018.03.02 10:50:29
 	 */
 	public static String getId() {
