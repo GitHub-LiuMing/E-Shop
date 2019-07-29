@@ -1,7 +1,7 @@
 package com.liuming.eshop.service.provinceService.impl;
 
 import com.liuming.eshop.entity.provinceEntity.Province;
-import com.liuming.eshop.mapper.province.ProvinceMapper;
+import com.liuming.eshop.mapper.provinceMapper.ProvinceMapper;
 import com.liuming.eshop.service.provinceService.ProvinceService;
 import com.liuming.eshop.utils.DataResult;
 import org.springframework.beans.factory.annotation.Autowired;

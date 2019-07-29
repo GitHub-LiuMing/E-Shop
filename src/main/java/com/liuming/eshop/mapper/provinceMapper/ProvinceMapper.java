@@ -1,4 +1,4 @@
-package com.liuming.eshop.mapper.province;
+package com.liuming.eshop.mapper.provinceMapper;
 
 import com.liuming.eshop.entity.provinceEntity.Province;
 import com.liuming.eshop.entity.provinceEntity.ProvinceExample;
