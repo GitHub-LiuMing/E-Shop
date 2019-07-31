@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.liuming.eshop.mapper.provinceMapper.ProvinceMapper" >
-  <resultMap id="BaseResultMap" type="com.liuming.eshop.entity.provinceEntity.Province" >
-    <id column="PROVINCE_ID" property="provinceId" jdbcType="INTEGER" />
-    <result column="PROVINCE_CODE" property="provinceCode" jdbcType="VARCHAR" />
-    <result column="PROVINCE_NAME" property="provinceName" jdbcType="VARCHAR" />
+<mapper namespace="com.liuming.eshop.mapper.districtMapper.DistrictMapper" >
+  <resultMap id="BaseResultMap" type="com.liuming.eshop.entity.districtEntity.District" >
+    <id column="DISTRICT_ID" property="districtId" jdbcType="INTEGER" />
+    <result column="CITY_CODE" property="cityCode" jdbcType="VARCHAR" />
+    <result column="DISTRICT_CODE" property="districtCode" jdbcType="VARCHAR" />
+    <result column="DISTRICT_NAME" property="districtName" jdbcType="VARCHAR" />
     <result column="SHORT_NAME" property="shortName" jdbcType="VARCHAR" />
     <result column="LNG" property="lng" jdbcType="VARCHAR" />
     <result column="LAT" property="lat" jdbcType="VARCHAR" />
@@ -73,16 +74,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    PROVINCE_ID, PROVINCE_CODE, PROVINCE_NAME, SHORT_NAME, LNG, LAT, SORT, GMT_CREATE, 
-    GMT_MODIFIED, MEMO, DATA_STATE
+    DISTRICT_ID, CITY_CODE, DISTRICT_CODE, DISTRICT_NAME, SHORT_NAME, LNG, LAT, SORT, 
+    GMT_CREATE, GMT_MODIFIED, MEMO, DATA_STATE
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.liuming.eshop.entity.provinceEntity.ProvinceExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.liuming.eshop.entity.districtEntity.DistrictExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from province
+    from district
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -93,40 +94,45 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from province
-    where PROVINCE_ID = #{provinceId,jdbcType=INTEGER}
+    from district
+    where DISTRICT_ID = #{districtId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from province
-    where PROVINCE_ID = #{provinceId,jdbcType=INTEGER}
+    delete from district
+    where DISTRICT_ID = #{districtId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.liuming.eshop.entity.provinceEntity.ProvinceExample" >
-    delete from province
+  <delete id="deleteByExample" parameterType="com.liuming.eshop.entity.districtEntity.DistrictExample" >
+    delete from district
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.liuming.eshop.entity.provinceEntity.Province" >
-    insert into province (PROVINCE_ID, PROVINCE_CODE, PROVINCE_NAME, 
-      SHORT_NAME, LNG, LAT, 
-      SORT, GMT_CREATE, GMT_MODIFIED, 
-      MEMO, DATA_STATE)
-    values (#{provinceId,jdbcType=INTEGER}, #{provinceCode,jdbcType=VARCHAR}, #{provinceName,jdbcType=VARCHAR}, 
-      #{shortName,jdbcType=VARCHAR}, #{lng,jdbcType=VARCHAR}, #{lat,jdbcType=VARCHAR}, 
-      #{sort,jdbcType=INTEGER}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, 
-      #{memo,jdbcType=VARCHAR}, #{dataState,jdbcType=INTEGER})
+  <insert id="insert" parameterType="com.liuming.eshop.entity.districtEntity.District" >
+    insert into district (DISTRICT_ID, CITY_CODE, DISTRICT_CODE, 
+      DISTRICT_NAME, SHORT_NAME, LNG, 
+      LAT, SORT, GMT_CREATE, 
+      GMT_MODIFIED, MEMO, DATA_STATE
+      )
+    values (#{districtId,jdbcType=INTEGER}, #{cityCode,jdbcType=VARCHAR}, #{districtCode,jdbcType=VARCHAR}, 
+      #{districtName,jdbcType=VARCHAR}, #{shortName,jdbcType=VARCHAR}, #{lng,jdbcType=VARCHAR}, 
+      #{lat,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{gmtModified,jdbcType=TIMESTAMP}, #{memo,jdbcType=VARCHAR}, #{dataState,jdbcType=INTEGER}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.liuming.eshop.entity.provinceEntity.Province" >
-    insert into province
+  <insert id="insertSelective" parameterType="com.liuming.eshop.entity.districtEntity.District" >
+    insert into district
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="provinceId != null" >
-        PROVINCE_ID,
+      <if test="districtId != null" >
+        DISTRICT_ID,
       </if>
-      <if test="provinceCode != null" >
-        PROVINCE_CODE,
+      <if test="cityCode != null" >
+        CITY_CODE,
       </if>
-      <if test="provinceName != null" >
-        PROVINCE_NAME,
+      <if test="districtCode != null" >
+        DISTRICT_CODE,
+      </if>
+      <if test="districtName != null" >
+        DISTRICT_NAME,
       </if>
       <if test="shortName != null" >
         SHORT_NAME,
@@ -154,14 +160,17 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="provinceId != null" >
-        #{provinceId,jdbcType=INTEGER},
+      <if test="districtId != null" >
+        #{districtId,jdbcType=INTEGER},
       </if>
-      <if test="provinceCode != null" >
-        #{provinceCode,jdbcType=VARCHAR},
+      <if test="cityCode != null" >
+        #{cityCode,jdbcType=VARCHAR},
       </if>
-      <if test="provinceName != null" >
-        #{provinceName,jdbcType=VARCHAR},
+      <if test="districtCode != null" >
+        #{districtCode,jdbcType=VARCHAR},
+      </if>
+      <if test="districtName != null" >
+        #{districtName,jdbcType=VARCHAR},
       </if>
       <if test="shortName != null" >
         #{shortName,jdbcType=VARCHAR},
@@ -189,23 +198,26 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.liuming.eshop.entity.provinceEntity.ProvinceExample" resultType="java.lang.Integer" >
-    select count(*) from province
+  <select id="countByExample" parameterType="com.liuming.eshop.entity.districtEntity.DistrictExample" resultType="java.lang.Integer" >
+    select count(*) from district
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update province
+    update district
     <set >
-      <if test="record.provinceId != null" >
-        PROVINCE_ID = #{record.provinceId,jdbcType=INTEGER},
+      <if test="record.districtId != null" >
+        DISTRICT_ID = #{record.districtId,jdbcType=INTEGER},
       </if>
-      <if test="record.provinceCode != null" >
-        PROVINCE_CODE = #{record.provinceCode,jdbcType=VARCHAR},
+      <if test="record.cityCode != null" >
+        CITY_CODE = #{record.cityCode,jdbcType=VARCHAR},
       </if>
-      <if test="record.provinceName != null" >
-        PROVINCE_NAME = #{record.provinceName,jdbcType=VARCHAR},
+      <if test="record.districtCode != null" >
+        DISTRICT_CODE = #{record.districtCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.districtName != null" >
+        DISTRICT_NAME = #{record.districtName,jdbcType=VARCHAR},
       </if>
       <if test="record.shortName != null" >
         SHORT_NAME = #{record.shortName,jdbcType=VARCHAR},
@@ -237,10 +249,11 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update province
-    set PROVINCE_ID = #{record.provinceId,jdbcType=INTEGER},
-      PROVINCE_CODE = #{record.provinceCode,jdbcType=VARCHAR},
-      PROVINCE_NAME = #{record.provinceName,jdbcType=VARCHAR},
+    update district
+    set DISTRICT_ID = #{record.districtId,jdbcType=INTEGER},
+      CITY_CODE = #{record.cityCode,jdbcType=VARCHAR},
+      DISTRICT_CODE = #{record.districtCode,jdbcType=VARCHAR},
+      DISTRICT_NAME = #{record.districtName,jdbcType=VARCHAR},
       SHORT_NAME = #{record.shortName,jdbcType=VARCHAR},
       LNG = #{record.lng,jdbcType=VARCHAR},
       LAT = #{record.lat,jdbcType=VARCHAR},
@@ -253,14 +266,17 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.liuming.eshop.entity.provinceEntity.Province" >
-    update province
+  <update id="updateByPrimaryKeySelective" parameterType="com.liuming.eshop.entity.districtEntity.District" >
+    update district
     <set >
-      <if test="provinceCode != null" >
-        PROVINCE_CODE = #{provinceCode,jdbcType=VARCHAR},
+      <if test="cityCode != null" >
+        CITY_CODE = #{cityCode,jdbcType=VARCHAR},
       </if>
-      <if test="provinceName != null" >
-        PROVINCE_NAME = #{provinceName,jdbcType=VARCHAR},
+      <if test="districtCode != null" >
+        DISTRICT_CODE = #{districtCode,jdbcType=VARCHAR},
+      </if>
+      <if test="districtName != null" >
+        DISTRICT_NAME = #{districtName,jdbcType=VARCHAR},
       </if>
       <if test="shortName != null" >
         SHORT_NAME = #{shortName,jdbcType=VARCHAR},
@@ -287,12 +303,13 @@
         DATA_STATE = #{dataState,jdbcType=INTEGER},
       </if>
     </set>
-    where PROVINCE_ID = #{provinceId,jdbcType=INTEGER}
+    where DISTRICT_ID = #{districtId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.liuming.eshop.entity.provinceEntity.Province" >
-    update province
-    set PROVINCE_CODE = #{provinceCode,jdbcType=VARCHAR},
-      PROVINCE_NAME = #{provinceName,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKey" parameterType="com.liuming.eshop.entity.districtEntity.District" >
+    update district
+    set CITY_CODE = #{cityCode,jdbcType=VARCHAR},
+      DISTRICT_CODE = #{districtCode,jdbcType=VARCHAR},
+      DISTRICT_NAME = #{districtName,jdbcType=VARCHAR},
       SHORT_NAME = #{shortName,jdbcType=VARCHAR},
       LNG = #{lng,jdbcType=VARCHAR},
       LAT = #{lat,jdbcType=VARCHAR},
@@ -301,12 +318,16 @@
       GMT_MODIFIED = #{gmtModified,jdbcType=TIMESTAMP},
       MEMO = #{memo,jdbcType=VARCHAR},
       DATA_STATE = #{dataState,jdbcType=INTEGER}
-    where PROVINCE_ID = #{provinceId,jdbcType=INTEGER}
+    where DISTRICT_ID = #{districtId,jdbcType=INTEGER}
   </update>
 
-  <select id="findAll" resultMap="BaseResultMap" >
+  <select id="findDistrict" resultMap="BaseResultMap" >
     select
     <include refid="Base_Column_List" />
-    from province
+    from district
+    where 1=1
+    <if test="map.cityCode != null" >
+      and CITY_CODE = #{map.cityCode}
+    </if>
   </select>
 </mapper>

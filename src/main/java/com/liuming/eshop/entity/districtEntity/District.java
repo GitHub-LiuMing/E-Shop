@@ -1,16 +1,18 @@
-package com.liuming.eshop.entity.provinceEntity;
+package com.liuming.eshop.entity.districtEntity;
 
 import lombok.Data;
 
 import java.util.Date;
 
 @Data
-public class Province {
-    private Integer provinceId;
+public class District {
+    private Integer districtId;
 
-    private String provinceCode;
+    private String cityCode;
 
-    private String provinceName;
+    private String districtCode;
+
+    private String districtName;
 
     private String shortName;
 

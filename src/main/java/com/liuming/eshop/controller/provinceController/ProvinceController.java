@@ -18,6 +18,12 @@ public class ProvinceController {
     @Autowired
     private ProvinceService provinceService;
 
+    /**
+     * @Description 查询所有省
+     * @return com.liuming.eshop.utils.DataResult
+     * @Author Ming Liu
+     * @Date 2019.07.29 16:45
+     */
     @RequestMapping("/findAll")
     public DataResult findAll(){
         return provinceService.findAll();
