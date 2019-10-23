@@ -8,7 +8,7 @@ import java.util.Date;
 /**
  * @Description 日期工具类
  * @ClassName DateUtils
- * @author Ming Liu
+ * @author 鲸落
  * @date 2018.03.03 10:38:01
  */
 public class DateUtils {
@@ -18,7 +18,7 @@ public class DateUtils {
 	 * @param date
 	 * @param value
 	 * @return String
-	 * @author 炸了毛的猫
+	 * @author 鲸落
 	 * @date 2018.03.02 10:38:27
 	 */
 	public static String dateAddYear(Date date, int value) {
@@ -39,7 +39,7 @@ public class DateUtils {
 	 * @param date
 	 * @param value
 	 * @return Date
-	 * @author 炸了毛的猫
+	 * @author 鲸落
 	 * @date 2018.03.02 10:38:38
 	 */
 	public static Date dateAddMonth(Date date, int value) {
@@ -60,7 +60,7 @@ public class DateUtils {
 	 * @param date
 	 * @param value
 	 * @return Date
-	 * @author 炸了毛的猫
+	 * @author 鲸落
 	 * @date 2018.03.02 10:38:51
 	 */
 	public static Date dateAddDay(Date date, int value) {
@@ -97,7 +97,7 @@ public class DateUtils {
 	 * @param dateNew
 	 * @param datePast
 	 * @return long
-	 * @author 炸了毛的猫
+	 * @author 鲸落
 	 * @date 2018.03.02 10:39:03
 	 */
 	public static long dateMinus(Date dateNew, Date datePast) {
@@ -127,7 +127,7 @@ public class DateUtils {
 	 * @param begin_date
 	 * @param end_date
 	 * @return long
-	 * @author 炸了毛的猫
+	 * @author 鲸落
 	 * @date 2018.03.02 10:39:12
 	 */
 	public static long getTwoDay(Date begin_date, Date end_date) {

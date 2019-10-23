@@ -7,7 +7,7 @@ import java.util.Random;
 /**
  * @Description ID生成工具类
  * @ClassName IDUtils
- * @author Ming Liu
+ * @author 鲸落
  * @date 2018.03.01 10:47:38
  */
 public class IDUtils {
@@ -16,7 +16,7 @@ public class IDUtils {
 	 * @Description 图片名生成 yyyyMMddHHmmssSSS + 4位随机数
 	 * @Title getImageName
 	 * @return String
-	 * @author 炸了毛的猫
+	 * @author 鲸落
 	 * @date 2018.03.02 10:49:40
 	 */
 	public static String getImageName() {
@@ -35,7 +35,7 @@ public class IDUtils {
 	 * @Description ID生成
 	 * @Title getDataId
 	 * @return long
-	 * @author 炸了毛的猫
+	 * @author 鲸落
 	 * @date 2018.03.02 10:49:59
 	 */
 	public static long getDataId() {
@@ -68,7 +68,7 @@ public class IDUtils {
 	 * @Description ID生成 yyyyMMddHHmmssSSS+4位随机数
 	 * @Title getId
 	 * @return String
-	 * @author Ming Liu
+	 * @author 鲸落
 	 * @date 2018.03.02 10:50:29
 	 */
 	public static String getId() {

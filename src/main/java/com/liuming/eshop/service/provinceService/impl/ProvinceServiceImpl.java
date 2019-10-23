@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * @Description 
  * @ClassName ProvinceServiceImpl
- * @Author Ming Liu
+ * @Author 鲸落
  * @date 2019.07.29 16:10
  */
 @Service
@@ -21,8 +21,8 @@ public class ProvinceServiceImpl implements ProvinceService {
     private ProvinceMapper provinceMapper;
 
     @Override
-    public DataResult findAll() {
-        List<Province> provinceList = provinceMapper.findAll();
+    public DataResult findProvince() {
+        List<Province> provinceList = provinceMapper.findProvince();
         return DataResult.ok(provinceList);
     }
 }

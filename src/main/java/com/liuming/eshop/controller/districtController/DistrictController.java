@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @Description 
+ * @Description 区
  * @ClassName DistrictController
- * @Author Ming Liu
+ * @Author 鲸落
  * @date 2019.07.31 19:17
  */
 @RestController
@@ -22,7 +22,7 @@ public class DistrictController {
      * @Description 查询区
      * @param cityCode 城市代码
      * @return com.liuming.eshop.utils.DataResult
-     * @Author Ming Liu
+     * @Author 鲸落
      * @Date 2019.07.31 15:46
      */
     @RequestMapping("/findDistrict")

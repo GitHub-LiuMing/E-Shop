@@ -33,5 +33,5 @@ public interface ProvinceMapper {
 
     int updateByPrimaryKey(Province record);
 
-    List<Province> findAll();
+    List<Province> findProvince();
 }

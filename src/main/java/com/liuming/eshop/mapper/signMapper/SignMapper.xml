@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.liuming.eshop.mapper.signMapper.SignMapper" >
+  <resultMap id="BaseResultMap" type="com.liuming.eshop.entity.signEntity.Sign" >
+    <id column="sign_id" property="signId" jdbcType="VARCHAR" />
+    <result column="sign_regulation" property="signRegulation" jdbcType="INTEGER" />
+    <result column="sign_points" property="signPoints" jdbcType="INTEGER" />
+    <result column="sign_status" property="signStatus" jdbcType="INTEGER" />
+    <result column="sign_created_date" property="signCreatedDate" jdbcType="TIMESTAMP" />
+    <result column="sign_updated_date" property="signUpdatedDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    sign_id, sign_regulation, sign_points, sign_status, sign_created_date, sign_updated_date
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.liuming.eshop.entity.signEntity.SignExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sign
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sign
+    where sign_id = #{signId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sign
+    where sign_id = #{signId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.liuming.eshop.entity.signEntity.SignExample" >
+    delete from sign
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.liuming.eshop.entity.signEntity.Sign" >
+    insert into sign (sign_id, sign_regulation, sign_points, 
+      sign_status, sign_created_date, sign_updated_date
+      )
+    values (#{signId,jdbcType=VARCHAR}, #{signRegulation,jdbcType=INTEGER}, #{signPoints,jdbcType=INTEGER}, 
+      #{signStatus,jdbcType=INTEGER}, #{signCreatedDate,jdbcType=TIMESTAMP}, #{signUpdatedDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.liuming.eshop.entity.signEntity.Sign" >
+    insert into sign
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="signId != null" >
+        sign_id,
+      </if>
+      <if test="signRegulation != null" >
+        sign_regulation,
+      </if>
+      <if test="signPoints != null" >
+        sign_points,
+      </if>
+      <if test="signStatus != null" >
+        sign_status,
+      </if>
+      <if test="signCreatedDate != null" >
+        sign_created_date,
+      </if>
+      <if test="signUpdatedDate != null" >
+        sign_updated_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="signId != null" >
+        #{signId,jdbcType=VARCHAR},
+      </if>
+      <if test="signRegulation != null" >
+        #{signRegulation,jdbcType=INTEGER},
+      </if>
+      <if test="signPoints != null" >
+        #{signPoints,jdbcType=INTEGER},
+      </if>
+      <if test="signStatus != null" >
+        #{signStatus,jdbcType=INTEGER},
+      </if>
+      <if test="signCreatedDate != null" >
+        #{signCreatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="signUpdatedDate != null" >
+        #{signUpdatedDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.liuming.eshop.entity.signEntity.SignExample" resultType="java.lang.Integer" >
+    select count(*) from sign
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sign
+    <set >
+      <if test="record.signId != null" >
+        sign_id = #{record.signId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.signRegulation != null" >
+        sign_regulation = #{record.signRegulation,jdbcType=INTEGER},
+      </if>
+      <if test="record.signPoints != null" >
+        sign_points = #{record.signPoints,jdbcType=INTEGER},
+      </if>
+      <if test="record.signStatus != null" >
+        sign_status = #{record.signStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.signCreatedDate != null" >
+        sign_created_date = #{record.signCreatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.signUpdatedDate != null" >
+        sign_updated_date = #{record.signUpdatedDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sign
+    set sign_id = #{record.signId,jdbcType=VARCHAR},
+      sign_regulation = #{record.signRegulation,jdbcType=INTEGER},
+      sign_points = #{record.signPoints,jdbcType=INTEGER},
+      sign_status = #{record.signStatus,jdbcType=INTEGER},
+      sign_created_date = #{record.signCreatedDate,jdbcType=TIMESTAMP},
+      sign_updated_date = #{record.signUpdatedDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liuming.eshop.entity.signEntity.Sign" >
+    update sign
+    <set >
+      <if test="signRegulation != null" >
+        sign_regulation = #{signRegulation,jdbcType=INTEGER},
+      </if>
+      <if test="signPoints != null" >
+        sign_points = #{signPoints,jdbcType=INTEGER},
+      </if>
+      <if test="signStatus != null" >
+        sign_status = #{signStatus,jdbcType=INTEGER},
+      </if>
+      <if test="signCreatedDate != null" >
+        sign_created_date = #{signCreatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="signUpdatedDate != null" >
+        sign_updated_date = #{signUpdatedDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where sign_id = #{signId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liuming.eshop.entity.signEntity.Sign" >
+    update sign
+    set sign_regulation = #{signRegulation,jdbcType=INTEGER},
+      sign_points = #{signPoints,jdbcType=INTEGER},
+      sign_status = #{signStatus,jdbcType=INTEGER},
+      sign_created_date = #{signCreatedDate,jdbcType=TIMESTAMP},
+      sign_updated_date = #{signUpdatedDate,jdbcType=TIMESTAMP}
+    where sign_id = #{signId,jdbcType=VARCHAR}
+  </update>
+</mapper>

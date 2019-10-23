@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.liuming.eshop.mapper.classifyMapper.ClassifyMapper" >
+  <resultMap id="BaseResultMap" type="com.liuming.eshop.entity.classifyEntity.Classify" >
+    <id column="classify_id" property="classifyId" jdbcType="VARCHAR" />
+    <result column="classify_name" property="classifyName" jdbcType="VARCHAR" />
+    <result column="classify_url" property="classifyUrl" jdbcType="VARCHAR" />
+    <result column="classify_status" property="classifyStatus" jdbcType="INTEGER" />
+    <result column="classify_create_date" property="classifyCreateDate" jdbcType="TIMESTAMP" />
+    <result column="classify_modified_date" property="classifyModifiedDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.liuming.eshop.entity.classifyEntity.Classify" extends="BaseResultMap" >
+    <result column="classify_desc" property="classifyDesc" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    classify_id, classify_name, classify_url, classify_status, classify_create_date, 
+    classify_modified_date
+  </sql>
+  <sql id="Blob_Column_List" >
+    classify_desc
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.liuming.eshop.entity.classifyEntity.ClassifyExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from classify
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.liuming.eshop.entity.classifyEntity.ClassifyExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from classify
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from classify
+    where classify_id = #{classifyId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from classify
+    where classify_id = #{classifyId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.liuming.eshop.entity.classifyEntity.ClassifyExample" >
+    delete from classify
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.liuming.eshop.entity.classifyEntity.Classify" >
+    insert into classify (classify_id, classify_name, classify_url, 
+      classify_status, classify_create_date, classify_modified_date, 
+      classify_desc)
+    values (#{classifyId,jdbcType=VARCHAR}, #{classifyName,jdbcType=VARCHAR}, #{classifyUrl,jdbcType=VARCHAR}, 
+      #{classifyStatus,jdbcType=INTEGER}, #{classifyCreateDate,jdbcType=TIMESTAMP}, #{classifyModifiedDate,jdbcType=TIMESTAMP}, 
+      #{classifyDesc,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.liuming.eshop.entity.classifyEntity.Classify" >
+    insert into classify
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="classifyId != null" >
+        classify_id,
+      </if>
+      <if test="classifyName != null" >
+        classify_name,
+      </if>
+      <if test="classifyUrl != null" >
+        classify_url,
+      </if>
+      <if test="classifyStatus != null" >
+        classify_status,
+      </if>
+      <if test="classifyCreateDate != null" >
+        classify_create_date,
+      </if>
+      <if test="classifyModifiedDate != null" >
+        classify_modified_date,
+      </if>
+      <if test="classifyDesc != null" >
+        classify_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="classifyId != null" >
+        #{classifyId,jdbcType=VARCHAR},
+      </if>
+      <if test="classifyName != null" >
+        #{classifyName,jdbcType=VARCHAR},
+      </if>
+      <if test="classifyUrl != null" >
+        #{classifyUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="classifyStatus != null" >
+        #{classifyStatus,jdbcType=INTEGER},
+      </if>
+      <if test="classifyCreateDate != null" >
+        #{classifyCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="classifyModifiedDate != null" >
+        #{classifyModifiedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="classifyDesc != null" >
+        #{classifyDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.liuming.eshop.entity.classifyEntity.ClassifyExample" resultType="java.lang.Integer" >
+    select count(*) from classify
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update classify
+    <set >
+      <if test="record.classifyId != null" >
+        classify_id = #{record.classifyId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.classifyName != null" >
+        classify_name = #{record.classifyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.classifyUrl != null" >
+        classify_url = #{record.classifyUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.classifyStatus != null" >
+        classify_status = #{record.classifyStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.classifyCreateDate != null" >
+        classify_create_date = #{record.classifyCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.classifyModifiedDate != null" >
+        classify_modified_date = #{record.classifyModifiedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.classifyDesc != null" >
+        classify_desc = #{record.classifyDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update classify
+    set classify_id = #{record.classifyId,jdbcType=VARCHAR},
+      classify_name = #{record.classifyName,jdbcType=VARCHAR},
+      classify_url = #{record.classifyUrl,jdbcType=VARCHAR},
+      classify_status = #{record.classifyStatus,jdbcType=INTEGER},
+      classify_create_date = #{record.classifyCreateDate,jdbcType=TIMESTAMP},
+      classify_modified_date = #{record.classifyModifiedDate,jdbcType=TIMESTAMP},
+      classify_desc = #{record.classifyDesc,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update classify
+    set classify_id = #{record.classifyId,jdbcType=VARCHAR},
+      classify_name = #{record.classifyName,jdbcType=VARCHAR},
+      classify_url = #{record.classifyUrl,jdbcType=VARCHAR},
+      classify_status = #{record.classifyStatus,jdbcType=INTEGER},
+      classify_create_date = #{record.classifyCreateDate,jdbcType=TIMESTAMP},
+      classify_modified_date = #{record.classifyModifiedDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liuming.eshop.entity.classifyEntity.Classify" >
+    update classify
+    <set >
+      <if test="classifyName != null" >
+        classify_name = #{classifyName,jdbcType=VARCHAR},
+      </if>
+      <if test="classifyUrl != null" >
+        classify_url = #{classifyUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="classifyStatus != null" >
+        classify_status = #{classifyStatus,jdbcType=INTEGER},
+      </if>
+      <if test="classifyCreateDate != null" >
+        classify_create_date = #{classifyCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="classifyModifiedDate != null" >
+        classify_modified_date = #{classifyModifiedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="classifyDesc != null" >
+        classify_desc = #{classifyDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where classify_id = #{classifyId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.liuming.eshop.entity.classifyEntity.Classify" >
+    update classify
+    set classify_name = #{classifyName,jdbcType=VARCHAR},
+      classify_url = #{classifyUrl,jdbcType=VARCHAR},
+      classify_status = #{classifyStatus,jdbcType=INTEGER},
+      classify_create_date = #{classifyCreateDate,jdbcType=TIMESTAMP},
+      classify_modified_date = #{classifyModifiedDate,jdbcType=TIMESTAMP},
+      classify_desc = #{classifyDesc,jdbcType=LONGVARCHAR}
+    where classify_id = #{classifyId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liuming.eshop.entity.classifyEntity.Classify" >
+    update classify
+    set classify_name = #{classifyName,jdbcType=VARCHAR},
+      classify_url = #{classifyUrl,jdbcType=VARCHAR},
+      classify_status = #{classifyStatus,jdbcType=INTEGER},
+      classify_create_date = #{classifyCreateDate,jdbcType=TIMESTAMP},
+      classify_modified_date = #{classifyModifiedDate,jdbcType=TIMESTAMP}
+    where classify_id = #{classifyId,jdbcType=VARCHAR}
+  </update>
+
+  <select id="findClassify" resultMap="BaseResultMap">
+    SELECT
+	    <include refid="Base_Column_List" />
+    FROM
+	    classify
+    WHERE
+	    classify_status = "1";
+  </select>
+</mapper>
