@@ -6,5 +6,5 @@ import com.liuming.eshop.utils.DataResult;
 public interface UserService {
     DataResult addUser(User user);
 
-    DataResult findUserList(int pageNum, int PageSize, User user);
+    DataResult findUser(User user);
 }

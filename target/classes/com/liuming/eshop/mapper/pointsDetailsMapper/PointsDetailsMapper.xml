@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.liuming.eshop.mapper.pointsDetailsMapper.PointsDetailsMapper" >
+  <resultMap id="BaseResultMap" type="com.liuming.eshop.entity.pointsDetailsEntity.PointsDetails" >
+    <id column="points_details_id" property="pointsDetailsId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="wechat_name" property="wechatName" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="before_modify_points" property="beforeModifyPoints" jdbcType="INTEGER" />
+    <result column="modify_points" property="modifyPoints" jdbcType="INTEGER" />
+    <result column="after_modify_points" property="afterModifyPoints" jdbcType="INTEGER" />
+    <result column="points_details_type" property="pointsDetailsType" jdbcType="INTEGER" />
+    <result column="points_details_details" property="pointsDetailsDetails" jdbcType="VARCHAR" />
+    <result column="points_details_status" property="pointsDetailsStatus" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="points_details_created_date" property="pointsDetailsCreatedDate" jdbcType="TIMESTAMP" />
+    <result column="points_details_updated_date" property="pointsDetailsUpdatedDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    points_details_id, user_id, wechat_name, phone, before_modify_points, modify_points, 
+    after_modify_points, points_details_type, points_details_details, points_details_status, 
+    remark, points_details_created_date, points_details_updated_date
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.liuming.eshop.entity.pointsDetailsEntity.PointsDetailsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from points_details
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from points_details
+    where points_details_id = #{pointsDetailsId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from points_details
+    where points_details_id = #{pointsDetailsId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.liuming.eshop.entity.pointsDetailsEntity.PointsDetailsExample" >
+    delete from points_details
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.liuming.eshop.entity.pointsDetailsEntity.PointsDetails" >
+    insert into points_details (points_details_id, user_id, wechat_name, 
+      phone, before_modify_points, modify_points, 
+      after_modify_points, points_details_type, points_details_details, 
+      points_details_status, remark, points_details_created_date, 
+      points_details_updated_date)
+    values (#{pointsDetailsId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{wechatName,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{beforeModifyPoints,jdbcType=INTEGER}, #{modifyPoints,jdbcType=INTEGER}, 
+      #{afterModifyPoints,jdbcType=INTEGER}, #{pointsDetailsType,jdbcType=INTEGER}, #{pointsDetailsDetails,jdbcType=VARCHAR}, 
+      #{pointsDetailsStatus,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{pointsDetailsCreatedDate,jdbcType=TIMESTAMP}, 
+      #{pointsDetailsUpdatedDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.liuming.eshop.entity.pointsDetailsEntity.PointsDetails" >
+    insert into points_details
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pointsDetailsId != null" >
+        points_details_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="wechatName != null" >
+        wechat_name,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="beforeModifyPoints != null" >
+        before_modify_points,
+      </if>
+      <if test="modifyPoints != null" >
+        modify_points,
+      </if>
+      <if test="afterModifyPoints != null" >
+        after_modify_points,
+      </if>
+      <if test="pointsDetailsType != null" >
+        points_details_type,
+      </if>
+      <if test="pointsDetailsDetails != null" >
+        points_details_details,
+      </if>
+      <if test="pointsDetailsStatus != null" >
+        points_details_status,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="pointsDetailsCreatedDate != null" >
+        points_details_created_date,
+      </if>
+      <if test="pointsDetailsUpdatedDate != null" >
+        points_details_updated_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pointsDetailsId != null" >
+        #{pointsDetailsId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatName != null" >
+        #{wechatName,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="beforeModifyPoints != null" >
+        #{beforeModifyPoints,jdbcType=INTEGER},
+      </if>
+      <if test="modifyPoints != null" >
+        #{modifyPoints,jdbcType=INTEGER},
+      </if>
+      <if test="afterModifyPoints != null" >
+        #{afterModifyPoints,jdbcType=INTEGER},
+      </if>
+      <if test="pointsDetailsType != null" >
+        #{pointsDetailsType,jdbcType=INTEGER},
+      </if>
+      <if test="pointsDetailsDetails != null" >
+        #{pointsDetailsDetails,jdbcType=VARCHAR},
+      </if>
+      <if test="pointsDetailsStatus != null" >
+        #{pointsDetailsStatus,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="pointsDetailsCreatedDate != null" >
+        #{pointsDetailsCreatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pointsDetailsUpdatedDate != null" >
+        #{pointsDetailsUpdatedDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.liuming.eshop.entity.pointsDetailsEntity.PointsDetailsExample" resultType="java.lang.Integer" >
+    select count(*) from points_details
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update points_details
+    <set >
+      <if test="record.pointsDetailsId != null" >
+        points_details_id = #{record.pointsDetailsId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wechatName != null" >
+        wechat_name = #{record.wechatName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null" >
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.beforeModifyPoints != null" >
+        before_modify_points = #{record.beforeModifyPoints,jdbcType=INTEGER},
+      </if>
+      <if test="record.modifyPoints != null" >
+        modify_points = #{record.modifyPoints,jdbcType=INTEGER},
+      </if>
+      <if test="record.afterModifyPoints != null" >
+        after_modify_points = #{record.afterModifyPoints,jdbcType=INTEGER},
+      </if>
+      <if test="record.pointsDetailsType != null" >
+        points_details_type = #{record.pointsDetailsType,jdbcType=INTEGER},
+      </if>
+      <if test="record.pointsDetailsDetails != null" >
+        points_details_details = #{record.pointsDetailsDetails,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pointsDetailsStatus != null" >
+        points_details_status = #{record.pointsDetailsStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pointsDetailsCreatedDate != null" >
+        points_details_created_date = #{record.pointsDetailsCreatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.pointsDetailsUpdatedDate != null" >
+        points_details_updated_date = #{record.pointsDetailsUpdatedDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update points_details
+    set points_details_id = #{record.pointsDetailsId,jdbcType=VARCHAR},
+      user_id = #{record.userId,jdbcType=VARCHAR},
+      wechat_name = #{record.wechatName,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      before_modify_points = #{record.beforeModifyPoints,jdbcType=INTEGER},
+      modify_points = #{record.modifyPoints,jdbcType=INTEGER},
+      after_modify_points = #{record.afterModifyPoints,jdbcType=INTEGER},
+      points_details_type = #{record.pointsDetailsType,jdbcType=INTEGER},
+      points_details_details = #{record.pointsDetailsDetails,jdbcType=VARCHAR},
+      points_details_status = #{record.pointsDetailsStatus,jdbcType=INTEGER},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      points_details_created_date = #{record.pointsDetailsCreatedDate,jdbcType=TIMESTAMP},
+      points_details_updated_date = #{record.pointsDetailsUpdatedDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liuming.eshop.entity.pointsDetailsEntity.PointsDetails" >
+    update points_details
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatName != null" >
+        wechat_name = #{wechatName,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="beforeModifyPoints != null" >
+        before_modify_points = #{beforeModifyPoints,jdbcType=INTEGER},
+      </if>
+      <if test="modifyPoints != null" >
+        modify_points = #{modifyPoints,jdbcType=INTEGER},
+      </if>
+      <if test="afterModifyPoints != null" >
+        after_modify_points = #{afterModifyPoints,jdbcType=INTEGER},
+      </if>
+      <if test="pointsDetailsType != null" >
+        points_details_type = #{pointsDetailsType,jdbcType=INTEGER},
+      </if>
+      <if test="pointsDetailsDetails != null" >
+        points_details_details = #{pointsDetailsDetails,jdbcType=VARCHAR},
+      </if>
+      <if test="pointsDetailsStatus != null" >
+        points_details_status = #{pointsDetailsStatus,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="pointsDetailsCreatedDate != null" >
+        points_details_created_date = #{pointsDetailsCreatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pointsDetailsUpdatedDate != null" >
+        points_details_updated_date = #{pointsDetailsUpdatedDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where points_details_id = #{pointsDetailsId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liuming.eshop.entity.pointsDetailsEntity.PointsDetails" >
+    update points_details
+    set user_id = #{userId,jdbcType=VARCHAR},
+      wechat_name = #{wechatName,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      before_modify_points = #{beforeModifyPoints,jdbcType=INTEGER},
+      modify_points = #{modifyPoints,jdbcType=INTEGER},
+      after_modify_points = #{afterModifyPoints,jdbcType=INTEGER},
+      points_details_type = #{pointsDetailsType,jdbcType=INTEGER},
+      points_details_details = #{pointsDetailsDetails,jdbcType=VARCHAR},
+      points_details_status = #{pointsDetailsStatus,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      points_details_created_date = #{pointsDetailsCreatedDate,jdbcType=TIMESTAMP},
+      points_details_updated_date = #{pointsDetailsUpdatedDate,jdbcType=TIMESTAMP}
+    where points_details_id = #{pointsDetailsId,jdbcType=VARCHAR}
+  </update>
+
+  <select id="findPointsDetailsDescLimit1" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM
+	    points_details
+    WHERE
+	    user_id = #{map.userId}
+    ORDER BY
+	    points_details_id DESC
+	LIMIT 1
+  </select>
+</mapper>

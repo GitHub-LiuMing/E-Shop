@@ -7,16 +7,14 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Component;
 
 @Mapper
-@Component
 public interface UserMapper {
     int countByExample(UserExample example);
 
     int deleteByExample(UserExample example);
 
-    int deleteByPrimaryKey(Integer userId);
+    int deleteByPrimaryKey(String userId);
 
     int insert(User record);
 
@@ -24,7 +22,7 @@ public interface UserMapper {
 
     List<User> selectByExample(UserExample example);
 
-    User selectByPrimaryKey(Integer userId);
+    User selectByPrimaryKey(String userId);
 
     int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
 
@@ -35,10 +33,4 @@ public interface UserMapper {
     int updateByPrimaryKey(User record);
 
     List<User> findUserList(@Param("map") Map map);
-
-    int findUserListCount(@Param("map") Map map);
-
-    User selectByWechatOpenId(@Param("wechatOpenId") String wechatOpenId);
-
-    User selectByKeyDecsLimit1();
 }

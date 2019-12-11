@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="GROUP_BY_SEVERITY" value="true" />
+    <option name="ANALYZE_TEST_SOURCES" value="false" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="791cd9c2-41dc-4aa5-928a-2dc824116e8b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/cityController/CityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/cityController/CityController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/provinceController/ProvinceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/provinceController/ProvinceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/userController/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/userEntity/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/userEntity/UserExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/userMapper/UserMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/userMapper/UserMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/signService/impl/SignServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/signService/impl/SignServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/userService/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/userService/impl/UserServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="eshop" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GroovyConsoleState">
+    <option name="list">
+      <list>
+        <Entry>
+          <option name="moduleName" value="eshop" />
+          <option name="url" value="file://$APPLICATION_CONFIG_DIR$/consoles/groovy/groovy_console.groovy" />
+        </Entry>
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="D:/maven/apache-maven-3.5.0" />
+        <option name="userSettingsFile" value="D:\maven\apache-maven-3.5.0\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1Om3QX2CH5aWFqZsvKCW8F6SuGX" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.liuming.eshop" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\java\com\liuming\eshop\mapper\userMapper" />
+      <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\java\com\liuming\eshop\entity\userEntity" />
+      <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\java\com\liuming\eshop\mapper\memberLevelMapper" />
+      <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\java\com\liuming\eshop\entity\memberLevelEntity" />
+      <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\java\com\liuming\eshop\mapper\itemMapper" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.liuming.eshop.commons" />
+      <recent name="com.liuming.eshop.entity.shiroUserEntity" />
+      <recent name="com.liuming.eshop.utils" />
+      <recent name="com.liuming.eshop.config" />
+      <recent name="com.liuming.eshop.entity.dto" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\java\com\liuming\eshop\shiro\entity\shiroUser" />
+      <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\java\com\liuming\eshop\shiro\entity\shiroResources" />
+      <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\resources" />
+      <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\java\com\liuming\eshop\mapper\province" />
+      <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\resources\static\error" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.EshopApplication">
+    <configuration name="PointsDetailsServiceImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.liuming.eshop.service.pointsDetailsService.impl.PointsDetailsServiceImpl" />
+      <module name="eshop" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.liuming.eshop.service.pointsDetailsService.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SignController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.liuming.eshop.controller.signController.SignController" />
+      <module name="eshop" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.liuming.eshop.controller.signController.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EshopApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="eshop" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.liuming.eshop.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.liuming.eshop" />
+      <option name="MAIN_CLASS_NAME" value="com.liuming.eshop.EshopApplicationTests" />
+      <option name="METHOD_NAME" value="contextLoads" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EshopApplicationTests.getSum" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="eshop" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.liuming.eshop.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.liuming.eshop" />
+      <option name="MAIN_CLASS_NAME" value="com.liuming.eshop.EshopApplicationTests" />
+      <option name="METHOD_NAME" value="getSum" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EshopApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="eshop" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.liuming.eshop.EshopApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.SignController" />
+        <item itemvalue="JUnit.EshopApplicationTests.getSum" />
+        <item itemvalue="JUnit.EshopApplicationTests.contextLoads" />
+        <item itemvalue="Application.PointsDetailsServiceImpl" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="791cd9c2-41dc-4aa5-928a-2dc824116e8b" name="Default Changelist" comment="" />
+      <created>1563932615947</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1563932615947</updated>
+      <workItem from="1563932618915" duration="50000" />
+      <workItem from="1564033288795" duration="623000" />
+      <workItem from="1564104711649" duration="15493000" />
+      <workItem from="1564130096913" duration="1187000" />
+      <workItem from="1564134495289" duration="685000" />
+      <workItem from="1564135232166" duration="215000" />
+      <workItem from="1564187071697" duration="30000" />
+      <workItem from="1564187134211" duration="106000" />
+      <workItem from="1564187264224" duration="4271000" />
+      <workItem from="1564192631326" duration="19423000" />
+      <workItem from="1564359919285" duration="23909000" />
+      <workItem from="1564451741677" duration="15588000" />
+      <workItem from="1564477731815" duration="3091000" />
+      <workItem from="1564532472170" duration="4601000" />
+      <workItem from="1564551533422" duration="666000" />
+      <workItem from="1564552229467" duration="215000" />
+      <workItem from="1564552485348" duration="222000" />
+      <workItem from="1564552770418" duration="407000" />
+      <workItem from="1564553265576" duration="227000" />
+      <workItem from="1564553538377" duration="679000" />
+      <workItem from="1564554256474" duration="159000" />
+      <workItem from="1564554447658" duration="97000" />
+      <workItem from="1564554582003" duration="424000" />
+      <workItem from="1564555119248" duration="165000" />
+      <workItem from="1564555311505" duration="393000" />
+      <workItem from="1564555741715" duration="259000" />
+      <workItem from="1564556036562" duration="218000" />
+      <workItem from="1564556316875" duration="745000" />
+      <workItem from="1564557126268" duration="1503000" />
+      <workItem from="1564558689901" duration="2448000" />
+      <workItem from="1564565396954" duration="639000" />
+      <workItem from="1564566141628" duration="29000" />
+      <workItem from="1564566439756" duration="287000" />
+      <workItem from="1564566770419" duration="785000" />
+      <workItem from="1564567590673" duration="65000" />
+      <workItem from="1564567699341" duration="483000" />
+      <workItem from="1564568771726" duration="86000" />
+      <workItem from="1564568937065" duration="79000" />
+      <workItem from="1564569055044" duration="232000" />
+      <workItem from="1564569320240" duration="58000" />
+      <workItem from="1564569408807" duration="14000" />
+      <workItem from="1564569450588" duration="2438000" />
+      <workItem from="1564571939857" duration="502000" />
+      <workItem from="1564572535734" duration="23000" />
+      <workItem from="1564572622398" duration="520000" />
+      <workItem from="1564621799761" duration="1920000" />
+      <workItem from="1564628401479" duration="1571000" />
+      <workItem from="1564630012804" duration="841000" />
+      <workItem from="1564630899066" duration="41000" />
+      <workItem from="1564630966408" duration="68000" />
+      <workItem from="1564631089732" duration="48000" />
+      <workItem from="1564631171845" duration="47000" />
+      <workItem from="1564631316803" duration="129000" />
+      <workItem from="1564631479746" duration="1723000" />
+      <workItem from="1564636565222" duration="305000" />
+      <workItem from="1564637651292" duration="3918000" />
+      <workItem from="1564643005288" duration="4962000" />
+      <workItem from="1564705300959" duration="3075000" />
+      <workItem from="1564713633994" duration="265000" />
+      <workItem from="1564713928875" duration="908000" />
+      <workItem from="1564714919741" duration="16153000" />
+      <workItem from="1564792129013" duration="23241000" />
+      <workItem from="1564967088409" duration="15904000" />
+      <workItem from="1565055584547" duration="14552000" />
+      <workItem from="1565137436101" duration="14007000" />
+      <workItem from="1565223882643" duration="3169000" />
+      <workItem from="1565310400501" duration="19000" />
+      <workItem from="1565310448689" duration="2395000" />
+      <workItem from="1565320210094" duration="13598000" />
+      <workItem from="1565396776595" duration="608000" />
+      <workItem from="1565404697909" duration="11758000" />
+      <workItem from="1565569859686" duration="6985000" />
+      <workItem from="1565656389365" duration="5514000" />
+      <workItem from="1565742102820" duration="2794000" />
+      <workItem from="1565749944308" duration="4820000" />
+      <workItem from="1565847867757" duration="1369000" />
+      <workItem from="1565914041003" duration="3236000" />
+      <workItem from="1566001645362" duration="6028000" />
+      <workItem from="1566173836036" duration="10170000" />
+      <workItem from="1566433521552" duration="2118000" />
+      <workItem from="1567644361900" duration="1201000" />
+      <workItem from="1568776693695" duration="407000" />
+      <workItem from="1568777365428" duration="4735000" />
+      <workItem from="1568863665958" duration="5444000" />
+      <workItem from="1568941702891" duration="9788000" />
+      <workItem from="1569027497841" duration="5325000" />
+      <workItem from="1569469863458" duration="1860000" />
+      <workItem from="1569654634600" duration="47000" />
+      <workItem from="1569655159944" duration="4919000" />
+      <workItem from="1570419264130" duration="832000" />
+      <workItem from="1570420170764" duration="8010000" />
+      <workItem from="1571024794220" duration="8723000" />
+      <workItem from="1571626469014" duration="8148000" />
+      <workItem from="1571790913855" duration="606000" />
+      <workItem from="1571791886999" duration="13338000" />
+      <workItem from="1571880337073" duration="14756000" />
+      <workItem from="1571966383780" duration="15554000" />
+      <workItem from="1572048978123" duration="16122000" />
+      <workItem from="1572224768694" duration="8008000" />
+      <workItem from="1572310679483" duration="10154000" />
+      <workItem from="1572397095440" duration="3488000" />
+      <workItem from="1572486716804" duration="6263000" />
+      <workItem from="1572569723392" duration="3074000" />
+      <workItem from="1572578415903" duration="774000" />
+      <workItem from="1572657219705" duration="5140000" />
+      <workItem from="1572829689152" duration="8595000" />
+      <workItem from="1572917937566" duration="44272000" />
+      <workItem from="1573435136883" duration="65000" />
+      <workItem from="1573435322149" duration="13541000" />
+      <workItem from="1573520081316" duration="3180000" />
+      <workItem from="1573608388900" duration="17852000" />
+      <workItem from="1573699263140" duration="4156000" />
+      <workItem from="1573870519363" duration="1263000" />
+      <workItem from="1574065763754" duration="83000" />
+      <workItem from="1574126988629" duration="5341000" />
+      <workItem from="1574221287728" duration="769000" />
+      <workItem from="1574838410354" duration="2001000" />
+      <workItem from="1576024308083" duration="24541000" />
+    </task>
+    <task id="LOCAL-00001" summary="update .gitignore">
+      <created>1564110360341</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1564110360343</updated>
+    </task>
+    <task id="LOCAL-00002" summary="update .gitignore">
+      <created>1564113608988</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1564113608988</updated>
+    </task>
+    <task id="LOCAL-00003" summary="insert utils">
+      <created>1564127739424</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1564127739424</updated>
+    </task>
+    <task id="LOCAL-00004" summary="1. 加入MyBatis代码生成器&#10;2. 加入error处理视图（404）">
+      <created>1564381722449</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1564381722449</updated>
+    </task>
+    <task id="LOCAL-00005" summary="1. 加入存放MyBatis代码生成器生成的数据文件包">
+      <created>1564382005997</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1564382005997</updated>
+    </task>
+    <task id="LOCAL-00006" summary="1. 删除MyBatisPlus代码生成器&#10;2. 测试接口">
+      <created>1564393039257</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1564393039257</updated>
+    </task>
+    <task id="LOCAL-00007" summary="1. 修改Mapper包名">
+      <created>1564393166531</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1564393166531</updated>
+    </task>
+    <task id="LOCAL-00008" summary="1. 完善省市区&#10;2. 引入lombok,使用@Data注解集成了@ToString,@EqualsAndHashCode,@Getter,@Setter所有非final字段，以及@RequiredArgsConstructor">
+      <created>1564573040187</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1564573040187</updated>
+    </task>
+    <task id="LOCAL-00009" summary="1. 完善省市区&#10;2. 引入lombok,使用@Data注解集成了@ToString,@EqualsAndHashCode,@Getter,@Setter所有非final字段，以及@RequiredArgsConstructor">
+      <created>1564638091824</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1564638091824</updated>
+    </task>
+    <task id="LOCAL-00010" summary="修复部分BUG">
+      <created>1571822360416</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1571822360417</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update .gitignore" />
+    <MESSAGE value="insert utils" />
+    <MESSAGE value="1. 加入MyBatis代码生成器&#10;2. 加入error处理视图（404）" />
+    <MESSAGE value="1. 加入存放MyBatis代码生成器生成的数据文件包" />
+    <MESSAGE value="1. 删除MyBatisPlus代码生成器&#10;2. 测试接口" />
+    <MESSAGE value="1. 修改Mapper包名" />
+    <MESSAGE value="1. 完善省市区&#10;2. 引入lombok,使用@Data注解集成了@ToString,@EqualsAndHashCode,@Getter,@Setter所有非final字段，以及@RequiredArgsConstructor" />
+    <MESSAGE value="修复部分BUG" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复部分BUG" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="765" y="227" key="#com.intellij.ide.util.MemberChooser" timestamp="1576059354369">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="227" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576059354369" />
+    <state x="640" y="248" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1576036413865">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="640" y="248" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576036413865" />
+    <state width="1879" height="216" key="GridCell.Tab.0.bottom" timestamp="1576055348791">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1879" height="216" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576055348791" />
+    <state width="1879" height="216" key="GridCell.Tab.0.center" timestamp="1576055348790">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1879" height="216" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576055348790" />
+    <state width="1879" height="216" key="GridCell.Tab.0.left" timestamp="1576055348790">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1879" height="216" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576055348790" />
+    <state width="1879" height="216" key="GridCell.Tab.0.right" timestamp="1576055348791">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1879" height="216" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576055348791" />
+    <state width="1879" height="216" key="GridCell.Tab.1.bottom" timestamp="1576055348597">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1879" height="216" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576055348597" />
+    <state width="1879" height="216" key="GridCell.Tab.1.center" timestamp="1576055348596">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1879" height="216" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576055348596" />
+    <state width="1879" height="216" key="GridCell.Tab.1.left" timestamp="1576055348596">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1879" height="216" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576055348596" />
+    <state width="1879" height="216" key="GridCell.Tab.1.right" timestamp="1576055348596">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1879" height="216" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576055348596" />
+    <state width="1879" height="216" key="GridCell.Tab.2.bottom" timestamp="1576055348597">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1879" height="216" key="GridCell.Tab.2.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576055348597" />
+    <state width="1879" height="216" key="GridCell.Tab.2.center" timestamp="1576055348597">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1879" height="216" key="GridCell.Tab.2.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576055348597" />
+    <state width="1879" height="216" key="GridCell.Tab.2.left" timestamp="1576055348597">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1879" height="216" key="GridCell.Tab.2.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576055348597" />
+    <state width="1879" height="216" key="GridCell.Tab.2.right" timestamp="1576055348597">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1879" height="216" key="GridCell.Tab.2.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576055348597" />
+    <state x="533" y="251" width="853" height="538" key="find.popup" timestamp="1576050392124">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="533" y="251" width="853" height="538" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576050392124" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1576050339490">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576050339490" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/cityController/CityController.java</url>
+          <line>30</line>
+          <properties class="com.liuming.eshop.controller.cityController.CityController" method="findCity">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/memberLevelService/impl/MemberLevelServiceImpl.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/userController/UserController.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+</project>

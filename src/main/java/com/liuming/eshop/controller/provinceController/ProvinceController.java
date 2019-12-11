@@ -4,6 +4,7 @@ import com.liuming.eshop.service.provinceService.ProvinceService;
 import com.liuming.eshop.utils.DataResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -24,7 +25,7 @@ public class ProvinceController {
      * @Author 鲸落
      * @Date 2019.07.29 16:45
      */
-    @RequestMapping("/findProvince")
+    @RequestMapping(value = "/findProvince", method = RequestMethod.POST)
     public DataResult findProvince(){
         return provinceService.findProvince();
     }

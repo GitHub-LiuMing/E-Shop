@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.liuming.eshop.mapper.itemMapper.ItemMapper" >
+  <resultMap id="BaseResultMap" type="com.liuming.eshop.entity.itemEntity.Item" >
+    <id column="item_id" property="itemId" jdbcType="VARCHAR" />
+    <result column="item_name" property="itemName" jdbcType="VARCHAR" />
+    <result column="classify_id" property="classifyId" jdbcType="INTEGER" />
+    <result column="classify_name" property="classifyName" jdbcType="VARCHAR" />
+    <result column="item_original_price" property="itemOriginalPrice" jdbcType="DOUBLE" />
+    <result column="item_present_price" property="itemPresentPrice" jdbcType="DOUBLE" />
+    <result column="item_url" property="itemUrl" jdbcType="VARCHAR" />
+    <result column="stock_num" property="stockNum" jdbcType="INTEGER" />
+    <result column="sales_num" property="salesNum" jdbcType="INTEGER" />
+    <result column="sku_id" property="skuId" jdbcType="VARCHAR" />
+    <result column="sku_status" property="skuStatus" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="created_date" property="createdDate" jdbcType="TIMESTAMP" />
+    <result column="updated_date" property="updatedDate" jdbcType="TIMESTAMP" />
+    <result column="deleted_date" property="deletedDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.liuming.eshop.entity.itemEntity.Item" extends="BaseResultMap" >
+    <result column="item_desc" property="itemDesc" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    item_id, item_name, classify_id, classify_name, item_original_price, item_present_price, 
+    item_url, stock_num, sales_num, sku_id, sku_status, status, created_date, updated_date, 
+    deleted_date
+  </sql>
+  <sql id="Blob_Column_List" >
+    item_desc
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.liuming.eshop.entity.itemEntity.ItemExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from item
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.liuming.eshop.entity.itemEntity.ItemExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from item
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from item
+    where item_id = #{itemId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from item
+    where item_id = #{itemId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.liuming.eshop.entity.itemEntity.ItemExample" >
+    delete from item
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.liuming.eshop.entity.itemEntity.Item" >
+    insert into item (item_id, item_name, classify_id, 
+      classify_name, item_original_price, item_present_price, 
+      item_url, stock_num, sales_num, 
+      sku_id, sku_status, status, 
+      created_date, updated_date, deleted_date, 
+      item_desc)
+    values (#{itemId,jdbcType=VARCHAR}, #{itemName,jdbcType=VARCHAR}, #{classifyId,jdbcType=INTEGER}, 
+      #{classifyName,jdbcType=VARCHAR}, #{itemOriginalPrice,jdbcType=DOUBLE}, #{itemPresentPrice,jdbcType=DOUBLE}, 
+      #{itemUrl,jdbcType=VARCHAR}, #{stockNum,jdbcType=INTEGER}, #{salesNum,jdbcType=INTEGER}, 
+      #{skuId,jdbcType=VARCHAR}, #{skuStatus,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{createdDate,jdbcType=TIMESTAMP}, #{updatedDate,jdbcType=TIMESTAMP}, #{deletedDate,jdbcType=TIMESTAMP}, 
+      #{itemDesc,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.liuming.eshop.entity.itemEntity.Item" >
+    insert into item
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="itemId != null" >
+        item_id,
+      </if>
+      <if test="itemName != null" >
+        item_name,
+      </if>
+      <if test="classifyId != null" >
+        classify_id,
+      </if>
+      <if test="classifyName != null" >
+        classify_name,
+      </if>
+      <if test="itemOriginalPrice != null" >
+        item_original_price,
+      </if>
+      <if test="itemPresentPrice != null" >
+        item_present_price,
+      </if>
+      <if test="itemUrl != null" >
+        item_url,
+      </if>
+      <if test="stockNum != null" >
+        stock_num,
+      </if>
+      <if test="salesNum != null" >
+        sales_num,
+      </if>
+      <if test="skuId != null" >
+        sku_id,
+      </if>
+      <if test="skuStatus != null" >
+        sku_status,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createdDate != null" >
+        created_date,
+      </if>
+      <if test="updatedDate != null" >
+        updated_date,
+      </if>
+      <if test="deletedDate != null" >
+        deleted_date,
+      </if>
+      <if test="itemDesc != null" >
+        item_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="itemId != null" >
+        #{itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null" >
+        #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="classifyId != null" >
+        #{classifyId,jdbcType=INTEGER},
+      </if>
+      <if test="classifyName != null" >
+        #{classifyName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemOriginalPrice != null" >
+        #{itemOriginalPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="itemPresentPrice != null" >
+        #{itemPresentPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="itemUrl != null" >
+        #{itemUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="stockNum != null" >
+        #{stockNum,jdbcType=INTEGER},
+      </if>
+      <if test="salesNum != null" >
+        #{salesNum,jdbcType=INTEGER},
+      </if>
+      <if test="skuId != null" >
+        #{skuId,jdbcType=VARCHAR},
+      </if>
+      <if test="skuStatus != null" >
+        #{skuStatus,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createdDate != null" >
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedDate != null" >
+        #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deletedDate != null" >
+        #{deletedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="itemDesc != null" >
+        #{itemDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.liuming.eshop.entity.itemEntity.ItemExample" resultType="java.lang.Integer" >
+    select count(*) from item
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update item
+    <set >
+      <if test="record.itemId != null" >
+        item_id = #{record.itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemName != null" >
+        item_name = #{record.itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.classifyId != null" >
+        classify_id = #{record.classifyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.classifyName != null" >
+        classify_name = #{record.classifyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemOriginalPrice != null" >
+        item_original_price = #{record.itemOriginalPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.itemPresentPrice != null" >
+        item_present_price = #{record.itemPresentPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.itemUrl != null" >
+        item_url = #{record.itemUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stockNum != null" >
+        stock_num = #{record.stockNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.salesNum != null" >
+        sales_num = #{record.salesNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.skuId != null" >
+        sku_id = #{record.skuId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.skuStatus != null" >
+        sku_status = #{record.skuStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.createdDate != null" >
+        created_date = #{record.createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedDate != null" >
+        updated_date = #{record.updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.deletedDate != null" >
+        deleted_date = #{record.deletedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.itemDesc != null" >
+        item_desc = #{record.itemDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update item
+    set item_id = #{record.itemId,jdbcType=VARCHAR},
+      item_name = #{record.itemName,jdbcType=VARCHAR},
+      classify_id = #{record.classifyId,jdbcType=INTEGER},
+      classify_name = #{record.classifyName,jdbcType=VARCHAR},
+      item_original_price = #{record.itemOriginalPrice,jdbcType=DOUBLE},
+      item_present_price = #{record.itemPresentPrice,jdbcType=DOUBLE},
+      item_url = #{record.itemUrl,jdbcType=VARCHAR},
+      stock_num = #{record.stockNum,jdbcType=INTEGER},
+      sales_num = #{record.salesNum,jdbcType=INTEGER},
+      sku_id = #{record.skuId,jdbcType=VARCHAR},
+      sku_status = #{record.skuStatus,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      created_date = #{record.createdDate,jdbcType=TIMESTAMP},
+      updated_date = #{record.updatedDate,jdbcType=TIMESTAMP},
+      deleted_date = #{record.deletedDate,jdbcType=TIMESTAMP},
+      item_desc = #{record.itemDesc,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update item
+    set item_id = #{record.itemId,jdbcType=VARCHAR},
+      item_name = #{record.itemName,jdbcType=VARCHAR},
+      classify_id = #{record.classifyId,jdbcType=INTEGER},
+      classify_name = #{record.classifyName,jdbcType=VARCHAR},
+      item_original_price = #{record.itemOriginalPrice,jdbcType=DOUBLE},
+      item_present_price = #{record.itemPresentPrice,jdbcType=DOUBLE},
+      item_url = #{record.itemUrl,jdbcType=VARCHAR},
+      stock_num = #{record.stockNum,jdbcType=INTEGER},
+      sales_num = #{record.salesNum,jdbcType=INTEGER},
+      sku_id = #{record.skuId,jdbcType=VARCHAR},
+      sku_status = #{record.skuStatus,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      created_date = #{record.createdDate,jdbcType=TIMESTAMP},
+      updated_date = #{record.updatedDate,jdbcType=TIMESTAMP},
+      deleted_date = #{record.deletedDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liuming.eshop.entity.itemEntity.Item" >
+    update item
+    <set >
+      <if test="itemName != null" >
+        item_name = #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="classifyId != null" >
+        classify_id = #{classifyId,jdbcType=INTEGER},
+      </if>
+      <if test="classifyName != null" >
+        classify_name = #{classifyName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemOriginalPrice != null" >
+        item_original_price = #{itemOriginalPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="itemPresentPrice != null" >
+        item_present_price = #{itemPresentPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="itemUrl != null" >
+        item_url = #{itemUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="stockNum != null" >
+        stock_num = #{stockNum,jdbcType=INTEGER},
+      </if>
+      <if test="salesNum != null" >
+        sales_num = #{salesNum,jdbcType=INTEGER},
+      </if>
+      <if test="skuId != null" >
+        sku_id = #{skuId,jdbcType=VARCHAR},
+      </if>
+      <if test="skuStatus != null" >
+        sku_status = #{skuStatus,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createdDate != null" >
+        created_date = #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedDate != null" >
+        updated_date = #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deletedDate != null" >
+        deleted_date = #{deletedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="itemDesc != null" >
+        item_desc = #{itemDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where item_id = #{itemId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.liuming.eshop.entity.itemEntity.Item" >
+    update item
+    set item_name = #{itemName,jdbcType=VARCHAR},
+      classify_id = #{classifyId,jdbcType=INTEGER},
+      classify_name = #{classifyName,jdbcType=VARCHAR},
+      item_original_price = #{itemOriginalPrice,jdbcType=DOUBLE},
+      item_present_price = #{itemPresentPrice,jdbcType=DOUBLE},
+      item_url = #{itemUrl,jdbcType=VARCHAR},
+      stock_num = #{stockNum,jdbcType=INTEGER},
+      sales_num = #{salesNum,jdbcType=INTEGER},
+      sku_id = #{skuId,jdbcType=VARCHAR},
+      sku_status = #{skuStatus,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      created_date = #{createdDate,jdbcType=TIMESTAMP},
+      updated_date = #{updatedDate,jdbcType=TIMESTAMP},
+      deleted_date = #{deletedDate,jdbcType=TIMESTAMP},
+      item_desc = #{itemDesc,jdbcType=LONGVARCHAR}
+    where item_id = #{itemId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liuming.eshop.entity.itemEntity.Item" >
+    update item
+    set item_name = #{itemName,jdbcType=VARCHAR},
+      classify_id = #{classifyId,jdbcType=INTEGER},
+      classify_name = #{classifyName,jdbcType=VARCHAR},
+      item_original_price = #{itemOriginalPrice,jdbcType=DOUBLE},
+      item_present_price = #{itemPresentPrice,jdbcType=DOUBLE},
+      item_url = #{itemUrl,jdbcType=VARCHAR},
+      stock_num = #{stockNum,jdbcType=INTEGER},
+      sales_num = #{salesNum,jdbcType=INTEGER},
+      sku_id = #{skuId,jdbcType=VARCHAR},
+      sku_status = #{skuStatus,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      created_date = #{createdDate,jdbcType=TIMESTAMP},
+      updated_date = #{updatedDate,jdbcType=TIMESTAMP},
+      deleted_date = #{deletedDate,jdbcType=TIMESTAMP}
+    where item_id = #{itemId,jdbcType=VARCHAR}
+  </update>
+</mapper>

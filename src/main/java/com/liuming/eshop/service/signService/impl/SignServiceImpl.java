@@ -5,7 +5,6 @@ import com.liuming.eshop.mapper.signMapper.SignMapper;
 import com.liuming.eshop.service.signService.SignService;
 import com.liuming.eshop.utils.DataResult;
 import com.liuming.eshop.utils.IDUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
