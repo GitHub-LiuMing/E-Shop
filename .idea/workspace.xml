@@ -5,20 +5,7 @@
     <option name="ANALYZE_TEST_SOURCES" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="791cd9c2-41dc-4aa5-928a-2dc824116e8b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/cityController/CityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/cityController/CityController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/provinceController/ProvinceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/provinceController/ProvinceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/userController/UserController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/userEntity/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/userEntity/UserExample.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/userMapper/UserMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/userMapper/UserMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/signService/impl/SignServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/signService/impl/SignServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/userService/UserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/userService/impl/UserServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-    </list>
+    <list default="true" id="791cd9c2-41dc-4aa5-928a-2dc824116e8b" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,16 +42,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GroovyConsoleState">
-    <option name="list">
-      <list>
-        <Entry>
-          <option name="moduleName" value="eshop" />
-          <option name="url" value="file://$APPLICATION_CONFIG_DIR$/consoles/groovy/groovy_console.groovy" />
-        </Entry>
-      </list>
-    </option>
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -515,6 +492,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="533" y="251" width="853" height="538" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576050392124" />
+    <state x="1418" y="502" key="git4idea.merge.GitPullDialog" timestamp="1576244443747">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1418" y="502" key="git4idea.merge.GitPullDialog/-1920.0.1920.1040/0.0.3440.1400@0.0.3440.1400" timestamp="1576244443747" />
+    <state x="1498" y="608" key="git4idea.ui.GitStashDialog" timestamp="1576244481801">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1498" y="608" key="git4idea.ui.GitStashDialog/-1920.0.1920.1040/0.0.3440.1400@0.0.3440.1400" timestamp="1576244481801" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1576050339490">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
