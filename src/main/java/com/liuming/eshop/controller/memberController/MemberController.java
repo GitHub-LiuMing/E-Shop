@@ -1,14 +1,15 @@
 package com.liuming.eshop.controller.memberController;
 
-import com.liuming.eshop.service.memberService.MemberService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
-
+/**
+ * @Description 会员
+ * @ClassName MemberController
+ * @Author 鲸落
+ * @date 2019.12.12 15:00
+ */
 @RestController
 @RequestMapping("/member")
 public class MemberController {
-    @Resource
-    private MemberService memberService;
 }

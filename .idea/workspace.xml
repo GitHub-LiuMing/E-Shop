@@ -5,7 +5,9 @@
     <option name="ANALYZE_TEST_SOURCES" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="791cd9c2-41dc-4aa5-928a-2dc824116e8b" name="Default Changelist" comment="" />
+    <list default="true" id="791cd9c2-41dc-4aa5-928a-2dc824116e8b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,6 +44,16 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GroovyConsoleState">
+    <option name="list">
+      <list>
+        <Entry>
+          <option name="moduleName" value="eshop" />
+          <option name="url" value="file://$APPLICATION_CONFIG_DIR$/consoles/groovy/groovy_console.groovy" />
+        </Entry>
+      </list>
+    </option>
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -94,11 +106,11 @@
       <recent name="com.liuming.eshop" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop" />
       <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\java\com\liuming\eshop\mapper\userMapper" />
       <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\java\com\liuming\eshop\entity\userEntity" />
       <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\java\com\liuming\eshop\mapper\memberLevelMapper" />
       <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\java\com\liuming\eshop\entity\memberLevelEntity" />
-      <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\java\com\liuming\eshop\mapper\itemMapper" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.liuming.eshop.commons" />
@@ -329,7 +341,9 @@
       <workItem from="1574126988629" duration="5341000" />
       <workItem from="1574221287728" duration="769000" />
       <workItem from="1574838410354" duration="2001000" />
-      <workItem from="1576024308083" duration="24541000" />
+      <workItem from="1576024308083" duration="24803000" />
+      <workItem from="1576127709315" duration="6208000" />
+      <workItem from="1576199767902" duration="2038000" />
     </task>
     <task id="LOCAL-00001" summary="update .gitignore">
       <created>1564110360341</created>
@@ -401,7 +415,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571822360417</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="更新用户表和数据库备份">
+      <created>1576062668084</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1576062668084</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -429,7 +450,8 @@
     <MESSAGE value="1. 修改Mapper包名" />
     <MESSAGE value="1. 完善省市区&#10;2. 引入lombok,使用@Data注解集成了@ToString,@EqualsAndHashCode,@Getter,@Setter所有非final字段，以及@RequiredArgsConstructor" />
     <MESSAGE value="修复部分BUG" />
-    <option name="LAST_COMMIT_MESSAGE" value="修复部分BUG" />
+    <MESSAGE value="更新用户表和数据库备份" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新用户表和数据库备份" />
   </component>
   <component name="WindowStateProjectService">
     <state x="765" y="227" key="#com.intellij.ide.util.MemberChooser" timestamp="1576059354369">
@@ -440,66 +462,66 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="640" y="248" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576036413865" />
-    <state width="1879" height="216" key="GridCell.Tab.0.bottom" timestamp="1576055348791">
+    <state x="322" y="114" key="CommitChangelistDialog2" timestamp="1576062661901">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1879" height="216" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576055348791" />
-    <state width="1879" height="216" key="GridCell.Tab.0.center" timestamp="1576055348790">
+    <state x="322" y="114" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576062661901" />
+    <state width="1879" height="216" key="GridCell.Tab.0.bottom" timestamp="1576062818953">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1879" height="216" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576055348790" />
-    <state width="1879" height="216" key="GridCell.Tab.0.left" timestamp="1576055348790">
+    <state width="1879" height="216" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576062818953" />
+    <state width="1879" height="216" key="GridCell.Tab.0.center" timestamp="1576062818953">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1879" height="216" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576055348790" />
-    <state width="1879" height="216" key="GridCell.Tab.0.right" timestamp="1576055348791">
+    <state width="1879" height="216" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576062818953" />
+    <state width="1879" height="216" key="GridCell.Tab.0.left" timestamp="1576062818953">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1879" height="216" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576055348791" />
-    <state width="1879" height="216" key="GridCell.Tab.1.bottom" timestamp="1576055348597">
+    <state width="1879" height="216" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576062818953" />
+    <state width="1879" height="216" key="GridCell.Tab.0.right" timestamp="1576062818953">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1879" height="216" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576055348597" />
-    <state width="1879" height="216" key="GridCell.Tab.1.center" timestamp="1576055348596">
+    <state width="1879" height="216" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576062818953" />
+    <state width="1879" height="216" key="GridCell.Tab.1.bottom" timestamp="1576062818953">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1879" height="216" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576055348596" />
-    <state width="1879" height="216" key="GridCell.Tab.1.left" timestamp="1576055348596">
+    <state width="1879" height="216" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576062818953" />
+    <state width="1879" height="216" key="GridCell.Tab.1.center" timestamp="1576062818953">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1879" height="216" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576055348596" />
-    <state width="1879" height="216" key="GridCell.Tab.1.right" timestamp="1576055348596">
+    <state width="1879" height="216" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576062818953" />
+    <state width="1879" height="216" key="GridCell.Tab.1.left" timestamp="1576062818953">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1879" height="216" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576055348596" />
-    <state width="1879" height="216" key="GridCell.Tab.2.bottom" timestamp="1576055348597">
+    <state width="1879" height="216" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576062818953" />
+    <state width="1879" height="216" key="GridCell.Tab.1.right" timestamp="1576062818953">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1879" height="216" key="GridCell.Tab.2.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576055348597" />
-    <state width="1879" height="216" key="GridCell.Tab.2.center" timestamp="1576055348597">
+    <state width="1879" height="216" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576062818953" />
+    <state width="1879" height="216" key="GridCell.Tab.2.bottom" timestamp="1576062818954">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1879" height="216" key="GridCell.Tab.2.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576055348597" />
-    <state width="1879" height="216" key="GridCell.Tab.2.left" timestamp="1576055348597">
+    <state width="1879" height="216" key="GridCell.Tab.2.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576062818954" />
+    <state width="1879" height="216" key="GridCell.Tab.2.center" timestamp="1576062818954">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1879" height="216" key="GridCell.Tab.2.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576055348597" />
-    <state width="1879" height="216" key="GridCell.Tab.2.right" timestamp="1576055348597">
+    <state width="1879" height="216" key="GridCell.Tab.2.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576062818954" />
+    <state width="1879" height="216" key="GridCell.Tab.2.left" timestamp="1576062818954">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1879" height="216" key="GridCell.Tab.2.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576055348597" />
+    <state width="1879" height="216" key="GridCell.Tab.2.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576062818954" />
+    <state width="1879" height="216" key="GridCell.Tab.2.right" timestamp="1576062818954">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1879" height="216" key="GridCell.Tab.2.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576062818954" />
+    <state x="552" y="255" key="Vcs.Push.Dialog.v2" timestamp="1576062677577">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="255" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576062677577" />
     <state x="533" y="251" width="853" height="538" key="find.popup" timestamp="1576050392124">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="533" y="251" width="853" height="538" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576050392124" />
-    <state x="1418" y="502" key="git4idea.merge.GitPullDialog" timestamp="1576244443747">
-      <screen x="0" y="0" width="3440" height="1400" />
-    </state>
-    <state x="1418" y="502" key="git4idea.merge.GitPullDialog/-1920.0.1920.1040/0.0.3440.1400@0.0.3440.1400" timestamp="1576244443747" />
-    <state x="1498" y="608" key="git4idea.ui.GitStashDialog" timestamp="1576244481801">
-      <screen x="0" y="0" width="3440" height="1400" />
-    </state>
-    <state x="1498" y="608" key="git4idea.ui.GitStashDialog/-1920.0.1920.1040/0.0.3440.1400@0.0.3440.1400" timestamp="1576244481801" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1576050339490">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

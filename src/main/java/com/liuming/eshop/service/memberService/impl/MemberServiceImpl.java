@@ -1,13 +1,12 @@
 package com.liuming.eshop.service.memberService.impl;
 
-import com.liuming.eshop.mapper.memberMapper.MemberMapper;
 import com.liuming.eshop.service.memberService.MemberService;
-import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
-
-@Service
+/**
+ * @Description
+ * @ClassName MemberServiceImpl
+ * @Author 鲸落
+ * @date 2019.12.12 15:01
+ */
 public class MemberServiceImpl implements MemberService {
-    @Resource
-    private MemberMapper memberMapper;
 }
