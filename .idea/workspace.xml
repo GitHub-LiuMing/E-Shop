@@ -5,8 +5,39 @@
     <option name="ANALYZE_TEST_SOURCES" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="791cd9c2-41dc-4aa5-928a-2dc824116e8b" name="Default Changelist" comment="">
+    <list default="true" id="791cd9c2-41dc-4aa5-928a-2dc824116e8b" name="Default Changelist" comment="备份">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eshop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/eshop.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/itemController/ItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/itemController/ItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/memberController/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/memberController/MemberController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/pointsDetailsController/PointsDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/pointsDetailsController/PointsDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/userController/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/userController/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/pointsDetailsEntity/PointsDetails.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/pointsDetailsEntity/PointsDetailsExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/pointsDetailsMapper/PointsDetailsMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/pointsDetailsMapper/PointsDetailsMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/itemService/ItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/itemService/ItemService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/itemService/impl/ItemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/itemService/impl/ItemServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/memberService/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/memberService/MemberService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/memberService/impl/MemberServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/memberService/impl/MemberServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/pointsDetailsService/PointsDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/pointsDetailsService/PointsDetailsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/pointsDetailsService/impl/PointsDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/pointsDetailsService/impl/PointsDetailsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/userService/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/userService/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/userService/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/userService/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/pointsDetailsController/PointsDetailsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/pointsDetailsController/PointsDetailsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/userController/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/userController/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/pointsDetailsEntity/PointsDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/pointsDetailsEntity/PointsDetails.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/pointsDetailsEntity/PointsDetailsExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/pointsDetailsEntity/PointsDetailsExample$Criteria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/pointsDetailsEntity/PointsDetailsExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/pointsDetailsEntity/PointsDetailsExample$GeneratedCriteria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/pointsDetailsMapper/PointsDetailsMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/pointsDetailsMapper/PointsDetailsMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/pointsDetailsMapper/PointsDetailsMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/pointsDetailsMapper/PointsDetailsMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/pointsDetailsService/PointsDetailsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/pointsDetailsService/PointsDetailsService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/pointsDetailsService/impl/PointsDetailsServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/pointsDetailsService/impl/PointsDetailsServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/userService/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/userService/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/userService/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/userService/impl/UserServiceImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,8 +116,9 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="add_unversioned_files" value="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/memberMapper/MemberMapper.java&#10;D:/JetBrains/IntelliJ IDEA/IdeaProjects/eshop/src/main/java/com/liuming/eshop/entity/memberEntity/Member.java" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/pointsDetailsMapper" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -99,18 +131,18 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="editing.templates" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\java\com\liuming\eshop\shiro\entity\shiroUser" />
+      <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\java\com\liuming\eshop\shiro\entity\shiroResources" />
+      <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\resources" />
+      <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\java\com\liuming\eshop\mapper\province" />
+      <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\resources\static\error" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.liuming.eshop" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop" />
-      <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\java\com\liuming\eshop\mapper\userMapper" />
-      <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\java\com\liuming\eshop\entity\userEntity" />
-      <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\java\com\liuming\eshop\mapper\memberLevelMapper" />
-      <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\java\com\liuming\eshop\entity\memberLevelEntity" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.liuming.eshop.commons" />
@@ -119,12 +151,12 @@
       <recent name="com.liuming.eshop.config" />
       <recent name="com.liuming.eshop.entity.dto" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\java\com\liuming\eshop\shiro\entity\shiroUser" />
-      <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\java\com\liuming\eshop\shiro\entity\shiroResources" />
-      <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\resources" />
-      <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\java\com\liuming\eshop\mapper\province" />
-      <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\resources\static\error" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\java\com\liuming\eshop\mapper\pointsDetailsMapper" />
+      <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\java\com\liuming\eshop\entity\pointsDetailsEntity" />
+      <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\java\com\liuming\eshop\entity\memberEntity" />
+      <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\java\com\liuming\eshop\mapper\memberMapper" />
+      <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.EshopApplication">
@@ -344,6 +376,9 @@
       <workItem from="1576024308083" duration="24803000" />
       <workItem from="1576127709315" duration="6208000" />
       <workItem from="1576199767902" duration="2038000" />
+      <workItem from="1576232490599" duration="118000" />
+      <workItem from="1576285020503" duration="687000" />
+      <workItem from="1576286105596" duration="18343000" />
     </task>
     <task id="LOCAL-00001" summary="update .gitignore">
       <created>1564110360341</created>
@@ -422,7 +457,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576062668084</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="备份">
+      <created>1576232562201</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1576232562201</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -451,77 +493,94 @@
     <MESSAGE value="1. 完善省市区&#10;2. 引入lombok,使用@Data注解集成了@ToString,@EqualsAndHashCode,@Getter,@Setter所有非final字段，以及@RequiredArgsConstructor" />
     <MESSAGE value="修复部分BUG" />
     <MESSAGE value="更新用户表和数据库备份" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新用户表和数据库备份" />
+    <MESSAGE value="备份" />
+    <option name="LAST_COMMIT_MESSAGE" value="备份" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="765" y="227" key="#com.intellij.ide.util.MemberChooser" timestamp="1576059354369">
+    <state x="687" y="360" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1576232615284">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="227" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576059354369" />
+    <state x="687" y="360" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576232615284" />
+    <state x="765" y="227" key="#com.intellij.ide.util.MemberChooser" timestamp="1576316239156">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="227" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576316239156" />
     <state x="640" y="248" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1576036413865">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="640" y="248" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576036413865" />
-    <state x="322" y="114" key="CommitChangelistDialog2" timestamp="1576062661901">
+    <state x="322" y="114" key="CommitChangelistDialog2" timestamp="1576285047615">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="322" y="114" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576062661901" />
-    <state width="1879" height="216" key="GridCell.Tab.0.bottom" timestamp="1576062818953">
+    <state x="322" y="114" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576285047615" />
+    <state x="691" y="263" key="FileChooserDialogImpl" timestamp="1576232612191">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1879" height="216" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576062818953" />
-    <state width="1879" height="216" key="GridCell.Tab.0.center" timestamp="1576062818953">
+    <state x="691" y="263" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576232612191" />
+    <state width="1879" height="284" key="GridCell.Tab.0.bottom" timestamp="1576308567897">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1879" height="216" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576062818953" />
-    <state width="1879" height="216" key="GridCell.Tab.0.left" timestamp="1576062818953">
+    <state width="1879" height="284" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576308567897" />
+    <state width="1879" height="284" key="GridCell.Tab.0.center" timestamp="1576308567897">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1879" height="216" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576062818953" />
-    <state width="1879" height="216" key="GridCell.Tab.0.right" timestamp="1576062818953">
+    <state width="1879" height="284" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576308567897" />
+    <state width="1879" height="284" key="GridCell.Tab.0.left" timestamp="1576308567897">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1879" height="216" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576062818953" />
-    <state width="1879" height="216" key="GridCell.Tab.1.bottom" timestamp="1576062818953">
+    <state width="1879" height="284" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576308567897" />
+    <state width="1879" height="284" key="GridCell.Tab.0.right" timestamp="1576308567897">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1879" height="216" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576062818953" />
-    <state width="1879" height="216" key="GridCell.Tab.1.center" timestamp="1576062818953">
+    <state width="1879" height="284" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576308567897" />
+    <state width="1879" height="284" key="GridCell.Tab.1.bottom" timestamp="1576308567897">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1879" height="216" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576062818953" />
-    <state width="1879" height="216" key="GridCell.Tab.1.left" timestamp="1576062818953">
+    <state width="1879" height="284" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576308567897" />
+    <state width="1879" height="284" key="GridCell.Tab.1.center" timestamp="1576308567897">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1879" height="216" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576062818953" />
-    <state width="1879" height="216" key="GridCell.Tab.1.right" timestamp="1576062818953">
+    <state width="1879" height="284" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576308567897" />
+    <state width="1879" height="284" key="GridCell.Tab.1.left" timestamp="1576308567897">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1879" height="216" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576062818953" />
-    <state width="1879" height="216" key="GridCell.Tab.2.bottom" timestamp="1576062818954">
+    <state width="1879" height="284" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576308567897" />
+    <state width="1879" height="284" key="GridCell.Tab.1.right" timestamp="1576308567897">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1879" height="216" key="GridCell.Tab.2.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576062818954" />
-    <state width="1879" height="216" key="GridCell.Tab.2.center" timestamp="1576062818954">
+    <state width="1879" height="284" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576308567897" />
+    <state width="1879" height="284" key="GridCell.Tab.2.bottom" timestamp="1576308567897">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1879" height="216" key="GridCell.Tab.2.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576062818954" />
-    <state width="1879" height="216" key="GridCell.Tab.2.left" timestamp="1576062818954">
+    <state width="1879" height="284" key="GridCell.Tab.2.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576308567897" />
+    <state width="1879" height="284" key="GridCell.Tab.2.center" timestamp="1576308567897">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1879" height="216" key="GridCell.Tab.2.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576062818954" />
-    <state width="1879" height="216" key="GridCell.Tab.2.right" timestamp="1576062818954">
+    <state width="1879" height="284" key="GridCell.Tab.2.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576308567897" />
+    <state width="1879" height="284" key="GridCell.Tab.2.left" timestamp="1576308567897">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1879" height="216" key="GridCell.Tab.2.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576062818954" />
-    <state x="552" y="255" key="Vcs.Push.Dialog.v2" timestamp="1576062677577">
+    <state width="1879" height="284" key="GridCell.Tab.2.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576308567897" />
+    <state width="1879" height="284" key="GridCell.Tab.2.right" timestamp="1576308567897">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="255" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576062677577" />
-    <state x="533" y="251" width="853" height="538" key="find.popup" timestamp="1576050392124">
+    <state width="1879" height="284" key="GridCell.Tab.2.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576308567897" />
+    <state x="485" y="164" key="SettingsEditor" timestamp="1576285710299">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="533" y="251" width="853" height="538" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576050392124" />
+    <state x="485" y="164" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576285710299" />
+    <state x="552" y="255" key="Vcs.Push.Dialog.v2" timestamp="1576232569603">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="255" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576232569603" />
+    <state x="533" y="251" width="853" height="538" key="find.popup" timestamp="1576286303117">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="533" y="251" width="853" height="538" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576286303117" />
+    <state x="607" y="321" key="git4idea.merge.GitPullDialog" timestamp="1576285395306">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="607" y="321" key="git4idea.merge.GitPullDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576285395306" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1576050339490">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

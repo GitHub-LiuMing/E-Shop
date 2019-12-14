@@ -1,5 +1,6 @@
 package com.liuming.eshop.service.itemService.impl;
 
+import com.liuming.eshop.entity.itemEntity.Item;
 import com.liuming.eshop.mapper.itemMapper.ItemMapper;
 import com.liuming.eshop.service.itemService.ItemService;
 import com.liuming.eshop.utils.DataResult;
@@ -18,8 +19,7 @@ public class ItemServiceImpl implements ItemService {
     private ItemMapper itemMapper;
 
     @Override
-    public DataResult findItemAll(int pageNum, int pageSize) {
-        // TODO: 2019/11/11  未完善
+    public DataResult findItem(int pageNum, int pageSize, Item item) {
         return null;
     }
 }

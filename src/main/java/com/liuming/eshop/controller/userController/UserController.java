@@ -48,4 +48,13 @@ public class UserController {
     public DataResult findUser(User user){
         return userService.findUser(user);
     }
+
+    @RequestMapping("/loginUser")
+    public DataResult loginUser(User user){
+        if (StringUtils.isNotBlank(user.getUserName()) && StringUtils.isNotBlank(user.getUserPassword())){
+            return userService.loginUser(user);
+        } else {
+            return DataResult.build(500,"用户名或密码不得为空");
+        }
+    }
 }

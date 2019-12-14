@@ -8,11 +8,11 @@ import java.util.Date;
 public class PointsDetails {
     private String pointsDetailsId;
 
-    private String userId;
+    private String memberId;
 
-    private String wechatName;
+    private String memberWechatName;
 
-    private String phone;
+    private String memberPhone;
 
     private Integer beforeModifyPoints;
 

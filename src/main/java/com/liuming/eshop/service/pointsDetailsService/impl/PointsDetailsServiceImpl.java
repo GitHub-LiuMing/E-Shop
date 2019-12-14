@@ -6,14 +6,11 @@ import com.liuming.eshop.service.pointsDetailsService.PointsDetailsService;
 import com.liuming.eshop.utils.DataResult;
 import com.liuming.eshop.utils.IDUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @Description 积分详情
@@ -23,17 +20,17 @@ import java.util.Map;
  */
 @Service
 public class PointsDetailsServiceImpl implements PointsDetailsService {
-    @Autowired
+    @Resource
     private PointsDetailsMapper pointsDetailsMapper;
 
     @Override
     public DataResult addPointsDetails(PointsDetails pointsDetails) {
-        if (StringUtils.isNotBlank(pointsDetails.getUserId()) ) {
+        if (StringUtils.isNotBlank(pointsDetails.getMemberId()) ) {
             if (pointsDetails.getPointsDetailsType() != null){
                 //&& StringUtils.isNotBlank(pointsDetails.getWechatName()) && StringUtils.isNotBlank(pointsDetails.getPhone())
                 //先查询该用户最后一条数据中的变动后的积分,如果是第一条数据,就将变动前的积分设定为0,然后插入表
                 Map pointsDetailsDescLimit1Map = new HashMap();
-                pointsDetailsDescLimit1Map.put("userId", pointsDetails.getUserId());
+                pointsDetailsDescLimit1Map.put("memberId", pointsDetails.getMemberId());
                 PointsDetails pointsDetailsDescLimit1 = pointsDetailsMapper.findPointsDetailsDescLimit1(pointsDetailsDescLimit1Map);
 
                 pointsDetails.setPointsDetailsId(IDUtils.getId());
@@ -59,6 +56,14 @@ public class PointsDetailsServiceImpl implements PointsDetailsService {
             return DataResult.build(500, "积分类型不得为空");
         }
         return DataResult.build(500, "用户信息获取失败");
+    }
+
+    @Override
+    public DataResult findPointsDetails(String memberId) {
+        Map map = new HashMap();
+        map.put("memberId", memberId);
+        List<PointsDetails> pointsDetailsList = pointsDetailsMapper.findPointsDetails(map);
+        return DataResult.ok(pointsDetailsList);
     }
 
     public static void main(String[] args) {

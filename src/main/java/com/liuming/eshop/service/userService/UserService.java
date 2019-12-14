@@ -7,4 +7,6 @@ public interface UserService {
     DataResult addUser(User user);
 
     DataResult findUser(User user);
+
+    DataResult loginUser(User user);
 }

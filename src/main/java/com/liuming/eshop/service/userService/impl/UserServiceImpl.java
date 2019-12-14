@@ -3,6 +3,7 @@ package com.liuming.eshop.service.userService.impl;
 import com.liuming.eshop.entity.userEntity.User;
 import com.liuming.eshop.mapper.userMapper.UserMapper;
 import com.liuming.eshop.service.userService.UserService;
+import com.liuming.eshop.utils.BCrypt;
 import com.liuming.eshop.utils.DataResult;
 import com.liuming.eshop.utils.IDUtils;
 import org.springframework.stereotype.Service;
@@ -44,5 +45,22 @@ public class UserServiceImpl implements UserService {
         map.put("userStatus", 1);
         List<User> userList = userMapper.findUserList(map);
         return DataResult.ok(userList);
+    }
+
+    @Override
+    public DataResult loginUser(User user) {
+        Map map = new HashMap();
+        map.put("userName", user.getUserName());
+        List<User> userList = userMapper.findUserList(map);
+        if (userList.size() > 0){
+            boolean checkpw = BCrypt.checkpw(user.getUserPassword(), userList.get(0).getUserPassword());
+            if (checkpw){
+                return DataResult.ok();
+            } else {
+                return DataResult.build(500,"用户名密码错误");
+            }
+        } else {
+            return DataResult.build(500,"该用户不存在");
+        }
     }
 }
