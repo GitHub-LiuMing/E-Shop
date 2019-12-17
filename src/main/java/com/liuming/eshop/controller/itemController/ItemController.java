@@ -3,11 +3,12 @@ package com.liuming.eshop.controller.itemController;
 import com.liuming.eshop.entity.itemEntity.Item;
 import com.liuming.eshop.service.itemService.ItemService;
 import com.liuming.eshop.utils.DataResult;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /**
  * @Description 商品
@@ -15,11 +16,27 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @Author 鲸落
  * @date 2019.11.11 14:33
  */
-@Controller
+@RestController
 @RequestMapping("/item")
 public class ItemController {
-    @Autowired
+    @Resource
     private ItemService itemService;
+
+    /**
+     * @Description 新增商品
+     * @param item
+     * @return com.liuming.eshop.utils.DataResult
+     * @Author 鲸落
+     * @Date 2019.12.17 15:12
+     */
+    @RequestMapping("/addItem")
+    public DataResult addItem(Item item){
+        if (StringUtils.isNotBlank(item.getItemName()) && StringUtils.isNotBlank(item.getClassifyId()) && StringUtils.isNotBlank(item.getClassifyName()) && item.getItemOriginalPrice() != null && item.getItemPresentPrice() != null && item.getItemStatus() != null && item.getItemType() != null){
+            return itemService.addItem(item);
+        } else {
+            return DataResult.build(500,"商品名称、分类ID、分类名称、商品原价、商品现价、商品状态、商品类型不得为空");
+        }
+    }
 
     /**
      * @Description 查询商品
