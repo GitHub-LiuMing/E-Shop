@@ -559,4 +559,91 @@
       member_updated_date = #{memberUpdatedDate,jdbcType=TIMESTAMP}
     where member_id = #{memberId,jdbcType=VARCHAR}
   </update>
+
+  <select id="findMember" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM
+        member
+    WHERE
+        1 = 1
+    <if test="map.memberLevelId != null" >
+      AND member_level_id = #{map.memberLevelId,jdbcType=VARCHAR}
+    </if>
+    <if test="map.memberLevelName != null" >
+      AND member_level_name = #{map.memberLevelName,jdbcType=VARCHAR}
+    </if>
+    <if test="map.memberName != null" >
+      AND member_name = #{map.memberName,jdbcType=VARCHAR}
+    </if>
+    <if test="map.memberType != null" >
+      AND member_type = #{map.memberType,jdbcType=INTEGER}
+    </if>
+    <if test="map.memberGender != null" >
+      AND member_gender = #{map.memberGender,jdbcType=INTEGER}
+    </if>
+    <if test="map.memberBirthdate != null" >
+      AND member_birthdate = #{map.memberBirthdate,jdbcType=DATE}
+    </if>
+    <if test="map.memberIdNo != null" >
+      AND member_id_no = #{map.memberIdNo,jdbcType=VARCHAR}
+    </if>
+    <if test="map.memberWechatOpenId != null" >
+      AND member_wechat_open_id = #{map.memberWechatOpenId,jdbcType=VARCHAR}
+    </if>
+    <if test="map.memberWechatName != null" >
+      AND member_wechat_name = #{map.memberWechatName,jdbcType=VARCHAR}
+    </if>
+    <if test="map.memberPhone != null" >
+      AND member_phone = #{map.memberPhone,jdbcType=VARCHAR}
+    </if>
+    <if test="map.memberHeadPortraitUrl != null" >
+      AND member_head_portrait_url = #{map.memberHeadPortraitUrl,jdbcType=VARCHAR}
+    </if>
+    <if test="map.memberPassword != null" >
+      AND member_password = #{map.memberPassword,jdbcType=VARCHAR}
+    </if>
+    <if test="map.memberSalt != null" >
+      AND member_salt = #{map.memberSalt,jdbcType=VARCHAR}
+    </if>
+    <if test="map.memberProvince != null" >
+      AND member_province = #{map.memberProvince,jdbcType=VARCHAR}
+    </if>
+    <if test="map.memberCity != null" >
+      AND member_city = #{map.memberCity,jdbcType=VARCHAR}
+    </if>
+    <if test="map.memberDistrict != null" >
+      AND member_district = #{map.memberDistrict,jdbcType=VARCHAR}
+    </if>
+    <if test="map.memberAddressDesc != null" >
+      AND member_address_desc = #{map.memberAddressDesc,jdbcType=VARCHAR}
+    </if>
+    <if test="map.memberCertification != null" >
+      AND member_certification = #{map.memberCertification,jdbcType=INTEGER}
+    </if>
+    <if test="map.memberStatus != null" >
+      AND member_status = #{map.memberStatus,jdbcType=INTEGER}
+    </if>
+    <if test="map.preMemberId != null" >
+      AND pre_member_id = #{map.preMemberId,jdbcType=VARCHAR}
+    </if>
+    <if test="map.preMemberName != null" >
+      AND pre_member_name = #{map.preMemberName,jdbcType=VARCHAR}
+    </if>
+    <if test="map.preMemberPhone != null" >
+      AND pre_member_phone = #{map.preMemberPhone,jdbcType=VARCHAR}
+    </if>
+    <if test="map.preMemberLevelId != null" >
+      AND pre_member_level_id = #{map.preMemberLevelId,jdbcType=VARCHAR}
+    </if>
+    <if test="map.preMemberLevelName != null" >
+      AND pre_member_level_name = #{map.preMemberLevelName,jdbcType=VARCHAR}
+    </if>
+    <if test="map.memberCreatedDate != null" >
+      AND member_created_date = #{map.memberCreatedDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="map.memberUpdatedDate != null" >
+      AND member_updated_date = #{map.memberUpdatedDate,jdbcType=TIMESTAMP}
+    </if>
+  </select>
 </mapper>

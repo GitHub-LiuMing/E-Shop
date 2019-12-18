@@ -28,6 +28,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public DataResult addUser(User user) {
         user.setUserId(IDUtils.getId());
+        user.setUserPassword(BCrypt.hashpw(user.getUserPassword(), BCrypt.gensalt()));
         user.setUserCreateDate(new Date());
         user.setUserUpdateDate(new Date());
         int i = userMapper.insertSelective(user);
@@ -55,7 +56,7 @@ public class UserServiceImpl implements UserService {
         if (userList.size() > 0){
             boolean checkpw = BCrypt.checkpw(user.getUserPassword(), userList.get(0).getUserPassword());
             if (checkpw){
-                return DataResult.ok();
+                return DataResult.ok(userList.get(0));
             } else {
                 return DataResult.build(500,"用户名密码错误");
             }
