@@ -1,0 +1,877 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.liuming.eshop.mapper.commissionMapper.CommissionMapper" >
+  <resultMap id="map" type="com.liuming.eshop.entity.commissionEntity.Commission" >
+    <id column="commission_id" property="commissionId" jdbcType="VARCHAR" />
+    <result column="commission_name" property="commissionName" jdbcType="VARCHAR" />
+    <result column="hy_hy_zt_price" property="hyHyZtPrice" jdbcType="DOUBLE" />
+    <result column="hy_gj_zt_price" property="hyGjZtPrice" jdbcType="DOUBLE" />
+    <result column="hy_dl_zt_price" property="hyDlZtPrice" jdbcType="DOUBLE" />
+    <result column="gj_hy_zt_price" property="gjHyZtPrice" jdbcType="DOUBLE" />
+    <result column="gj_hy_td_price" property="gjHyTdPrice" jdbcType="DOUBLE" />
+    <result column="gj_hy_fg_price" property="gjHyFgPrice" jdbcType="DOUBLE" />
+    <result column="gj_gj_zt_price" property="gjGjZtPrice" jdbcType="DOUBLE" />
+    <result column="gj_gj_jt_price" property="gjGjJtPrice" jdbcType="DOUBLE" />
+    <result column="gj_dl_zt_price" property="gjDlZtPrice" jdbcType="DOUBLE" />
+    <result column="gj_dl_jt_price" property="gjDlJtPrice" jdbcType="DOUBLE" />
+    <result column="vip_hy_zt_price" property="vipHyZtPrice" jdbcType="DOUBLE" />
+    <result column="vip_hy_td_price" property="vipHyTdPrice" jdbcType="DOUBLE" />
+    <result column="vip_hy_fg_price" property="vipHyFgPrice" jdbcType="DOUBLE" />
+    <result column="vip_gj_zt_price" property="vipGjZtPrice" jdbcType="DOUBLE" />
+    <result column="vip_gj_jt_price" property="vipGjJtPrice" jdbcType="DOUBLE" />
+    <result column="vip_gj_td_price" property="vipGjTdPrice" jdbcType="DOUBLE" />
+    <result column="vip_dl_zt_price" property="vipDlZtPrice" jdbcType="DOUBLE" />
+    <result column="vip_dl_jt_price" property="vipDlJtPrice" jdbcType="DOUBLE" />
+    <result column="zz_hy_zt_price" property="zzHyZtPrice" jdbcType="DOUBLE" />
+    <result column="zz_hy_td_price" property="zzHyTdPrice" jdbcType="DOUBLE" />
+    <result column="zz_hy_fg_price" property="zzHyFgPrice" jdbcType="DOUBLE" />
+    <result column="zz_gj_zt_price" property="zzGjZtPrice" jdbcType="DOUBLE" />
+    <result column="zz_gj_jj_price" property="zzGjJjPrice" jdbcType="DOUBLE" />
+    <result column="zz_gj_td_price" property="zzGjTdPrice" jdbcType="DOUBLE" />
+    <result column="zz_gj_pj_price" property="zzGjPjPrice" jdbcType="DOUBLE" />
+    <result column="zz_dl_zt_price" property="zzDlZtPrice" jdbcType="DOUBLE" />
+    <result column="zz_dl_jt_price" property="zzDlJtPrice" jdbcType="DOUBLE" />
+    <result column="dl_hy_zt_price" property="dlHyZtPrice" jdbcType="DOUBLE" />
+    <result column="dl_hy_td_price" property="dlHyTdPrice" jdbcType="DOUBLE" />
+    <result column="dl_hy_fg_price" property="dlHyFgPrice" jdbcType="DOUBLE" />
+    <result column="dl_gj_zt_price" property="dlGjZtPrice" jdbcType="DOUBLE" />
+    <result column="dl_gj_jt_price" property="dlGjJtPrice" jdbcType="DOUBLE" />
+    <result column="dl_dl_zt_percent" property="dlDlZtPercent" jdbcType="DOUBLE" />
+    <result column="dl_dl_jt_percent" property="dlDlJtPercent" jdbcType="DOUBLE" />
+    <result column="commission_status" property="commissionStatus" jdbcType="INTEGER" />
+    <result column="commission_created_date" property="commissionCreatedDate" jdbcType="TIMESTAMP" />
+    <result column="commission_updated_date" property="commissionUpdatedDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="list" >
+    commission_id, commission_name, hy_hy_zt_price, hy_gj_zt_price, hy_dl_zt_price, gj_hy_zt_price, 
+    gj_hy_td_price, gj_hy_fg_price, gj_gj_zt_price, gj_gj_jt_price, gj_dl_zt_price, gj_dl_jt_price, 
+    vip_hy_zt_price, vip_hy_td_price, vip_hy_fg_price, vip_gj_zt_price, vip_gj_jt_price, 
+    vip_gj_td_price, vip_dl_zt_price, vip_dl_jt_price, zz_hy_zt_price, zz_hy_td_price, 
+    zz_hy_fg_price, zz_gj_zt_price, zz_gj_jj_price, zz_gj_td_price, zz_gj_pj_price, zz_dl_zt_price, 
+    zz_dl_jt_price, dl_hy_zt_price, dl_hy_td_price, dl_hy_fg_price, dl_gj_zt_price, dl_gj_jt_price, 
+    dl_dl_zt_percent, dl_dl_jt_percent, commission_status, commission_created_date, commission_updated_date
+  </sql>
+  <select id="selectByExample" resultMap="map" parameterType="com.liuming.eshop.entity.commissionEntity.CommissionExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="list" />
+    from commission
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="map" parameterType="java.lang.String" >
+    select 
+    <include refid="list" />
+    from commission
+    where commission_id = #{commissionId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from commission
+    where commission_id = #{commissionId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.liuming.eshop.entity.commissionEntity.CommissionExample" >
+    delete from commission
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.liuming.eshop.entity.commissionEntity.Commission" >
+    insert into commission (commission_id, commission_name, hy_hy_zt_price, 
+      hy_gj_zt_price, hy_dl_zt_price, gj_hy_zt_price, 
+      gj_hy_td_price, gj_hy_fg_price, gj_gj_zt_price, 
+      gj_gj_jt_price, gj_dl_zt_price, gj_dl_jt_price, 
+      vip_hy_zt_price, vip_hy_td_price, vip_hy_fg_price, 
+      vip_gj_zt_price, vip_gj_jt_price, vip_gj_td_price, 
+      vip_dl_zt_price, vip_dl_jt_price, zz_hy_zt_price, 
+      zz_hy_td_price, zz_hy_fg_price, zz_gj_zt_price, 
+      zz_gj_jj_price, zz_gj_td_price, zz_gj_pj_price, 
+      zz_dl_zt_price, zz_dl_jt_price, dl_hy_zt_price, 
+      dl_hy_td_price, dl_hy_fg_price, dl_gj_zt_price, 
+      dl_gj_jt_price, dl_dl_zt_percent, dl_dl_jt_percent, 
+      commission_status, commission_created_date, 
+      commission_updated_date)
+    values (#{commissionId,jdbcType=VARCHAR}, #{commissionName,jdbcType=VARCHAR}, #{hyHyZtPrice,jdbcType=DOUBLE}, 
+      #{hyGjZtPrice,jdbcType=DOUBLE}, #{hyDlZtPrice,jdbcType=DOUBLE}, #{gjHyZtPrice,jdbcType=DOUBLE}, 
+      #{gjHyTdPrice,jdbcType=DOUBLE}, #{gjHyFgPrice,jdbcType=DOUBLE}, #{gjGjZtPrice,jdbcType=DOUBLE}, 
+      #{gjGjJtPrice,jdbcType=DOUBLE}, #{gjDlZtPrice,jdbcType=DOUBLE}, #{gjDlJtPrice,jdbcType=DOUBLE}, 
+      #{vipHyZtPrice,jdbcType=DOUBLE}, #{vipHyTdPrice,jdbcType=DOUBLE}, #{vipHyFgPrice,jdbcType=DOUBLE}, 
+      #{vipGjZtPrice,jdbcType=DOUBLE}, #{vipGjJtPrice,jdbcType=DOUBLE}, #{vipGjTdPrice,jdbcType=DOUBLE}, 
+      #{vipDlZtPrice,jdbcType=DOUBLE}, #{vipDlJtPrice,jdbcType=DOUBLE}, #{zzHyZtPrice,jdbcType=DOUBLE}, 
+      #{zzHyTdPrice,jdbcType=DOUBLE}, #{zzHyFgPrice,jdbcType=DOUBLE}, #{zzGjZtPrice,jdbcType=DOUBLE}, 
+      #{zzGjJjPrice,jdbcType=DOUBLE}, #{zzGjTdPrice,jdbcType=DOUBLE}, #{zzGjPjPrice,jdbcType=DOUBLE}, 
+      #{zzDlZtPrice,jdbcType=DOUBLE}, #{zzDlJtPrice,jdbcType=DOUBLE}, #{dlHyZtPrice,jdbcType=DOUBLE}, 
+      #{dlHyTdPrice,jdbcType=DOUBLE}, #{dlHyFgPrice,jdbcType=DOUBLE}, #{dlGjZtPrice,jdbcType=DOUBLE}, 
+      #{dlGjJtPrice,jdbcType=DOUBLE}, #{dlDlZtPercent,jdbcType=DOUBLE}, #{dlDlJtPercent,jdbcType=DOUBLE}, 
+      #{commissionStatus,jdbcType=INTEGER}, #{commissionCreatedDate,jdbcType=TIMESTAMP}, 
+      #{commissionUpdatedDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.liuming.eshop.entity.commissionEntity.Commission" >
+    insert into commission
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="commissionId != null" >
+        commission_id,
+      </if>
+      <if test="commissionName != null" >
+        commission_name,
+      </if>
+      <if test="hyHyZtPrice != null" >
+        hy_hy_zt_price,
+      </if>
+      <if test="hyGjZtPrice != null" >
+        hy_gj_zt_price,
+      </if>
+      <if test="hyDlZtPrice != null" >
+        hy_dl_zt_price,
+      </if>
+      <if test="gjHyZtPrice != null" >
+        gj_hy_zt_price,
+      </if>
+      <if test="gjHyTdPrice != null" >
+        gj_hy_td_price,
+      </if>
+      <if test="gjHyFgPrice != null" >
+        gj_hy_fg_price,
+      </if>
+      <if test="gjGjZtPrice != null" >
+        gj_gj_zt_price,
+      </if>
+      <if test="gjGjJtPrice != null" >
+        gj_gj_jt_price,
+      </if>
+      <if test="gjDlZtPrice != null" >
+        gj_dl_zt_price,
+      </if>
+      <if test="gjDlJtPrice != null" >
+        gj_dl_jt_price,
+      </if>
+      <if test="vipHyZtPrice != null" >
+        vip_hy_zt_price,
+      </if>
+      <if test="vipHyTdPrice != null" >
+        vip_hy_td_price,
+      </if>
+      <if test="vipHyFgPrice != null" >
+        vip_hy_fg_price,
+      </if>
+      <if test="vipGjZtPrice != null" >
+        vip_gj_zt_price,
+      </if>
+      <if test="vipGjJtPrice != null" >
+        vip_gj_jt_price,
+      </if>
+      <if test="vipGjTdPrice != null" >
+        vip_gj_td_price,
+      </if>
+      <if test="vipDlZtPrice != null" >
+        vip_dl_zt_price,
+      </if>
+      <if test="vipDlJtPrice != null" >
+        vip_dl_jt_price,
+      </if>
+      <if test="zzHyZtPrice != null" >
+        zz_hy_zt_price,
+      </if>
+      <if test="zzHyTdPrice != null" >
+        zz_hy_td_price,
+      </if>
+      <if test="zzHyFgPrice != null" >
+        zz_hy_fg_price,
+      </if>
+      <if test="zzGjZtPrice != null" >
+        zz_gj_zt_price,
+      </if>
+      <if test="zzGjJjPrice != null" >
+        zz_gj_jj_price,
+      </if>
+      <if test="zzGjTdPrice != null" >
+        zz_gj_td_price,
+      </if>
+      <if test="zzGjPjPrice != null" >
+        zz_gj_pj_price,
+      </if>
+      <if test="zzDlZtPrice != null" >
+        zz_dl_zt_price,
+      </if>
+      <if test="zzDlJtPrice != null" >
+        zz_dl_jt_price,
+      </if>
+      <if test="dlHyZtPrice != null" >
+        dl_hy_zt_price,
+      </if>
+      <if test="dlHyTdPrice != null" >
+        dl_hy_td_price,
+      </if>
+      <if test="dlHyFgPrice != null" >
+        dl_hy_fg_price,
+      </if>
+      <if test="dlGjZtPrice != null" >
+        dl_gj_zt_price,
+      </if>
+      <if test="dlGjJtPrice != null" >
+        dl_gj_jt_price,
+      </if>
+      <if test="dlDlZtPercent != null" >
+        dl_dl_zt_percent,
+      </if>
+      <if test="dlDlJtPercent != null" >
+        dl_dl_jt_percent,
+      </if>
+      <if test="commissionStatus != null" >
+        commission_status,
+      </if>
+      <if test="commissionCreatedDate != null" >
+        commission_created_date,
+      </if>
+      <if test="commissionUpdatedDate != null" >
+        commission_updated_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="commissionId != null" >
+        #{commissionId,jdbcType=VARCHAR},
+      </if>
+      <if test="commissionName != null" >
+        #{commissionName,jdbcType=VARCHAR},
+      </if>
+      <if test="hyHyZtPrice != null" >
+        #{hyHyZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="hyGjZtPrice != null" >
+        #{hyGjZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="hyDlZtPrice != null" >
+        #{hyDlZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="gjHyZtPrice != null" >
+        #{gjHyZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="gjHyTdPrice != null" >
+        #{gjHyTdPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="gjHyFgPrice != null" >
+        #{gjHyFgPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="gjGjZtPrice != null" >
+        #{gjGjZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="gjGjJtPrice != null" >
+        #{gjGjJtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="gjDlZtPrice != null" >
+        #{gjDlZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="gjDlJtPrice != null" >
+        #{gjDlJtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="vipHyZtPrice != null" >
+        #{vipHyZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="vipHyTdPrice != null" >
+        #{vipHyTdPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="vipHyFgPrice != null" >
+        #{vipHyFgPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="vipGjZtPrice != null" >
+        #{vipGjZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="vipGjJtPrice != null" >
+        #{vipGjJtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="vipGjTdPrice != null" >
+        #{vipGjTdPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="vipDlZtPrice != null" >
+        #{vipDlZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="vipDlJtPrice != null" >
+        #{vipDlJtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="zzHyZtPrice != null" >
+        #{zzHyZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="zzHyTdPrice != null" >
+        #{zzHyTdPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="zzHyFgPrice != null" >
+        #{zzHyFgPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="zzGjZtPrice != null" >
+        #{zzGjZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="zzGjJjPrice != null" >
+        #{zzGjJjPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="zzGjTdPrice != null" >
+        #{zzGjTdPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="zzGjPjPrice != null" >
+        #{zzGjPjPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="zzDlZtPrice != null" >
+        #{zzDlZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="zzDlJtPrice != null" >
+        #{zzDlJtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="dlHyZtPrice != null" >
+        #{dlHyZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="dlHyTdPrice != null" >
+        #{dlHyTdPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="dlHyFgPrice != null" >
+        #{dlHyFgPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="dlGjZtPrice != null" >
+        #{dlGjZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="dlGjJtPrice != null" >
+        #{dlGjJtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="dlDlZtPercent != null" >
+        #{dlDlZtPercent,jdbcType=DOUBLE},
+      </if>
+      <if test="dlDlJtPercent != null" >
+        #{dlDlJtPercent,jdbcType=DOUBLE},
+      </if>
+      <if test="commissionStatus != null" >
+        #{commissionStatus,jdbcType=INTEGER},
+      </if>
+      <if test="commissionCreatedDate != null" >
+        #{commissionCreatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commissionUpdatedDate != null" >
+        #{commissionUpdatedDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.liuming.eshop.entity.commissionEntity.CommissionExample" resultType="java.lang.Integer" >
+    select count(*) from commission
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update commission
+    <set >
+      <if test="record.commissionId != null" >
+        commission_id = #{record.commissionId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.commissionName != null" >
+        commission_name = #{record.commissionName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hyHyZtPrice != null" >
+        hy_hy_zt_price = #{record.hyHyZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.hyGjZtPrice != null" >
+        hy_gj_zt_price = #{record.hyGjZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.hyDlZtPrice != null" >
+        hy_dl_zt_price = #{record.hyDlZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.gjHyZtPrice != null" >
+        gj_hy_zt_price = #{record.gjHyZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.gjHyTdPrice != null" >
+        gj_hy_td_price = #{record.gjHyTdPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.gjHyFgPrice != null" >
+        gj_hy_fg_price = #{record.gjHyFgPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.gjGjZtPrice != null" >
+        gj_gj_zt_price = #{record.gjGjZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.gjGjJtPrice != null" >
+        gj_gj_jt_price = #{record.gjGjJtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.gjDlZtPrice != null" >
+        gj_dl_zt_price = #{record.gjDlZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.gjDlJtPrice != null" >
+        gj_dl_jt_price = #{record.gjDlJtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.vipHyZtPrice != null" >
+        vip_hy_zt_price = #{record.vipHyZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.vipHyTdPrice != null" >
+        vip_hy_td_price = #{record.vipHyTdPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.vipHyFgPrice != null" >
+        vip_hy_fg_price = #{record.vipHyFgPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.vipGjZtPrice != null" >
+        vip_gj_zt_price = #{record.vipGjZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.vipGjJtPrice != null" >
+        vip_gj_jt_price = #{record.vipGjJtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.vipGjTdPrice != null" >
+        vip_gj_td_price = #{record.vipGjTdPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.vipDlZtPrice != null" >
+        vip_dl_zt_price = #{record.vipDlZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.vipDlJtPrice != null" >
+        vip_dl_jt_price = #{record.vipDlJtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.zzHyZtPrice != null" >
+        zz_hy_zt_price = #{record.zzHyZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.zzHyTdPrice != null" >
+        zz_hy_td_price = #{record.zzHyTdPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.zzHyFgPrice != null" >
+        zz_hy_fg_price = #{record.zzHyFgPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.zzGjZtPrice != null" >
+        zz_gj_zt_price = #{record.zzGjZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.zzGjJjPrice != null" >
+        zz_gj_jj_price = #{record.zzGjJjPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.zzGjTdPrice != null" >
+        zz_gj_td_price = #{record.zzGjTdPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.zzGjPjPrice != null" >
+        zz_gj_pj_price = #{record.zzGjPjPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.zzDlZtPrice != null" >
+        zz_dl_zt_price = #{record.zzDlZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.zzDlJtPrice != null" >
+        zz_dl_jt_price = #{record.zzDlJtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.dlHyZtPrice != null" >
+        dl_hy_zt_price = #{record.dlHyZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.dlHyTdPrice != null" >
+        dl_hy_td_price = #{record.dlHyTdPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.dlHyFgPrice != null" >
+        dl_hy_fg_price = #{record.dlHyFgPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.dlGjZtPrice != null" >
+        dl_gj_zt_price = #{record.dlGjZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.dlGjJtPrice != null" >
+        dl_gj_jt_price = #{record.dlGjJtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.dlDlZtPercent != null" >
+        dl_dl_zt_percent = #{record.dlDlZtPercent,jdbcType=DOUBLE},
+      </if>
+      <if test="record.dlDlJtPercent != null" >
+        dl_dl_jt_percent = #{record.dlDlJtPercent,jdbcType=DOUBLE},
+      </if>
+      <if test="record.commissionStatus != null" >
+        commission_status = #{record.commissionStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.commissionCreatedDate != null" >
+        commission_created_date = #{record.commissionCreatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.commissionUpdatedDate != null" >
+        commission_updated_date = #{record.commissionUpdatedDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update commission
+    set commission_id = #{record.commissionId,jdbcType=VARCHAR},
+      commission_name = #{record.commissionName,jdbcType=VARCHAR},
+      hy_hy_zt_price = #{record.hyHyZtPrice,jdbcType=DOUBLE},
+      hy_gj_zt_price = #{record.hyGjZtPrice,jdbcType=DOUBLE},
+      hy_dl_zt_price = #{record.hyDlZtPrice,jdbcType=DOUBLE},
+      gj_hy_zt_price = #{record.gjHyZtPrice,jdbcType=DOUBLE},
+      gj_hy_td_price = #{record.gjHyTdPrice,jdbcType=DOUBLE},
+      gj_hy_fg_price = #{record.gjHyFgPrice,jdbcType=DOUBLE},
+      gj_gj_zt_price = #{record.gjGjZtPrice,jdbcType=DOUBLE},
+      gj_gj_jt_price = #{record.gjGjJtPrice,jdbcType=DOUBLE},
+      gj_dl_zt_price = #{record.gjDlZtPrice,jdbcType=DOUBLE},
+      gj_dl_jt_price = #{record.gjDlJtPrice,jdbcType=DOUBLE},
+      vip_hy_zt_price = #{record.vipHyZtPrice,jdbcType=DOUBLE},
+      vip_hy_td_price = #{record.vipHyTdPrice,jdbcType=DOUBLE},
+      vip_hy_fg_price = #{record.vipHyFgPrice,jdbcType=DOUBLE},
+      vip_gj_zt_price = #{record.vipGjZtPrice,jdbcType=DOUBLE},
+      vip_gj_jt_price = #{record.vipGjJtPrice,jdbcType=DOUBLE},
+      vip_gj_td_price = #{record.vipGjTdPrice,jdbcType=DOUBLE},
+      vip_dl_zt_price = #{record.vipDlZtPrice,jdbcType=DOUBLE},
+      vip_dl_jt_price = #{record.vipDlJtPrice,jdbcType=DOUBLE},
+      zz_hy_zt_price = #{record.zzHyZtPrice,jdbcType=DOUBLE},
+      zz_hy_td_price = #{record.zzHyTdPrice,jdbcType=DOUBLE},
+      zz_hy_fg_price = #{record.zzHyFgPrice,jdbcType=DOUBLE},
+      zz_gj_zt_price = #{record.zzGjZtPrice,jdbcType=DOUBLE},
+      zz_gj_jj_price = #{record.zzGjJjPrice,jdbcType=DOUBLE},
+      zz_gj_td_price = #{record.zzGjTdPrice,jdbcType=DOUBLE},
+      zz_gj_pj_price = #{record.zzGjPjPrice,jdbcType=DOUBLE},
+      zz_dl_zt_price = #{record.zzDlZtPrice,jdbcType=DOUBLE},
+      zz_dl_jt_price = #{record.zzDlJtPrice,jdbcType=DOUBLE},
+      dl_hy_zt_price = #{record.dlHyZtPrice,jdbcType=DOUBLE},
+      dl_hy_td_price = #{record.dlHyTdPrice,jdbcType=DOUBLE},
+      dl_hy_fg_price = #{record.dlHyFgPrice,jdbcType=DOUBLE},
+      dl_gj_zt_price = #{record.dlGjZtPrice,jdbcType=DOUBLE},
+      dl_gj_jt_price = #{record.dlGjJtPrice,jdbcType=DOUBLE},
+      dl_dl_zt_percent = #{record.dlDlZtPercent,jdbcType=DOUBLE},
+      dl_dl_jt_percent = #{record.dlDlJtPercent,jdbcType=DOUBLE},
+      commission_status = #{record.commissionStatus,jdbcType=INTEGER},
+      commission_created_date = #{record.commissionCreatedDate,jdbcType=TIMESTAMP},
+      commission_updated_date = #{record.commissionUpdatedDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liuming.eshop.entity.commissionEntity.Commission" >
+    update commission
+    <set >
+      <if test="commissionName != null" >
+        commission_name = #{commissionName,jdbcType=VARCHAR},
+      </if>
+      <if test="hyHyZtPrice != null" >
+        hy_hy_zt_price = #{hyHyZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="hyGjZtPrice != null" >
+        hy_gj_zt_price = #{hyGjZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="hyDlZtPrice != null" >
+        hy_dl_zt_price = #{hyDlZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="gjHyZtPrice != null" >
+        gj_hy_zt_price = #{gjHyZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="gjHyTdPrice != null" >
+        gj_hy_td_price = #{gjHyTdPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="gjHyFgPrice != null" >
+        gj_hy_fg_price = #{gjHyFgPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="gjGjZtPrice != null" >
+        gj_gj_zt_price = #{gjGjZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="gjGjJtPrice != null" >
+        gj_gj_jt_price = #{gjGjJtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="gjDlZtPrice != null" >
+        gj_dl_zt_price = #{gjDlZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="gjDlJtPrice != null" >
+        gj_dl_jt_price = #{gjDlJtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="vipHyZtPrice != null" >
+        vip_hy_zt_price = #{vipHyZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="vipHyTdPrice != null" >
+        vip_hy_td_price = #{vipHyTdPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="vipHyFgPrice != null" >
+        vip_hy_fg_price = #{vipHyFgPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="vipGjZtPrice != null" >
+        vip_gj_zt_price = #{vipGjZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="vipGjJtPrice != null" >
+        vip_gj_jt_price = #{vipGjJtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="vipGjTdPrice != null" >
+        vip_gj_td_price = #{vipGjTdPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="vipDlZtPrice != null" >
+        vip_dl_zt_price = #{vipDlZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="vipDlJtPrice != null" >
+        vip_dl_jt_price = #{vipDlJtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="zzHyZtPrice != null" >
+        zz_hy_zt_price = #{zzHyZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="zzHyTdPrice != null" >
+        zz_hy_td_price = #{zzHyTdPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="zzHyFgPrice != null" >
+        zz_hy_fg_price = #{zzHyFgPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="zzGjZtPrice != null" >
+        zz_gj_zt_price = #{zzGjZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="zzGjJjPrice != null" >
+        zz_gj_jj_price = #{zzGjJjPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="zzGjTdPrice != null" >
+        zz_gj_td_price = #{zzGjTdPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="zzGjPjPrice != null" >
+        zz_gj_pj_price = #{zzGjPjPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="zzDlZtPrice != null" >
+        zz_dl_zt_price = #{zzDlZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="zzDlJtPrice != null" >
+        zz_dl_jt_price = #{zzDlJtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="dlHyZtPrice != null" >
+        dl_hy_zt_price = #{dlHyZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="dlHyTdPrice != null" >
+        dl_hy_td_price = #{dlHyTdPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="dlHyFgPrice != null" >
+        dl_hy_fg_price = #{dlHyFgPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="dlGjZtPrice != null" >
+        dl_gj_zt_price = #{dlGjZtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="dlGjJtPrice != null" >
+        dl_gj_jt_price = #{dlGjJtPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="dlDlZtPercent != null" >
+        dl_dl_zt_percent = #{dlDlZtPercent,jdbcType=DOUBLE},
+      </if>
+      <if test="dlDlJtPercent != null" >
+        dl_dl_jt_percent = #{dlDlJtPercent,jdbcType=DOUBLE},
+      </if>
+      <if test="commissionStatus != null" >
+        commission_status = #{commissionStatus,jdbcType=INTEGER},
+      </if>
+      <if test="commissionCreatedDate != null" >
+        commission_created_date = #{commissionCreatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commissionUpdatedDate != null" >
+        commission_updated_date = #{commissionUpdatedDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where commission_id = #{commissionId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liuming.eshop.entity.commissionEntity.Commission" >
+    update commission
+    set commission_name = #{commissionName,jdbcType=VARCHAR},
+      hy_hy_zt_price = #{hyHyZtPrice,jdbcType=DOUBLE},
+      hy_gj_zt_price = #{hyGjZtPrice,jdbcType=DOUBLE},
+      hy_dl_zt_price = #{hyDlZtPrice,jdbcType=DOUBLE},
+      gj_hy_zt_price = #{gjHyZtPrice,jdbcType=DOUBLE},
+      gj_hy_td_price = #{gjHyTdPrice,jdbcType=DOUBLE},
+      gj_hy_fg_price = #{gjHyFgPrice,jdbcType=DOUBLE},
+      gj_gj_zt_price = #{gjGjZtPrice,jdbcType=DOUBLE},
+      gj_gj_jt_price = #{gjGjJtPrice,jdbcType=DOUBLE},
+      gj_dl_zt_price = #{gjDlZtPrice,jdbcType=DOUBLE},
+      gj_dl_jt_price = #{gjDlJtPrice,jdbcType=DOUBLE},
+      vip_hy_zt_price = #{vipHyZtPrice,jdbcType=DOUBLE},
+      vip_hy_td_price = #{vipHyTdPrice,jdbcType=DOUBLE},
+      vip_hy_fg_price = #{vipHyFgPrice,jdbcType=DOUBLE},
+      vip_gj_zt_price = #{vipGjZtPrice,jdbcType=DOUBLE},
+      vip_gj_jt_price = #{vipGjJtPrice,jdbcType=DOUBLE},
+      vip_gj_td_price = #{vipGjTdPrice,jdbcType=DOUBLE},
+      vip_dl_zt_price = #{vipDlZtPrice,jdbcType=DOUBLE},
+      vip_dl_jt_price = #{vipDlJtPrice,jdbcType=DOUBLE},
+      zz_hy_zt_price = #{zzHyZtPrice,jdbcType=DOUBLE},
+      zz_hy_td_price = #{zzHyTdPrice,jdbcType=DOUBLE},
+      zz_hy_fg_price = #{zzHyFgPrice,jdbcType=DOUBLE},
+      zz_gj_zt_price = #{zzGjZtPrice,jdbcType=DOUBLE},
+      zz_gj_jj_price = #{zzGjJjPrice,jdbcType=DOUBLE},
+      zz_gj_td_price = #{zzGjTdPrice,jdbcType=DOUBLE},
+      zz_gj_pj_price = #{zzGjPjPrice,jdbcType=DOUBLE},
+      zz_dl_zt_price = #{zzDlZtPrice,jdbcType=DOUBLE},
+      zz_dl_jt_price = #{zzDlJtPrice,jdbcType=DOUBLE},
+      dl_hy_zt_price = #{dlHyZtPrice,jdbcType=DOUBLE},
+      dl_hy_td_price = #{dlHyTdPrice,jdbcType=DOUBLE},
+      dl_hy_fg_price = #{dlHyFgPrice,jdbcType=DOUBLE},
+      dl_gj_zt_price = #{dlGjZtPrice,jdbcType=DOUBLE},
+      dl_gj_jt_price = #{dlGjJtPrice,jdbcType=DOUBLE},
+      dl_dl_zt_percent = #{dlDlZtPercent,jdbcType=DOUBLE},
+      dl_dl_jt_percent = #{dlDlJtPercent,jdbcType=DOUBLE},
+      commission_status = #{commissionStatus,jdbcType=INTEGER},
+      commission_created_date = #{commissionCreatedDate,jdbcType=TIMESTAMP},
+      commission_updated_date = #{commissionUpdatedDate,jdbcType=TIMESTAMP}
+    where commission_id = #{commissionId,jdbcType=VARCHAR}
+  </update>
+
+  <select id="findCommission" resultMap="map">
+    SELECT
+    <include refid="list" />
+    FROM
+        commission
+    WHERE
+        1 = 1
+    <if test="map.commissionId != null" >
+      commission_id = #{map.commissionId,jdbcType=VARCHAR},
+    </if>
+    <if test="map.commissionName != null" >
+      commission_name = #{map.commissionName,jdbcType=VARCHAR},
+    </if>
+    <if test="map.hyHyZtPrice != null" >
+      hy_hy_zt_price = #{map.hyHyZtPrice,jdbcType=DOUBLE},
+    </if>
+    <if test="map.hyGjZtPrice != null" >
+      hy_gj_zt_price = #{map.hyGjZtPrice,jdbcType=DOUBLE},
+    </if>
+    <if test="map.hyDlZtPrice != null" >
+      hy_dl_zt_price = #{map.hyDlZtPrice,jdbcType=DOUBLE},
+    </if>
+    <if test="map.gjHyZtPrice != null" >
+      gj_hy_zt_price = #{map.gjHyZtPrice,jdbcType=DOUBLE},
+    </if>
+    <if test="map.gjHyTdPrice != null" >
+      gj_hy_td_price = #{map.gjHyTdPrice,jdbcType=DOUBLE},
+    </if>
+    <if test="map.gjHyFgPrice != null" >
+      gj_hy_fg_price = #{map.gjHyFgPrice,jdbcType=DOUBLE},
+    </if>
+    <if test="map.gjGjZtPrice != null" >
+      gj_gj_zt_price = #{map.gjGjZtPrice,jdbcType=DOUBLE},
+    </if>
+    <if test="map.gjGjJtPrice != null" >
+      gj_gj_jt_price = #{map.gjGjJtPrice,jdbcType=DOUBLE},
+    </if>
+    <if test="map.gjDlZtPrice != null" >
+      gj_dl_zt_price = #{map.gjDlZtPrice,jdbcType=DOUBLE},
+    </if>
+    <if test="map.gjDlJtPrice != null" >
+      gj_dl_jt_price = #{map.gjDlJtPrice,jdbcType=DOUBLE},
+    </if>
+    <if test="map.vipHyZtPrice != null" >
+      vip_hy_zt_price = #{map.vipHyZtPrice,jdbcType=DOUBLE},
+    </if>
+    <if test="map.vipHyTdPrice != null" >
+      vip_hy_td_price = #{map.vipHyTdPrice,jdbcType=DOUBLE},
+    </if>
+    <if test="map.vipHyFgPrice != null" >
+      vip_hy_fg_price = #{map.vipHyFgPrice,jdbcType=DOUBLE},
+    </if>
+    <if test="map.vipGjZtPrice != null" >
+      vip_gj_zt_price = #{map.vipGjZtPrice,jdbcType=DOUBLE},
+    </if>
+    <if test="map.vipGjJtPrice != null" >
+      vip_gj_jt_price = #{map.vipGjJtPrice,jdbcType=DOUBLE},
+    </if>
+    <if test="map.vipGjTdPrice != null" >
+      vip_gj_td_price = #{map.vipGjTdPrice,jdbcType=DOUBLE},
+    </if>
+    <if test="map.vipDlZtPrice != null" >
+      vip_dl_zt_price = #{map.vipDlZtPrice,jdbcType=DOUBLE},
+    </if>
+    <if test="map.vipDlJtPrice != null" >
+      vip_dl_jt_price = #{map.vipDlJtPrice,jdbcType=DOUBLE},
+    </if>
+    <if test="map.zzHyZtPrice != null" >
+      zz_hy_zt_price = #{map.zzHyZtPrice,jdbcType=DOUBLE},
+    </if>
+    <if test="map.zzHyTdPrice != null" >
+      zz_hy_td_price = #{map.zzHyTdPrice,jdbcType=DOUBLE},
+    </if>
+    <if test="map.zzHyFgPrice != null" >
+      zz_hy_fg_price = #{map.zzHyFgPrice,jdbcType=DOUBLE},
+    </if>
+    <if test="map.zzGjZtPrice != null" >
+      zz_gj_zt_price = #{map.zzGjZtPrice,jdbcType=DOUBLE},
+    </if>
+    <if test="map.zzGjJjPrice != null" >
+      zz_gj_jj_price = #{map.zzGjJjPrice,jdbcType=DOUBLE},
+    </if>
+    <if test="map.zzGjTdPrice != null" >
+      zz_gj_td_price = #{map.zzGjTdPrice,jdbcType=DOUBLE},
+    </if>
+    <if test="map.zzGjPjPrice != null" >
+      zz_gj_pj_price = #{map.zzGjPjPrice,jdbcType=DOUBLE},
+    </if>
+    <if test="map.zzDlZtPrice != null" >
+      zz_dl_zt_price = #{map.zzDlZtPrice,jdbcType=DOUBLE},
+    </if>
+    <if test="map.zzDlJtPrice != null" >
+      zz_dl_jt_price = #{map.zzDlJtPrice,jdbcType=DOUBLE},
+    </if>
+    <if test="map.dlHyZtPrice != null" >
+      dl_hy_zt_price = #{map.dlHyZtPrice,jdbcType=DOUBLE},
+    </if>
+    <if test="map.dlHyTdPrice != null" >
+      dl_hy_td_price = #{map.dlHyTdPrice,jdbcType=DOUBLE},
+    </if>
+    <if test="map.dlHyFgPrice != null" >
+      dl_hy_fg_price = #{map.dlHyFgPrice,jdbcType=DOUBLE},
+    </if>
+    <if test="map.dlGjZtPrice != null" >
+      dl_gj_zt_price = #{map.dlGjZtPrice,jdbcType=DOUBLE},
+    </if>
+    <if test="map.dlGjJtPrice != null" >
+      dl_gj_jt_price = #{map.dlGjJtPrice,jdbcType=DOUBLE},
+    </if>
+    <if test="map.dlDlZtPercent != null" >
+      dl_dl_zt_percent = #{map.dlDlZtPercent,jdbcType=DOUBLE},
+    </if>
+    <if test="map.dlDlJtPercent != null" >
+      dl_dl_jt_percent = #{map.dlDlJtPercent,jdbcType=DOUBLE},
+    </if>
+    <if test="map.commissionStatus != null" >
+      commission_status = #{map.commissionStatus,jdbcType=INTEGER},
+    </if>
+    <if test="map.commissionCreatedDate != null" >
+      commission_created_date = #{map.commissionCreatedDate,jdbcType=TIMESTAMP},
+    </if>
+    <if test="map.commissionUpdatedDate != null" >
+      commission_updated_date = #{map.commissionUpdatedDate,jdbcType=TIMESTAMP},
+    </if>
+  </select>
+</mapper>

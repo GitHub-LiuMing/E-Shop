@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.liuming.eshop.mapper.memberDistributionAddressMapper.MemberDistributionAddressMapper" >
+  <resultMap id="map" type="com.liuming.eshop.entity.memberDistributionAddressEntity.MemberDistributionAddress" >
+    <id column="member_distribution_address_id" property="memberDistributionAddressId" jdbcType="VARCHAR" />
+    <result column="member_id" property="memberId" jdbcType="VARCHAR" />
+    <result column="consignee" property="consignee" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="province_code" property="provinceCode" jdbcType="INTEGER" />
+    <result column="province_name" property="provinceName" jdbcType="VARCHAR" />
+    <result column="city_code" property="cityCode" jdbcType="INTEGER" />
+    <result column="city_name" property="cityName" jdbcType="VARCHAR" />
+    <result column="district_code" property="districtCode" jdbcType="INTEGER" />
+    <result column="district_name" property="districtName" jdbcType="VARCHAR" />
+    <result column="detailed_address" property="detailedAddress" jdbcType="VARCHAR" />
+    <result column="default_address_status" property="defaultAddressStatus" jdbcType="INTEGER" />
+    <result column="member_distribution_address_status" property="memberDistributionAddressStatus" jdbcType="INTEGER" />
+    <result column="member_distribution_address_created_date" property="memberDistributionAddressCreatedDate" jdbcType="TIMESTAMP" />
+    <result column="member_distribution_address_updated_date" property="memberDistributionAddressUpdatedDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="list" >
+    member_distribution_address_id, member_id, consignee, phone, province_code, province_name, 
+    city_code, city_name, district_code, district_name, detailed_address, default_address_status, 
+    member_distribution_address_status, member_distribution_address_created_date, member_distribution_address_updated_date
+  </sql>
+  <select id="selectByExample" resultMap="map" parameterType="com.liuming.eshop.entity.memberDistributionAddressEntity.MemberDistributionAddressExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="list" />
+    from member_distribution_address
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="map" parameterType="java.lang.String" >
+    select 
+    <include refid="list" />
+    from member_distribution_address
+    where member_distribution_address_id = #{memberDistributionAddressId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from member_distribution_address
+    where member_distribution_address_id = #{memberDistributionAddressId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.liuming.eshop.entity.memberDistributionAddressEntity.MemberDistributionAddressExample" >
+    delete from member_distribution_address
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.liuming.eshop.entity.memberDistributionAddressEntity.MemberDistributionAddress" >
+    insert into member_distribution_address (member_distribution_address_id, member_id, 
+      consignee, phone, province_code, 
+      province_name, city_code, city_name, 
+      district_code, district_name, detailed_address, 
+      default_address_status, member_distribution_address_status, 
+      member_distribution_address_created_date, member_distribution_address_updated_date
+      )
+    values (#{memberDistributionAddressId,jdbcType=VARCHAR}, #{memberId,jdbcType=VARCHAR}, 
+      #{consignee,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{provinceCode,jdbcType=INTEGER}, 
+      #{provinceName,jdbcType=VARCHAR}, #{cityCode,jdbcType=INTEGER}, #{cityName,jdbcType=VARCHAR}, 
+      #{districtCode,jdbcType=INTEGER}, #{districtName,jdbcType=VARCHAR}, #{detailedAddress,jdbcType=VARCHAR}, 
+      #{defaultAddressStatus,jdbcType=INTEGER}, #{memberDistributionAddressStatus,jdbcType=INTEGER}, 
+      #{memberDistributionAddressCreatedDate,jdbcType=TIMESTAMP}, #{memberDistributionAddressUpdatedDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.liuming.eshop.entity.memberDistributionAddressEntity.MemberDistributionAddress" >
+    insert into member_distribution_address
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="memberDistributionAddressId != null" >
+        member_distribution_address_id,
+      </if>
+      <if test="memberId != null" >
+        member_id,
+      </if>
+      <if test="consignee != null" >
+        consignee,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="provinceCode != null" >
+        province_code,
+      </if>
+      <if test="provinceName != null" >
+        province_name,
+      </if>
+      <if test="cityCode != null" >
+        city_code,
+      </if>
+      <if test="cityName != null" >
+        city_name,
+      </if>
+      <if test="districtCode != null" >
+        district_code,
+      </if>
+      <if test="districtName != null" >
+        district_name,
+      </if>
+      <if test="detailedAddress != null" >
+        detailed_address,
+      </if>
+      <if test="defaultAddressStatus != null" >
+        default_address_status,
+      </if>
+      <if test="memberDistributionAddressStatus != null" >
+        member_distribution_address_status,
+      </if>
+      <if test="memberDistributionAddressCreatedDate != null" >
+        member_distribution_address_created_date,
+      </if>
+      <if test="memberDistributionAddressUpdatedDate != null" >
+        member_distribution_address_updated_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="memberDistributionAddressId != null" >
+        #{memberDistributionAddressId,jdbcType=VARCHAR},
+      </if>
+      <if test="memberId != null" >
+        #{memberId,jdbcType=VARCHAR},
+      </if>
+      <if test="consignee != null" >
+        #{consignee,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceCode != null" >
+        #{provinceCode,jdbcType=INTEGER},
+      </if>
+      <if test="provinceName != null" >
+        #{provinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null" >
+        #{cityCode,jdbcType=INTEGER},
+      </if>
+      <if test="cityName != null" >
+        #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="districtCode != null" >
+        #{districtCode,jdbcType=INTEGER},
+      </if>
+      <if test="districtName != null" >
+        #{districtName,jdbcType=VARCHAR},
+      </if>
+      <if test="detailedAddress != null" >
+        #{detailedAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultAddressStatus != null" >
+        #{defaultAddressStatus,jdbcType=INTEGER},
+      </if>
+      <if test="memberDistributionAddressStatus != null" >
+        #{memberDistributionAddressStatus,jdbcType=INTEGER},
+      </if>
+      <if test="memberDistributionAddressCreatedDate != null" >
+        #{memberDistributionAddressCreatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="memberDistributionAddressUpdatedDate != null" >
+        #{memberDistributionAddressUpdatedDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.liuming.eshop.entity.memberDistributionAddressEntity.MemberDistributionAddressExample" resultType="java.lang.Integer" >
+    select count(*) from member_distribution_address
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update member_distribution_address
+    <set >
+      <if test="record.memberDistributionAddressId != null" >
+        member_distribution_address_id = #{record.memberDistributionAddressId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.memberId != null" >
+        member_id = #{record.memberId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.consignee != null" >
+        consignee = #{record.consignee,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null" >
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.provinceCode != null" >
+        province_code = #{record.provinceCode,jdbcType=INTEGER},
+      </if>
+      <if test="record.provinceName != null" >
+        province_name = #{record.provinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cityCode != null" >
+        city_code = #{record.cityCode,jdbcType=INTEGER},
+      </if>
+      <if test="record.cityName != null" >
+        city_name = #{record.cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.districtCode != null" >
+        district_code = #{record.districtCode,jdbcType=INTEGER},
+      </if>
+      <if test="record.districtName != null" >
+        district_name = #{record.districtName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.detailedAddress != null" >
+        detailed_address = #{record.detailedAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.defaultAddressStatus != null" >
+        default_address_status = #{record.defaultAddressStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.memberDistributionAddressStatus != null" >
+        member_distribution_address_status = #{record.memberDistributionAddressStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.memberDistributionAddressCreatedDate != null" >
+        member_distribution_address_created_date = #{record.memberDistributionAddressCreatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.memberDistributionAddressUpdatedDate != null" >
+        member_distribution_address_updated_date = #{record.memberDistributionAddressUpdatedDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update member_distribution_address
+    set member_distribution_address_id = #{record.memberDistributionAddressId,jdbcType=VARCHAR},
+      member_id = #{record.memberId,jdbcType=VARCHAR},
+      consignee = #{record.consignee,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      province_code = #{record.provinceCode,jdbcType=INTEGER},
+      province_name = #{record.provinceName,jdbcType=VARCHAR},
+      city_code = #{record.cityCode,jdbcType=INTEGER},
+      city_name = #{record.cityName,jdbcType=VARCHAR},
+      district_code = #{record.districtCode,jdbcType=INTEGER},
+      district_name = #{record.districtName,jdbcType=VARCHAR},
+      detailed_address = #{record.detailedAddress,jdbcType=VARCHAR},
+      default_address_status = #{record.defaultAddressStatus,jdbcType=INTEGER},
+      member_distribution_address_status = #{record.memberDistributionAddressStatus,jdbcType=INTEGER},
+      member_distribution_address_created_date = #{record.memberDistributionAddressCreatedDate,jdbcType=TIMESTAMP},
+      member_distribution_address_updated_date = #{record.memberDistributionAddressUpdatedDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liuming.eshop.entity.memberDistributionAddressEntity.MemberDistributionAddress" >
+    update member_distribution_address
+    <set >
+      <if test="memberId != null" >
+        member_id = #{memberId,jdbcType=VARCHAR},
+      </if>
+      <if test="consignee != null" >
+        consignee = #{consignee,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceCode != null" >
+        province_code = #{provinceCode,jdbcType=INTEGER},
+      </if>
+      <if test="provinceName != null" >
+        province_name = #{provinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null" >
+        city_code = #{cityCode,jdbcType=INTEGER},
+      </if>
+      <if test="cityName != null" >
+        city_name = #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="districtCode != null" >
+        district_code = #{districtCode,jdbcType=INTEGER},
+      </if>
+      <if test="districtName != null" >
+        district_name = #{districtName,jdbcType=VARCHAR},
+      </if>
+      <if test="detailedAddress != null" >
+        detailed_address = #{detailedAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultAddressStatus != null" >
+        default_address_status = #{defaultAddressStatus,jdbcType=INTEGER},
+      </if>
+      <if test="memberDistributionAddressStatus != null" >
+        member_distribution_address_status = #{memberDistributionAddressStatus,jdbcType=INTEGER},
+      </if>
+      <if test="memberDistributionAddressCreatedDate != null" >
+        member_distribution_address_created_date = #{memberDistributionAddressCreatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="memberDistributionAddressUpdatedDate != null" >
+        member_distribution_address_updated_date = #{memberDistributionAddressUpdatedDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where member_distribution_address_id = #{memberDistributionAddressId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liuming.eshop.entity.memberDistributionAddressEntity.MemberDistributionAddress" >
+    update member_distribution_address
+    set member_id = #{memberId,jdbcType=VARCHAR},
+      consignee = #{consignee,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      province_code = #{provinceCode,jdbcType=INTEGER},
+      province_name = #{provinceName,jdbcType=VARCHAR},
+      city_code = #{cityCode,jdbcType=INTEGER},
+      city_name = #{cityName,jdbcType=VARCHAR},
+      district_code = #{districtCode,jdbcType=INTEGER},
+      district_name = #{districtName,jdbcType=VARCHAR},
+      detailed_address = #{detailedAddress,jdbcType=VARCHAR},
+      default_address_status = #{defaultAddressStatus,jdbcType=INTEGER},
+      member_distribution_address_status = #{memberDistributionAddressStatus,jdbcType=INTEGER},
+      member_distribution_address_created_date = #{memberDistributionAddressCreatedDate,jdbcType=TIMESTAMP},
+      member_distribution_address_updated_date = #{memberDistributionAddressUpdatedDate,jdbcType=TIMESTAMP}
+    where member_distribution_address_id = #{memberDistributionAddressId,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="findMemberDistributionAddress" resultMap="map">
+    SELECT
+        <include refid="list" />
+    FROM
+        member_distribution_address
+    WHERE
+        1 = 1
+    <if test="map.memberDistributionAddressId != null" >
+      AND member_distribution_address_id = #{map.memberDistributionAddressId,jdbcType=VARCHAR}
+    </if>
+    <if test="map.memberId != null" >
+      AND member_id = #{map.memberId,jdbcType=VARCHAR}
+    </if>
+    <if test="map.consignee != null" >
+      AND consignee = #{map.consignee,jdbcType=VARCHAR}
+    </if>
+    <if test="map.phone != null" >
+      AND phone = #{map.phone,jdbcType=VARCHAR}
+    </if>
+    <if test="map.provinceCode != null" >
+      AND province_code = #{map.provinceCode,jdbcType=INTEGER}
+    </if>
+    <if test="map.provinceName != null" >
+      AND province_name = #{map.provinceName,jdbcType=VARCHAR}
+    </if>
+    <if test="map.cityCode != null" >
+      AND city_code = #{map.cityCode,jdbcType=INTEGER}
+    </if>
+    <if test="map.cityName != null" >
+      AND city_name = #{map.cityName,jdbcType=VARCHAR}
+    </if>
+    <if test="map.districtCode != null" >
+      AND district_code = #{map.districtCode,jdbcType=INTEGER}
+    </if>
+    <if test="map.districtName != null" >
+      AND district_name = #{map.districtName,jdbcType=VARCHAR}
+    </if>
+    <if test="map.detailedAddress != null" >
+      AND detailed_address = #{map.detailedAddress,jdbcType=VARCHAR}
+    </if>
+    <if test="map.defaultAddressStatus != null" >
+      AND default_address_status = #{map.defaultAddressStatus,jdbcType=INTEGER}
+    </if>
+    <if test="map.memberDistributionAddressStatus != null" >
+      AND member_distribution_address_status = #{map.memberDistributionAddressStatus,jdbcType=INTEGER}
+    </if>
+    <if test="map.memberDistributionAddressCreatedDate != null" >
+      AND member_distribution_address_created_date = #{map.memberDistributionAddressCreatedDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="map.memberDistributionAddressUpdatedDate != null" >
+      AND member_distribution_address_updated_date = #{map.memberDistributionAddressUpdatedDate,jdbcType=TIMESTAMP}
+    </if>
+  </select>
+  
+  <update id="updateDefaultAddressStatusByMemberId" parameterType="java.lang.String">
+    UPDATE member_distribution_address
+    SET default_address_status = "0"
+    WHERE
+        member_id = #{memberId}
+  </update>
+</mapper>

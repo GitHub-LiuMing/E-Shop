@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.liuming.eshop.mapper.classifyMapper.ClassifyMapper" >
-  <resultMap id="BaseResultMap" type="com.liuming.eshop.entity.classifyEntity.Classify" >
+  <resultMap id="map" type="com.liuming.eshop.entity.classifyEntity.Classify" >
     <id column="classify_id" property="classifyId" jdbcType="VARCHAR" />
     <result column="classify_name" property="classifyName" jdbcType="VARCHAR" />
     <result column="classify_url" property="classifyUrl" jdbcType="VARCHAR" />
     <result column="classify_status" property="classifyStatus" jdbcType="INTEGER" />
     <result column="classify_create_date" property="classifyCreateDate" jdbcType="TIMESTAMP" />
-    <result column="classify_modified_date" property="classifyModifiedDate" jdbcType="TIMESTAMP" />
+    <result column="classify_update_date" property="classifyUpdateDate" jdbcType="TIMESTAMP" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.liuming.eshop.entity.classifyEntity.Classify" extends="BaseResultMap" >
+  <resultMap id="maps" type="com.liuming.eshop.entity.classifyEntity.Classify" extends="map" >
     <result column="classify_desc" property="classifyDesc" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -72,12 +72,12 @@
   </sql>
   <sql id="Base_Column_List" >
     classify_id, classify_name, classify_url, classify_status, classify_create_date, 
-    classify_modified_date
+    classify_update_date
   </sql>
   <sql id="Blob_Column_List" >
     classify_desc
   </sql>
-  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.liuming.eshop.entity.classifyEntity.ClassifyExample" >
+  <select id="selectByExampleWithBLOBs" resultMap="maps" parameterType="com.liuming.eshop.entity.classifyEntity.ClassifyExample" >
     select
     <if test="distinct" >
       distinct
@@ -93,7 +93,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.liuming.eshop.entity.classifyEntity.ClassifyExample" >
+  <select id="selectByExample" resultMap="map" parameterType="com.liuming.eshop.entity.classifyEntity.ClassifyExample" >
     select
     <if test="distinct" >
       distinct
@@ -107,7 +107,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="maps" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     ,
@@ -127,10 +127,10 @@
   </delete>
   <insert id="insert" parameterType="com.liuming.eshop.entity.classifyEntity.Classify" >
     insert into classify (classify_id, classify_name, classify_url, 
-      classify_status, classify_create_date, classify_modified_date, 
+      classify_status, classify_create_date, classify_update_date, 
       classify_desc)
     values (#{classifyId,jdbcType=VARCHAR}, #{classifyName,jdbcType=VARCHAR}, #{classifyUrl,jdbcType=VARCHAR}, 
-      #{classifyStatus,jdbcType=INTEGER}, #{classifyCreateDate,jdbcType=TIMESTAMP}, #{classifyModifiedDate,jdbcType=TIMESTAMP}, 
+      #{classifyStatus,jdbcType=INTEGER}, #{classifyCreateDate,jdbcType=TIMESTAMP}, #{classifyUpdateDate,jdbcType=TIMESTAMP}, 
       #{classifyDesc,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.liuming.eshop.entity.classifyEntity.Classify" >
@@ -151,8 +151,8 @@
       <if test="classifyCreateDate != null" >
         classify_create_date,
       </if>
-      <if test="classifyModifiedDate != null" >
-        classify_modified_date,
+      <if test="classifyUpdateDate != null" >
+        classify_update_date,
       </if>
       <if test="classifyDesc != null" >
         classify_desc,
@@ -174,8 +174,8 @@
       <if test="classifyCreateDate != null" >
         #{classifyCreateDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="classifyModifiedDate != null" >
-        #{classifyModifiedDate,jdbcType=TIMESTAMP},
+      <if test="classifyUpdateDate != null" >
+        #{classifyUpdateDate,jdbcType=TIMESTAMP},
       </if>
       <if test="classifyDesc != null" >
         #{classifyDesc,jdbcType=LONGVARCHAR},
@@ -206,8 +206,8 @@
       <if test="record.classifyCreateDate != null" >
         classify_create_date = #{record.classifyCreateDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.classifyModifiedDate != null" >
-        classify_modified_date = #{record.classifyModifiedDate,jdbcType=TIMESTAMP},
+      <if test="record.classifyUpdateDate != null" >
+        classify_update_date = #{record.classifyUpdateDate,jdbcType=TIMESTAMP},
       </if>
       <if test="record.classifyDesc != null" >
         classify_desc = #{record.classifyDesc,jdbcType=LONGVARCHAR},
@@ -224,7 +224,7 @@
       classify_url = #{record.classifyUrl,jdbcType=VARCHAR},
       classify_status = #{record.classifyStatus,jdbcType=INTEGER},
       classify_create_date = #{record.classifyCreateDate,jdbcType=TIMESTAMP},
-      classify_modified_date = #{record.classifyModifiedDate,jdbcType=TIMESTAMP},
+      classify_update_date = #{record.classifyUpdateDate,jdbcType=TIMESTAMP},
       classify_desc = #{record.classifyDesc,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -237,7 +237,7 @@
       classify_url = #{record.classifyUrl,jdbcType=VARCHAR},
       classify_status = #{record.classifyStatus,jdbcType=INTEGER},
       classify_create_date = #{record.classifyCreateDate,jdbcType=TIMESTAMP},
-      classify_modified_date = #{record.classifyModifiedDate,jdbcType=TIMESTAMP}
+      classify_update_date = #{record.classifyUpdateDate,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -257,8 +257,8 @@
       <if test="classifyCreateDate != null" >
         classify_create_date = #{classifyCreateDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="classifyModifiedDate != null" >
-        classify_modified_date = #{classifyModifiedDate,jdbcType=TIMESTAMP},
+      <if test="classifyUpdateDate != null" >
+        classify_update_date = #{classifyUpdateDate,jdbcType=TIMESTAMP},
       </if>
       <if test="classifyDesc != null" >
         classify_desc = #{classifyDesc,jdbcType=LONGVARCHAR},
@@ -272,7 +272,7 @@
       classify_url = #{classifyUrl,jdbcType=VARCHAR},
       classify_status = #{classifyStatus,jdbcType=INTEGER},
       classify_create_date = #{classifyCreateDate,jdbcType=TIMESTAMP},
-      classify_modified_date = #{classifyModifiedDate,jdbcType=TIMESTAMP},
+      classify_update_date = #{classifyUpdateDate,jdbcType=TIMESTAMP},
       classify_desc = #{classifyDesc,jdbcType=LONGVARCHAR}
     where classify_id = #{classifyId,jdbcType=VARCHAR}
   </update>
@@ -282,16 +282,39 @@
       classify_url = #{classifyUrl,jdbcType=VARCHAR},
       classify_status = #{classifyStatus,jdbcType=INTEGER},
       classify_create_date = #{classifyCreateDate,jdbcType=TIMESTAMP},
-      classify_modified_date = #{classifyModifiedDate,jdbcType=TIMESTAMP}
+      classify_update_date = #{classifyUpdateDate,jdbcType=TIMESTAMP}
     where classify_id = #{classifyId,jdbcType=VARCHAR}
   </update>
 
-  <select id="findClassify" resultMap="BaseResultMap">
+  <select id="findClassify" resultMap="map">
     SELECT
-	    <include refid="Base_Column_List" />
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
     FROM
 	    classify
     WHERE
-	    classify_status = "1";
+	    1 = 1
+    <if test="map.classifyId != null" >
+      AND classify_id = #{map.classifyId,jdbcType=VARCHAR}
+    </if>
+    <if test="map.classifyName != null" >
+      AND classify_name = #{map.classifyName,jdbcType=VARCHAR}
+    </if>
+    <if test="map.classifyUrl != null" >
+      AND classify_url = #{map.classifyUrl,jdbcType=VARCHAR}
+    </if>
+    <if test="map.classifyStatus != null" >
+      AND classify_status = #{map.classifyStatus,jdbcType=INTEGER}
+    </if>
+    <if test="map.classifyCreateDate != null" >
+      AND classify_create_date = #{map.classifyCreateDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="map.classifyUpdateDate != null" >
+      AND classify_update_date = #{map.classifyUpdateDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="map.classifyDesc != null" >
+      AND classify_desc = #{map.classifyDesc,jdbcType=LONGVARCHAR}
+    </if>
   </select>
 </mapper>

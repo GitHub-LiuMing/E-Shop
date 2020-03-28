@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @Description 
  * @ClassName PointsController
- * @Author 鲸落
+ * @Author 张孙峰
  * @date 2019.08.03 15:06
  */
 @RestController

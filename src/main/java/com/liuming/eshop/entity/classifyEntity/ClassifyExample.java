@@ -435,63 +435,63 @@ public class ClassifyExample {
             return (Criteria) this;
         }
 
-        public Criteria andClassifyModifiedDateIsNull() {
-            addCriterion("classify_modified_date is null");
+        public Criteria andClassifyUpdateDateIsNull() {
+            addCriterion("classify_update_date is null");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyModifiedDateIsNotNull() {
-            addCriterion("classify_modified_date is not null");
+        public Criteria andClassifyUpdateDateIsNotNull() {
+            addCriterion("classify_update_date is not null");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyModifiedDateEqualTo(Date value) {
-            addCriterion("classify_modified_date =", value, "classifyModifiedDate");
+        public Criteria andClassifyUpdateDateEqualTo(Date value) {
+            addCriterion("classify_update_date =", value, "classifyUpdateDate");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyModifiedDateNotEqualTo(Date value) {
-            addCriterion("classify_modified_date <>", value, "classifyModifiedDate");
+        public Criteria andClassifyUpdateDateNotEqualTo(Date value) {
+            addCriterion("classify_update_date <>", value, "classifyUpdateDate");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyModifiedDateGreaterThan(Date value) {
-            addCriterion("classify_modified_date >", value, "classifyModifiedDate");
+        public Criteria andClassifyUpdateDateGreaterThan(Date value) {
+            addCriterion("classify_update_date >", value, "classifyUpdateDate");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyModifiedDateGreaterThanOrEqualTo(Date value) {
-            addCriterion("classify_modified_date >=", value, "classifyModifiedDate");
+        public Criteria andClassifyUpdateDateGreaterThanOrEqualTo(Date value) {
+            addCriterion("classify_update_date >=", value, "classifyUpdateDate");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyModifiedDateLessThan(Date value) {
-            addCriterion("classify_modified_date <", value, "classifyModifiedDate");
+        public Criteria andClassifyUpdateDateLessThan(Date value) {
+            addCriterion("classify_update_date <", value, "classifyUpdateDate");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyModifiedDateLessThanOrEqualTo(Date value) {
-            addCriterion("classify_modified_date <=", value, "classifyModifiedDate");
+        public Criteria andClassifyUpdateDateLessThanOrEqualTo(Date value) {
+            addCriterion("classify_update_date <=", value, "classifyUpdateDate");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyModifiedDateIn(List<Date> values) {
-            addCriterion("classify_modified_date in", values, "classifyModifiedDate");
+        public Criteria andClassifyUpdateDateIn(List<Date> values) {
+            addCriterion("classify_update_date in", values, "classifyUpdateDate");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyModifiedDateNotIn(List<Date> values) {
-            addCriterion("classify_modified_date not in", values, "classifyModifiedDate");
+        public Criteria andClassifyUpdateDateNotIn(List<Date> values) {
+            addCriterion("classify_update_date not in", values, "classifyUpdateDate");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyModifiedDateBetween(Date value1, Date value2) {
-            addCriterion("classify_modified_date between", value1, value2, "classifyModifiedDate");
+        public Criteria andClassifyUpdateDateBetween(Date value1, Date value2) {
+            addCriterion("classify_update_date between", value1, value2, "classifyUpdateDate");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyModifiedDateNotBetween(Date value1, Date value2) {
-            addCriterion("classify_modified_date not between", value1, value2, "classifyModifiedDate");
+        public Criteria andClassifyUpdateDateNotBetween(Date value1, Date value2) {
+            addCriterion("classify_update_date not between", value1, value2, "classifyUpdateDate");
             return (Criteria) this;
         }
     }

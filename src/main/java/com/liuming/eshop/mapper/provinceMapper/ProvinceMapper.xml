@@ -308,5 +308,39 @@
     select
     <include refid="Base_Column_List" />
     from province
+    where 1 = 1
+    <if test="map.provinceId != null" >
+      AND PROVINCE_ID = #{map.provinceId,jdbcType=INTEGER}
+    </if>
+    <if test="map.provinceCode != null" >
+      AND PROVINCE_CODE = #{map.provinceCode,jdbcType=VARCHAR}
+    </if>
+    <if test="map.provinceName != null" >
+      AND PROVINCE_NAME = #{map.provinceName,jdbcType=VARCHAR}
+    </if>
+    <if test="map.shortName != null" >
+      AND SHORT_NAME = #{map.shortName,jdbcType=VARCHAR}
+    </if>
+    <if test="map.lng != null" >
+      AND LNG = #{map.lng,jdbcType=VARCHAR}
+    </if>
+    <if test="map.lat != null" >
+      AND LAT = #{map.lat,jdbcType=VARCHAR}
+    </if>
+    <if test="map.sort != null" >
+      AND SORT = #{map.sort,jdbcType=INTEGER}
+    </if>
+    <if test="map.gmtCreate != null" >
+      AND GMT_CREATE = #{map.gmtCreate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="map.gmtModified != null" >
+      AND GMT_MODIFIED = #{map.gmtModified,jdbcType=TIMESTAMP}
+    </if>
+    <if test="map.memo != null" >
+      AND MEMO = #{map.memo,jdbcType=VARCHAR}
+    </if>
+    <if test="map.dataState != null" >
+      AND DATA_STATE = #{map.dataState,jdbcType=INTEGER}
+    </if>
   </select>
 </mapper>

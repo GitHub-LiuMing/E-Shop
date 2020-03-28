@@ -7,10 +7,8 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Component;
 
 @Mapper
-@Component
 public interface PointsDetailsMapper {
     int countByExample(PointsDetailsExample example);
 
@@ -35,4 +33,6 @@ public interface PointsDetailsMapper {
     int updateByPrimaryKey(PointsDetails record);
 
     PointsDetails findPointsDetailsDescLimit1(@Param("map") Map pointsDetailsDescLimit1Map);
+
+    List<PointsDetails> findPointsDetails(@Param("map") Map map);
 }

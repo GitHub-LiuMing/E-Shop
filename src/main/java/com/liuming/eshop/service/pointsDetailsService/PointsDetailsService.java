@@ -5,4 +5,6 @@ import com.liuming.eshop.utils.DataResult;
 
 public interface PointsDetailsService {
     DataResult addPointsDetails(PointsDetails pointsDetails);
+
+    DataResult findPointsDetails(String memberId);
 }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @Description 省份
  * @ClassName ProvinceController
- * @Author 鲸落
+ * @Author 张孙峰
  * @date 2019.07.29 16:38
  */
 @RestController
@@ -22,7 +22,7 @@ public class ProvinceController {
     /**
      * @Description 查询所有省
      * @return com.liuming.eshop.utils.DataResult
-     * @Author 鲸落
+     * @Author 张孙峰
      * @Date 2019.07.29 16:45
      */
     @RequestMapping(value = "/findProvince", method = RequestMethod.POST)

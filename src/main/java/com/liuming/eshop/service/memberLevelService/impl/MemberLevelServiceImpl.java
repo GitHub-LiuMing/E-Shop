@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * @Description 
  * @ClassName MemberLevelServiceImpl
- * @Author 鲸落
+ * @Author 张孙峰
  * @date 2019.11.12 14:20
  */
 @Service
@@ -38,7 +38,7 @@ public class MemberLevelServiceImpl implements MemberLevelService {
     @Override
     public DataResult findMemberLevel(MemberLevel memberLevel) {
         //判断会员等级ID是否为空，如果为空，返回全部会员等级，如果不为空，返回ID对应的会员等级信息
-        if (memberLevel.getMemberLevelId() != null) {
+        if (memberLevel != null) {
             MemberLevel memberLevelById = memberLevelMapper.selectByPrimaryKey(memberLevel.getMemberLevelId());
             return DataResult.ok(memberLevelById);
         } else {

@@ -326,8 +326,41 @@
     <include refid="Base_Column_List"/>
     FROM city
     WHERE 1=1
-    <if test="map.provinceCode != null">
-      and PROVINCE_CODE = #{map.provinceCode}
+    <if test="map.cityId != null" >
+      AND CITY_ID = #{map.cityId,jdbcType=INTEGER}
+    </if>
+    <if test="map.provinceCode != null" >
+      AND PROVINCE_CODE = #{map.provinceCode,jdbcType=VARCHAR}
+    </if>
+    <if test="map.cityCode != null" >
+      AND CITY_CODE = #{map.cityCode,jdbcType=VARCHAR}
+    </if>
+    <if test="map.cityName != null" >
+      AND CITY_NAME = #{map.cityName,jdbcType=VARCHAR}
+    </if>
+    <if test="map.shortName != null" >
+      AND SHORT_NAME = #{map.shortName,jdbcType=VARCHAR}
+    </if>
+    <if test="map.lng != null" >
+      AND LNG = #{map.lng,jdbcType=VARCHAR}
+    </if>
+    <if test="map.lat != null" >
+      AND LAT = #{map.lat,jdbcType=VARCHAR}
+    </if>
+    <if test="map.sort != null" >
+      AND SORT = #{map.sort,jdbcType=INTEGER}
+    </if>
+    <if test="map.gmtCreate != null" >
+      AND GMT_CREATE = #{map.gmtCreate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="map.gmtModified != null" >
+      AND GMT_MODIFIED = #{map.gmtModified,jdbcType=TIMESTAMP}
+    </if>
+    <if test="map.memo != null" >
+      AND MEMO = #{map.memo,jdbcType=VARCHAR}
+    </if>
+    <if test="map.dataState != null" >
+      AND DATA_STATE = #{map.dataState,jdbcType=INTEGER}
     </if>
   </select>
 </mapper>

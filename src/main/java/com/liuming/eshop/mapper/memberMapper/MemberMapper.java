@@ -3,8 +3,12 @@ package com.liuming.eshop.mapper.memberMapper;
 import com.liuming.eshop.entity.memberEntity.Member;
 import com.liuming.eshop.entity.memberEntity.MemberExample;
 import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface MemberMapper {
     int countByExample(MemberExample example);
 
@@ -27,4 +31,8 @@ public interface MemberMapper {
     int updateByPrimaryKeySelective(Member record);
 
     int updateByPrimaryKey(Member record);
+
+    List<Member> findMember(@Param("map") Map map);
+
+    int updateMemberPassword(@Param("map") Map map);
 }

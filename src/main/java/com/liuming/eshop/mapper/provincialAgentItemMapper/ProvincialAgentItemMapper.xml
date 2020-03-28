@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.liuming.eshop.mapper.provincialAgentItemMapper.ProvincialAgentItemMapper" >
+  <resultMap id="map" type="com.liuming.eshop.entity.provincialAgentItemEntity.ProvincialAgentItem" >
+    <id column="provincial_agent_item_id" property="provincialAgentItemId" jdbcType="VARCHAR" />
+    <result column="provincial_agent_id" property="provincialAgentId" jdbcType="VARCHAR" />
+    <result column="provincial_agent_name" property="provincialAgentName" jdbcType="VARCHAR" />
+    <result column="item_id" property="itemId" jdbcType="VARCHAR" />
+    <result column="item_name" property="itemName" jdbcType="VARCHAR" />
+    <result column="classify_id" property="classifyId" jdbcType="VARCHAR" />
+    <result column="classify_name" property="classifyName" jdbcType="VARCHAR" />
+    <result column="provincial_agent_item_original_price" property="provincialAgentItemOriginalPrice" jdbcType="DOUBLE" />
+    <result column="provincial_agent_item_present_price" property="provincialAgentItemPresentPrice" jdbcType="DOUBLE" />
+    <result column="provincial_agent_item_url" property="provincialAgentItemUrl" jdbcType="VARCHAR" />
+    <result column="stock_num" property="stockNum" jdbcType="INTEGER" />
+    <result column="sales_num" property="salesNum" jdbcType="INTEGER" />
+    <result column="provincial_agent_item_status" property="provincialAgentItemStatus" jdbcType="INTEGER" />
+    <result column="provincial_agent_item_type" property="provincialAgentItemType" jdbcType="INTEGER" />
+    <result column="provincial_agent_item_created_date" property="provincialAgentItemCreatedDate" jdbcType="TIMESTAMP" />
+    <result column="provincial_agent_item_updated_date" property="provincialAgentItemUpdatedDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="maps" type="com.liuming.eshop.entity.provincialAgentItemEntity.ProvincialAgentItem" extends="map" >
+    <result column="provincial_agent_item_desc" property="provincialAgentItemDesc" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    provincial_agent_item_id, provincial_agent_id, provincial_agent_name, item_id, item_name, 
+    classify_id, classify_name, provincial_agent_item_original_price, provincial_agent_item_present_price, 
+    provincial_agent_item_url, stock_num, sales_num, provincial_agent_item_status, provincial_agent_item_type, 
+    provincial_agent_item_created_date, provincial_agent_item_updated_date
+  </sql>
+  <sql id="Blob_Column_List" >
+    provincial_agent_item_desc
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="maps" parameterType="com.liuming.eshop.entity.provincialAgentItemEntity.ProvincialAgentItemExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from provincial_agent_item
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="map" parameterType="com.liuming.eshop.entity.provincialAgentItemEntity.ProvincialAgentItemExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from provincial_agent_item
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="maps" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from provincial_agent_item
+    where provincial_agent_item_id = #{provincialAgentItemId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from provincial_agent_item
+    where provincial_agent_item_id = #{provincialAgentItemId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.liuming.eshop.entity.provincialAgentItemEntity.ProvincialAgentItemExample" >
+    delete from provincial_agent_item
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.liuming.eshop.entity.provincialAgentItemEntity.ProvincialAgentItem" >
+    insert into provincial_agent_item (provincial_agent_item_id, provincial_agent_id, 
+      provincial_agent_name, item_id, item_name, 
+      classify_id, classify_name, provincial_agent_item_original_price, 
+      provincial_agent_item_present_price, provincial_agent_item_url, 
+      stock_num, sales_num, provincial_agent_item_status, 
+      provincial_agent_item_type, provincial_agent_item_created_date, 
+      provincial_agent_item_updated_date, provincial_agent_item_desc
+      )
+    values (#{provincialAgentItemId,jdbcType=VARCHAR}, #{provincialAgentId,jdbcType=VARCHAR}, 
+      #{provincialAgentName,jdbcType=VARCHAR}, #{itemId,jdbcType=VARCHAR}, #{itemName,jdbcType=VARCHAR}, 
+      #{classifyId,jdbcType=VARCHAR}, #{classifyName,jdbcType=VARCHAR}, #{provincialAgentItemOriginalPrice,jdbcType=DOUBLE}, 
+      #{provincialAgentItemPresentPrice,jdbcType=DOUBLE}, #{provincialAgentItemUrl,jdbcType=VARCHAR}, 
+      #{stockNum,jdbcType=INTEGER}, #{salesNum,jdbcType=INTEGER}, #{provincialAgentItemStatus,jdbcType=INTEGER}, 
+      #{provincialAgentItemType,jdbcType=INTEGER}, #{provincialAgentItemCreatedDate,jdbcType=TIMESTAMP}, 
+      #{provincialAgentItemUpdatedDate,jdbcType=TIMESTAMP}, #{provincialAgentItemDesc,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.liuming.eshop.entity.provincialAgentItemEntity.ProvincialAgentItem" >
+    insert into provincial_agent_item
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="provincialAgentItemId != null" >
+        provincial_agent_item_id,
+      </if>
+      <if test="provincialAgentId != null" >
+        provincial_agent_id,
+      </if>
+      <if test="provincialAgentName != null" >
+        provincial_agent_name,
+      </if>
+      <if test="itemId != null" >
+        item_id,
+      </if>
+      <if test="itemName != null" >
+        item_name,
+      </if>
+      <if test="classifyId != null" >
+        classify_id,
+      </if>
+      <if test="classifyName != null" >
+        classify_name,
+      </if>
+      <if test="provincialAgentItemOriginalPrice != null" >
+        provincial_agent_item_original_price,
+      </if>
+      <if test="provincialAgentItemPresentPrice != null" >
+        provincial_agent_item_present_price,
+      </if>
+      <if test="provincialAgentItemUrl != null" >
+        provincial_agent_item_url,
+      </if>
+      <if test="stockNum != null" >
+        stock_num,
+      </if>
+      <if test="salesNum != null" >
+        sales_num,
+      </if>
+      <if test="provincialAgentItemStatus != null" >
+        provincial_agent_item_status,
+      </if>
+      <if test="provincialAgentItemType != null" >
+        provincial_agent_item_type,
+      </if>
+      <if test="provincialAgentItemCreatedDate != null" >
+        provincial_agent_item_created_date,
+      </if>
+      <if test="provincialAgentItemUpdatedDate != null" >
+        provincial_agent_item_updated_date,
+      </if>
+      <if test="provincialAgentItemDesc != null" >
+        provincial_agent_item_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="provincialAgentItemId != null" >
+        #{provincialAgentItemId,jdbcType=VARCHAR},
+      </if>
+      <if test="provincialAgentId != null" >
+        #{provincialAgentId,jdbcType=VARCHAR},
+      </if>
+      <if test="provincialAgentName != null" >
+        #{provincialAgentName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemId != null" >
+        #{itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null" >
+        #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="classifyId != null" >
+        #{classifyId,jdbcType=VARCHAR},
+      </if>
+      <if test="classifyName != null" >
+        #{classifyName,jdbcType=VARCHAR},
+      </if>
+      <if test="provincialAgentItemOriginalPrice != null" >
+        #{provincialAgentItemOriginalPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="provincialAgentItemPresentPrice != null" >
+        #{provincialAgentItemPresentPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="provincialAgentItemUrl != null" >
+        #{provincialAgentItemUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="stockNum != null" >
+        #{stockNum,jdbcType=INTEGER},
+      </if>
+      <if test="salesNum != null" >
+        #{salesNum,jdbcType=INTEGER},
+      </if>
+      <if test="provincialAgentItemStatus != null" >
+        #{provincialAgentItemStatus,jdbcType=INTEGER},
+      </if>
+      <if test="provincialAgentItemType != null" >
+        #{provincialAgentItemType,jdbcType=INTEGER},
+      </if>
+      <if test="provincialAgentItemCreatedDate != null" >
+        #{provincialAgentItemCreatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="provincialAgentItemUpdatedDate != null" >
+        #{provincialAgentItemUpdatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="provincialAgentItemDesc != null" >
+        #{provincialAgentItemDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.liuming.eshop.entity.provincialAgentItemEntity.ProvincialAgentItemExample" resultType="java.lang.Integer" >
+    select count(*) from provincial_agent_item
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update provincial_agent_item
+    <set >
+      <if test="record.provincialAgentItemId != null" >
+        provincial_agent_item_id = #{record.provincialAgentItemId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.provincialAgentId != null" >
+        provincial_agent_id = #{record.provincialAgentId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.provincialAgentName != null" >
+        provincial_agent_name = #{record.provincialAgentName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemId != null" >
+        item_id = #{record.itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemName != null" >
+        item_name = #{record.itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.classifyId != null" >
+        classify_id = #{record.classifyId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.classifyName != null" >
+        classify_name = #{record.classifyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.provincialAgentItemOriginalPrice != null" >
+        provincial_agent_item_original_price = #{record.provincialAgentItemOriginalPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.provincialAgentItemPresentPrice != null" >
+        provincial_agent_item_present_price = #{record.provincialAgentItemPresentPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.provincialAgentItemUrl != null" >
+        provincial_agent_item_url = #{record.provincialAgentItemUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stockNum != null" >
+        stock_num = #{record.stockNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.salesNum != null" >
+        sales_num = #{record.salesNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.provincialAgentItemStatus != null" >
+        provincial_agent_item_status = #{record.provincialAgentItemStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.provincialAgentItemType != null" >
+        provincial_agent_item_type = #{record.provincialAgentItemType,jdbcType=INTEGER},
+      </if>
+      <if test="record.provincialAgentItemCreatedDate != null" >
+        provincial_agent_item_created_date = #{record.provincialAgentItemCreatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.provincialAgentItemUpdatedDate != null" >
+        provincial_agent_item_updated_date = #{record.provincialAgentItemUpdatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.provincialAgentItemDesc != null" >
+        provincial_agent_item_desc = #{record.provincialAgentItemDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update provincial_agent_item
+    set provincial_agent_item_id = #{record.provincialAgentItemId,jdbcType=VARCHAR},
+      provincial_agent_id = #{record.provincialAgentId,jdbcType=VARCHAR},
+      provincial_agent_name = #{record.provincialAgentName,jdbcType=VARCHAR},
+      item_id = #{record.itemId,jdbcType=VARCHAR},
+      item_name = #{record.itemName,jdbcType=VARCHAR},
+      classify_id = #{record.classifyId,jdbcType=VARCHAR},
+      classify_name = #{record.classifyName,jdbcType=VARCHAR},
+      provincial_agent_item_original_price = #{record.provincialAgentItemOriginalPrice,jdbcType=DOUBLE},
+      provincial_agent_item_present_price = #{record.provincialAgentItemPresentPrice,jdbcType=DOUBLE},
+      provincial_agent_item_url = #{record.provincialAgentItemUrl,jdbcType=VARCHAR},
+      stock_num = #{record.stockNum,jdbcType=INTEGER},
+      sales_num = #{record.salesNum,jdbcType=INTEGER},
+      provincial_agent_item_status = #{record.provincialAgentItemStatus,jdbcType=INTEGER},
+      provincial_agent_item_type = #{record.provincialAgentItemType,jdbcType=INTEGER},
+      provincial_agent_item_created_date = #{record.provincialAgentItemCreatedDate,jdbcType=TIMESTAMP},
+      provincial_agent_item_updated_date = #{record.provincialAgentItemUpdatedDate,jdbcType=TIMESTAMP},
+      provincial_agent_item_desc = #{record.provincialAgentItemDesc,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update provincial_agent_item
+    set provincial_agent_item_id = #{record.provincialAgentItemId,jdbcType=VARCHAR},
+      provincial_agent_id = #{record.provincialAgentId,jdbcType=VARCHAR},
+      provincial_agent_name = #{record.provincialAgentName,jdbcType=VARCHAR},
+      item_id = #{record.itemId,jdbcType=VARCHAR},
+      item_name = #{record.itemName,jdbcType=VARCHAR},
+      classify_id = #{record.classifyId,jdbcType=VARCHAR},
+      classify_name = #{record.classifyName,jdbcType=VARCHAR},
+      provincial_agent_item_original_price = #{record.provincialAgentItemOriginalPrice,jdbcType=DOUBLE},
+      provincial_agent_item_present_price = #{record.provincialAgentItemPresentPrice,jdbcType=DOUBLE},
+      provincial_agent_item_url = #{record.provincialAgentItemUrl,jdbcType=VARCHAR},
+      stock_num = #{record.stockNum,jdbcType=INTEGER},
+      sales_num = #{record.salesNum,jdbcType=INTEGER},
+      provincial_agent_item_status = #{record.provincialAgentItemStatus,jdbcType=INTEGER},
+      provincial_agent_item_type = #{record.provincialAgentItemType,jdbcType=INTEGER},
+      provincial_agent_item_created_date = #{record.provincialAgentItemCreatedDate,jdbcType=TIMESTAMP},
+      provincial_agent_item_updated_date = #{record.provincialAgentItemUpdatedDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liuming.eshop.entity.provincialAgentItemEntity.ProvincialAgentItem" >
+    update provincial_agent_item
+    <set >
+      <if test="provincialAgentId != null" >
+        provincial_agent_id = #{provincialAgentId,jdbcType=VARCHAR},
+      </if>
+      <if test="provincialAgentName != null" >
+        provincial_agent_name = #{provincialAgentName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemId != null" >
+        item_id = #{itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null" >
+        item_name = #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="classifyId != null" >
+        classify_id = #{classifyId,jdbcType=VARCHAR},
+      </if>
+      <if test="classifyName != null" >
+        classify_name = #{classifyName,jdbcType=VARCHAR},
+      </if>
+      <if test="provincialAgentItemOriginalPrice != null" >
+        provincial_agent_item_original_price = #{provincialAgentItemOriginalPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="provincialAgentItemPresentPrice != null" >
+        provincial_agent_item_present_price = #{provincialAgentItemPresentPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="provincialAgentItemUrl != null" >
+        provincial_agent_item_url = #{provincialAgentItemUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="stockNum != null" >
+        stock_num = #{stockNum,jdbcType=INTEGER},
+      </if>
+      <if test="salesNum != null" >
+        sales_num = #{salesNum,jdbcType=INTEGER},
+      </if>
+      <if test="provincialAgentItemStatus != null" >
+        provincial_agent_item_status = #{provincialAgentItemStatus,jdbcType=INTEGER},
+      </if>
+      <if test="provincialAgentItemType != null" >
+        provincial_agent_item_type = #{provincialAgentItemType,jdbcType=INTEGER},
+      </if>
+      <if test="provincialAgentItemCreatedDate != null" >
+        provincial_agent_item_created_date = #{provincialAgentItemCreatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="provincialAgentItemUpdatedDate != null" >
+        provincial_agent_item_updated_date = #{provincialAgentItemUpdatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="provincialAgentItemDesc != null" >
+        provincial_agent_item_desc = #{provincialAgentItemDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where provincial_agent_item_id = #{provincialAgentItemId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.liuming.eshop.entity.provincialAgentItemEntity.ProvincialAgentItem" >
+    update provincial_agent_item
+    set provincial_agent_id = #{provincialAgentId,jdbcType=VARCHAR},
+      provincial_agent_name = #{provincialAgentName,jdbcType=VARCHAR},
+      item_id = #{itemId,jdbcType=VARCHAR},
+      item_name = #{itemName,jdbcType=VARCHAR},
+      classify_id = #{classifyId,jdbcType=VARCHAR},
+      classify_name = #{classifyName,jdbcType=VARCHAR},
+      provincial_agent_item_original_price = #{provincialAgentItemOriginalPrice,jdbcType=DOUBLE},
+      provincial_agent_item_present_price = #{provincialAgentItemPresentPrice,jdbcType=DOUBLE},
+      provincial_agent_item_url = #{provincialAgentItemUrl,jdbcType=VARCHAR},
+      stock_num = #{stockNum,jdbcType=INTEGER},
+      sales_num = #{salesNum,jdbcType=INTEGER},
+      provincial_agent_item_status = #{provincialAgentItemStatus,jdbcType=INTEGER},
+      provincial_agent_item_type = #{provincialAgentItemType,jdbcType=INTEGER},
+      provincial_agent_item_created_date = #{provincialAgentItemCreatedDate,jdbcType=TIMESTAMP},
+      provincial_agent_item_updated_date = #{provincialAgentItemUpdatedDate,jdbcType=TIMESTAMP},
+      provincial_agent_item_desc = #{provincialAgentItemDesc,jdbcType=LONGVARCHAR}
+    where provincial_agent_item_id = #{provincialAgentItemId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liuming.eshop.entity.provincialAgentItemEntity.ProvincialAgentItem" >
+    update provincial_agent_item
+    set provincial_agent_id = #{provincialAgentId,jdbcType=VARCHAR},
+      provincial_agent_name = #{provincialAgentName,jdbcType=VARCHAR},
+      item_id = #{itemId,jdbcType=VARCHAR},
+      item_name = #{itemName,jdbcType=VARCHAR},
+      classify_id = #{classifyId,jdbcType=VARCHAR},
+      classify_name = #{classifyName,jdbcType=VARCHAR},
+      provincial_agent_item_original_price = #{provincialAgentItemOriginalPrice,jdbcType=DOUBLE},
+      provincial_agent_item_present_price = #{provincialAgentItemPresentPrice,jdbcType=DOUBLE},
+      provincial_agent_item_url = #{provincialAgentItemUrl,jdbcType=VARCHAR},
+      stock_num = #{stockNum,jdbcType=INTEGER},
+      sales_num = #{salesNum,jdbcType=INTEGER},
+      provincial_agent_item_status = #{provincialAgentItemStatus,jdbcType=INTEGER},
+      provincial_agent_item_type = #{provincialAgentItemType,jdbcType=INTEGER},
+      provincial_agent_item_created_date = #{provincialAgentItemCreatedDate,jdbcType=TIMESTAMP},
+      provincial_agent_item_updated_date = #{provincialAgentItemUpdatedDate,jdbcType=TIMESTAMP}
+    where provincial_agent_item_id = #{provincialAgentItemId,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="findProvincialAgentItem" resultMap="maps">
+    SELECT
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    FROM
+        provincial_agent_item
+    WHERE
+        1 = 1
+    <if test="map.provincialAgentId != null" >
+      AND provincial_agent_id = #{map.provincialAgentId,jdbcType=VARCHAR}
+    </if>
+    <if test="map.provincialAgentName != null" >
+      AND provincial_agent_name = #{map.provincialAgentName,jdbcType=VARCHAR}
+    </if>
+    <if test="map.itemId != null" >
+      AND item_id = #{map.itemId,jdbcType=VARCHAR}
+    </if>
+    <if test="map.itemName != null" >
+      AND item_name = #{map.itemName,jdbcType=VARCHAR}
+    </if>
+    <if test="map.classifyId != null" >
+      AND classify_id = #{map.classifyId,jdbcType=VARCHAR}
+    </if>
+    <if test="map.classifyName != null" >
+      AND classify_name = #{map.classifyName,jdbcType=VARCHAR}
+    </if>
+    <if test="map.provincialAgentItemOriginalPrice != null" >
+      AND provincial_agent_item_original_price = #{map.provincialAgentItemOriginalPrice,jdbcType=DOUBLE}
+    </if>
+    <if test="map.provincialAgentItemPresentPrice != null" >
+      AND provincial_agent_item_present_price = #{map.provincialAgentItemPresentPrice,jdbcType=DOUBLE}
+    </if>
+    <if test="map.provincialAgentItemUrl != null" >
+      AND provincial_agent_item_url = #{map.provincialAgentItemUrl,jdbcType=VARCHAR}
+    </if>
+    <if test="map.stockNum != null" >
+      AND stock_num = #{map.stockNum,jdbcType=INTEGER}
+    </if>
+    <if test="map.salesNum != null" >
+      AND sales_num = #{map.salesNum,jdbcType=INTEGER}
+    </if>
+    <if test="map.provincialAgentItemStatus != null" >
+      AND provincial_agent_item_status = #{map.provincialAgentItemStatus,jdbcType=INTEGER}
+    </if>
+    <if test="map.provincialAgentItemType != null" >
+      AND provincial_agent_item_type = #{map.provincialAgentItemType,jdbcType=INTEGER}
+    </if>
+    <if test="map.provincialAgentItemCreatedDate != null" >
+      AND provincial_agent_item_created_date = #{map.provincialAgentItemCreatedDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="map.provincialAgentItemUpdatedDate != null" >
+      AND provincial_agent_item_updated_date = #{map.provincialAgentItemUpdatedDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="map.provincialAgentItemDesc != null" >
+      AND provincial_agent_item_desc = #{map.provincialAgentItemDesc,jdbcType=LONGVARCHAR}
+    </if>
+  </select>
+  
+  <update id="updateProvincialAgentItem">
+    update provincial_agent_item
+    <set >
+      <if test="map.provincialAgentId != null" >
+        provincial_agent_id = #{map.provincialAgentId,jdbcType=VARCHAR},
+      </if>
+      <if test="map.provincialAgentName != null" >
+        provincial_agent_name = #{map.provincialAgentName,jdbcType=VARCHAR},
+      </if>
+      <if test="map.itemId != null" >
+        item_id = #{map.itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="map.itemName != null" >
+        item_name = #{map.itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="map.classifyId != null" >
+        classify_id = #{map.classifyId,jdbcType=VARCHAR},
+      </if>
+      <if test="map.classifyName != null" >
+        classify_name = #{map.classifyName,jdbcType=VARCHAR},
+      </if>
+      <if test="map.provincialAgentItemOriginalPrice != null" >
+        provincial_agent_item_original_price = #{map.provincialAgentItemOriginalPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="map.provincialAgentItemPresentPrice != null" >
+        provincial_agent_item_present_price = #{map.provincialAgentItemPresentPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="map.provincialAgentItemUrl != null" >
+        provincial_agent_item_url = #{map.provincialAgentItemUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="map.stockNum != null" >
+        stock_num = #{map.stockNum,jdbcType=INTEGER},
+      </if>
+      <if test="map.salesNum != null" >
+        sales_num = #{map.salesNum,jdbcType=INTEGER},
+      </if>
+      <if test="map.provincialAgentItemStatus != null" >
+        provincial_agent_item_status = #{map.provincialAgentItemStatus,jdbcType=INTEGER},
+      </if>
+      <if test="map.provincialAgentItemType != null" >
+        provincial_agent_item_type = #{map.provincialAgentItemType,jdbcType=INTEGER},
+      </if>
+      <if test="map.provincialAgentItemCreatedDate != null" >
+        provincial_agent_item_created_date = #{map.provincialAgentItemCreatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="map.provincialAgentItemUpdatedDate != null" >
+        provincial_agent_item_updated_date = #{map.provincialAgentItemUpdatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="map.provincialAgentItemDesc != null" >
+        provincial_agent_item_desc = #{map.provincialAgentItemDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where provincial_agent_item_id = #{map.provincialAgentItemId,jdbcType=VARCHAR}
+  </update>
+</mapper>

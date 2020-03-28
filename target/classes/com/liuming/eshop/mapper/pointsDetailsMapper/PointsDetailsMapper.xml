@@ -3,9 +3,9 @@
 <mapper namespace="com.liuming.eshop.mapper.pointsDetailsMapper.PointsDetailsMapper" >
   <resultMap id="BaseResultMap" type="com.liuming.eshop.entity.pointsDetailsEntity.PointsDetails" >
     <id column="points_details_id" property="pointsDetailsId" jdbcType="VARCHAR" />
-    <result column="user_id" property="userId" jdbcType="VARCHAR" />
-    <result column="wechat_name" property="wechatName" jdbcType="VARCHAR" />
-    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="member_id" property="memberId" jdbcType="VARCHAR" />
+    <result column="member_wechat_name" property="memberWechatName" jdbcType="VARCHAR" />
+    <result column="member_phone" property="memberPhone" jdbcType="VARCHAR" />
     <result column="before_modify_points" property="beforeModifyPoints" jdbcType="INTEGER" />
     <result column="modify_points" property="modifyPoints" jdbcType="INTEGER" />
     <result column="after_modify_points" property="afterModifyPoints" jdbcType="INTEGER" />
@@ -75,9 +75,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    points_details_id, user_id, wechat_name, phone, before_modify_points, modify_points, 
-    after_modify_points, points_details_type, points_details_details, points_details_status, 
-    remark, points_details_created_date, points_details_updated_date
+    points_details_id, member_id, member_wechat_name, member_phone, before_modify_points, 
+    modify_points, after_modify_points, points_details_type, points_details_details, 
+    points_details_status, remark, points_details_created_date, points_details_updated_date
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.liuming.eshop.entity.pointsDetailsEntity.PointsDetailsExample" >
     select
@@ -110,13 +110,13 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.liuming.eshop.entity.pointsDetailsEntity.PointsDetails" >
-    insert into points_details (points_details_id, user_id, wechat_name, 
-      phone, before_modify_points, modify_points, 
+    insert into points_details (points_details_id, member_id, member_wechat_name, 
+      member_phone, before_modify_points, modify_points, 
       after_modify_points, points_details_type, points_details_details, 
       points_details_status, remark, points_details_created_date, 
       points_details_updated_date)
-    values (#{pointsDetailsId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{wechatName,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR}, #{beforeModifyPoints,jdbcType=INTEGER}, #{modifyPoints,jdbcType=INTEGER}, 
+    values (#{pointsDetailsId,jdbcType=VARCHAR}, #{memberId,jdbcType=VARCHAR}, #{memberWechatName,jdbcType=VARCHAR}, 
+      #{memberPhone,jdbcType=VARCHAR}, #{beforeModifyPoints,jdbcType=INTEGER}, #{modifyPoints,jdbcType=INTEGER}, 
       #{afterModifyPoints,jdbcType=INTEGER}, #{pointsDetailsType,jdbcType=INTEGER}, #{pointsDetailsDetails,jdbcType=VARCHAR}, 
       #{pointsDetailsStatus,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{pointsDetailsCreatedDate,jdbcType=TIMESTAMP}, 
       #{pointsDetailsUpdatedDate,jdbcType=TIMESTAMP})
@@ -127,14 +127,14 @@
       <if test="pointsDetailsId != null" >
         points_details_id,
       </if>
-      <if test="userId != null" >
-        user_id,
+      <if test="memberId != null" >
+        member_id,
       </if>
-      <if test="wechatName != null" >
-        wechat_name,
+      <if test="memberWechatName != null" >
+        member_wechat_name,
       </if>
-      <if test="phone != null" >
-        phone,
+      <if test="memberPhone != null" >
+        member_phone,
       </if>
       <if test="beforeModifyPoints != null" >
         before_modify_points,
@@ -168,14 +168,14 @@
       <if test="pointsDetailsId != null" >
         #{pointsDetailsId,jdbcType=VARCHAR},
       </if>
-      <if test="userId != null" >
-        #{userId,jdbcType=VARCHAR},
+      <if test="memberId != null" >
+        #{memberId,jdbcType=VARCHAR},
       </if>
-      <if test="wechatName != null" >
-        #{wechatName,jdbcType=VARCHAR},
+      <if test="memberWechatName != null" >
+        #{memberWechatName,jdbcType=VARCHAR},
       </if>
-      <if test="phone != null" >
-        #{phone,jdbcType=VARCHAR},
+      <if test="memberPhone != null" >
+        #{memberPhone,jdbcType=VARCHAR},
       </if>
       <if test="beforeModifyPoints != null" >
         #{beforeModifyPoints,jdbcType=INTEGER},
@@ -218,14 +218,14 @@
       <if test="record.pointsDetailsId != null" >
         points_details_id = #{record.pointsDetailsId,jdbcType=VARCHAR},
       </if>
-      <if test="record.userId != null" >
-        user_id = #{record.userId,jdbcType=VARCHAR},
+      <if test="record.memberId != null" >
+        member_id = #{record.memberId,jdbcType=VARCHAR},
       </if>
-      <if test="record.wechatName != null" >
-        wechat_name = #{record.wechatName,jdbcType=VARCHAR},
+      <if test="record.memberWechatName != null" >
+        member_wechat_name = #{record.memberWechatName,jdbcType=VARCHAR},
       </if>
-      <if test="record.phone != null" >
-        phone = #{record.phone,jdbcType=VARCHAR},
+      <if test="record.memberPhone != null" >
+        member_phone = #{record.memberPhone,jdbcType=VARCHAR},
       </if>
       <if test="record.beforeModifyPoints != null" >
         before_modify_points = #{record.beforeModifyPoints,jdbcType=INTEGER},
@@ -262,9 +262,9 @@
   <update id="updateByExample" parameterType="map" >
     update points_details
     set points_details_id = #{record.pointsDetailsId,jdbcType=VARCHAR},
-      user_id = #{record.userId,jdbcType=VARCHAR},
-      wechat_name = #{record.wechatName,jdbcType=VARCHAR},
-      phone = #{record.phone,jdbcType=VARCHAR},
+      member_id = #{record.memberId,jdbcType=VARCHAR},
+      member_wechat_name = #{record.memberWechatName,jdbcType=VARCHAR},
+      member_phone = #{record.memberPhone,jdbcType=VARCHAR},
       before_modify_points = #{record.beforeModifyPoints,jdbcType=INTEGER},
       modify_points = #{record.modifyPoints,jdbcType=INTEGER},
       after_modify_points = #{record.afterModifyPoints,jdbcType=INTEGER},
@@ -281,14 +281,14 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.liuming.eshop.entity.pointsDetailsEntity.PointsDetails" >
     update points_details
     <set >
-      <if test="userId != null" >
-        user_id = #{userId,jdbcType=VARCHAR},
+      <if test="memberId != null" >
+        member_id = #{memberId,jdbcType=VARCHAR},
       </if>
-      <if test="wechatName != null" >
-        wechat_name = #{wechatName,jdbcType=VARCHAR},
+      <if test="memberWechatName != null" >
+        member_wechat_name = #{memberWechatName,jdbcType=VARCHAR},
       </if>
-      <if test="phone != null" >
-        phone = #{phone,jdbcType=VARCHAR},
+      <if test="memberPhone != null" >
+        member_phone = #{memberPhone,jdbcType=VARCHAR},
       </if>
       <if test="beforeModifyPoints != null" >
         before_modify_points = #{beforeModifyPoints,jdbcType=INTEGER},
@@ -322,9 +322,9 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.liuming.eshop.entity.pointsDetailsEntity.PointsDetails" >
     update points_details
-    set user_id = #{userId,jdbcType=VARCHAR},
-      wechat_name = #{wechatName,jdbcType=VARCHAR},
-      phone = #{phone,jdbcType=VARCHAR},
+    set member_id = #{memberId,jdbcType=VARCHAR},
+      member_wechat_name = #{memberWechatName,jdbcType=VARCHAR},
+      member_phone = #{memberPhone,jdbcType=VARCHAR},
       before_modify_points = #{beforeModifyPoints,jdbcType=INTEGER},
       modify_points = #{modifyPoints,jdbcType=INTEGER},
       after_modify_points = #{afterModifyPoints,jdbcType=INTEGER},
@@ -347,5 +347,50 @@
     ORDER BY
 	    points_details_id DESC
 	LIMIT 1
+  </select>
+
+  <select id="findPointsDetails" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM
+    points_details
+    WHERE
+    1 = 1
+    <if test="map.memberId != null" >
+      AND member_id = #{map.memberId,jdbcType=VARCHAR}
+    </if>
+    <if test="map.memberWechatName != null" >
+      AND member_wechat_name = #{map.memberWechatName,jdbcType=VARCHAR}
+    </if>
+    <if test="map.memberPhone != null" >
+      AND member_phone = #{map.memberPhone,jdbcType=VARCHAR}
+    </if>
+    <if test="map.beforeModifyPoints != null" >
+      AND before_modify_points = #{map.beforeModifyPoints,jdbcType=INTEGER}
+    </if>
+    <if test="map.modifyPoints != null" >
+      AND modify_points = #{map.modifyPoints,jdbcType=INTEGER}
+    </if>
+    <if test="map.afterModifyPoints != null" >
+      AND after_modify_points = #{map.afterModifyPoints,jdbcType=INTEGER}
+    </if>
+    <if test="map.pointsDetailsType != null" >
+      AND points_details_type = #{map.pointsDetailsType,jdbcType=INTEGER}
+    </if>
+    <if test="map.pointsDetailsDetails != null" >
+      AND points_details_details = #{map.pointsDetailsDetails,jdbcType=VARCHAR}
+    </if>
+    <if test="map.pointsDetailsStatus != null" >
+      AND points_details_status = #{map.pointsDetailsStatus,jdbcType=INTEGER}
+    </if>
+    <if test="map.remark != null" >
+      AND remark = #{map.remark,jdbcType=VARCHAR}
+    </if>
+    <if test="map.pointsDetailsCreatedDate != null" >
+      AND points_details_created_date = #{map.pointsDetailsCreatedDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="map.pointsDetailsUpdatedDate != null" >
+      AND points_details_updated_date = #{map.pointsDetailsUpdatedDate,jdbcType=TIMESTAMP}
+    </if>
   </select>
 </mapper>

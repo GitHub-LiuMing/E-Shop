@@ -3,13 +3,12 @@ package com.liuming.eshop.mapper.itemMapper;
 import com.liuming.eshop.entity.itemEntity.Item;
 import com.liuming.eshop.entity.itemEntity.ItemExample;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Component;
 
 @Mapper
-@Component
 public interface ItemMapper {
     int countByExample(ItemExample example);
 
@@ -38,4 +37,6 @@ public interface ItemMapper {
     int updateByPrimaryKeyWithBLOBs(Item record);
 
     int updateByPrimaryKey(Item record);
+
+    List<Item> findItem(@Param("map") Map map);
 }
