@@ -7,4 +7,6 @@ public interface ProvincialAgentItemService {
     DataResult addProvincialAgentItem(ProvincialAgentItem provincialAgentItem);
 
     DataResult findProvincialAgentItem(int pageNum, int pageSize, ProvincialAgentItem provincialAgentItem);
+
+    DataResult updateProvincialAgentItem(ProvincialAgentItem provincialAgentItem);
 }

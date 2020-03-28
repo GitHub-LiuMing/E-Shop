@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.liuming.eshop.mapper.memberMapper.MemberMapper" >
-  <resultMap id="BaseResultMap" type="com.liuming.eshop.entity.memberEntity.Member" >
+  <resultMap id="map" type="com.liuming.eshop.entity.memberEntity.Member" >
     <id column="member_id" property="memberId" jdbcType="VARCHAR" />
     <result column="member_level_id" property="memberLevelId" jdbcType="VARCHAR" />
     <result column="member_level_name" property="memberLevelName" jdbcType="VARCHAR" />
@@ -16,9 +16,12 @@
     <result column="member_head_portrait_url" property="memberHeadPortraitUrl" jdbcType="VARCHAR" />
     <result column="member_password" property="memberPassword" jdbcType="VARCHAR" />
     <result column="member_salt" property="memberSalt" jdbcType="VARCHAR" />
-    <result column="member_province" property="memberProvince" jdbcType="VARCHAR" />
-    <result column="member_city" property="memberCity" jdbcType="VARCHAR" />
-    <result column="member_district" property="memberDistrict" jdbcType="VARCHAR" />
+    <result column="member_province_code" property="memberProvinceCode" jdbcType="INTEGER" />
+    <result column="member_province_name" property="memberProvinceName" jdbcType="VARCHAR" />
+    <result column="member_city_code" property="memberCityCode" jdbcType="INTEGER" />
+    <result column="member_city_name" property="memberCityName" jdbcType="VARCHAR" />
+    <result column="member_district_code" property="memberDistrictCode" jdbcType="INTEGER" />
+    <result column="member_district_name" property="memberDistrictName" jdbcType="VARCHAR" />
     <result column="member_address_desc" property="memberAddressDesc" jdbcType="VARCHAR" />
     <result column="member_certification" property="memberCertification" jdbcType="INTEGER" />
     <result column="member_status" property="memberStatus" jdbcType="INTEGER" />
@@ -91,12 +94,12 @@
   <sql id="Base_Column_List" >
     member_id, member_level_id, member_level_name, member_name, member_type, member_gender, 
     member_birthdate, member_id_no, member_wechat_open_id, member_wechat_name, member_phone, 
-    member_head_portrait_url, member_password, member_salt, member_province, member_city, 
-    member_district, member_address_desc, member_certification, member_status, pre_member_id, 
-    pre_member_name, pre_member_phone, pre_member_level_id, pre_member_level_name, member_created_date, 
-    member_updated_date
+    member_head_portrait_url, member_password, member_salt, member_province_code, member_province_name, 
+    member_city_code, member_city_name, member_district_code, member_district_name, member_address_desc, 
+    member_certification, member_status, pre_member_id, pre_member_name, pre_member_phone, 
+    pre_member_level_id, pre_member_level_name, member_created_date, member_updated_date
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.liuming.eshop.entity.memberEntity.MemberExample" >
+  <select id="selectByExample" resultMap="map" parameterType="com.liuming.eshop.entity.memberEntity.MemberExample" >
     select
     <if test="distinct" >
       distinct
@@ -110,7 +113,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="map" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from member
@@ -131,22 +134,26 @@
       member_name, member_type, member_gender, 
       member_birthdate, member_id_no, member_wechat_open_id, 
       member_wechat_name, member_phone, member_head_portrait_url, 
-      member_password, member_salt, member_province, 
-      member_city, member_district, member_address_desc, 
-      member_certification, member_status, pre_member_id, 
-      pre_member_name, pre_member_phone, pre_member_level_id, 
-      pre_member_level_name, member_created_date, 
-      member_updated_date)
+      member_password, member_salt, member_province_code, 
+      member_province_name, member_city_code, member_city_name, 
+      member_district_code, member_district_name, 
+      member_address_desc, member_certification, 
+      member_status, pre_member_id, pre_member_name, 
+      pre_member_phone, pre_member_level_id, pre_member_level_name, 
+      member_created_date, member_updated_date
+      )
     values (#{memberId,jdbcType=VARCHAR}, #{memberLevelId,jdbcType=VARCHAR}, #{memberLevelName,jdbcType=VARCHAR}, 
       #{memberName,jdbcType=VARCHAR}, #{memberType,jdbcType=INTEGER}, #{memberGender,jdbcType=INTEGER}, 
       #{memberBirthdate,jdbcType=DATE}, #{memberIdNo,jdbcType=VARCHAR}, #{memberWechatOpenId,jdbcType=VARCHAR}, 
       #{memberWechatName,jdbcType=VARCHAR}, #{memberPhone,jdbcType=VARCHAR}, #{memberHeadPortraitUrl,jdbcType=VARCHAR}, 
-      #{memberPassword,jdbcType=VARCHAR}, #{memberSalt,jdbcType=VARCHAR}, #{memberProvince,jdbcType=VARCHAR}, 
-      #{memberCity,jdbcType=VARCHAR}, #{memberDistrict,jdbcType=VARCHAR}, #{memberAddressDesc,jdbcType=VARCHAR}, 
-      #{memberCertification,jdbcType=INTEGER}, #{memberStatus,jdbcType=INTEGER}, #{preMemberId,jdbcType=VARCHAR}, 
-      #{preMemberName,jdbcType=VARCHAR}, #{preMemberPhone,jdbcType=VARCHAR}, #{preMemberLevelId,jdbcType=VARCHAR}, 
-      #{preMemberLevelName,jdbcType=VARCHAR}, #{memberCreatedDate,jdbcType=TIMESTAMP}, 
-      #{memberUpdatedDate,jdbcType=TIMESTAMP})
+      #{memberPassword,jdbcType=VARCHAR}, #{memberSalt,jdbcType=VARCHAR}, #{memberProvinceCode,jdbcType=INTEGER}, 
+      #{memberProvinceName,jdbcType=VARCHAR}, #{memberCityCode,jdbcType=INTEGER}, #{memberCityName,jdbcType=VARCHAR}, 
+      #{memberDistrictCode,jdbcType=INTEGER}, #{memberDistrictName,jdbcType=VARCHAR}, 
+      #{memberAddressDesc,jdbcType=VARCHAR}, #{memberCertification,jdbcType=INTEGER}, 
+      #{memberStatus,jdbcType=INTEGER}, #{preMemberId,jdbcType=VARCHAR}, #{preMemberName,jdbcType=VARCHAR}, 
+      #{preMemberPhone,jdbcType=VARCHAR}, #{preMemberLevelId,jdbcType=VARCHAR}, #{preMemberLevelName,jdbcType=VARCHAR}, 
+      #{memberCreatedDate,jdbcType=TIMESTAMP}, #{memberUpdatedDate,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.liuming.eshop.entity.memberEntity.Member" >
     insert into member
@@ -193,14 +200,23 @@
       <if test="memberSalt != null" >
         member_salt,
       </if>
-      <if test="memberProvince != null" >
-        member_province,
+      <if test="memberProvinceCode != null" >
+        member_province_code,
       </if>
-      <if test="memberCity != null" >
-        member_city,
+      <if test="memberProvinceName != null" >
+        member_province_name,
       </if>
-      <if test="memberDistrict != null" >
-        member_district,
+      <if test="memberCityCode != null" >
+        member_city_code,
+      </if>
+      <if test="memberCityName != null" >
+        member_city_name,
+      </if>
+      <if test="memberDistrictCode != null" >
+        member_district_code,
+      </if>
+      <if test="memberDistrictName != null" >
+        member_district_name,
       </if>
       <if test="memberAddressDesc != null" >
         member_address_desc,
@@ -276,14 +292,23 @@
       <if test="memberSalt != null" >
         #{memberSalt,jdbcType=VARCHAR},
       </if>
-      <if test="memberProvince != null" >
-        #{memberProvince,jdbcType=VARCHAR},
+      <if test="memberProvinceCode != null" >
+        #{memberProvinceCode,jdbcType=INTEGER},
       </if>
-      <if test="memberCity != null" >
-        #{memberCity,jdbcType=VARCHAR},
+      <if test="memberProvinceName != null" >
+        #{memberProvinceName,jdbcType=VARCHAR},
       </if>
-      <if test="memberDistrict != null" >
-        #{memberDistrict,jdbcType=VARCHAR},
+      <if test="memberCityCode != null" >
+        #{memberCityCode,jdbcType=INTEGER},
+      </if>
+      <if test="memberCityName != null" >
+        #{memberCityName,jdbcType=VARCHAR},
+      </if>
+      <if test="memberDistrictCode != null" >
+        #{memberDistrictCode,jdbcType=INTEGER},
+      </if>
+      <if test="memberDistrictName != null" >
+        #{memberDistrictName,jdbcType=VARCHAR},
       </if>
       <if test="memberAddressDesc != null" >
         #{memberAddressDesc,jdbcType=VARCHAR},
@@ -368,14 +393,23 @@
       <if test="record.memberSalt != null" >
         member_salt = #{record.memberSalt,jdbcType=VARCHAR},
       </if>
-      <if test="record.memberProvince != null" >
-        member_province = #{record.memberProvince,jdbcType=VARCHAR},
+      <if test="record.memberProvinceCode != null" >
+        member_province_code = #{record.memberProvinceCode,jdbcType=INTEGER},
       </if>
-      <if test="record.memberCity != null" >
-        member_city = #{record.memberCity,jdbcType=VARCHAR},
+      <if test="record.memberProvinceName != null" >
+        member_province_name = #{record.memberProvinceName,jdbcType=VARCHAR},
       </if>
-      <if test="record.memberDistrict != null" >
-        member_district = #{record.memberDistrict,jdbcType=VARCHAR},
+      <if test="record.memberCityCode != null" >
+        member_city_code = #{record.memberCityCode,jdbcType=INTEGER},
+      </if>
+      <if test="record.memberCityName != null" >
+        member_city_name = #{record.memberCityName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.memberDistrictCode != null" >
+        member_district_code = #{record.memberDistrictCode,jdbcType=INTEGER},
+      </if>
+      <if test="record.memberDistrictName != null" >
+        member_district_name = #{record.memberDistrictName,jdbcType=VARCHAR},
       </if>
       <if test="record.memberAddressDesc != null" >
         member_address_desc = #{record.memberAddressDesc,jdbcType=VARCHAR},
@@ -428,9 +462,12 @@
       member_head_portrait_url = #{record.memberHeadPortraitUrl,jdbcType=VARCHAR},
       member_password = #{record.memberPassword,jdbcType=VARCHAR},
       member_salt = #{record.memberSalt,jdbcType=VARCHAR},
-      member_province = #{record.memberProvince,jdbcType=VARCHAR},
-      member_city = #{record.memberCity,jdbcType=VARCHAR},
-      member_district = #{record.memberDistrict,jdbcType=VARCHAR},
+      member_province_code = #{record.memberProvinceCode,jdbcType=INTEGER},
+      member_province_name = #{record.memberProvinceName,jdbcType=VARCHAR},
+      member_city_code = #{record.memberCityCode,jdbcType=INTEGER},
+      member_city_name = #{record.memberCityName,jdbcType=VARCHAR},
+      member_district_code = #{record.memberDistrictCode,jdbcType=INTEGER},
+      member_district_name = #{record.memberDistrictName,jdbcType=VARCHAR},
       member_address_desc = #{record.memberAddressDesc,jdbcType=VARCHAR},
       member_certification = #{record.memberCertification,jdbcType=INTEGER},
       member_status = #{record.memberStatus,jdbcType=INTEGER},
@@ -487,14 +524,23 @@
       <if test="memberSalt != null" >
         member_salt = #{memberSalt,jdbcType=VARCHAR},
       </if>
-      <if test="memberProvince != null" >
-        member_province = #{memberProvince,jdbcType=VARCHAR},
+      <if test="memberProvinceCode != null" >
+        member_province_code = #{memberProvinceCode,jdbcType=INTEGER},
       </if>
-      <if test="memberCity != null" >
-        member_city = #{memberCity,jdbcType=VARCHAR},
+      <if test="memberProvinceName != null" >
+        member_province_name = #{memberProvinceName,jdbcType=VARCHAR},
       </if>
-      <if test="memberDistrict != null" >
-        member_district = #{memberDistrict,jdbcType=VARCHAR},
+      <if test="memberCityCode != null" >
+        member_city_code = #{memberCityCode,jdbcType=INTEGER},
+      </if>
+      <if test="memberCityName != null" >
+        member_city_name = #{memberCityName,jdbcType=VARCHAR},
+      </if>
+      <if test="memberDistrictCode != null" >
+        member_district_code = #{memberDistrictCode,jdbcType=INTEGER},
+      </if>
+      <if test="memberDistrictName != null" >
+        member_district_name = #{memberDistrictName,jdbcType=VARCHAR},
       </if>
       <if test="memberAddressDesc != null" >
         member_address_desc = #{memberAddressDesc,jdbcType=VARCHAR},
@@ -544,9 +590,12 @@
       member_head_portrait_url = #{memberHeadPortraitUrl,jdbcType=VARCHAR},
       member_password = #{memberPassword,jdbcType=VARCHAR},
       member_salt = #{memberSalt,jdbcType=VARCHAR},
-      member_province = #{memberProvince,jdbcType=VARCHAR},
-      member_city = #{memberCity,jdbcType=VARCHAR},
-      member_district = #{memberDistrict,jdbcType=VARCHAR},
+      member_province_code = #{memberProvinceCode,jdbcType=INTEGER},
+      member_province_name = #{memberProvinceName,jdbcType=VARCHAR},
+      member_city_code = #{memberCityCode,jdbcType=INTEGER},
+      member_city_name = #{memberCityName,jdbcType=VARCHAR},
+      member_district_code = #{memberDistrictCode,jdbcType=INTEGER},
+      member_district_name = #{memberDistrictName,jdbcType=VARCHAR},
       member_address_desc = #{memberAddressDesc,jdbcType=VARCHAR},
       member_certification = #{memberCertification,jdbcType=INTEGER},
       member_status = #{memberStatus,jdbcType=INTEGER},
@@ -560,13 +609,16 @@
     where member_id = #{memberId,jdbcType=VARCHAR}
   </update>
 
-  <select id="findMember" resultMap="BaseResultMap">
+  <select id="findMember" resultMap="map">
     SELECT
     <include refid="Base_Column_List" />
     FROM
         member
     WHERE
         1 = 1
+    <if test="map.memberId != null" >
+      AND member_id = #{map.memberId,jdbcType=VARCHAR}
+    </if>
     <if test="map.memberLevelId != null" >
       AND member_level_id = #{map.memberLevelId,jdbcType=VARCHAR}
     </if>
@@ -580,7 +632,7 @@
       AND member_type = #{map.memberType,jdbcType=INTEGER}
     </if>
     <if test="map.memberGender != null" >
-      AND member_gender = #{map.memberGender,jdbcType=INTEGER}
+      AND member_gender = #{map.memberGender,jdbcType=INTEGER},
     </if>
     <if test="map.memberBirthdate != null" >
       AND member_birthdate = #{map.memberBirthdate,jdbcType=DATE}
@@ -606,14 +658,23 @@
     <if test="map.memberSalt != null" >
       AND member_salt = #{map.memberSalt,jdbcType=VARCHAR}
     </if>
-    <if test="map.memberProvince != null" >
-      AND member_province = #{map.memberProvince,jdbcType=VARCHAR}
+    <if test="map.memberProvinceCode != null" >
+      AND member_province_code = #{map.memberProvinceCode,jdbcType=INTEGER}
     </if>
-    <if test="map.memberCity != null" >
-      AND member_city = #{map.memberCity,jdbcType=VARCHAR}
+    <if test="map.memberProvinceName != null" >
+      AND member_province_name = #{map.memberProvinceName,jdbcType=VARCHAR}
     </if>
-    <if test="map.memberDistrict != null" >
-      AND member_district = #{map.memberDistrict,jdbcType=VARCHAR}
+    <if test="map.memberCityCode != null" >
+      AND member_city_code = #{map.memberCityCoded,jdbcType=INTEGER}
+    </if>
+    <if test="map.memberCityName != null" >
+      AND member_city_name = #{map.memberCityName,jdbcType=VARCHAR}
+    </if>
+    <if test="map.memberDistrictCode != null" >
+      AND member_district_code = #{map.memberDistrictCode,jdbcType=INTEGER}
+    </if>
+    <if test="map.memberDistrictName != null" >
+      AND member_district_name = #{map.memberDistrictName,jdbcType=VARCHAR}
     </if>
     <if test="map.memberAddressDesc != null" >
       AND member_address_desc = #{map.memberAddressDesc,jdbcType=VARCHAR}
@@ -646,4 +707,11 @@
       AND member_updated_date = #{map.memberUpdatedDate,jdbcType=TIMESTAMP}
     </if>
   </select>
+
+  <update id="updateMemberPassword" parameterType="map" >
+    UPDATE member
+    SET member_password = #{map.memberPassword}
+    WHERE
+        member_phone = #{map.memberPhone};
+  </update>
 </mapper>

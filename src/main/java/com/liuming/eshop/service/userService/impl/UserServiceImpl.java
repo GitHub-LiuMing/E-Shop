@@ -6,18 +6,22 @@ import com.liuming.eshop.service.userService.UserService;
 import com.liuming.eshop.utils.BCrypt;
 import com.liuming.eshop.utils.DataResult;
 import com.liuming.eshop.utils.IDUtils;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.InputStream;
+import java.util.*;
 
 /**
  * @Description 
  * @ClassName UserServiceImpl
- * @Author 鲸落
+ * @Author 张孙峰
  * @date 2019.12.11 15:48
  */
 @Service

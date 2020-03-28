@@ -7,4 +7,6 @@ public interface ItemService {
     DataResult addItem(Item item);
 
     DataResult findItem(int pageNum, int pageSize, Item item);
+
+    DataResult updateItem(Item item);
 }

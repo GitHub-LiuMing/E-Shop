@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.liuming.eshop.mapper.logisticsTemplateMapper.LogisticsTemplateMapper" >
+  <resultMap id="map" type="com.liuming.eshop.entity.logisticsTemplateEntity.LogisticsTemplate" >
+    <id column="logistics_template_id" property="logisticsTemplateId" jdbcType="VARCHAR" />
+    <result column="logistics_template_name" property="logisticsTemplateName" jdbcType="VARCHAR" />
+    <result column="logistics_type" property="logisticsType" jdbcType="INTEGER" />
+    <result column="logistics_mode" property="logisticsMode" jdbcType="INTEGER" />
+    <result column="logistics_number" property="logisticsNumber" jdbcType="INTEGER" />
+    <result column="logistics_cost" property="logisticsCost" jdbcType="INTEGER" />
+    <result column="logistics_template_status" property="logisticsTemplateStatus" jdbcType="INTEGER" />
+    <result column="logistics_template_created_date" property="logisticsTemplateCreatedDate" jdbcType="TIMESTAMP" />
+    <result column="logistics_template_updated_date" property="logisticsTemplateUpdatedDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="list" >
+    logistics_template_id, logistics_template_name, logistics_type, logistics_mode, logistics_number, 
+    logistics_cost, logistics_template_status, logistics_template_created_date, logistics_template_updated_date
+  </sql>
+  <select id="selectByExample" resultMap="map" parameterType="com.liuming.eshop.entity.logisticsTemplateEntity.LogisticsTemplateExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="list" />
+    from logistics_template
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="map" parameterType="java.lang.String" >
+    select 
+    <include refid="list" />
+    from logistics_template
+    where logistics_template_id = #{logisticsTemplateId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from logistics_template
+    where logistics_template_id = #{logisticsTemplateId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.liuming.eshop.entity.logisticsTemplateEntity.LogisticsTemplateExample" >
+    delete from logistics_template
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.liuming.eshop.entity.logisticsTemplateEntity.LogisticsTemplate" >
+    insert into logistics_template (logistics_template_id, logistics_template_name, 
+      logistics_type, logistics_mode, logistics_number, 
+      logistics_cost, logistics_template_status, 
+      logistics_template_created_date, logistics_template_updated_date
+      )
+    values (#{logisticsTemplateId,jdbcType=VARCHAR}, #{logisticsTemplateName,jdbcType=VARCHAR}, 
+      #{logisticsType,jdbcType=INTEGER}, #{logisticsMode,jdbcType=INTEGER}, #{logisticsNumber,jdbcType=INTEGER}, 
+      #{logisticsCost,jdbcType=INTEGER}, #{logisticsTemplateStatus,jdbcType=INTEGER}, 
+      #{logisticsTemplateCreatedDate,jdbcType=TIMESTAMP}, #{logisticsTemplateUpdatedDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.liuming.eshop.entity.logisticsTemplateEntity.LogisticsTemplate" >
+    insert into logistics_template
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="logisticsTemplateId != null" >
+        logistics_template_id,
+      </if>
+      <if test="logisticsTemplateName != null" >
+        logistics_template_name,
+      </if>
+      <if test="logisticsType != null" >
+        logistics_type,
+      </if>
+      <if test="logisticsMode != null" >
+        logistics_mode,
+      </if>
+      <if test="logisticsNumber != null" >
+        logistics_number,
+      </if>
+      <if test="logisticsCost != null" >
+        logistics_cost,
+      </if>
+      <if test="logisticsTemplateStatus != null" >
+        logistics_template_status,
+      </if>
+      <if test="logisticsTemplateCreatedDate != null" >
+        logistics_template_created_date,
+      </if>
+      <if test="logisticsTemplateUpdatedDate != null" >
+        logistics_template_updated_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="logisticsTemplateId != null" >
+        #{logisticsTemplateId,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsTemplateName != null" >
+        #{logisticsTemplateName,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsType != null" >
+        #{logisticsType,jdbcType=INTEGER},
+      </if>
+      <if test="logisticsMode != null" >
+        #{logisticsMode,jdbcType=INTEGER},
+      </if>
+      <if test="logisticsNumber != null" >
+        #{logisticsNumber,jdbcType=INTEGER},
+      </if>
+      <if test="logisticsCost != null" >
+        #{logisticsCost,jdbcType=INTEGER},
+      </if>
+      <if test="logisticsTemplateStatus != null" >
+        #{logisticsTemplateStatus,jdbcType=INTEGER},
+      </if>
+      <if test="logisticsTemplateCreatedDate != null" >
+        #{logisticsTemplateCreatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logisticsTemplateUpdatedDate != null" >
+        #{logisticsTemplateUpdatedDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.liuming.eshop.entity.logisticsTemplateEntity.LogisticsTemplateExample" resultType="java.lang.Integer" >
+    select count(*) from logistics_template
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update logistics_template
+    <set >
+      <if test="record.logisticsTemplateId != null" >
+        logistics_template_id = #{record.logisticsTemplateId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logisticsTemplateName != null" >
+        logistics_template_name = #{record.logisticsTemplateName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logisticsType != null" >
+        logistics_type = #{record.logisticsType,jdbcType=INTEGER},
+      </if>
+      <if test="record.logisticsMode != null" >
+        logistics_mode = #{record.logisticsMode,jdbcType=INTEGER},
+      </if>
+      <if test="record.logisticsNumber != null" >
+        logistics_number = #{record.logisticsNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.logisticsCost != null" >
+        logistics_cost = #{record.logisticsCost,jdbcType=INTEGER},
+      </if>
+      <if test="record.logisticsTemplateStatus != null" >
+        logistics_template_status = #{record.logisticsTemplateStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.logisticsTemplateCreatedDate != null" >
+        logistics_template_created_date = #{record.logisticsTemplateCreatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.logisticsTemplateUpdatedDate != null" >
+        logistics_template_updated_date = #{record.logisticsTemplateUpdatedDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update logistics_template
+    set logistics_template_id = #{record.logisticsTemplateId,jdbcType=VARCHAR},
+      logistics_template_name = #{record.logisticsTemplateName,jdbcType=VARCHAR},
+      logistics_type = #{record.logisticsType,jdbcType=INTEGER},
+      logistics_mode = #{record.logisticsMode,jdbcType=INTEGER},
+      logistics_number = #{record.logisticsNumber,jdbcType=INTEGER},
+      logistics_cost = #{record.logisticsCost,jdbcType=INTEGER},
+      logistics_template_status = #{record.logisticsTemplateStatus,jdbcType=INTEGER},
+      logistics_template_created_date = #{record.logisticsTemplateCreatedDate,jdbcType=TIMESTAMP},
+      logistics_template_updated_date = #{record.logisticsTemplateUpdatedDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liuming.eshop.entity.logisticsTemplateEntity.LogisticsTemplate" >
+    update logistics_template
+    <set >
+      <if test="logisticsTemplateName != null" >
+        logistics_template_name = #{logisticsTemplateName,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsType != null" >
+        logistics_type = #{logisticsType,jdbcType=INTEGER},
+      </if>
+      <if test="logisticsMode != null" >
+        logistics_mode = #{logisticsMode,jdbcType=INTEGER},
+      </if>
+      <if test="logisticsNumber != null" >
+        logistics_number = #{logisticsNumber,jdbcType=INTEGER},
+      </if>
+      <if test="logisticsCost != null" >
+        logistics_cost = #{logisticsCost,jdbcType=INTEGER},
+      </if>
+      <if test="logisticsTemplateStatus != null" >
+        logistics_template_status = #{logisticsTemplateStatus,jdbcType=INTEGER},
+      </if>
+      <if test="logisticsTemplateCreatedDate != null" >
+        logistics_template_created_date = #{logisticsTemplateCreatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logisticsTemplateUpdatedDate != null" >
+        logistics_template_updated_date = #{logisticsTemplateUpdatedDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where logistics_template_id = #{logisticsTemplateId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liuming.eshop.entity.logisticsTemplateEntity.LogisticsTemplate" >
+    update logistics_template
+    set logistics_template_name = #{logisticsTemplateName,jdbcType=VARCHAR},
+      logistics_type = #{logisticsType,jdbcType=INTEGER},
+      logistics_mode = #{logisticsMode,jdbcType=INTEGER},
+      logistics_number = #{logisticsNumber,jdbcType=INTEGER},
+      logistics_cost = #{logisticsCost,jdbcType=INTEGER},
+      logistics_template_status = #{logisticsTemplateStatus,jdbcType=INTEGER},
+      logistics_template_created_date = #{logisticsTemplateCreatedDate,jdbcType=TIMESTAMP},
+      logistics_template_updated_date = #{logisticsTemplateUpdatedDate,jdbcType=TIMESTAMP}
+    where logistics_template_id = #{logisticsTemplateId,jdbcType=VARCHAR}
+  </update>
+
+  <select id="findLogisticsTemplate" resultMap="map">
+    SELECT
+        <include refid="list" />
+    FROM
+        logistics_template
+    WHERE
+        1 = 1
+    <if test="map.logisticsTemplateId != null" >
+      AND logistics_template_id = #{map.logisticsTemplateId,jdbcType=VARCHAR}
+    </if>
+    <if test="map.logisticsTemplateName != null" >
+      AND logistics_template_name = #{map.logisticsTemplateName,jdbcType=VARCHAR}
+    </if>
+    <if test="map.logisticsType != null" >
+      AND logistics_type = #{map.logisticsType,jdbcType=INTEGER}
+    </if>
+    <if test="map.logisticsMode != null" >
+      AND logistics_mode = #{map.logisticsMode,jdbcType=INTEGER}
+    </if>
+    <if test="map.logisticsNumber != null" >
+      AND logistics_number = #{map.logisticsNumber,jdbcType=INTEGER}
+    </if>
+    <if test="map.logisticsCost != null" >
+      AND logistics_cost = #{map.logisticsCost,jdbcType=INTEGER}
+    </if>
+    <if test="map.logisticsTemplateStatus != null" >
+      AND logistics_template_status = #{map.logisticsTemplateStatus,jdbcType=INTEGER}
+    </if>
+    <if test="map.logisticsTemplateCreatedDate != null" >
+      AND logistics_template_created_date = #{map.logisticsTemplateCreatedDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="map.logisticsTemplateUpdatedDate != null" >
+      AND logistics_template_updated_date = #{map.logisticsTemplateUpdatedDate,jdbcType=TIMESTAMP}
+    </if>
+  </select>
+</mapper>

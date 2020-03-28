@@ -12,7 +12,7 @@ import javax.annotation.Resource;
 /**
  * @Description 用户
  * @ClassName UserController
- * @Author 鲸落
+ * @Author 张孙峰
  * @date 2019.12.11 15:47
  */
 @RestController
@@ -25,7 +25,7 @@ public class UserController {
      * @Description 新增用户
      * @param user
      * @return com.liuming.eshop.utils.DataResult
-     * @Author 鲸落
+     * @Author 张孙峰
      * @Date 2019.12.11 16:00
      */
     @RequestMapping("/addUser")
@@ -41,7 +41,7 @@ public class UserController {
      * @Description 查询用户
      * @param user
      * @return com.liuming.eshop.utils.DataResult
-     * @Author 鲸落
+     * @Author 张孙峰
      * @Date 2019.12.11 18:16
      */
     @RequestMapping("/findUser")

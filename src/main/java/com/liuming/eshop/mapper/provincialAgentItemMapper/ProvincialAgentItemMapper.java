@@ -39,4 +39,6 @@ public interface ProvincialAgentItemMapper {
     int updateByPrimaryKey(ProvincialAgentItem record);
 
     List<ProvincialAgentItem> findProvincialAgentItem(@Param("map") Map map);
+
+    int updateProvincialAgentItem(@Param("map") Map map);
 }

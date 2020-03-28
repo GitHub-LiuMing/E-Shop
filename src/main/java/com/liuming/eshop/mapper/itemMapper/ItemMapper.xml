@@ -6,6 +6,8 @@
     <result column="item_name" property="itemName" jdbcType="VARCHAR" />
     <result column="classify_id" property="classifyId" jdbcType="VARCHAR" />
     <result column="classify_name" property="classifyName" jdbcType="VARCHAR" />
+    <result column="commission_id" property="commissionId" jdbcType="VARCHAR" />
+    <result column="logistics_template_id" property="logisticsTemplateId" jdbcType="VARCHAR" />
     <result column="item_original_price" property="itemOriginalPrice" jdbcType="DOUBLE" />
     <result column="item_present_price" property="itemPresentPrice" jdbcType="DOUBLE" />
     <result column="item_url" property="itemUrl" jdbcType="VARCHAR" />
@@ -15,6 +17,10 @@
     <result column="member_discounted" property="memberDiscounted" jdbcType="DOUBLE" />
     <result column="not_member_discounted_status" property="notMemberDiscountedStatus" jdbcType="INTEGER" />
     <result column="not_member_discounted" property="notMemberDiscounted" jdbcType="DOUBLE" />
+    <result column="gmsxjf" property="gmsxjf" jdbcType="INTEGER" />
+    <result column="mrxg" property="mrxg" jdbcType="INTEGER" />
+    <result column="mrmtxg" property="mrmtxg" jdbcType="INTEGER" />
+    <result column="sfsyyhq" property="sfsyyhq" jdbcType="INTEGER" />
     <result column="item_status" property="itemStatus" jdbcType="INTEGER" />
     <result column="item_type" property="itemType" jdbcType="INTEGER" />
     <result column="item_created_date" property="itemCreatedDate" jdbcType="TIMESTAMP" />
@@ -82,9 +88,10 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    item_id, item_name, classify_id, classify_name, item_original_price, item_present_price, 
-    item_url, stock_num, sales_num, member_discounted_status, member_discounted, not_member_discounted_status, 
-    not_member_discounted, item_status, item_type, item_created_date, item_updated_date
+    item_id, item_name, classify_id, classify_name, commission_id, logistics_template_id, 
+    item_original_price, item_present_price, item_url, stock_num, sales_num, member_discounted_status, 
+    member_discounted, not_member_discounted_status, not_member_discounted, gmsxjf, mrxg, 
+    mrmtxg, sfsyyhq, item_status, item_type, item_created_date, item_updated_date
   </sql>
   <sql id="Blob_Column_List" >
     item_desc
@@ -139,19 +146,23 @@
   </delete>
   <insert id="insert" parameterType="com.liuming.eshop.entity.itemEntity.Item" >
     insert into item (item_id, item_name, classify_id, 
-      classify_name, item_original_price, item_present_price, 
-      item_url, stock_num, sales_num, 
-      member_discounted_status, member_discounted, 
-      not_member_discounted_status, not_member_discounted, 
-      item_status, item_type, item_created_date, 
-      item_updated_date, item_desc)
+      classify_name, commission_id, logistics_template_id, 
+      item_original_price, item_present_price, item_url, 
+      stock_num, sales_num, member_discounted_status, 
+      member_discounted, not_member_discounted_status, 
+      not_member_discounted, gmsxjf, mrxg, 
+      mrmtxg, sfsyyhq, item_status, 
+      item_type, item_created_date, item_updated_date, 
+      item_desc)
     values (#{itemId,jdbcType=VARCHAR}, #{itemName,jdbcType=VARCHAR}, #{classifyId,jdbcType=VARCHAR}, 
-      #{classifyName,jdbcType=VARCHAR}, #{itemOriginalPrice,jdbcType=DOUBLE}, #{itemPresentPrice,jdbcType=DOUBLE}, 
-      #{itemUrl,jdbcType=VARCHAR}, #{stockNum,jdbcType=INTEGER}, #{salesNum,jdbcType=INTEGER}, 
-      #{memberDiscountedStatus,jdbcType=INTEGER}, #{memberDiscounted,jdbcType=DOUBLE}, 
-      #{notMemberDiscountedStatus,jdbcType=INTEGER}, #{notMemberDiscounted,jdbcType=DOUBLE}, 
-      #{itemStatus,jdbcType=INTEGER}, #{itemType,jdbcType=INTEGER}, #{itemCreatedDate,jdbcType=TIMESTAMP}, 
-      #{itemUpdatedDate,jdbcType=TIMESTAMP}, #{itemDesc,jdbcType=LONGVARCHAR})
+      #{classifyName,jdbcType=VARCHAR}, #{commissionId,jdbcType=VARCHAR}, #{logisticsTemplateId,jdbcType=VARCHAR}, 
+      #{itemOriginalPrice,jdbcType=DOUBLE}, #{itemPresentPrice,jdbcType=DOUBLE}, #{itemUrl,jdbcType=VARCHAR}, 
+      #{stockNum,jdbcType=INTEGER}, #{salesNum,jdbcType=INTEGER}, #{memberDiscountedStatus,jdbcType=INTEGER}, 
+      #{memberDiscounted,jdbcType=DOUBLE}, #{notMemberDiscountedStatus,jdbcType=INTEGER}, 
+      #{notMemberDiscounted,jdbcType=DOUBLE}, #{gmsxjf,jdbcType=INTEGER}, #{mrxg,jdbcType=INTEGER}, 
+      #{mrmtxg,jdbcType=INTEGER}, #{sfsyyhq,jdbcType=INTEGER}, #{itemStatus,jdbcType=INTEGER}, 
+      #{itemType,jdbcType=INTEGER}, #{itemCreatedDate,jdbcType=TIMESTAMP}, #{itemUpdatedDate,jdbcType=TIMESTAMP}, 
+      #{itemDesc,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.liuming.eshop.entity.itemEntity.Item" >
     insert into item
@@ -167,6 +178,12 @@
       </if>
       <if test="classifyName != null" >
         classify_name,
+      </if>
+      <if test="commissionId != null" >
+        commission_id,
+      </if>
+      <if test="logisticsTemplateId != null" >
+        logistics_template_id,
       </if>
       <if test="itemOriginalPrice != null" >
         item_original_price,
@@ -194,6 +211,18 @@
       </if>
       <if test="notMemberDiscounted != null" >
         not_member_discounted,
+      </if>
+      <if test="gmsxjf != null" >
+        gmsxjf,
+      </if>
+      <if test="mrxg != null" >
+        mrxg,
+      </if>
+      <if test="mrmtxg != null" >
+        mrmtxg,
+      </if>
+      <if test="sfsyyhq != null" >
+        sfsyyhq,
       </if>
       <if test="itemStatus != null" >
         item_status,
@@ -224,6 +253,12 @@
       <if test="classifyName != null" >
         #{classifyName,jdbcType=VARCHAR},
       </if>
+      <if test="commissionId != null" >
+        #{commissionId,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsTemplateId != null" >
+        #{logisticsTemplateId,jdbcType=VARCHAR},
+      </if>
       <if test="itemOriginalPrice != null" >
         #{itemOriginalPrice,jdbcType=DOUBLE},
       </if>
@@ -250,6 +285,18 @@
       </if>
       <if test="notMemberDiscounted != null" >
         #{notMemberDiscounted,jdbcType=DOUBLE},
+      </if>
+      <if test="gmsxjf != null" >
+        #{gmsxjf,jdbcType=INTEGER},
+      </if>
+      <if test="mrxg != null" >
+        #{mrxg,jdbcType=INTEGER},
+      </if>
+      <if test="mrmtxg != null" >
+        #{mrmtxg,jdbcType=INTEGER},
+      </if>
+      <if test="sfsyyhq != null" >
+        #{sfsyyhq,jdbcType=INTEGER},
       </if>
       <if test="itemStatus != null" >
         #{itemStatus,jdbcType=INTEGER},
@@ -289,6 +336,12 @@
       <if test="record.classifyName != null" >
         classify_name = #{record.classifyName,jdbcType=VARCHAR},
       </if>
+      <if test="record.commissionId != null" >
+        commission_id = #{record.commissionId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logisticsTemplateId != null" >
+        logistics_template_id = #{record.logisticsTemplateId,jdbcType=VARCHAR},
+      </if>
       <if test="record.itemOriginalPrice != null" >
         item_original_price = #{record.itemOriginalPrice,jdbcType=DOUBLE},
       </if>
@@ -316,6 +369,18 @@
       <if test="record.notMemberDiscounted != null" >
         not_member_discounted = #{record.notMemberDiscounted,jdbcType=DOUBLE},
       </if>
+      <if test="record.gmsxjf != null" >
+        gmsxjf = #{record.gmsxjf,jdbcType=INTEGER},
+      </if>
+      <if test="record.mrxg != null" >
+        mrxg = #{record.mrxg,jdbcType=INTEGER},
+      </if>
+      <if test="record.mrmtxg != null" >
+        mrmtxg = #{record.mrmtxg,jdbcType=INTEGER},
+      </if>
+      <if test="record.sfsyyhq != null" >
+        sfsyyhq = #{record.sfsyyhq,jdbcType=INTEGER},
+      </if>
       <if test="record.itemStatus != null" >
         item_status = #{record.itemStatus,jdbcType=INTEGER},
       </if>
@@ -342,6 +407,8 @@
       item_name = #{record.itemName,jdbcType=VARCHAR},
       classify_id = #{record.classifyId,jdbcType=VARCHAR},
       classify_name = #{record.classifyName,jdbcType=VARCHAR},
+      commission_id = #{record.commissionId,jdbcType=VARCHAR},
+      logistics_template_id = #{record.logisticsTemplateId,jdbcType=VARCHAR},
       item_original_price = #{record.itemOriginalPrice,jdbcType=DOUBLE},
       item_present_price = #{record.itemPresentPrice,jdbcType=DOUBLE},
       item_url = #{record.itemUrl,jdbcType=VARCHAR},
@@ -351,6 +418,10 @@
       member_discounted = #{record.memberDiscounted,jdbcType=DOUBLE},
       not_member_discounted_status = #{record.notMemberDiscountedStatus,jdbcType=INTEGER},
       not_member_discounted = #{record.notMemberDiscounted,jdbcType=DOUBLE},
+      gmsxjf = #{record.gmsxjf,jdbcType=INTEGER},
+      mrxg = #{record.mrxg,jdbcType=INTEGER},
+      mrmtxg = #{record.mrmtxg,jdbcType=INTEGER},
+      sfsyyhq = #{record.sfsyyhq,jdbcType=INTEGER},
       item_status = #{record.itemStatus,jdbcType=INTEGER},
       item_type = #{record.itemType,jdbcType=INTEGER},
       item_created_date = #{record.itemCreatedDate,jdbcType=TIMESTAMP},
@@ -366,6 +437,8 @@
       item_name = #{record.itemName,jdbcType=VARCHAR},
       classify_id = #{record.classifyId,jdbcType=VARCHAR},
       classify_name = #{record.classifyName,jdbcType=VARCHAR},
+      commission_id = #{record.commissionId,jdbcType=VARCHAR},
+      logistics_template_id = #{record.logisticsTemplateId,jdbcType=VARCHAR},
       item_original_price = #{record.itemOriginalPrice,jdbcType=DOUBLE},
       item_present_price = #{record.itemPresentPrice,jdbcType=DOUBLE},
       item_url = #{record.itemUrl,jdbcType=VARCHAR},
@@ -375,6 +448,10 @@
       member_discounted = #{record.memberDiscounted,jdbcType=DOUBLE},
       not_member_discounted_status = #{record.notMemberDiscountedStatus,jdbcType=INTEGER},
       not_member_discounted = #{record.notMemberDiscounted,jdbcType=DOUBLE},
+      gmsxjf = #{record.gmsxjf,jdbcType=INTEGER},
+      mrxg = #{record.mrxg,jdbcType=INTEGER},
+      mrmtxg = #{record.mrmtxg,jdbcType=INTEGER},
+      sfsyyhq = #{record.sfsyyhq,jdbcType=INTEGER},
       item_status = #{record.itemStatus,jdbcType=INTEGER},
       item_type = #{record.itemType,jdbcType=INTEGER},
       item_created_date = #{record.itemCreatedDate,jdbcType=TIMESTAMP},
@@ -394,6 +471,12 @@
       </if>
       <if test="classifyName != null" >
         classify_name = #{classifyName,jdbcType=VARCHAR},
+      </if>
+      <if test="commissionId != null" >
+        commission_id = #{commissionId,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsTemplateId != null" >
+        logistics_template_id = #{logisticsTemplateId,jdbcType=VARCHAR},
       </if>
       <if test="itemOriginalPrice != null" >
         item_original_price = #{itemOriginalPrice,jdbcType=DOUBLE},
@@ -422,6 +505,18 @@
       <if test="notMemberDiscounted != null" >
         not_member_discounted = #{notMemberDiscounted,jdbcType=DOUBLE},
       </if>
+      <if test="gmsxjf != null" >
+        gmsxjf = #{gmsxjf,jdbcType=INTEGER},
+      </if>
+      <if test="mrxg != null" >
+        mrxg = #{mrxg,jdbcType=INTEGER},
+      </if>
+      <if test="mrmtxg != null" >
+        mrmtxg = #{mrmtxg,jdbcType=INTEGER},
+      </if>
+      <if test="sfsyyhq != null" >
+        sfsyyhq = #{sfsyyhq,jdbcType=INTEGER},
+      </if>
       <if test="itemStatus != null" >
         item_status = #{itemStatus,jdbcType=INTEGER},
       </if>
@@ -445,6 +540,8 @@
     set item_name = #{itemName,jdbcType=VARCHAR},
       classify_id = #{classifyId,jdbcType=VARCHAR},
       classify_name = #{classifyName,jdbcType=VARCHAR},
+      commission_id = #{commissionId,jdbcType=VARCHAR},
+      logistics_template_id = #{logisticsTemplateId,jdbcType=VARCHAR},
       item_original_price = #{itemOriginalPrice,jdbcType=DOUBLE},
       item_present_price = #{itemPresentPrice,jdbcType=DOUBLE},
       item_url = #{itemUrl,jdbcType=VARCHAR},
@@ -454,6 +551,10 @@
       member_discounted = #{memberDiscounted,jdbcType=DOUBLE},
       not_member_discounted_status = #{notMemberDiscountedStatus,jdbcType=INTEGER},
       not_member_discounted = #{notMemberDiscounted,jdbcType=DOUBLE},
+      gmsxjf = #{gmsxjf,jdbcType=INTEGER},
+      mrxg = #{mrxg,jdbcType=INTEGER},
+      mrmtxg = #{mrmtxg,jdbcType=INTEGER},
+      sfsyyhq = #{sfsyyhq,jdbcType=INTEGER},
       item_status = #{itemStatus,jdbcType=INTEGER},
       item_type = #{itemType,jdbcType=INTEGER},
       item_created_date = #{itemCreatedDate,jdbcType=TIMESTAMP},
@@ -466,6 +567,8 @@
     set item_name = #{itemName,jdbcType=VARCHAR},
       classify_id = #{classifyId,jdbcType=VARCHAR},
       classify_name = #{classifyName,jdbcType=VARCHAR},
+      commission_id = #{commissionId,jdbcType=VARCHAR},
+      logistics_template_id = #{logisticsTemplateId,jdbcType=VARCHAR},
       item_original_price = #{itemOriginalPrice,jdbcType=DOUBLE},
       item_present_price = #{itemPresentPrice,jdbcType=DOUBLE},
       item_url = #{itemUrl,jdbcType=VARCHAR},
@@ -475,10 +578,97 @@
       member_discounted = #{memberDiscounted,jdbcType=DOUBLE},
       not_member_discounted_status = #{notMemberDiscountedStatus,jdbcType=INTEGER},
       not_member_discounted = #{notMemberDiscounted,jdbcType=DOUBLE},
+      gmsxjf = #{gmsxjf,jdbcType=INTEGER},
+      mrxg = #{mrxg,jdbcType=INTEGER},
+      mrmtxg = #{mrmtxg,jdbcType=INTEGER},
+      sfsyyhq = #{sfsyyhq,jdbcType=INTEGER},
       item_status = #{itemStatus,jdbcType=INTEGER},
       item_type = #{itemType,jdbcType=INTEGER},
       item_created_date = #{itemCreatedDate,jdbcType=TIMESTAMP},
       item_updated_date = #{itemUpdatedDate,jdbcType=TIMESTAMP}
     where item_id = #{itemId,jdbcType=VARCHAR}
   </update>
+
+  <select id="findItem" resultMap="maps">
+    SELECT
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    FROM
+        item
+    WHERE
+        1 = 1
+    <if test="map.itemId != null" >
+      AND item_id = #{map.itemId,jdbcType=VARCHAR}
+    </if>
+    <if test="map.itemName != null" >
+      AND item_name = #{map.itemName,jdbcType=VARCHAR}
+    </if>
+    <if test="map.classifyId != null" >
+      AND classify_id = #{map.classifyId,jdbcType=VARCHAR}
+    </if>
+    <if test="map.classifyName != null" >
+      AND classify_name = #{map.classifyName,jdbcType=VARCHAR}
+    </if>
+    <if test="map.commissionId != null" >
+      AND commission_id = #{map.commissionId,jdbcType=VARCHAR}
+    </if>
+    <if test="map.logisticsTemplateId != null" >
+      AND logistics_template_id = #{map.logisticsTemplateId,jdbcType=VARCHAR}
+    </if>
+    <if test="map.itemOriginalPrice != null" >
+      AND item_original_price = #{map.itemOriginalPrice,jdbcType=DOUBLE}
+    </if>
+    <if test="map.itemPresentPrice != null" >
+      AND item_present_price = #{map.itemPresentPrice,jdbcType=DOUBLE}
+    </if>
+    <if test="map.itemUrl != null" >
+      AND item_url = #{map.itemUrl,jdbcType=VARCHAR}
+    </if>
+    <if test="map.stockNum != null" >
+      AND stock_num = #{map.stockNum,jdbcType=INTEGER}
+    </if>
+    <if test="map.salesNum != null" >
+      AND sales_num = #{map.salesNum,jdbcType=INTEGER}
+    </if>
+    <if test="map.memberDiscountedStatus != null" >
+      AND member_discounted_status = #{map.memberDiscountedStatus,jdbcType=INTEGER}
+    </if>
+    <if test="map.memberDiscounted != null" >
+      AND member_discounted = #{map.memberDiscounted,jdbcType=DOUBLE}
+    </if>
+    <if test="map.notMemberDiscountedStatus != null" >
+      AND not_member_discounted_status = #{map.notMemberDiscountedStatus,jdbcType=INTEGER}
+    </if>
+    <if test="map.notMemberDiscounted != null" >
+      AND not_member_discounted = #{map.notMemberDiscounted,jdbcType=DOUBLE}
+    </if>
+    <if test="map.gmsxjf != null" >
+      AND gmsxjf = #{map.gmsxjf,jdbcType=INTEGER}
+    </if>
+    <if test="map.mrxg != null" >
+      AND mrxg = #{map.mrxg,jdbcType=INTEGER}
+    </if>
+    <if test="map.mrmtxg != null" >
+      AND mrmtxg = #{map.mrmtxg,jdbcType=INTEGER}
+    </if>
+    <if test="map.sfsyyhq != null" >
+      AND sfsyyhq = #{map.sfsyyhq,jdbcType=INTEGER}
+    </if>
+    <if test="map.itemStatus != null" >
+      AND item_status = #{map.itemStatus,jdbcType=INTEGER}
+    </if>
+    <if test="map.itemType != null" >
+      AND item_type = #{map.itemType,jdbcType=INTEGER}
+    </if>
+    <if test="map.itemCreatedDate != null" >
+      AND item_created_date = #{map.itemCreatedDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="map.itemUpdatedDate != null" >
+      AND item_updated_date = #{map.itemUpdatedDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="map.itemDesc != null" >
+      AND item_desc = #{map.itemDesc,jdbcType=LONGVARCHAR}
+    </if>
+  </select>
 </mapper>

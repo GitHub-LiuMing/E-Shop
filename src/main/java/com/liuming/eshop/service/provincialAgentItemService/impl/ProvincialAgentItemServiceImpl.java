@@ -16,7 +16,7 @@ import java.util.Map;
 /**
  * @Description 
  * @ClassName ProvincialAgentItemServiceImpl
- * @Author 鲸落
+ * @Author 张孙峰
  * @date 2019.12.18 10:25
  */
 @Service
@@ -60,5 +60,33 @@ public class ProvincialAgentItemServiceImpl implements ProvincialAgentItemServic
         List<ProvincialAgentItem> provincialAgentItemList = provincialAgentItemMapper.findProvincialAgentItem(map);
         // TODO: 2019/12/18 待完善分页
         return DataResult.ok(provincialAgentItemList);
+    }
+
+    @Override
+    public DataResult updateProvincialAgentItem(ProvincialAgentItem provincialAgentItem) {
+        Map map = new HashMap();
+        map.put("provincialAgentItemId",provincialAgentItem.getProvincialAgentItemId());
+        map.put("provincialAgentId",provincialAgentItem.getProvincialAgentId());
+        map.put("provincialAgentName",provincialAgentItem.getProvincialAgentName());
+        map.put("itemId",provincialAgentItem.getItemId());
+        map.put("itemName",provincialAgentItem.getItemName());
+        map.put("classifyId",provincialAgentItem.getClassifyId());
+        map.put("classifyName",provincialAgentItem.getClassifyName());
+        map.put("provincialAgentItemOriginalPrice",provincialAgentItem.getProvincialAgentItemOriginalPrice());
+        map.put("provincialAgentItemPresentPrice",provincialAgentItem.getProvincialAgentItemPresentPrice());
+        map.put("provincialAgentItemUrl",provincialAgentItem.getProvincialAgentItemUrl());
+        map.put("stockNum",provincialAgentItem.getStockNum());
+        map.put("salesNum",provincialAgentItem.getSalesNum());
+        map.put("provincialAgentItemStatus",provincialAgentItem.getProvincialAgentItemStatus());
+        map.put("provincialAgentItemType",provincialAgentItem.getProvincialAgentItemType());
+        map.put("provincialAgentItemCreatedDate",provincialAgentItem.getProvincialAgentItemCreatedDate());
+        map.put("provincialAgentItemUpdatedDate",new Date());
+        map.put("provincialAgentItemDesc",provincialAgentItem.getProvincialAgentItemDesc());
+        int i = provincialAgentItemMapper.updateProvincialAgentItem(map);
+        if(i > 0){
+            return DataResult.build(200,"更新成功");
+        } else {
+            return DataResult.build(500,"更新失败，请重试");
+        }
     }
 }

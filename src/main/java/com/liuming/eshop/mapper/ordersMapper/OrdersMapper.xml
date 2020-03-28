@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.liuming.eshop.mapper.ordersMapper.OrdersMapper" >
+  <resultMap id="map" type="com.liuming.eshop.entity.ordersEntity.Orders" >
+    <id column="orders_id" property="ordersId" jdbcType="VARCHAR" />
+    <result column="item_id" property="itemId" jdbcType="VARCHAR" />
+    <result column="member_id" property="memberId" jdbcType="VARCHAR" />
+    <result column="commission_id" property="commissionId" jdbcType="VARCHAR" />
+    <result column="coupon_details_id" property="couponDetailsId" jdbcType="VARCHAR" />
+    <result column="member_distribution_address_id" property="memberDistributionAddressId" jdbcType="VARCHAR" />
+    <result column="unit_price" property="unitPrice" jdbcType="DOUBLE" />
+    <result column="item_num" property="itemNum" jdbcType="INTEGER" />
+    <result column="total_price" property="totalPrice" jdbcType="DOUBLE" />
+    <result column="sfsyyhq" property="sfsyyhq" jdbcType="INTEGER" />
+    <result column="pay_type" property="payType" jdbcType="INTEGER" />
+    <result column="pay_resul" property="payResul" jdbcType="INTEGER" />
+    <result column="pay_price" property="payPrice" jdbcType="DOUBLE" />
+    <result column="gmt_created" property="gmtCreated" jdbcType="TIMESTAMP" />
+    <result column="gmt_payment" property="gmtPayment" jdbcType="TIMESTAMP" />
+    <result column="gmt_refund" property="gmtRefund" jdbcType="TIMESTAMP" />
+    <result column="orders_status" property="ordersStatus" jdbcType="INTEGER" />
+    <result column="orders_create_date" property="ordersCreateDate" jdbcType="TIMESTAMP" />
+    <result column="orders_update_date" property="ordersUpdateDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="maps" type="com.liuming.eshop.entity.ordersEntity.Orders" extends="map" >
+    <result column="orders_desc" property="ordersDesc" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    orders_id, item_id, member_id, commission_id, coupon_details_id, member_distribution_address_id, 
+    unit_price, item_num, total_price, sfsyyhq, pay_type, pay_resul, pay_price, gmt_created, 
+    gmt_payment, gmt_refund, orders_status, orders_create_date, orders_update_date
+  </sql>
+  <sql id="Blob_Column_List" >
+    orders_desc
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="maps" parameterType="com.liuming.eshop.entity.ordersEntity.OrdersExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from orders
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="map" parameterType="com.liuming.eshop.entity.ordersEntity.OrdersExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from orders
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="maps" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from orders
+    where orders_id = #{ordersId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from orders
+    where orders_id = #{ordersId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.liuming.eshop.entity.ordersEntity.OrdersExample" >
+    delete from orders
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.liuming.eshop.entity.ordersEntity.Orders" >
+    insert into orders (orders_id, item_id, member_id, 
+      commission_id, coupon_details_id, member_distribution_address_id, 
+      unit_price, item_num, total_price, 
+      sfsyyhq, pay_type, pay_resul, 
+      pay_price, gmt_created, gmt_payment, 
+      gmt_refund, orders_status, orders_create_date, 
+      orders_update_date, orders_desc)
+    values (#{ordersId,jdbcType=VARCHAR}, #{itemId,jdbcType=VARCHAR}, #{memberId,jdbcType=VARCHAR}, 
+      #{commissionId,jdbcType=VARCHAR}, #{couponDetailsId,jdbcType=VARCHAR}, #{memberDistributionAddressId,jdbcType=VARCHAR}, 
+      #{unitPrice,jdbcType=DOUBLE}, #{itemNum,jdbcType=INTEGER}, #{totalPrice,jdbcType=DOUBLE}, 
+      #{sfsyyhq,jdbcType=INTEGER}, #{payType,jdbcType=INTEGER}, #{payResul,jdbcType=INTEGER}, 
+      #{payPrice,jdbcType=DOUBLE}, #{gmtCreated,jdbcType=TIMESTAMP}, #{gmtPayment,jdbcType=TIMESTAMP}, 
+      #{gmtRefund,jdbcType=TIMESTAMP}, #{ordersStatus,jdbcType=INTEGER}, #{ordersCreateDate,jdbcType=TIMESTAMP}, 
+      #{ordersUpdateDate,jdbcType=TIMESTAMP}, #{ordersDesc,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.liuming.eshop.entity.ordersEntity.Orders" >
+    insert into orders
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ordersId != null" >
+        orders_id,
+      </if>
+      <if test="itemId != null" >
+        item_id,
+      </if>
+      <if test="memberId != null" >
+        member_id,
+      </if>
+      <if test="commissionId != null" >
+        commission_id,
+      </if>
+      <if test="couponDetailsId != null" >
+        coupon_details_id,
+      </if>
+      <if test="memberDistributionAddressId != null" >
+        member_distribution_address_id,
+      </if>
+      <if test="unitPrice != null" >
+        unit_price,
+      </if>
+      <if test="itemNum != null" >
+        item_num,
+      </if>
+      <if test="totalPrice != null" >
+        total_price,
+      </if>
+      <if test="sfsyyhq != null" >
+        sfsyyhq,
+      </if>
+      <if test="payType != null" >
+        pay_type,
+      </if>
+      <if test="payResul != null" >
+        pay_resul,
+      </if>
+      <if test="payPrice != null" >
+        pay_price,
+      </if>
+      <if test="gmtCreated != null" >
+        gmt_created,
+      </if>
+      <if test="gmtPayment != null" >
+        gmt_payment,
+      </if>
+      <if test="gmtRefund != null" >
+        gmt_refund,
+      </if>
+      <if test="ordersStatus != null" >
+        orders_status,
+      </if>
+      <if test="ordersCreateDate != null" >
+        orders_create_date,
+      </if>
+      <if test="ordersUpdateDate != null" >
+        orders_update_date,
+      </if>
+      <if test="ordersDesc != null" >
+        orders_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ordersId != null" >
+        #{ordersId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemId != null" >
+        #{itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="memberId != null" >
+        #{memberId,jdbcType=VARCHAR},
+      </if>
+      <if test="commissionId != null" >
+        #{commissionId,jdbcType=VARCHAR},
+      </if>
+      <if test="couponDetailsId != null" >
+        #{couponDetailsId,jdbcType=VARCHAR},
+      </if>
+      <if test="memberDistributionAddressId != null" >
+        #{memberDistributionAddressId,jdbcType=VARCHAR},
+      </if>
+      <if test="unitPrice != null" >
+        #{unitPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="itemNum != null" >
+        #{itemNum,jdbcType=INTEGER},
+      </if>
+      <if test="totalPrice != null" >
+        #{totalPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="sfsyyhq != null" >
+        #{sfsyyhq,jdbcType=INTEGER},
+      </if>
+      <if test="payType != null" >
+        #{payType,jdbcType=INTEGER},
+      </if>
+      <if test="payResul != null" >
+        #{payResul,jdbcType=INTEGER},
+      </if>
+      <if test="payPrice != null" >
+        #{payPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="gmtCreated != null" >
+        #{gmtCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtPayment != null" >
+        #{gmtPayment,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtRefund != null" >
+        #{gmtRefund,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ordersStatus != null" >
+        #{ordersStatus,jdbcType=INTEGER},
+      </if>
+      <if test="ordersCreateDate != null" >
+        #{ordersCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ordersUpdateDate != null" >
+        #{ordersUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ordersDesc != null" >
+        #{ordersDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.liuming.eshop.entity.ordersEntity.OrdersExample" resultType="java.lang.Integer" >
+    select count(*) from orders
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update orders
+    <set >
+      <if test="record.ordersId != null" >
+        orders_id = #{record.ordersId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemId != null" >
+        item_id = #{record.itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.memberId != null" >
+        member_id = #{record.memberId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.commissionId != null" >
+        commission_id = #{record.commissionId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.couponDetailsId != null" >
+        coupon_details_id = #{record.couponDetailsId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.memberDistributionAddressId != null" >
+        member_distribution_address_id = #{record.memberDistributionAddressId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.unitPrice != null" >
+        unit_price = #{record.unitPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.itemNum != null" >
+        item_num = #{record.itemNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.totalPrice != null" >
+        total_price = #{record.totalPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.sfsyyhq != null" >
+        sfsyyhq = #{record.sfsyyhq,jdbcType=INTEGER},
+      </if>
+      <if test="record.payType != null" >
+        pay_type = #{record.payType,jdbcType=INTEGER},
+      </if>
+      <if test="record.payResul != null" >
+        pay_resul = #{record.payResul,jdbcType=INTEGER},
+      </if>
+      <if test="record.payPrice != null" >
+        pay_price = #{record.payPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.gmtCreated != null" >
+        gmt_created = #{record.gmtCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.gmtPayment != null" >
+        gmt_payment = #{record.gmtPayment,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.gmtRefund != null" >
+        gmt_refund = #{record.gmtRefund,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ordersStatus != null" >
+        orders_status = #{record.ordersStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.ordersCreateDate != null" >
+        orders_create_date = #{record.ordersCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ordersUpdateDate != null" >
+        orders_update_date = #{record.ordersUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ordersDesc != null" >
+        orders_desc = #{record.ordersDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update orders
+    set orders_id = #{record.ordersId,jdbcType=VARCHAR},
+      item_id = #{record.itemId,jdbcType=VARCHAR},
+      member_id = #{record.memberId,jdbcType=VARCHAR},
+      commission_id = #{record.commissionId,jdbcType=VARCHAR},
+      coupon_details_id = #{record.couponDetailsId,jdbcType=VARCHAR},
+      member_distribution_address_id = #{record.memberDistributionAddressId,jdbcType=VARCHAR},
+      unit_price = #{record.unitPrice,jdbcType=DOUBLE},
+      item_num = #{record.itemNum,jdbcType=INTEGER},
+      total_price = #{record.totalPrice,jdbcType=DOUBLE},
+      sfsyyhq = #{record.sfsyyhq,jdbcType=INTEGER},
+      pay_type = #{record.payType,jdbcType=INTEGER},
+      pay_resul = #{record.payResul,jdbcType=INTEGER},
+      pay_price = #{record.payPrice,jdbcType=DOUBLE},
+      gmt_created = #{record.gmtCreated,jdbcType=TIMESTAMP},
+      gmt_payment = #{record.gmtPayment,jdbcType=TIMESTAMP},
+      gmt_refund = #{record.gmtRefund,jdbcType=TIMESTAMP},
+      orders_status = #{record.ordersStatus,jdbcType=INTEGER},
+      orders_create_date = #{record.ordersCreateDate,jdbcType=TIMESTAMP},
+      orders_update_date = #{record.ordersUpdateDate,jdbcType=TIMESTAMP},
+      orders_desc = #{record.ordersDesc,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update orders
+    set orders_id = #{record.ordersId,jdbcType=VARCHAR},
+      item_id = #{record.itemId,jdbcType=VARCHAR},
+      member_id = #{record.memberId,jdbcType=VARCHAR},
+      commission_id = #{record.commissionId,jdbcType=VARCHAR},
+      coupon_details_id = #{record.couponDetailsId,jdbcType=VARCHAR},
+      member_distribution_address_id = #{record.memberDistributionAddressId,jdbcType=VARCHAR},
+      unit_price = #{record.unitPrice,jdbcType=DOUBLE},
+      item_num = #{record.itemNum,jdbcType=INTEGER},
+      total_price = #{record.totalPrice,jdbcType=DOUBLE},
+      sfsyyhq = #{record.sfsyyhq,jdbcType=INTEGER},
+      pay_type = #{record.payType,jdbcType=INTEGER},
+      pay_resul = #{record.payResul,jdbcType=INTEGER},
+      pay_price = #{record.payPrice,jdbcType=DOUBLE},
+      gmt_created = #{record.gmtCreated,jdbcType=TIMESTAMP},
+      gmt_payment = #{record.gmtPayment,jdbcType=TIMESTAMP},
+      gmt_refund = #{record.gmtRefund,jdbcType=TIMESTAMP},
+      orders_status = #{record.ordersStatus,jdbcType=INTEGER},
+      orders_create_date = #{record.ordersCreateDate,jdbcType=TIMESTAMP},
+      orders_update_date = #{record.ordersUpdateDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liuming.eshop.entity.ordersEntity.Orders" >
+    update orders
+    <set >
+      <if test="itemId != null" >
+        item_id = #{itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="memberId != null" >
+        member_id = #{memberId,jdbcType=VARCHAR},
+      </if>
+      <if test="commissionId != null" >
+        commission_id = #{commissionId,jdbcType=VARCHAR},
+      </if>
+      <if test="couponDetailsId != null" >
+        coupon_details_id = #{couponDetailsId,jdbcType=VARCHAR},
+      </if>
+      <if test="memberDistributionAddressId != null" >
+        member_distribution_address_id = #{memberDistributionAddressId,jdbcType=VARCHAR},
+      </if>
+      <if test="unitPrice != null" >
+        unit_price = #{unitPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="itemNum != null" >
+        item_num = #{itemNum,jdbcType=INTEGER},
+      </if>
+      <if test="totalPrice != null" >
+        total_price = #{totalPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="sfsyyhq != null" >
+        sfsyyhq = #{sfsyyhq,jdbcType=INTEGER},
+      </if>
+      <if test="payType != null" >
+        pay_type = #{payType,jdbcType=INTEGER},
+      </if>
+      <if test="payResul != null" >
+        pay_resul = #{payResul,jdbcType=INTEGER},
+      </if>
+      <if test="payPrice != null" >
+        pay_price = #{payPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="gmtCreated != null" >
+        gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtPayment != null" >
+        gmt_payment = #{gmtPayment,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtRefund != null" >
+        gmt_refund = #{gmtRefund,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ordersStatus != null" >
+        orders_status = #{ordersStatus,jdbcType=INTEGER},
+      </if>
+      <if test="ordersCreateDate != null" >
+        orders_create_date = #{ordersCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ordersUpdateDate != null" >
+        orders_update_date = #{ordersUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ordersDesc != null" >
+        orders_desc = #{ordersDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where orders_id = #{ordersId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.liuming.eshop.entity.ordersEntity.Orders" >
+    update orders
+    set item_id = #{itemId,jdbcType=VARCHAR},
+      member_id = #{memberId,jdbcType=VARCHAR},
+      commission_id = #{commissionId,jdbcType=VARCHAR},
+      coupon_details_id = #{couponDetailsId,jdbcType=VARCHAR},
+      member_distribution_address_id = #{memberDistributionAddressId,jdbcType=VARCHAR},
+      unit_price = #{unitPrice,jdbcType=DOUBLE},
+      item_num = #{itemNum,jdbcType=INTEGER},
+      total_price = #{totalPrice,jdbcType=DOUBLE},
+      sfsyyhq = #{sfsyyhq,jdbcType=INTEGER},
+      pay_type = #{payType,jdbcType=INTEGER},
+      pay_resul = #{payResul,jdbcType=INTEGER},
+      pay_price = #{payPrice,jdbcType=DOUBLE},
+      gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
+      gmt_payment = #{gmtPayment,jdbcType=TIMESTAMP},
+      gmt_refund = #{gmtRefund,jdbcType=TIMESTAMP},
+      orders_status = #{ordersStatus,jdbcType=INTEGER},
+      orders_create_date = #{ordersCreateDate,jdbcType=TIMESTAMP},
+      orders_update_date = #{ordersUpdateDate,jdbcType=TIMESTAMP},
+      orders_desc = #{ordersDesc,jdbcType=LONGVARCHAR}
+    where orders_id = #{ordersId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liuming.eshop.entity.ordersEntity.Orders" >
+    update orders
+    set item_id = #{itemId,jdbcType=VARCHAR},
+      member_id = #{memberId,jdbcType=VARCHAR},
+      commission_id = #{commissionId,jdbcType=VARCHAR},
+      coupon_details_id = #{couponDetailsId,jdbcType=VARCHAR},
+      member_distribution_address_id = #{memberDistributionAddressId,jdbcType=VARCHAR},
+      unit_price = #{unitPrice,jdbcType=DOUBLE},
+      item_num = #{itemNum,jdbcType=INTEGER},
+      total_price = #{totalPrice,jdbcType=DOUBLE},
+      sfsyyhq = #{sfsyyhq,jdbcType=INTEGER},
+      pay_type = #{payType,jdbcType=INTEGER},
+      pay_resul = #{payResul,jdbcType=INTEGER},
+      pay_price = #{payPrice,jdbcType=DOUBLE},
+      gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
+      gmt_payment = #{gmtPayment,jdbcType=TIMESTAMP},
+      gmt_refund = #{gmtRefund,jdbcType=TIMESTAMP},
+      orders_status = #{ordersStatus,jdbcType=INTEGER},
+      orders_create_date = #{ordersCreateDate,jdbcType=TIMESTAMP},
+      orders_update_date = #{ordersUpdateDate,jdbcType=TIMESTAMP}
+    where orders_id = #{ordersId,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="findOrders" resultMap="maps">
+    SELECT
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    FROM
+        orders
+    WHERE
+        1 = 1
+    <if test="map.ordersId != null" >
+      AND orders_id = #{map.ordersId,jdbcType=VARCHAR}
+    </if>
+    <if test="map.itemId != null" >
+      AND item_id = #{map.itemId,jdbcType=VARCHAR}
+    </if>
+    <if test="map.memberId != null" >
+      AND member_id = #{map.memberId,jdbcType=VARCHAR}
+    </if>
+    <if test="map.commissionId != null" >
+      AND commission_id = #{map.commissionId,jdbcType=VARCHAR}
+    </if>
+    <if test="map.couponDetailsId != null" >
+      AND coupon_details_id = #{map.couponDetailsId,jdbcType=VARCHAR}
+    </if>
+    <if test="map.memberDistributionAddressId != null" >
+      AND member_distribution_address_id = #{map.memberDistributionAddressId,jdbcType=VARCHAR}
+    </if>
+    <if test="map.unitPrice != null" >
+      AND unit_price = #{map.unitPrice,jdbcType=DOUBLE}
+    </if>
+    <if test="map.itemNum != null" >
+      AND item_num = #{map.itemNum,jdbcType=INTEGER}
+    </if>
+    <if test="map.totalPrice != null" >
+      AND total_price = #{map.totalPrice,jdbcType=DOUBLE}
+    </if>
+    <if test="map.sfsyyhq != null" >
+      AND sfsyyhq = #{map.sfsyyhq,jdbcType=INTEGER}
+    </if>
+    <if test="map.payType != null" >
+      AND pay_type = #{map.payType,jdbcType=INTEGER}
+    </if>
+    <if test="map.payResul != null" >
+      AND pay_resul = #{map.payResul,jdbcType=INTEGER}
+    </if>
+    <if test="map.payPrice != null" >
+      AND pay_price = #{map.payPrice,jdbcType=DOUBLE}
+    </if>
+    <if test="map.gmtCreated != null" >
+      AND gmt_created = #{map.gmtCreated,jdbcType=TIMESTAMP}
+    </if>
+    <if test="map.gmtPayment != null" >
+      AND gmt_payment = #{map.gmtPayment,jdbcType=TIMESTAMP}
+    </if>
+    <if test="map.gmtRefund != null" >
+      AND gmt_refund = #{map.gmtRefund,jdbcType=TIMESTAMP}
+    </if>
+    <if test="map.ordersStatus != null" >
+      AND orders_status = #{map.ordersStatus,jdbcType=INTEGER}
+    </if>
+    <if test="map.ordersCreateDate != null" >
+      AND orders_create_date = #{map.ordersCreateDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="map.ordersUpdateDate != null" >
+      AND orders_update_date = #{map.ordersUpdateDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="map.ordersDesc != null" >
+      AND orders_desc = #{map.ordersDesc,jdbcType=LONGVARCHAR}
+    </if>
+  </select>
+
+  <select id="findOrdersId" resultType="com.liuming.eshop.entity.ordersEntity.Orders" parameterType="java.lang.String" >
+    SELECT
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    FROM
+    orders
+    WHERE
+    orders_id = #{ordersId,jdbcType=VARCHAR}
+  </select>
+</mapper>

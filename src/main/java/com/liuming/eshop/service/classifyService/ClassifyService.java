@@ -6,5 +6,5 @@ import com.liuming.eshop.utils.DataResult;
 public interface ClassifyService {
     DataResult addClassify(Classify classify);
 
-    DataResult findClassify();
+    DataResult findClassify(Classify classify);
 }

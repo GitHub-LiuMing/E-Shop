@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.liuming.eshop.mapper.changeMapper.ChangeMapper" >
+  <resultMap id="map" type="com.liuming.eshop.entity.changeEntity.Change" >
+    <id column="change_id" property="changeId" jdbcType="VARCHAR" />
+    <result column="member_id" property="memberId" jdbcType="VARCHAR" />
+    <result column="change_price" property="changePrice" jdbcType="DOUBLE" />
+    <result column="change_type" property="changeType" jdbcType="INTEGER" />
+    <result column="change_status" property="changeStatus" jdbcType="INTEGER" />
+    <result column="change_create_date" property="changeCreateDate" jdbcType="TIMESTAMP" />
+    <result column="change_update_date" property="changeUpdateDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    change_id, member_id, change_price, change_type, change_status, change_create_date, 
+    change_update_date
+  </sql>
+  <select id="selectByExample" resultMap="map" parameterType="com.liuming.eshop.entity.changeEntity.ChangeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from change
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="map" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from change
+    where change_id = #{changeId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from change
+    where change_id = #{changeId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.liuming.eshop.entity.changeEntity.ChangeExample" >
+    delete from change
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.liuming.eshop.entity.changeEntity.Change" >
+    insert into change (change_id, member_id, change_price, 
+      change_type, change_status, change_create_date, 
+      change_update_date)
+    values (#{changeId,jdbcType=VARCHAR}, #{memberId,jdbcType=VARCHAR}, #{changePrice,jdbcType=DOUBLE}, 
+      #{changeType,jdbcType=INTEGER}, #{changeStatus,jdbcType=INTEGER}, #{changeCreateDate,jdbcType=TIMESTAMP}, 
+      #{changeUpdateDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.liuming.eshop.entity.changeEntity.Change" >
+    insert into change
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="changeId != null" >
+        change_id,
+      </if>
+      <if test="memberId != null" >
+        member_id,
+      </if>
+      <if test="changePrice != null" >
+        change_price,
+      </if>
+      <if test="changeType != null" >
+        change_type,
+      </if>
+      <if test="changeStatus != null" >
+        change_status,
+      </if>
+      <if test="changeCreateDate != null" >
+        change_create_date,
+      </if>
+      <if test="changeUpdateDate != null" >
+        change_update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="changeId != null" >
+        #{changeId,jdbcType=VARCHAR},
+      </if>
+      <if test="memberId != null" >
+        #{memberId,jdbcType=VARCHAR},
+      </if>
+      <if test="changePrice != null" >
+        #{changePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="changeType != null" >
+        #{changeType,jdbcType=INTEGER},
+      </if>
+      <if test="changeStatus != null" >
+        #{changeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="changeCreateDate != null" >
+        #{changeCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="changeUpdateDate != null" >
+        #{changeUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.liuming.eshop.entity.changeEntity.ChangeExample" resultType="java.lang.Integer" >
+    select count(*) from change
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update change
+    <set >
+      <if test="record.changeId != null" >
+        change_id = #{record.changeId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.memberId != null" >
+        member_id = #{record.memberId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.changePrice != null" >
+        change_price = #{record.changePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.changeType != null" >
+        change_type = #{record.changeType,jdbcType=INTEGER},
+      </if>
+      <if test="record.changeStatus != null" >
+        change_status = #{record.changeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.changeCreateDate != null" >
+        change_create_date = #{record.changeCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.changeUpdateDate != null" >
+        change_update_date = #{record.changeUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update change
+    set change_id = #{record.changeId,jdbcType=VARCHAR},
+      member_id = #{record.memberId,jdbcType=VARCHAR},
+      change_price = #{record.changePrice,jdbcType=DOUBLE},
+      change_type = #{record.changeType,jdbcType=INTEGER},
+      change_status = #{record.changeStatus,jdbcType=INTEGER},
+      change_create_date = #{record.changeCreateDate,jdbcType=TIMESTAMP},
+      change_update_date = #{record.changeUpdateDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liuming.eshop.entity.changeEntity.Change" >
+    update change
+    <set >
+      <if test="memberId != null" >
+        member_id = #{memberId,jdbcType=VARCHAR},
+      </if>
+      <if test="changePrice != null" >
+        change_price = #{changePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="changeType != null" >
+        change_type = #{changeType,jdbcType=INTEGER},
+      </if>
+      <if test="changeStatus != null" >
+        change_status = #{changeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="changeCreateDate != null" >
+        change_create_date = #{changeCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="changeUpdateDate != null" >
+        change_update_date = #{changeUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where change_id = #{changeId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liuming.eshop.entity.changeEntity.Change" >
+    update change
+    set member_id = #{memberId,jdbcType=VARCHAR},
+      change_price = #{changePrice,jdbcType=DOUBLE},
+      change_type = #{changeType,jdbcType=INTEGER},
+      change_status = #{changeStatus,jdbcType=INTEGER},
+      change_create_date = #{changeCreateDate,jdbcType=TIMESTAMP},
+      change_update_date = #{changeUpdateDate,jdbcType=TIMESTAMP}
+    where change_id = #{changeId,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="findChange" resultMap="map">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM
+        change
+    WHERE
+        1 = 1
+    <if test="map.changeId != null" >
+      AND change_id = #{map.changeId,jdbcType=VARCHAR}
+    </if>
+    <if test="map.memberId != null" >
+      AND member_id = #{map.memberId,jdbcType=VARCHAR}
+    </if>
+    <if test="map.changePrice != null" >
+      AND change_price = #{map.changePrice,jdbcType=DOUBLE}
+    </if>
+    <if test="map.changeType != null" >
+      AND change_type = #{map.changeType,jdbcType=INTEGER}
+    </if>
+    <if test="map.changeStatus != null" >
+      AND change_status = #{map.changeStatus,jdbcType=INTEGER}
+    </if>
+    <if test="map.changeCreateDate != null" >
+      AND change_create_date = #{map.changeCreateDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="map.changeUpdateDate != null" >
+      AND change_update_date = #{map.changeUpdateDate,jdbcType=TIMESTAMP}
+    </if>
+  </select>
+</mapper>

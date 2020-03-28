@@ -4,6 +4,7 @@
   <resultMap id="map" type="com.liuming.eshop.entity.provincialAgentEntity.ProvincialAgent" >
     <id column="provincial_agent_id" property="provincialAgentId" jdbcType="VARCHAR" />
     <result column="provincial_agent_name" property="provincialAgentName" jdbcType="VARCHAR" />
+    <result column="province_code" property="provinceCode" jdbcType="INTEGER" />
     <result column="member_id" property="memberId" jdbcType="VARCHAR" />
     <result column="member_name" property="memberName" jdbcType="VARCHAR" />
     <result column="provincial_agent_status" property="provincialAgentStatus" jdbcType="INTEGER" />
@@ -68,16 +69,16 @@
       </foreach>
     </where>
   </sql>
-  <sql id="list" >
-    provincial_agent_id, provincial_agent_name, member_id, member_name, provincial_agent_status, 
-    provincial_agent_created_date, provincial_agent_updated_date
+  <sql id="Base_Column_List" >
+    provincial_agent_id, provincial_agent_name, province_code, member_id, member_name, 
+    provincial_agent_status, provincial_agent_created_date, provincial_agent_updated_date
   </sql>
   <select id="selectByExample" resultMap="map" parameterType="com.liuming.eshop.entity.provincialAgentEntity.ProvincialAgentExample" >
     select
     <if test="distinct" >
       distinct
     </if>
-    <include refid="list" />
+    <include refid="Base_Column_List" />
     from provincial_agent
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -88,7 +89,7 @@
   </select>
   <select id="selectByPrimaryKey" resultMap="map" parameterType="java.lang.String" >
     select 
-    <include refid="list" />
+    <include refid="Base_Column_List" />
     from provincial_agent
     where provincial_agent_id = #{provincialAgentId,jdbcType=VARCHAR}
   </select>
@@ -104,13 +105,13 @@
   </delete>
   <insert id="insert" parameterType="com.liuming.eshop.entity.provincialAgentEntity.ProvincialAgent" >
     insert into provincial_agent (provincial_agent_id, provincial_agent_name, 
-      member_id, member_name, provincial_agent_status, 
-      provincial_agent_created_date, provincial_agent_updated_date
-      )
+      province_code, member_id, member_name, 
+      provincial_agent_status, provincial_agent_created_date, 
+      provincial_agent_updated_date)
     values (#{provincialAgentId,jdbcType=VARCHAR}, #{provincialAgentName,jdbcType=VARCHAR}, 
-      #{memberId,jdbcType=VARCHAR}, #{memberName,jdbcType=VARCHAR}, #{provincialAgentStatus,jdbcType=INTEGER}, 
-      #{provincialAgentCreatedDate,jdbcType=TIMESTAMP}, #{provincialAgentUpdatedDate,jdbcType=TIMESTAMP}
-      )
+      #{provinceCode,jdbcType=INTEGER}, #{memberId,jdbcType=VARCHAR}, #{memberName,jdbcType=VARCHAR}, 
+      #{provincialAgentStatus,jdbcType=INTEGER}, #{provincialAgentCreatedDate,jdbcType=TIMESTAMP}, 
+      #{provincialAgentUpdatedDate,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.liuming.eshop.entity.provincialAgentEntity.ProvincialAgent" >
     insert into provincial_agent
@@ -120,6 +121,9 @@
       </if>
       <if test="provincialAgentName != null" >
         provincial_agent_name,
+      </if>
+      <if test="provinceCode != null" >
+        province_code,
       </if>
       <if test="memberId != null" >
         member_id,
@@ -143,6 +147,9 @@
       </if>
       <if test="provincialAgentName != null" >
         #{provincialAgentName,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceCode != null" >
+        #{provinceCode,jdbcType=INTEGER},
       </if>
       <if test="memberId != null" >
         #{memberId,jdbcType=VARCHAR},
@@ -176,6 +183,9 @@
       <if test="record.provincialAgentName != null" >
         provincial_agent_name = #{record.provincialAgentName,jdbcType=VARCHAR},
       </if>
+      <if test="record.provinceCode != null" >
+        province_code = #{record.provinceCode,jdbcType=INTEGER},
+      </if>
       <if test="record.memberId != null" >
         member_id = #{record.memberId,jdbcType=VARCHAR},
       </if>
@@ -200,6 +210,7 @@
     update provincial_agent
     set provincial_agent_id = #{record.provincialAgentId,jdbcType=VARCHAR},
       provincial_agent_name = #{record.provincialAgentName,jdbcType=VARCHAR},
+      province_code = #{record.provinceCode,jdbcType=INTEGER},
       member_id = #{record.memberId,jdbcType=VARCHAR},
       member_name = #{record.memberName,jdbcType=VARCHAR},
       provincial_agent_status = #{record.provincialAgentStatus,jdbcType=INTEGER},
@@ -214,6 +225,9 @@
     <set >
       <if test="provincialAgentName != null" >
         provincial_agent_name = #{provincialAgentName,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceCode != null" >
+        province_code = #{provinceCode,jdbcType=INTEGER},
       </if>
       <if test="memberId != null" >
         member_id = #{memberId,jdbcType=VARCHAR},
@@ -236,6 +250,7 @@
   <update id="updateByPrimaryKey" parameterType="com.liuming.eshop.entity.provincialAgentEntity.ProvincialAgent" >
     update provincial_agent
     set provincial_agent_name = #{provincialAgentName,jdbcType=VARCHAR},
+      province_code = #{provinceCode,jdbcType=INTEGER},
       member_id = #{memberId,jdbcType=VARCHAR},
       member_name = #{memberName,jdbcType=VARCHAR},
       provincial_agent_status = #{provincialAgentStatus,jdbcType=INTEGER},
@@ -246,28 +261,34 @@
 
   <select id="findProvincialAgent" resultMap="map">
     SELECT
-        <include refid="list" />
+        <include refid="Base_Column_List" />
     FROM
         provincial_agent
     WHERE
         1 = 1
-    <if test="provincialAgentName != null" >
-      AND provincial_agent_name = #{provincialAgentName,jdbcType=VARCHAR}
+    <if test="map.provincialAgentId != null" >
+      AND provincial_agent_id = #{map.provincialAgentId,jdbcType=VARCHAR}
     </if>
-    <if test="memberId != null" >
-      AND member_id = #{memberId,jdbcType=VARCHAR}
+    <if test="map.provincialAgentName != null" >
+      AND provincial_agent_name = #{map.provincialAgentName,jdbcType=VARCHAR}
     </if>
-    <if test="memberName != null" >
-      AND member_name = #{memberName,jdbcType=VARCHAR}
+    <if test="map.provinceCode != null" >
+      AND province_code = #{map.provinceCode,jdbcType=INTEGER}
     </if>
-    <if test="provincialAgentStatus != null" >
-      AND provincial_agent_status = #{provincialAgentStatus,jdbcType=INTEGER}
+    <if test="map.memberId != null" >
+      AND member_id = #{map.memberId,jdbcType=VARCHAR}
     </if>
-    <if test="provincialAgentCreatedDate != null" >
-      AND provincial_agent_created_date = #{provincialAgentCreatedDate,jdbcType=TIMESTAMP}
+    <if test="map.memberName != null" >
+      AND member_name = #{map.memberName,jdbcType=VARCHAR}
     </if>
-    <if test="provincialAgentUpdatedDate != null" >
-      AND provincial_agent_updated_date = #{provincialAgentUpdatedDate,jdbcType=TIMESTAMP}
+    <if test="map.provincialAgentStatus != null" >
+      AND provincial_agent_status = #{map.provincialAgentStatus,jdbcType=INTEGER}
+    </if>
+    <if test="map.provincialAgentCreatedDate != null" >
+      AND provincial_agent_created_date = #{map.provincialAgentCreatedDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="map.provincialAgentUpdatedDate != null" >
+      AND provincial_agent_updated_date = #{map.provincialAgentUpdatedDate,jdbcType=TIMESTAMP}
     </if>
   </select>
 </mapper>

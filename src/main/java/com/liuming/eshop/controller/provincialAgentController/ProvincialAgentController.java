@@ -12,7 +12,7 @@ import javax.annotation.Resource;
 /**
  * @Description 省代(店铺基本信息)
  * @ClassName ProvincialAgentController
- * @Author 鲸落
+ * @Author 张孙峰
  * @date 2019.12.16 14:09
  */
 @RestController
@@ -25,15 +25,15 @@ public class ProvincialAgentController {
      * @Description 新增省代
      * @param provincialAgent
      * @return com.liuming.eshop.utils.DataResult
-     * @Author 鲸落
+     * @Author 张孙峰
      * @Date 2019.12.17 14:03
      */
     @RequestMapping("/addProvincialAgent")
     public DataResult addProvincialAgent(ProvincialAgent provincialAgent){
-        if (StringUtils.isNotBlank(provincialAgent.getProvincialAgentName()) && StringUtils.isNotBlank(provincialAgent.getMemberId()) && StringUtils.isNotBlank(provincialAgent.getMemberName())){
+        if (StringUtils.isNotBlank(provincialAgent.getProvincialAgentName()) && StringUtils.isNotBlank(provincialAgent.getMemberId()) && StringUtils.isNotBlank(provincialAgent.getMemberName()) && provincialAgent.getProvinceCode() != null){
             return provincialAgentService.addProvincialAgent(provincialAgent);
         } else {
-            return DataResult.build(500,"省代名称、会员ID、会员名不得为空");
+            return DataResult.build(500,"省代名称、省份代码、会员ID、会员名不得为空");
         }
     }
 
@@ -41,7 +41,7 @@ public class ProvincialAgentController {
      * @Description 查询省代
      * @param provincialAgent
      * @return com.liuming.eshop.utils.DataResult
-     * @Author 鲸落
+     * @Author 张孙峰
      * @Date 2019.12.17 14:03
      */
     @RequestMapping("/findProvincialAgent")

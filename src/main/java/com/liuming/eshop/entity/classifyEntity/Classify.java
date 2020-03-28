@@ -16,7 +16,7 @@ public class Classify {
 
     private Date classifyCreateDate;
 
-    private Date classifyModifiedDate;
+    private Date classifyUpdateDate;
 
     private String classifyDesc;
 }

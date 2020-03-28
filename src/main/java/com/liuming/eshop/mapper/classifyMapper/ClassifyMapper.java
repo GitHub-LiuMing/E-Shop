@@ -3,13 +3,12 @@ package com.liuming.eshop.mapper.classifyMapper;
 import com.liuming.eshop.entity.classifyEntity.Classify;
 import com.liuming.eshop.entity.classifyEntity.ClassifyExample;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Component;
 
 @Mapper
-@Component
 public interface ClassifyMapper {
     int countByExample(ClassifyExample example);
 
@@ -39,5 +38,5 @@ public interface ClassifyMapper {
 
     int updateByPrimaryKey(Classify record);
 
-    List<Classify> findClassify();
+    List<Classify> findClassify(@Param("map") Map map);
 }

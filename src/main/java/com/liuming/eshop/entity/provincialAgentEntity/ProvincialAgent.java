@@ -10,6 +10,8 @@ public class ProvincialAgent {
 
     private String provincialAgentName;
 
+    private Integer provinceCode;
+
     private String memberId;
 
     private String memberName;

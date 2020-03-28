@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @Description 积分详情
  * @ClassName PointsDetailsController
- * @Author 鲸落
+ * @Author 张孙峰
  * @date 2019.08.05 09:21
  */
 @RestController
@@ -25,7 +25,7 @@ public class PointsDetailsController {
      * @Description 添加积分详情
      * @param pointsDetails
      * @return com.liuming.eshop.utils.DataResult
-     * @Author 鲸落
+     * @Author 张孙峰
      * @Date 2019.08.06 16:52
      */
     @RequestMapping("/addPointsDetails")
@@ -37,7 +37,7 @@ public class PointsDetailsController {
      * @Description 通过会员ID查询该会员积分详情
      * @param memberId
      * @return com.liuming.eshop.utils.DataResult
-     * @Author 鲸落
+     * @Author 张孙峰
      * @Date 2019.12.14 14:09
      */
     @RequestMapping("/findPointsDetails")

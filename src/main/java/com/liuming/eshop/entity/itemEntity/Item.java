@@ -14,6 +14,10 @@ public class Item {
 
     private String classifyName;
 
+    private String commissionId;
+
+    private String logisticsTemplateId;
+
     private Double itemOriginalPrice;
 
     private Double itemPresentPrice;
@@ -31,6 +35,14 @@ public class Item {
     private Integer notMemberDiscountedStatus;
 
     private Double notMemberDiscounted;
+
+    private Integer gmsxjf;
+
+    private Integer mrxg;
+
+    private Integer mrmtxg;
+
+    private Integer sfsyyhq;
 
     private Integer itemStatus;
 

@@ -526,4 +526,59 @@
       AND provincial_agent_item_desc = #{map.provincialAgentItemDesc,jdbcType=LONGVARCHAR}
     </if>
   </select>
+  
+  <update id="updateProvincialAgentItem">
+    update provincial_agent_item
+    <set >
+      <if test="map.provincialAgentId != null" >
+        provincial_agent_id = #{map.provincialAgentId,jdbcType=VARCHAR},
+      </if>
+      <if test="map.provincialAgentName != null" >
+        provincial_agent_name = #{map.provincialAgentName,jdbcType=VARCHAR},
+      </if>
+      <if test="map.itemId != null" >
+        item_id = #{map.itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="map.itemName != null" >
+        item_name = #{map.itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="map.classifyId != null" >
+        classify_id = #{map.classifyId,jdbcType=VARCHAR},
+      </if>
+      <if test="map.classifyName != null" >
+        classify_name = #{map.classifyName,jdbcType=VARCHAR},
+      </if>
+      <if test="map.provincialAgentItemOriginalPrice != null" >
+        provincial_agent_item_original_price = #{map.provincialAgentItemOriginalPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="map.provincialAgentItemPresentPrice != null" >
+        provincial_agent_item_present_price = #{map.provincialAgentItemPresentPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="map.provincialAgentItemUrl != null" >
+        provincial_agent_item_url = #{map.provincialAgentItemUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="map.stockNum != null" >
+        stock_num = #{map.stockNum,jdbcType=INTEGER},
+      </if>
+      <if test="map.salesNum != null" >
+        sales_num = #{map.salesNum,jdbcType=INTEGER},
+      </if>
+      <if test="map.provincialAgentItemStatus != null" >
+        provincial_agent_item_status = #{map.provincialAgentItemStatus,jdbcType=INTEGER},
+      </if>
+      <if test="map.provincialAgentItemType != null" >
+        provincial_agent_item_type = #{map.provincialAgentItemType,jdbcType=INTEGER},
+      </if>
+      <if test="map.provincialAgentItemCreatedDate != null" >
+        provincial_agent_item_created_date = #{map.provincialAgentItemCreatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="map.provincialAgentItemUpdatedDate != null" >
+        provincial_agent_item_updated_date = #{map.provincialAgentItemUpdatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="map.provincialAgentItemDesc != null" >
+        provincial_agent_item_desc = #{map.provincialAgentItemDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where provincial_agent_item_id = #{map.provincialAgentItemId,jdbcType=VARCHAR}
+  </update>
 </mapper>

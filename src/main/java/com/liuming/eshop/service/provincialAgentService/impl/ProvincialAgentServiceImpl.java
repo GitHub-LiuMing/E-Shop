@@ -18,7 +18,7 @@ import java.util.Map;
 /**
  * @Description 
  * @ClassName ProvincialAgentServiceImpl
- * @Author 鲸落
+ * @Author 张孙峰
  * @date 2019.12.16 14:08
  */
 @Service
@@ -60,6 +60,7 @@ public class ProvincialAgentServiceImpl implements ProvincialAgentService {
         Map map = new HashMap();
         map.put("provincialAgentId",provincialAgent.getProvincialAgentId());
         map.put("provincialAgentName",provincialAgent.getProvincialAgentName());
+        map.put("provinceCode",provincialAgent.getProvinceCode());
         map.put("memberId",provincialAgent.getMemberId());
         map.put("memberName",provincialAgent.getMemberName());
         map.put("provincialAgentStatus",provincialAgent.getProvincialAgentStatus());

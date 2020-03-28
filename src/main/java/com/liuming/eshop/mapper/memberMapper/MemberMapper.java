@@ -33,4 +33,6 @@ public interface MemberMapper {
     int updateByPrimaryKey(Member record);
 
     List<Member> findMember(@Param("map") Map map);
+
+    int updateMemberPassword(@Param("map") Map map);
 }

@@ -17,7 +17,7 @@ import java.util.Map;
 /**
  * @Description 
  * @ClassName MemberServiceImpl
- * @Author 鲸落
+ * @Author 张孙峰
  * @date 2019.12.12 15:01
  */
 @Service
@@ -54,11 +54,15 @@ public class MemberServiceImpl implements MemberService {
         map.put("memberWechatName",member.getMemberWechatName());
         map.put("memberPhone",member.getMemberPhone());
         map.put("memberHeadPortraitUrl",member.getMemberHeadPortraitUrl());
-        map.put("memberPassword",member.getMemberPassword());
+        //密码不能用作解析数据，无法加密和解密，所以该接口无法对密码这个参数进行查询
+        //map.put("memberPassword",BCrypt.checkpw(member.getMemberPassword()));
         map.put("memberSalt",member.getMemberSalt());
-        map.put("memberProvince",member.getMemberProvince());
-        map.put("memberCity",member.getMemberCity());
-        map.put("memberDistrict",member.getMemberDistrict());
+        map.put("memberProvinceCode",member.getMemberProvinceCode());
+        map.put("memberProvinceName",member.getMemberProvinceName());
+        map.put("memberCityCode",member.getMemberCityCode());
+        map.put("memberCityName",member.getMemberCityName());
+        map.put("memberDistrictCode",member.getMemberDistrictCode());
+        map.put("memberDistrictName",member.getMemberDistrictName());
         map.put("memberAddressDesc",member.getMemberAddressDesc());
         map.put("memberCertification",member.getMemberCertification());
         map.put("memberStatus",member.getMemberStatus());
@@ -71,5 +75,59 @@ public class MemberServiceImpl implements MemberService {
         map.put("memberUpdatedDate",member.getMemberUpdatedDate());
         List<Member> memberList = memberMapper.findMember(map);
         return DataResult.ok(memberList);
+    }
+
+    @Override
+    public DataResult login(Member member) {
+        member.setMemberId(IDUtils.getId());
+        member.setMemberPassword(BCrypt.hashpw(member.getMemberPassword(), BCrypt.gensalt()));
+        member.setMemberCreatedDate(new Date());
+        member.setMemberUpdatedDate(new Date());
+        member.setMemberLevelId("201911131414218960269");
+        member.setMemberLevelName("高级会员1");
+        member.setMemberProvinceCode(27);
+        member.setMemberProvinceName("陕西省");
+        member.setMemberCityCode(309);
+        member.setMemberCityName("西安市");
+        member.setMemberDistrictCode(2492);
+        member.setMemberDistrictName("雁塔区");
+        member.setPreMemberId("123");
+        int i = memberMapper.insertSelective(member);
+        if (i > 0){
+            return DataResult.build(200,"会员加入成功");
+        } else {
+            return DataResult.build(500,"会员加入失败，请重试");
+        }
+    }
+
+    @Override
+    public DataResult findMemberPassword(Member member) {
+        Map map = new HashMap();
+        map.put("memberPhone",member.getMemberPhone());
+        List<Member> memberList = memberMapper.findMember(map);
+        if (memberList.size() > 0){
+            return DataResult.ok(memberList);
+            /*boolean checkpw = BCrypt.checkpw(member.getMemberPassword(), memberList.get(0).getMemberPassword());
+            if (checkpw){
+                return DataResult.ok(memberList);
+            } else {
+                return DataResult.build(500,"该会员信息不符");
+            }*/
+        } else {
+            return DataResult.build(500,"该用户不存在");
+        }
+    }
+
+    @Override
+    public DataResult updateMemberPassword(Member member) {
+        Map map = new HashMap();
+        map.put("memberPhone",member.getMemberPhone());
+        map.put("memberPassword",BCrypt.hashpw(member.getMemberPassword(), BCrypt.gensalt()));
+        int i = memberMapper.updateMemberPassword(map);
+        if (i > 0){
+            return DataResult.build(200,"密码更新成功");
+        } else {
+            return DataResult.build(500,"密码更新失败，请重试");
+        }
     }
 }

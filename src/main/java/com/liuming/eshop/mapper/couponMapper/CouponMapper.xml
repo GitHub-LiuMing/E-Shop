@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.liuming.eshop.mapper.couponMapper.CouponMapper" >
+  <resultMap id="map" type="com.liuming.eshop.entity.couponEntity.Coupon" >
+    <id column="coupon_id" property="couponId" jdbcType="VARCHAR" />
+    <result column="coupon_name" property="couponName" jdbcType="VARCHAR" />
+    <result column="coupon_zdje" property="couponZdje" jdbcType="DOUBLE" />
+    <result column="coupon_yhzk" property="couponYhzk" jdbcType="DOUBLE" />
+    <result column="member_level" property="memberLevel" jdbcType="VARCHAR" />
+    <result column="orders_price" property="ordersPrice" jdbcType="DOUBLE" />
+    <result column="coupon_num" property="couponNum" jdbcType="INTEGER" />
+    <result column="item" property="item" jdbcType="VARCHAR" />
+    <result column="coupon_start_time" property="couponStartTime" jdbcType="DATE" />
+    <result column="coupon_end_time" property="couponEndTime" jdbcType="DATE" />
+    <result column="coupon_status" property="couponStatus" jdbcType="INTEGER" />
+    <result column="coupon_create_date" property="couponCreateDate" jdbcType="TIMESTAMP" />
+    <result column="coupon_update_date" property="couponUpdateDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="maps" type="com.liuming.eshop.entity.couponEntity.Coupon" extends="map" >
+    <result column="coupon_desc" property="couponDesc" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    coupon_id, coupon_name, coupon_zdje, coupon_yhzk, member_level, orders_price, coupon_num, 
+    item, coupon_start_time, coupon_end_time, coupon_status, coupon_create_date, coupon_update_date
+  </sql>
+  <sql id="Blob_Column_List" >
+    coupon_desc
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="maps" parameterType="com.liuming.eshop.entity.couponEntity.CouponExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from coupon
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="map" parameterType="com.liuming.eshop.entity.couponEntity.CouponExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from coupon
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="maps" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from coupon
+    where coupon_id = #{couponId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from coupon
+    where coupon_id = #{couponId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.liuming.eshop.entity.couponEntity.CouponExample" >
+    delete from coupon
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.liuming.eshop.entity.couponEntity.Coupon" >
+    insert into coupon (coupon_id, coupon_name, coupon_zdje, 
+      coupon_yhzk, member_level, orders_price, 
+      coupon_num, item, coupon_start_time, 
+      coupon_end_time, coupon_status, coupon_create_date, 
+      coupon_update_date, coupon_desc)
+    values (#{couponId,jdbcType=VARCHAR}, #{couponName,jdbcType=VARCHAR}, #{couponZdje,jdbcType=DOUBLE}, 
+      #{couponYhzk,jdbcType=DOUBLE}, #{memberLevel,jdbcType=VARCHAR}, #{ordersPrice,jdbcType=DOUBLE}, 
+      #{couponNum,jdbcType=INTEGER}, #{item,jdbcType=VARCHAR}, #{couponStartTime,jdbcType=DATE}, 
+      #{couponEndTime,jdbcType=DATE}, #{couponStatus,jdbcType=INTEGER}, #{couponCreateDate,jdbcType=TIMESTAMP}, 
+      #{couponUpdateDate,jdbcType=TIMESTAMP}, #{couponDesc,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.liuming.eshop.entity.couponEntity.Coupon" >
+    insert into coupon
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="couponId != null" >
+        coupon_id,
+      </if>
+      <if test="couponName != null" >
+        coupon_name,
+      </if>
+      <if test="couponZdje != null" >
+        coupon_zdje,
+      </if>
+      <if test="couponYhzk != null" >
+        coupon_yhzk,
+      </if>
+      <if test="memberLevel != null" >
+        member_level,
+      </if>
+      <if test="ordersPrice != null" >
+        orders_price,
+      </if>
+      <if test="couponNum != null" >
+        coupon_num,
+      </if>
+      <if test="item != null" >
+        item,
+      </if>
+      <if test="couponStartTime != null" >
+        coupon_start_time,
+      </if>
+      <if test="couponEndTime != null" >
+        coupon_end_time,
+      </if>
+      <if test="couponStatus != null" >
+        coupon_status,
+      </if>
+      <if test="couponCreateDate != null" >
+        coupon_create_date,
+      </if>
+      <if test="couponUpdateDate != null" >
+        coupon_update_date,
+      </if>
+      <if test="couponDesc != null" >
+        coupon_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="couponId != null" >
+        #{couponId,jdbcType=VARCHAR},
+      </if>
+      <if test="couponName != null" >
+        #{couponName,jdbcType=VARCHAR},
+      </if>
+      <if test="couponZdje != null" >
+        #{couponZdje,jdbcType=DOUBLE},
+      </if>
+      <if test="couponYhzk != null" >
+        #{couponYhzk,jdbcType=DOUBLE},
+      </if>
+      <if test="memberLevel != null" >
+        #{memberLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="ordersPrice != null" >
+        #{ordersPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="couponNum != null" >
+        #{couponNum,jdbcType=INTEGER},
+      </if>
+      <if test="item != null" >
+        #{item,jdbcType=VARCHAR},
+      </if>
+      <if test="couponStartTime != null" >
+        #{couponStartTime,jdbcType=DATE},
+      </if>
+      <if test="couponEndTime != null" >
+        #{couponEndTime,jdbcType=DATE},
+      </if>
+      <if test="couponStatus != null" >
+        #{couponStatus,jdbcType=INTEGER},
+      </if>
+      <if test="couponCreateDate != null" >
+        #{couponCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="couponUpdateDate != null" >
+        #{couponUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="couponDesc != null" >
+        #{couponDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.liuming.eshop.entity.couponEntity.CouponExample" resultType="java.lang.Integer" >
+    select count(*) from coupon
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update coupon
+    <set >
+      <if test="record.couponId != null" >
+        coupon_id = #{record.couponId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.couponName != null" >
+        coupon_name = #{record.couponName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.couponZdje != null" >
+        coupon_zdje = #{record.couponZdje,jdbcType=DOUBLE},
+      </if>
+      <if test="record.couponYhzk != null" >
+        coupon_yhzk = #{record.couponYhzk,jdbcType=DOUBLE},
+      </if>
+      <if test="record.memberLevel != null" >
+        member_level = #{record.memberLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ordersPrice != null" >
+        orders_price = #{record.ordersPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.couponNum != null" >
+        coupon_num = #{record.couponNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.item != null" >
+        item = #{record.item,jdbcType=VARCHAR},
+      </if>
+      <if test="record.couponStartTime != null" >
+        coupon_start_time = #{record.couponStartTime,jdbcType=DATE},
+      </if>
+      <if test="record.couponEndTime != null" >
+        coupon_end_time = #{record.couponEndTime,jdbcType=DATE},
+      </if>
+      <if test="record.couponStatus != null" >
+        coupon_status = #{record.couponStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.couponCreateDate != null" >
+        coupon_create_date = #{record.couponCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.couponUpdateDate != null" >
+        coupon_update_date = #{record.couponUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.couponDesc != null" >
+        coupon_desc = #{record.couponDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update coupon
+    set coupon_id = #{record.couponId,jdbcType=VARCHAR},
+      coupon_name = #{record.couponName,jdbcType=VARCHAR},
+      coupon_zdje = #{record.couponZdje,jdbcType=DOUBLE},
+      coupon_yhzk = #{record.couponYhzk,jdbcType=DOUBLE},
+      member_level = #{record.memberLevel,jdbcType=VARCHAR},
+      orders_price = #{record.ordersPrice,jdbcType=DOUBLE},
+      coupon_num = #{record.couponNum,jdbcType=INTEGER},
+      item = #{record.item,jdbcType=VARCHAR},
+      coupon_start_time = #{record.couponStartTime,jdbcType=DATE},
+      coupon_end_time = #{record.couponEndTime,jdbcType=DATE},
+      coupon_status = #{record.couponStatus,jdbcType=INTEGER},
+      coupon_create_date = #{record.couponCreateDate,jdbcType=TIMESTAMP},
+      coupon_update_date = #{record.couponUpdateDate,jdbcType=TIMESTAMP},
+      coupon_desc = #{record.couponDesc,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update coupon
+    set coupon_id = #{record.couponId,jdbcType=VARCHAR},
+      coupon_name = #{record.couponName,jdbcType=VARCHAR},
+      coupon_zdje = #{record.couponZdje,jdbcType=DOUBLE},
+      coupon_yhzk = #{record.couponYhzk,jdbcType=DOUBLE},
+      member_level = #{record.memberLevel,jdbcType=VARCHAR},
+      orders_price = #{record.ordersPrice,jdbcType=DOUBLE},
+      coupon_num = #{record.couponNum,jdbcType=INTEGER},
+      item = #{record.item,jdbcType=VARCHAR},
+      coupon_start_time = #{record.couponStartTime,jdbcType=DATE},
+      coupon_end_time = #{record.couponEndTime,jdbcType=DATE},
+      coupon_status = #{record.couponStatus,jdbcType=INTEGER},
+      coupon_create_date = #{record.couponCreateDate,jdbcType=TIMESTAMP},
+      coupon_update_date = #{record.couponUpdateDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liuming.eshop.entity.couponEntity.Coupon" >
+    update coupon
+    <set >
+      <if test="couponName != null" >
+        coupon_name = #{couponName,jdbcType=VARCHAR},
+      </if>
+      <if test="couponZdje != null" >
+        coupon_zdje = #{couponZdje,jdbcType=DOUBLE},
+      </if>
+      <if test="couponYhzk != null" >
+        coupon_yhzk = #{couponYhzk,jdbcType=DOUBLE},
+      </if>
+      <if test="memberLevel != null" >
+        member_level = #{memberLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="ordersPrice != null" >
+        orders_price = #{ordersPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="couponNum != null" >
+        coupon_num = #{couponNum,jdbcType=INTEGER},
+      </if>
+      <if test="item != null" >
+        item = #{item,jdbcType=VARCHAR},
+      </if>
+      <if test="couponStartTime != null" >
+        coupon_start_time = #{couponStartTime,jdbcType=DATE},
+      </if>
+      <if test="couponEndTime != null" >
+        coupon_end_time = #{couponEndTime,jdbcType=DATE},
+      </if>
+      <if test="couponStatus != null" >
+        coupon_status = #{couponStatus,jdbcType=INTEGER},
+      </if>
+      <if test="couponCreateDate != null" >
+        coupon_create_date = #{couponCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="couponUpdateDate != null" >
+        coupon_update_date = #{couponUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="couponDesc != null" >
+        coupon_desc = #{couponDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where coupon_id = #{couponId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.liuming.eshop.entity.couponEntity.Coupon" >
+    update coupon
+    set coupon_name = #{couponName,jdbcType=VARCHAR},
+      coupon_zdje = #{couponZdje,jdbcType=DOUBLE},
+      coupon_yhzk = #{couponYhzk,jdbcType=DOUBLE},
+      member_level = #{memberLevel,jdbcType=VARCHAR},
+      orders_price = #{ordersPrice,jdbcType=DOUBLE},
+      coupon_num = #{couponNum,jdbcType=INTEGER},
+      item = #{item,jdbcType=VARCHAR},
+      coupon_start_time = #{couponStartTime,jdbcType=DATE},
+      coupon_end_time = #{couponEndTime,jdbcType=DATE},
+      coupon_status = #{couponStatus,jdbcType=INTEGER},
+      coupon_create_date = #{couponCreateDate,jdbcType=TIMESTAMP},
+      coupon_update_date = #{couponUpdateDate,jdbcType=TIMESTAMP},
+      coupon_desc = #{couponDesc,jdbcType=LONGVARCHAR}
+    where coupon_id = #{couponId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liuming.eshop.entity.couponEntity.Coupon" >
+    update coupon
+    set coupon_name = #{couponName,jdbcType=VARCHAR},
+      coupon_zdje = #{couponZdje,jdbcType=DOUBLE},
+      coupon_yhzk = #{couponYhzk,jdbcType=DOUBLE},
+      member_level = #{memberLevel,jdbcType=VARCHAR},
+      orders_price = #{ordersPrice,jdbcType=DOUBLE},
+      coupon_num = #{couponNum,jdbcType=INTEGER},
+      item = #{item,jdbcType=VARCHAR},
+      coupon_start_time = #{couponStartTime,jdbcType=DATE},
+      coupon_end_time = #{couponEndTime,jdbcType=DATE},
+      coupon_status = #{couponStatus,jdbcType=INTEGER},
+      coupon_create_date = #{couponCreateDate,jdbcType=TIMESTAMP},
+      coupon_update_date = #{couponUpdateDate,jdbcType=TIMESTAMP}
+    where coupon_id = #{couponId,jdbcType=VARCHAR}
+  </update>
+
+  <select id="findCoupon" resultMap="map">
+    SELECT
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    FROM
+        coupon
+    WHERE
+        1 = 1
+    <if test="map.couponId != null" >
+      AND coupon_id = #{map.couponId,jdbcType=VARCHAR}
+    </if>
+    <if test="map.couponName != null" >
+      AND coupon_name = #{map.couponName,jdbcType=VARCHAR}
+    </if>
+    <if test="map.couponZdje != null" >
+      AND coupon_zdje = #{map.couponZdje,jdbcType=DOUBLE}
+    </if>
+    <if test="map.couponYhzk != null" >
+      AND coupon_yhzk = #{map.couponYhzk,jdbcType=DOUBLE}
+    </if>
+    <if test="map.memberLevel != null" >
+      AND member_level = #{map.memberLevel,jdbcType=VARCHAR}
+    </if>
+    <if test="map.ordersPrice != null" >
+      AND orders_price = #{map.ordersPrice,jdbcType=DOUBLE}
+    </if>
+    <if test="map.couponNum != null" >
+      AND coupon_num = #{map.couponNum,jdbcType=INTEGER}
+    </if>
+    <if test="map.item != null" >
+      AND item = #{map.item,jdbcType=VARCHAR}
+    </if>
+    <if test="map.couponStartTime != null" >
+      AND coupon_start_time = #{map.couponStartTime,jdbcType=DATE}
+    </if>
+    <if test="map.couponEndTime != null" >
+      AND coupon_end_time = #{map.couponEndTime,jdbcType=DATE}
+    </if>
+    <if test="map.couponStatus != null" >
+      AND coupon_status = #{map.couponStatus,jdbcType=INTEGER}
+    </if>
+    <if test="map.couponCreateDate != null" >
+      AND coupon_create_date = #{map.couponCreateDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="map.couponUpdateDate != null" >
+      AND coupon_update_date = #{map.couponUpdateDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="map.couponDesc != null" >
+      AND coupon_desc = #{map.couponDesc,jdbcType=LONGVARCHAR}
+    </if>
+  </select>
+</mapper>

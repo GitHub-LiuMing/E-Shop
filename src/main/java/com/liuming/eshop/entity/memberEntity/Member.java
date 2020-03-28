@@ -34,11 +34,17 @@ public class Member {
 
     private String memberSalt;
 
-    private String memberProvince;
+    private Integer memberProvinceCode;
 
-    private String memberCity;
+    private String memberProvinceName;
 
-    private String memberDistrict;
+    private Integer memberCityCode;
+
+    private String memberCityName;
+
+    private Integer memberDistrictCode;
+
+    private String memberDistrictName;
 
     private String memberAddressDesc;
 

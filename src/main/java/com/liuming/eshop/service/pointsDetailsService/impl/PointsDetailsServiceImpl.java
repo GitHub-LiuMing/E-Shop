@@ -15,7 +15,7 @@ import java.util.*;
 /**
  * @Description 积分详情
  * @ClassName PointsDetailsServiceImpl
- * @Author 鲸落
+ * @Author 张孙峰
  * @date 2019.08.05 09:22
  */
 @Service

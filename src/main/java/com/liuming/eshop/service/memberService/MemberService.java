@@ -7,4 +7,10 @@ public interface MemberService {
     DataResult addMember(Member member);
 
     DataResult findMember(Member member);
+
+    DataResult login(Member member);
+
+    DataResult findMemberPassword(Member member);
+
+    DataResult updateMemberPassword(Member member);
 }

@@ -1082,213 +1082,393 @@ public class MemberExample {
             return (Criteria) this;
         }
 
-        public Criteria andMemberProvinceIsNull() {
-            addCriterion("member_province is null");
+        public Criteria andMemberProvinceCodeIsNull() {
+            addCriterion("member_province_code is null");
             return (Criteria) this;
         }
 
-        public Criteria andMemberProvinceIsNotNull() {
-            addCriterion("member_province is not null");
+        public Criteria andMemberProvinceCodeIsNotNull() {
+            addCriterion("member_province_code is not null");
             return (Criteria) this;
         }
 
-        public Criteria andMemberProvinceEqualTo(String value) {
-            addCriterion("member_province =", value, "memberProvince");
+        public Criteria andMemberProvinceCodeEqualTo(Integer value) {
+            addCriterion("member_province_code =", value, "memberProvinceCode");
             return (Criteria) this;
         }
 
-        public Criteria andMemberProvinceNotEqualTo(String value) {
-            addCriterion("member_province <>", value, "memberProvince");
+        public Criteria andMemberProvinceCodeNotEqualTo(Integer value) {
+            addCriterion("member_province_code <>", value, "memberProvinceCode");
             return (Criteria) this;
         }
 
-        public Criteria andMemberProvinceGreaterThan(String value) {
-            addCriterion("member_province >", value, "memberProvince");
+        public Criteria andMemberProvinceCodeGreaterThan(Integer value) {
+            addCriterion("member_province_code >", value, "memberProvinceCode");
             return (Criteria) this;
         }
 
-        public Criteria andMemberProvinceGreaterThanOrEqualTo(String value) {
-            addCriterion("member_province >=", value, "memberProvince");
+        public Criteria andMemberProvinceCodeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("member_province_code >=", value, "memberProvinceCode");
             return (Criteria) this;
         }
 
-        public Criteria andMemberProvinceLessThan(String value) {
-            addCriterion("member_province <", value, "memberProvince");
+        public Criteria andMemberProvinceCodeLessThan(Integer value) {
+            addCriterion("member_province_code <", value, "memberProvinceCode");
             return (Criteria) this;
         }
 
-        public Criteria andMemberProvinceLessThanOrEqualTo(String value) {
-            addCriterion("member_province <=", value, "memberProvince");
+        public Criteria andMemberProvinceCodeLessThanOrEqualTo(Integer value) {
+            addCriterion("member_province_code <=", value, "memberProvinceCode");
             return (Criteria) this;
         }
 
-        public Criteria andMemberProvinceLike(String value) {
-            addCriterion("member_province like", value, "memberProvince");
+        public Criteria andMemberProvinceCodeIn(List<Integer> values) {
+            addCriterion("member_province_code in", values, "memberProvinceCode");
             return (Criteria) this;
         }
 
-        public Criteria andMemberProvinceNotLike(String value) {
-            addCriterion("member_province not like", value, "memberProvince");
+        public Criteria andMemberProvinceCodeNotIn(List<Integer> values) {
+            addCriterion("member_province_code not in", values, "memberProvinceCode");
             return (Criteria) this;
         }
 
-        public Criteria andMemberProvinceIn(List<String> values) {
-            addCriterion("member_province in", values, "memberProvince");
+        public Criteria andMemberProvinceCodeBetween(Integer value1, Integer value2) {
+            addCriterion("member_province_code between", value1, value2, "memberProvinceCode");
             return (Criteria) this;
         }
 
-        public Criteria andMemberProvinceNotIn(List<String> values) {
-            addCriterion("member_province not in", values, "memberProvince");
+        public Criteria andMemberProvinceCodeNotBetween(Integer value1, Integer value2) {
+            addCriterion("member_province_code not between", value1, value2, "memberProvinceCode");
             return (Criteria) this;
         }
 
-        public Criteria andMemberProvinceBetween(String value1, String value2) {
-            addCriterion("member_province between", value1, value2, "memberProvince");
+        public Criteria andMemberProvinceNameIsNull() {
+            addCriterion("member_province_name is null");
             return (Criteria) this;
         }
 
-        public Criteria andMemberProvinceNotBetween(String value1, String value2) {
-            addCriterion("member_province not between", value1, value2, "memberProvince");
+        public Criteria andMemberProvinceNameIsNotNull() {
+            addCriterion("member_province_name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andMemberCityIsNull() {
-            addCriterion("member_city is null");
+        public Criteria andMemberProvinceNameEqualTo(String value) {
+            addCriterion("member_province_name =", value, "memberProvinceName");
             return (Criteria) this;
         }
 
-        public Criteria andMemberCityIsNotNull() {
-            addCriterion("member_city is not null");
+        public Criteria andMemberProvinceNameNotEqualTo(String value) {
+            addCriterion("member_province_name <>", value, "memberProvinceName");
             return (Criteria) this;
         }
 
-        public Criteria andMemberCityEqualTo(String value) {
-            addCriterion("member_city =", value, "memberCity");
+        public Criteria andMemberProvinceNameGreaterThan(String value) {
+            addCriterion("member_province_name >", value, "memberProvinceName");
             return (Criteria) this;
         }
 
-        public Criteria andMemberCityNotEqualTo(String value) {
-            addCriterion("member_city <>", value, "memberCity");
+        public Criteria andMemberProvinceNameGreaterThanOrEqualTo(String value) {
+            addCriterion("member_province_name >=", value, "memberProvinceName");
             return (Criteria) this;
         }
 
-        public Criteria andMemberCityGreaterThan(String value) {
-            addCriterion("member_city >", value, "memberCity");
+        public Criteria andMemberProvinceNameLessThan(String value) {
+            addCriterion("member_province_name <", value, "memberProvinceName");
             return (Criteria) this;
         }
 
-        public Criteria andMemberCityGreaterThanOrEqualTo(String value) {
-            addCriterion("member_city >=", value, "memberCity");
+        public Criteria andMemberProvinceNameLessThanOrEqualTo(String value) {
+            addCriterion("member_province_name <=", value, "memberProvinceName");
             return (Criteria) this;
         }
 
-        public Criteria andMemberCityLessThan(String value) {
-            addCriterion("member_city <", value, "memberCity");
+        public Criteria andMemberProvinceNameLike(String value) {
+            addCriterion("member_province_name like", value, "memberProvinceName");
             return (Criteria) this;
         }
 
-        public Criteria andMemberCityLessThanOrEqualTo(String value) {
-            addCriterion("member_city <=", value, "memberCity");
+        public Criteria andMemberProvinceNameNotLike(String value) {
+            addCriterion("member_province_name not like", value, "memberProvinceName");
             return (Criteria) this;
         }
 
-        public Criteria andMemberCityLike(String value) {
-            addCriterion("member_city like", value, "memberCity");
+        public Criteria andMemberProvinceNameIn(List<String> values) {
+            addCriterion("member_province_name in", values, "memberProvinceName");
             return (Criteria) this;
         }
 
-        public Criteria andMemberCityNotLike(String value) {
-            addCriterion("member_city not like", value, "memberCity");
+        public Criteria andMemberProvinceNameNotIn(List<String> values) {
+            addCriterion("member_province_name not in", values, "memberProvinceName");
             return (Criteria) this;
         }
 
-        public Criteria andMemberCityIn(List<String> values) {
-            addCriterion("member_city in", values, "memberCity");
+        public Criteria andMemberProvinceNameBetween(String value1, String value2) {
+            addCriterion("member_province_name between", value1, value2, "memberProvinceName");
             return (Criteria) this;
         }
 
-        public Criteria andMemberCityNotIn(List<String> values) {
-            addCriterion("member_city not in", values, "memberCity");
+        public Criteria andMemberProvinceNameNotBetween(String value1, String value2) {
+            addCriterion("member_province_name not between", value1, value2, "memberProvinceName");
             return (Criteria) this;
         }
 
-        public Criteria andMemberCityBetween(String value1, String value2) {
-            addCriterion("member_city between", value1, value2, "memberCity");
+        public Criteria andMemberCityCodeIsNull() {
+            addCriterion("member_city_code is null");
             return (Criteria) this;
         }
 
-        public Criteria andMemberCityNotBetween(String value1, String value2) {
-            addCriterion("member_city not between", value1, value2, "memberCity");
+        public Criteria andMemberCityCodeIsNotNull() {
+            addCriterion("member_city_code is not null");
             return (Criteria) this;
         }
 
-        public Criteria andMemberDistrictIsNull() {
-            addCriterion("member_district is null");
+        public Criteria andMemberCityCodeEqualTo(Integer value) {
+            addCriterion("member_city_code =", value, "memberCityCode");
             return (Criteria) this;
         }
 
-        public Criteria andMemberDistrictIsNotNull() {
-            addCriterion("member_district is not null");
+        public Criteria andMemberCityCodeNotEqualTo(Integer value) {
+            addCriterion("member_city_code <>", value, "memberCityCode");
             return (Criteria) this;
         }
 
-        public Criteria andMemberDistrictEqualTo(String value) {
-            addCriterion("member_district =", value, "memberDistrict");
+        public Criteria andMemberCityCodeGreaterThan(Integer value) {
+            addCriterion("member_city_code >", value, "memberCityCode");
             return (Criteria) this;
         }
 
-        public Criteria andMemberDistrictNotEqualTo(String value) {
-            addCriterion("member_district <>", value, "memberDistrict");
+        public Criteria andMemberCityCodeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("member_city_code >=", value, "memberCityCode");
             return (Criteria) this;
         }
 
-        public Criteria andMemberDistrictGreaterThan(String value) {
-            addCriterion("member_district >", value, "memberDistrict");
+        public Criteria andMemberCityCodeLessThan(Integer value) {
+            addCriterion("member_city_code <", value, "memberCityCode");
             return (Criteria) this;
         }
 
-        public Criteria andMemberDistrictGreaterThanOrEqualTo(String value) {
-            addCriterion("member_district >=", value, "memberDistrict");
+        public Criteria andMemberCityCodeLessThanOrEqualTo(Integer value) {
+            addCriterion("member_city_code <=", value, "memberCityCode");
             return (Criteria) this;
         }
 
-        public Criteria andMemberDistrictLessThan(String value) {
-            addCriterion("member_district <", value, "memberDistrict");
+        public Criteria andMemberCityCodeIn(List<Integer> values) {
+            addCriterion("member_city_code in", values, "memberCityCode");
             return (Criteria) this;
         }
 
-        public Criteria andMemberDistrictLessThanOrEqualTo(String value) {
-            addCriterion("member_district <=", value, "memberDistrict");
+        public Criteria andMemberCityCodeNotIn(List<Integer> values) {
+            addCriterion("member_city_code not in", values, "memberCityCode");
             return (Criteria) this;
         }
 
-        public Criteria andMemberDistrictLike(String value) {
-            addCriterion("member_district like", value, "memberDistrict");
+        public Criteria andMemberCityCodeBetween(Integer value1, Integer value2) {
+            addCriterion("member_city_code between", value1, value2, "memberCityCode");
             return (Criteria) this;
         }
 
-        public Criteria andMemberDistrictNotLike(String value) {
-            addCriterion("member_district not like", value, "memberDistrict");
+        public Criteria andMemberCityCodeNotBetween(Integer value1, Integer value2) {
+            addCriterion("member_city_code not between", value1, value2, "memberCityCode");
             return (Criteria) this;
         }
 
-        public Criteria andMemberDistrictIn(List<String> values) {
-            addCriterion("member_district in", values, "memberDistrict");
+        public Criteria andMemberCityNameIsNull() {
+            addCriterion("member_city_name is null");
             return (Criteria) this;
         }
 
-        public Criteria andMemberDistrictNotIn(List<String> values) {
-            addCriterion("member_district not in", values, "memberDistrict");
+        public Criteria andMemberCityNameIsNotNull() {
+            addCriterion("member_city_name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andMemberDistrictBetween(String value1, String value2) {
-            addCriterion("member_district between", value1, value2, "memberDistrict");
+        public Criteria andMemberCityNameEqualTo(String value) {
+            addCriterion("member_city_name =", value, "memberCityName");
             return (Criteria) this;
         }
 
-        public Criteria andMemberDistrictNotBetween(String value1, String value2) {
-            addCriterion("member_district not between", value1, value2, "memberDistrict");
+        public Criteria andMemberCityNameNotEqualTo(String value) {
+            addCriterion("member_city_name <>", value, "memberCityName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberCityNameGreaterThan(String value) {
+            addCriterion("member_city_name >", value, "memberCityName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberCityNameGreaterThanOrEqualTo(String value) {
+            addCriterion("member_city_name >=", value, "memberCityName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberCityNameLessThan(String value) {
+            addCriterion("member_city_name <", value, "memberCityName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberCityNameLessThanOrEqualTo(String value) {
+            addCriterion("member_city_name <=", value, "memberCityName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberCityNameLike(String value) {
+            addCriterion("member_city_name like", value, "memberCityName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberCityNameNotLike(String value) {
+            addCriterion("member_city_name not like", value, "memberCityName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberCityNameIn(List<String> values) {
+            addCriterion("member_city_name in", values, "memberCityName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberCityNameNotIn(List<String> values) {
+            addCriterion("member_city_name not in", values, "memberCityName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberCityNameBetween(String value1, String value2) {
+            addCriterion("member_city_name between", value1, value2, "memberCityName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberCityNameNotBetween(String value1, String value2) {
+            addCriterion("member_city_name not between", value1, value2, "memberCityName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberDistrictCodeIsNull() {
+            addCriterion("member_district_code is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberDistrictCodeIsNotNull() {
+            addCriterion("member_district_code is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberDistrictCodeEqualTo(Integer value) {
+            addCriterion("member_district_code =", value, "memberDistrictCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberDistrictCodeNotEqualTo(Integer value) {
+            addCriterion("member_district_code <>", value, "memberDistrictCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberDistrictCodeGreaterThan(Integer value) {
+            addCriterion("member_district_code >", value, "memberDistrictCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberDistrictCodeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("member_district_code >=", value, "memberDistrictCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberDistrictCodeLessThan(Integer value) {
+            addCriterion("member_district_code <", value, "memberDistrictCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberDistrictCodeLessThanOrEqualTo(Integer value) {
+            addCriterion("member_district_code <=", value, "memberDistrictCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberDistrictCodeIn(List<Integer> values) {
+            addCriterion("member_district_code in", values, "memberDistrictCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberDistrictCodeNotIn(List<Integer> values) {
+            addCriterion("member_district_code not in", values, "memberDistrictCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberDistrictCodeBetween(Integer value1, Integer value2) {
+            addCriterion("member_district_code between", value1, value2, "memberDistrictCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberDistrictCodeNotBetween(Integer value1, Integer value2) {
+            addCriterion("member_district_code not between", value1, value2, "memberDistrictCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberDistrictNameIsNull() {
+            addCriterion("member_district_name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberDistrictNameIsNotNull() {
+            addCriterion("member_district_name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberDistrictNameEqualTo(String value) {
+            addCriterion("member_district_name =", value, "memberDistrictName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberDistrictNameNotEqualTo(String value) {
+            addCriterion("member_district_name <>", value, "memberDistrictName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberDistrictNameGreaterThan(String value) {
+            addCriterion("member_district_name >", value, "memberDistrictName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberDistrictNameGreaterThanOrEqualTo(String value) {
+            addCriterion("member_district_name >=", value, "memberDistrictName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberDistrictNameLessThan(String value) {
+            addCriterion("member_district_name <", value, "memberDistrictName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberDistrictNameLessThanOrEqualTo(String value) {
+            addCriterion("member_district_name <=", value, "memberDistrictName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberDistrictNameLike(String value) {
+            addCriterion("member_district_name like", value, "memberDistrictName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberDistrictNameNotLike(String value) {
+            addCriterion("member_district_name not like", value, "memberDistrictName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberDistrictNameIn(List<String> values) {
+            addCriterion("member_district_name in", values, "memberDistrictName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberDistrictNameNotIn(List<String> values) {
+            addCriterion("member_district_name not in", values, "memberDistrictName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberDistrictNameBetween(String value1, String value2) {
+            addCriterion("member_district_name between", value1, value2, "memberDistrictName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberDistrictNameNotBetween(String value1, String value2) {
+            addCriterion("member_district_name not between", value1, value2, "memberDistrictName");
             return (Criteria) this;
         }
 
