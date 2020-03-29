@@ -8,159 +8,6 @@
     <list default="true" id="791cd9c2-41dc-4aa5-928a-2dc824116e8b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eshop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/eshop.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/provincialAgentController/ProvincialAgentController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/provincialAgentItemController/ProvincialAgentItemController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/provincialAgentEntity/ProvincialAgent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/provincialAgentEntity/ProvincialAgentExample.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/provincialAgentItemEntity/ProvincialAgentItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/provincialAgentItemEntity/ProvincialAgentItemExample.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/provincialAgentItemMapper/ProvincialAgentItemMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/provincialAgentItemMapper/ProvincialAgentItemMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/provincialAgentMapper/ProvincialAgentMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/provincialAgentMapper/ProvincialAgentMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/ordersService/impl/OrdersServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/ordersService/impl/OrdersServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/provincialAgentItemService/ProvincialAgentItemService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/provincialAgentItemService/impl/ProvincialAgentItemServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/provincialAgentService/ProvincialAgentService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/provincialAgentService/impl/ProvincialAgentServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/EshopApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/EshopApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/config/CorsConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/config/CorsConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/cityController/CityController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/cityController/CityController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/classifyController/ClassifyController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/classifyController/ClassifyController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/districtController/DistrictController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/districtController/DistrictController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/itemController/ItemController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/itemController/ItemController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/memberController/MemberController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/memberController/MemberController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/memberLevelController/MemberLevelController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/memberLevelController/MemberLevelController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/pointsDetailsController/PointsDetailsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/pointsDetailsController/PointsDetailsController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/provincialAgentController/ProvincialAgentController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/provincialAgentItemController/ProvincialAgentItemController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/qiniuController/QiniuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/qiniuController/QiniuController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/signController/SignController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/signController/SignController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/userController/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/userController/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/baseEntity/BaseEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/baseEntity/BaseEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/cityEntity/City.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/cityEntity/City.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/cityEntity/CityExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/cityEntity/CityExample$Criteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/cityEntity/CityExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/cityEntity/CityExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/cityEntity/CityExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/cityEntity/CityExample$GeneratedCriteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/cityEntity/CityExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/cityEntity/CityExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/classifyEntity/Classify.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/classifyEntity/Classify.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/classifyEntity/ClassifyExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/classifyEntity/ClassifyExample$Criteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/classifyEntity/ClassifyExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/classifyEntity/ClassifyExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/classifyEntity/ClassifyExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/classifyEntity/ClassifyExample$GeneratedCriteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/classifyEntity/ClassifyExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/classifyEntity/ClassifyExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/districtEntity/District.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/districtEntity/District.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/districtEntity/DistrictExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/districtEntity/DistrictExample$Criteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/districtEntity/DistrictExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/districtEntity/DistrictExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/districtEntity/DistrictExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/districtEntity/DistrictExample$GeneratedCriteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/districtEntity/DistrictExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/districtEntity/DistrictExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/itemEntity/Item.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/itemEntity/Item.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/itemEntity/ItemExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/itemEntity/ItemExample$Criteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/itemEntity/ItemExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/itemEntity/ItemExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/itemEntity/ItemExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/itemEntity/ItemExample$GeneratedCriteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/itemEntity/ItemExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/itemEntity/ItemExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/memberEntity/Member.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/memberEntity/Member.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/memberEntity/MemberExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/memberEntity/MemberExample$Criteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/memberEntity/MemberExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/memberEntity/MemberExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/memberEntity/MemberExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/memberEntity/MemberExample$GeneratedCriteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/memberEntity/MemberExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/memberEntity/MemberExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/memberLevelEntity/MemberLevel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/memberLevelEntity/MemberLevel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/memberLevelEntity/MemberLevelExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/memberLevelEntity/MemberLevelExample$Criteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/memberLevelEntity/MemberLevelExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/memberLevelEntity/MemberLevelExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/memberLevelEntity/MemberLevelExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/memberLevelEntity/MemberLevelExample$GeneratedCriteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/memberLevelEntity/MemberLevelExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/memberLevelEntity/MemberLevelExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/pointsDetailsEntity/PointsDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/pointsDetailsEntity/PointsDetails.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/pointsDetailsEntity/PointsDetailsExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/pointsDetailsEntity/PointsDetailsExample$Criteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/pointsDetailsEntity/PointsDetailsExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/pointsDetailsEntity/PointsDetailsExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/pointsDetailsEntity/PointsDetailsExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/pointsDetailsEntity/PointsDetailsExample$GeneratedCriteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/pointsDetailsEntity/PointsDetailsExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/pointsDetailsEntity/PointsDetailsExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/pointsEntity/Points.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/pointsEntity/Points.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/pointsEntity/PointsExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/pointsEntity/PointsExample$Criteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/pointsEntity/PointsExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/pointsEntity/PointsExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/pointsEntity/PointsExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/pointsEntity/PointsExample$GeneratedCriteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/pointsEntity/PointsExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/pointsEntity/PointsExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provinceEntity/Province.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provinceEntity/Province.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provinceEntity/ProvinceExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provinceEntity/ProvinceExample$Criteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provinceEntity/ProvinceExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provinceEntity/ProvinceExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provinceEntity/ProvinceExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provinceEntity/ProvinceExample$GeneratedCriteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provinceEntity/ProvinceExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provinceEntity/ProvinceExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentEntity/ProvincialAgent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentEntity/ProvincialAgentExample$Criteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentEntity/ProvincialAgentExample$Criterion.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentEntity/ProvincialAgentExample$GeneratedCriteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentEntity/ProvincialAgentExample.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentItemEntity/ProvincialAgentItem.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentItemEntity/ProvincialAgentItemExample$Criteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentItemEntity/ProvincialAgentItemExample$Criterion.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentItemEntity/ProvincialAgentItemExample$GeneratedCriteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentItemEntity/ProvincialAgentItemExample.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/signEntity/Sign.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/signEntity/Sign.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/signEntity/SignExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/signEntity/SignExample$Criteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/signEntity/SignExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/signEntity/SignExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/signEntity/SignExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/signEntity/SignExample$GeneratedCriteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/signEntity/SignExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/signEntity/SignExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/sysLogEntity/SysLog.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/sysLogEntity/SysLog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/sysLogEntity/SysLogExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/sysLogEntity/SysLogExample$Criteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/sysLogEntity/SysLogExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/sysLogEntity/SysLogExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/sysLogEntity/SysLogExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/sysLogEntity/SysLogExample$GeneratedCriteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/sysLogEntity/SysLogExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/sysLogEntity/SysLogExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/userEntity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/userEntity/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/userEntity/UserExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/userEntity/UserExample$Criteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/userEntity/UserExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/userEntity/UserExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/userEntity/UserExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/userEntity/UserExample$GeneratedCriteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/userEntity/UserExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/userEntity/UserExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/cityMapper/CityMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/cityMapper/CityMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/classifyMapper/ClassifyMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/classifyMapper/ClassifyMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/districtMapper/DistrictMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/districtMapper/DistrictMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/itemMapper/ItemMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/itemMapper/ItemMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/memberLevelMapper/MemberLevelMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/memberLevelMapper/MemberLevelMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/memberMapper/MemberMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/memberMapper/MemberMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/pointsDetailsMapper/PointsDetailsMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/pointsDetailsMapper/PointsDetailsMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/pointsMapper/PointsMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/pointsMapper/PointsMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/provinceMapper/ProvinceMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/provinceMapper/ProvinceMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/provincialAgentItemMapper/ProvincialAgentItemMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/provincialAgentItemMapper/ProvincialAgentItemMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/provincialAgentMapper/ProvincialAgentMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/provincialAgentMapper/ProvincialAgentMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/signMapper/SignMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/signMapper/SignMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/sysLogMapper/SysLogMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/sysLogMapper/SysLogMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/userMapper/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/userMapper/UserMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/cityService/CityService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/cityService/CityService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/cityService/impl/CityServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/cityService/impl/CityServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/classifyService/ClassifyService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/classifyService/ClassifyService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/classifyService/impl/ClassifyServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/classifyService/impl/ClassifyServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/districtService/DistrictService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/districtService/DistrictService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/districtService/impl/DistrictServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/districtService/impl/DistrictServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/itemService/ItemService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/itemService/ItemService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/itemService/impl/ItemServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/itemService/impl/ItemServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/memberLevelService/MemberLevelService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/memberLevelService/MemberLevelService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/memberLevelService/impl/MemberLevelServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/memberLevelService/impl/MemberLevelServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/memberService/MemberService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/memberService/MemberService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/memberService/impl/MemberServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/memberService/impl/MemberServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/pointsDetailsService/PointsDetailsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/pointsDetailsService/PointsDetailsService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/pointsDetailsService/impl/PointsDetailsServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/pointsDetailsService/impl/PointsDetailsServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/provincialAgentItemService/ProvincialAgentItemService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/provincialAgentItemService/impl/ProvincialAgentItemServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/provincialAgentService/ProvincialAgentService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/provincialAgentService/impl/ProvincialAgentServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/qiniuService/Impl/QiniuServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/qiniuService/Impl/QiniuServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/qiniuService/QiniuService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/qiniuService/QiniuService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/signService/SignService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/signService/SignService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/signService/impl/SignServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/signService/impl/SignServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/sysLogService/SysLogService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/sysLogService/SysLogService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/sysLogService/impl/SysLogServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/sysLogService/impl/SysLogServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/userService/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/userService/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/userService/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/userService/impl/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/utils/BCrypt.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/utils/BCrypt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/utils/DataResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/utils/DataResult.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/utils/DateUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/utils/DateUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/utils/IDUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/utils/IDUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/utils/IpUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/utils/IpUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/utils/PageBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/utils/PageBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/utils/SpringUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/utils/SpringUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/utils/UUIDUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/utils/UUIDUtil.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -563,7 +410,7 @@
       <workItem from="1585363333898" duration="7000" />
       <workItem from="1585363376935" duration="13288000" />
       <workItem from="1585483453659" duration="581000" />
-      <workItem from="1585484068740" duration="1236000" />
+      <workItem from="1585484068740" duration="1509000" />
     </task>
     <task id="LOCAL-00001" summary="update .gitignore">
       <created>1564110360341</created>
@@ -670,7 +517,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576663475957</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="修改Github上的项目语言">
+      <created>1585485490768</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1585485490768</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -703,7 +557,8 @@
     <MESSAGE value="解决一些TODO和新增一些接口" />
     <MESSAGE value="修改商品表代码，增加省代（店铺基本信息）代码" />
     <MESSAGE value="修改用户注册和登录代码，新增省代商品和查询省代商品代码" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改用户注册和登录代码，新增省代商品和查询省代商品代码" />
+    <MESSAGE value="修改Github上的项目语言" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改Github上的项目语言" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="181" key="#Plugins" timestamp="1584675605654">
@@ -735,6 +590,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="427" y="448" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585384148332" />
+    <state x="1301" y="297" key="CommitChangelistDialog2" timestamp="1585485485703">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1301" y="297" key="CommitChangelistDialog2/0.0.3440.1400@0.0.3440.1400" timestamp="1585485485703" />
     <state width="630" height="466" key="DebuggerActiveHint" timestamp="1585378586663">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -837,11 +696,11 @@
     </state>
     <state x="485" y="164" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585363303661" />
     <state x="869" y="221" key="SettingsEditor/0.0.3440.1400@0.0.3440.1400" timestamp="1585484043965" />
-    <state x="989" y="345" key="Vcs.Push.Dialog.v2" timestamp="1585485377770">
+    <state x="989" y="345" key="Vcs.Push.Dialog.v2" timestamp="1585485493172">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585385071515" />
-    <state x="989" y="345" key="Vcs.Push.Dialog.v2/0.0.3440.1400@0.0.3440.1400" timestamp="1585485377770" />
+    <state x="989" y="345" key="Vcs.Push.Dialog.v2/0.0.3440.1400@0.0.3440.1400" timestamp="1585485493172" />
     <state x="702" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1578902591542">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
