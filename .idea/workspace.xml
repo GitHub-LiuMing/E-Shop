@@ -6,157 +6,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="791cd9c2-41dc-4aa5-928a-2dc824116e8b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/changeController/ChangeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/commissionController/CommissionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/couponController/CouponController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/couponDetailsController/CouponDetailsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/excelController/ExcelController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/logisticsTemplateController/LogisticsTemplateController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/memberDistributionAddressController/MemberDistributionAddressController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/ordersController/OrdersController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/payController/PayController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/testController/MyScheduledTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/changeEntity/Change.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/changeEntity/ChangeExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/commissionEntity/Commission.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/commissionEntity/CommissionExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/couponDetailsEntity/CouponDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/couponDetailsEntity/CouponDetailsExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/couponEntity/Coupon.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/couponEntity/CouponExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/excelEntity/ExcelColumn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/logisticsTemplateEntity/LogisticsTemplate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/logisticsTemplateEntity/LogisticsTemplateExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/memberDistributionAddressEntity/MemberDistributionAddress.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/memberDistributionAddressEntity/MemberDistributionAddressExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/ordersEntity/Orders.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/ordersEntity/OrdersExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/changeMapper/ChangeMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/changeMapper/ChangeMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/commissionMapper/CommissionMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/commissionMapper/CommissionMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/couponDetailsMapper/CouponDetailsMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/couponDetailsMapper/CouponDetailsMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/couponMapper/CouponMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/couponMapper/CouponMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/logisticsTemplateMapper/LogisticsTemplateMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/logisticsTemplateMapper/LogisticsTemplateMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/memberDistributionAddressMapper/MemberDistributionAddressMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/memberDistributionAddressMapper/MemberDistributionAddressMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/ordersMapper/OrdersMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/ordersMapper/OrdersMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/changeService/ChangeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/changeService/impl/ChangeServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/commissionService/CommissionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/commissionService/impl/CommissionServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/couponDetailsService/CouponDetailsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/couponDetailsService/impl/CouponDetailsServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/couponService/CouponService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/couponService/impl/CouponServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/logisticsTemplateService/LogisticsTemplateService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/logisticsTemplateService/impl/LogisticsTemplateServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/memberDistributionAddressService/MemberDistributionAddressService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/memberDistributionAddressService/impl/MemberDistributionAddressServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/ordersService/OrdersService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/ordersService/impl/OrdersServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/payService/PayService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/payService/impl/PayServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/utils/CheckObjectIsNullUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/utils/ExcelUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/utils/payUtils/Configure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/utils/payUtils/DataResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/utils/payUtils/IPAdrressUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/utils/payUtils/JsonUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/utils/payUtils/MD5Util.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/utils/payUtils/RandomStringGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/utils/payUtils/WXPayConstants.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/utils/payUtils/WXPayResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/utils/payUtils/WXPayUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/utils/payUtils/WXPayXmlUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/utils/payUtils/WXSignUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/utils/payUtils/XmlJsonUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_virtuald_curvesapi_1_06.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_9_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_collections_commons_collections_3_2_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_collections4_4_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_compress_1_18.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_math3_3_6_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_4_1_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_4_1_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_cache_1_4_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_config_core_1_4_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_config_ogdl_1_4_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_core_1_4_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_crypto_cipher_1_4_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_crypto_core_1_4_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_crypto_hash_1_4_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_event_1_4_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_lang_1_4_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eshop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/eshop.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/EshopApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/EshopApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/config/CorsConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/cityController/CityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/cityController/CityController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/classifyController/ClassifyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/classifyController/ClassifyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/districtController/DistrictController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/districtController/DistrictController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/itemController/ItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/itemController/ItemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/memberController/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/memberController/MemberController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/memberLevelController/MemberLevelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/memberLevelController/MemberLevelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/pointsController/PointsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/pointsController/PointsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/pointsDetailsController/PointsDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/pointsDetailsController/PointsDetailsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/provinceController/ProvinceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/provinceController/ProvinceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/provincialAgentController/ProvincialAgentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/provincialAgentController/ProvincialAgentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/provincialAgentItemController/ProvincialAgentItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/provincialAgentItemController/ProvincialAgentItemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/qiniuController/QiniuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/qiniuController/QiniuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/signController/SignController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/signController/SignController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/userController/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/userController/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/classifyEntity/Classify.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/classifyEntity/Classify.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/classifyEntity/ClassifyExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/classifyEntity/ClassifyExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/itemEntity/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/itemEntity/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/itemEntity/ItemExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/itemEntity/ItemExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/memberEntity/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/memberEntity/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/memberEntity/MemberExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/memberEntity/MemberExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/provincialAgentEntity/ProvincialAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/provincialAgentEntity/ProvincialAgent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/provincialAgentEntity/ProvincialAgentExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/provincialAgentEntity/ProvincialAgentExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/userEntity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/userEntity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/cityMapper/CityMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/cityMapper/CityMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/classifyMapper/ClassifyMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/classifyMapper/ClassifyMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/classifyMapper/ClassifyMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/classifyMapper/ClassifyMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/districtMapper/DistrictMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/districtMapper/DistrictMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/itemMapper/ItemMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/itemMapper/ItemMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/itemMapper/ItemMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/itemMapper/ItemMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/memberMapper/MemberMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/memberMapper/MemberMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/memberMapper/MemberMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/memberMapper/MemberMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/provinceMapper/ProvinceMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/provinceMapper/ProvinceMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/provinceMapper/ProvinceMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/provinceMapper/ProvinceMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/provincialAgentItemMapper/ProvincialAgentItemMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/provincialAgentItemMapper/ProvincialAgentItemMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/provincialAgentItemMapper/ProvincialAgentItemMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/provincialAgentItemMapper/ProvincialAgentItemMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/provincialAgentMapper/ProvincialAgentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/provincialAgentMapper/ProvincialAgentMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/cityService/impl/CityServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/cityService/impl/CityServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/classifyService/ClassifyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/classifyService/ClassifyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/classifyService/impl/ClassifyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/classifyService/impl/ClassifyServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/districtService/impl/DistrictServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/districtService/impl/DistrictServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/itemService/ItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/itemService/ItemService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/itemService/impl/ItemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/itemService/impl/ItemServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/memberLevelService/impl/MemberLevelServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/memberLevelService/impl/MemberLevelServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/memberService/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/memberService/MemberService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/memberService/impl/MemberServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/memberService/impl/MemberServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/pointsDetailsService/impl/PointsDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/pointsDetailsService/impl/PointsDetailsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/pointsService/impl/PointsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/pointsService/impl/PointsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/provinceService/impl/ProvinceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/provinceService/impl/ProvinceServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/provincialAgentItemService/ProvincialAgentItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/provincialAgentItemService/ProvincialAgentItemService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/provincialAgentItemService/impl/ProvincialAgentItemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/provincialAgentItemService/impl/ProvincialAgentItemServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/provincialAgentService/impl/ProvincialAgentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/provincialAgentService/impl/ProvincialAgentServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/qiniuService/Impl/QiniuServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/qiniuService/Impl/QiniuServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/signService/impl/SignServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/signService/impl/SignServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/userService/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/userService/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/userService/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/userService/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/utils/BCrypt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/utils/BCrypt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/utils/DataResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/utils/DataResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/utils/DateUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/utils/DateUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/utils/IDUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/utils/IDUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/provincialAgentController/ProvincialAgentController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/provincialAgentItemController/ProvincialAgentItemController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/provincialAgentEntity/ProvincialAgent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/provincialAgentEntity/ProvincialAgentExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/provincialAgentItemEntity/ProvincialAgentItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/entity/provincialAgentItemEntity/ProvincialAgentItemExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/provincialAgentItemMapper/ProvincialAgentItemMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/provincialAgentItemMapper/ProvincialAgentItemMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/provincialAgentMapper/ProvincialAgentMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/provincialAgentMapper/ProvincialAgentMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/ordersService/impl/OrdersServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/ordersService/impl/OrdersServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/provincialAgentItemService/ProvincialAgentItemService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/provincialAgentItemService/impl/ProvincialAgentItemServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/provincialAgentService/ProvincialAgentService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/provincialAgentService/impl/ProvincialAgentServiceImpl.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/EshopApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/EshopApplication.class" afterDir="false" />
@@ -168,8 +35,8 @@
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/memberController/MemberController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/memberController/MemberController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/memberLevelController/MemberLevelController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/memberLevelController/MemberLevelController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/pointsDetailsController/PointsDetailsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/pointsDetailsController/PointsDetailsController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/provincialAgentController/ProvincialAgentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/provincialAgentController/ProvincialAgentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/provincialAgentItemController/ProvincialAgentItemController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/provincialAgentItemController/ProvincialAgentItemController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/provincialAgentController/ProvincialAgentController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/provincialAgentItemController/ProvincialAgentItemController.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/qiniuController/QiniuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/qiniuController/QiniuController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/signController/SignController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/signController/SignController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/userController/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/controller/userController/UserController.class" afterDir="false" />
@@ -219,16 +86,16 @@
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provinceEntity/ProvinceExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provinceEntity/ProvinceExample$Criterion.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provinceEntity/ProvinceExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provinceEntity/ProvinceExample$GeneratedCriteria.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provinceEntity/ProvinceExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provinceEntity/ProvinceExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentEntity/ProvincialAgent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentEntity/ProvincialAgent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentEntity/ProvincialAgentExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentEntity/ProvincialAgentExample$Criteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentEntity/ProvincialAgentExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentEntity/ProvincialAgentExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentEntity/ProvincialAgentExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentEntity/ProvincialAgentExample$GeneratedCriteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentEntity/ProvincialAgentExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentEntity/ProvincialAgentExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentItemEntity/ProvincialAgentItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentItemEntity/ProvincialAgentItem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentItemEntity/ProvincialAgentItemExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentItemEntity/ProvincialAgentItemExample$Criteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentItemEntity/ProvincialAgentItemExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentItemEntity/ProvincialAgentItemExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentItemEntity/ProvincialAgentItemExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentItemEntity/ProvincialAgentItemExample$GeneratedCriteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentItemEntity/ProvincialAgentItemExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentItemEntity/ProvincialAgentItemExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentEntity/ProvincialAgent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentEntity/ProvincialAgentExample$Criteria.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentEntity/ProvincialAgentExample$Criterion.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentEntity/ProvincialAgentExample$GeneratedCriteria.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentEntity/ProvincialAgentExample.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentItemEntity/ProvincialAgentItem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentItemEntity/ProvincialAgentItemExample$Criteria.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentItemEntity/ProvincialAgentItemExample$Criterion.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentItemEntity/ProvincialAgentItemExample$GeneratedCriteria.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/provincialAgentItemEntity/ProvincialAgentItemExample.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/signEntity/Sign.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/signEntity/Sign.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/signEntity/SignExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/signEntity/SignExample$Criteria.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/signEntity/SignExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/signEntity/SignExample$Criterion.class" afterDir="false" />
@@ -245,24 +112,18 @@
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/userEntity/UserExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/userEntity/UserExample$GeneratedCriteria.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/userEntity/UserExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/entity/userEntity/UserExample.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/cityMapper/CityMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/cityMapper/CityMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/cityMapper/CityMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/cityMapper/CityMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/classifyMapper/ClassifyMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/classifyMapper/ClassifyMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/classifyMapper/ClassifyMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/classifyMapper/ClassifyMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/districtMapper/DistrictMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/districtMapper/DistrictMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/districtMapper/DistrictMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/districtMapper/DistrictMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/itemMapper/ItemMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/itemMapper/ItemMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/itemMapper/ItemMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/itemMapper/ItemMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/memberLevelMapper/MemberLevelMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/memberLevelMapper/MemberLevelMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/memberMapper/MemberMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/memberMapper/MemberMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/memberMapper/MemberMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/memberMapper/MemberMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/pointsDetailsMapper/PointsDetailsMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/pointsDetailsMapper/PointsDetailsMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/pointsMapper/PointsMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/pointsMapper/PointsMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/provinceMapper/ProvinceMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/provinceMapper/ProvinceMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/provinceMapper/ProvinceMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/provinceMapper/ProvinceMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/provincialAgentItemMapper/ProvincialAgentItemMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/provincialAgentItemMapper/ProvincialAgentItemMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/provincialAgentItemMapper/ProvincialAgentItemMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/provincialAgentItemMapper/ProvincialAgentItemMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/provincialAgentMapper/ProvincialAgentMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/provincialAgentMapper/ProvincialAgentMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/provincialAgentMapper/ProvincialAgentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/provincialAgentMapper/ProvincialAgentMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/provincialAgentItemMapper/ProvincialAgentItemMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/provincialAgentItemMapper/ProvincialAgentItemMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/provincialAgentMapper/ProvincialAgentMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/provincialAgentMapper/ProvincialAgentMapper.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/signMapper/SignMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/signMapper/SignMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/sysLogMapper/SysLogMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/sysLogMapper/SysLogMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/userMapper/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/userMapper/UserMapper.class" afterDir="false" />
@@ -280,11 +141,10 @@
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/memberService/impl/MemberServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/memberService/impl/MemberServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/pointsDetailsService/PointsDetailsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/pointsDetailsService/PointsDetailsService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/pointsDetailsService/impl/PointsDetailsServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/pointsDetailsService/impl/PointsDetailsServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/provinceService/impl/ProvinceServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/provinceService/impl/ProvinceServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/provincialAgentItemService/ProvincialAgentItemService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/provincialAgentItemService/ProvincialAgentItemService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/provincialAgentItemService/impl/ProvincialAgentItemServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/provincialAgentItemService/impl/ProvincialAgentItemServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/provincialAgentService/ProvincialAgentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/provincialAgentService/ProvincialAgentService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/provincialAgentService/impl/ProvincialAgentServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/provincialAgentService/impl/ProvincialAgentServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/provincialAgentItemService/ProvincialAgentItemService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/provincialAgentItemService/impl/ProvincialAgentItemServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/provincialAgentService/ProvincialAgentService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/provincialAgentService/impl/ProvincialAgentServiceImpl.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/qiniuService/Impl/QiniuServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/qiniuService/Impl/QiniuServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/qiniuService/QiniuService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/qiniuService/QiniuService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/signService/SignService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/service/signService/SignService.class" afterDir="false" />
@@ -379,10 +239,12 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="ToolWindowEvent Log.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/memberMapper/MemberMapper.java&#10;D:/JetBrains/IntelliJ IDEA/IdeaProjects/eshop/src/main/java/com/liuming/eshop/entity/memberEntity/Member.java&#10;D:/JetBrains/IntelliJ IDEA/IdeaProjects/eshop/src/main/java/com/liuming/eshop/mapper/memberMapper/MemberMapper.xml" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="idea.background.editor" value="C:\Users\Ming\Pictures\secenery\ForPC01.jpg,24,scale,center" />
+    <property name="idea.background.editor" value="C:\Users\Ming\Pictures\Kobe.jpg,24,scale,center" />
+    <property name="idea.background.frame" value="C:\Users\Ming\Pictures\Kobe.jpg,24,scale,center" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/liuming/eshop/utils/payUtils" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -396,7 +258,7 @@
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="application.passwordSafe" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -475,10 +337,10 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.EshopApplicationTests.contextLoads" />
-      <item itemvalue="Spring Boot.EshopApplication" />
       <item itemvalue="Application.PayController" />
       <item itemvalue="Application.MemberController" />
+      <item itemvalue="JUnit.EshopApplicationTests.contextLoads" />
+      <item itemvalue="Spring Boot.EshopApplication" />
     </list>
     <recent_temporary>
       <list>
@@ -700,6 +562,8 @@
       <workItem from="1585362913986" duration="391000" />
       <workItem from="1585363333898" duration="7000" />
       <workItem from="1585363376935" duration="13288000" />
+      <workItem from="1585483453659" duration="581000" />
+      <workItem from="1585484068740" duration="1236000" />
     </task>
     <task id="LOCAL-00001" summary="update .gitignore">
       <created>1564110360341</created>
@@ -862,10 +726,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="811" y="412" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583374823173" />
-    <state x="640" y="248" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1585096614264">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="1147" y="334" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1585401739637">
+      <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="640" y="248" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585096614264" />
+    <state x="1147" y="334" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1585401739637" />
     <state x="427" y="448" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1585384148332">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -874,10 +739,15 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="630" height="466" key="DebuggerActiveHint/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585378586663" />
-    <state x="691" y="263" key="FileChooserDialogImpl" timestamp="1584683412323">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="1238" y="354" key="FileChooserDialogImpl" timestamp="1585402868008">
+      <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="691" y="263" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584683412323" />
+    <state x="1238" y="354" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1585402868008" />
+    <state x="1571" y="626" key="Github.Dialog.Accounts.Choose" timestamp="1585484179527">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1571" y="626" key="Github.Dialog.Accounts.Choose/0.0.3440.1400@0.0.3440.1400" timestamp="1585484179527" />
     <state x="552" y="181" key="GrepConsoleSettings" timestamp="1584782867566">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -886,54 +756,66 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="823" y="453" key="GrepConsoleSound/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584782863230" />
-    <state width="1877" height="276" key="GridCell.Tab.0.bottom" timestamp="1585382583641">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="3397" height="392" key="GridCell.Tab.0.bottom" timestamp="1585409508497">
+      <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="1877" height="276" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585382583641" />
-    <state width="1877" height="276" key="GridCell.Tab.0.center" timestamp="1585382583641">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="3397" height="392" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1585409508497" />
+    <state width="3397" height="392" key="GridCell.Tab.0.center" timestamp="1585409508497">
+      <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="1877" height="276" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585382583641" />
-    <state width="1877" height="276" key="GridCell.Tab.0.left" timestamp="1585382583640">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="3397" height="392" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1585409508497" />
+    <state width="3397" height="392" key="GridCell.Tab.0.left" timestamp="1585409508496">
+      <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="1877" height="276" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585382583640" />
-    <state width="1877" height="276" key="GridCell.Tab.0.right" timestamp="1585382583641">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="3397" height="392" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1585409508496" />
+    <state width="3397" height="392" key="GridCell.Tab.0.right" timestamp="1585409508497">
+      <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="1877" height="276" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585382583641" />
-    <state width="1877" height="276" key="GridCell.Tab.1.bottom" timestamp="1585382570429">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="3397" height="392" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1585409508497" />
+    <state width="3397" height="392" key="GridCell.Tab.1.bottom" timestamp="1585409508497">
+      <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="1877" height="276" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585382570429" />
-    <state width="1877" height="276" key="GridCell.Tab.1.center" timestamp="1585382570429">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="3397" height="392" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1585409508497" />
+    <state width="3397" height="392" key="GridCell.Tab.1.center" timestamp="1585409508497">
+      <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="1877" height="276" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585382570429" />
-    <state width="1877" height="276" key="GridCell.Tab.1.left" timestamp="1585382570429">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="3397" height="392" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1585409508497" />
+    <state width="3397" height="392" key="GridCell.Tab.1.left" timestamp="1585409508497">
+      <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="1877" height="276" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585382570429" />
-    <state width="1877" height="276" key="GridCell.Tab.1.right" timestamp="1585382570429">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="3397" height="392" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1585409508497" />
+    <state width="3397" height="392" key="GridCell.Tab.1.right" timestamp="1585409508497">
+      <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="1877" height="276" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585382570429" />
-    <state width="1877" height="276" key="GridCell.Tab.2.bottom" timestamp="1585382460077">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="3397" height="392" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1585409508497" />
+    <state width="3397" height="392" key="GridCell.Tab.2.bottom" timestamp="1585409508498">
+      <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="1877" height="276" key="GridCell.Tab.2.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585382460077" />
-    <state width="1877" height="276" key="GridCell.Tab.2.center" timestamp="1585382460077">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="3397" height="392" key="GridCell.Tab.2.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1585409508498" />
+    <state width="3397" height="392" key="GridCell.Tab.2.center" timestamp="1585409508498">
+      <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="1877" height="276" key="GridCell.Tab.2.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585382460077" />
-    <state width="1877" height="276" key="GridCell.Tab.2.left" timestamp="1585382460077">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="3397" height="392" key="GridCell.Tab.2.center/0.0.3440.1400@0.0.3440.1400" timestamp="1585409508498" />
+    <state width="3397" height="392" key="GridCell.Tab.2.left" timestamp="1585409508497">
+      <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="1877" height="276" key="GridCell.Tab.2.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585382460077" />
-    <state width="1877" height="276" key="GridCell.Tab.2.right" timestamp="1585382460077">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="3397" height="392" key="GridCell.Tab.2.left/0.0.3440.1400@0.0.3440.1400" timestamp="1585409508497" />
+    <state width="3397" height="392" key="GridCell.Tab.2.right" timestamp="1585409508498">
+      <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="1877" height="276" key="GridCell.Tab.2.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585382460077" />
+    <state width="3397" height="392" key="GridCell.Tab.2.right/0.0.3440.1400@0.0.3440.1400" timestamp="1585409508498" />
     <state width="1877" height="276" key="GridCell.Tab.3.bottom" timestamp="1585377580737">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -950,14 +832,16 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="276" key="GridCell.Tab.3.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585377580737" />
-    <state x="485" y="164" key="SettingsEditor" timestamp="1585363303661">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="869" y="221" key="SettingsEditor" timestamp="1585484043965">
+      <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="485" y="164" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585363303661" />
-    <state x="552" y="256" key="Vcs.Push.Dialog.v2" timestamp="1585385071515">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="869" y="221" key="SettingsEditor/0.0.3440.1400@0.0.3440.1400" timestamp="1585484043965" />
+    <state x="989" y="345" key="Vcs.Push.Dialog.v2" timestamp="1585485377770">
+      <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585385071515" />
+    <state x="989" y="345" key="Vcs.Push.Dialog.v2/0.0.3440.1400@0.0.3440.1400" timestamp="1585485377770" />
     <state x="702" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1578902591542">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -970,10 +854,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="533" y="251" width="853" height="548" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585377174293" />
-    <state x="667" y="322" key="git4idea.merge.GitPullDialog" timestamp="1585385050967">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="1195" y="433" key="git4idea.merge.GitPullDialog" timestamp="1585485395287">
+      <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="667" y="322" key="git4idea.merge.GitPullDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585385050967" />
+    <state x="1195" y="433" key="git4idea.merge.GitPullDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1585485395287" />
     <state x="625" y="398" key="git4idea.rebase.GitRebaseDialog" timestamp="1585384904085">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -982,10 +867,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="124" y="228" key="new project wizard/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1579314634550" />
-    <state x="640" y="377" width="672" height="286" key="org.intellij.images.editor.actions.BackgroundImageDialog" timestamp="1584683518360">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="1147" y="508" width="672" height="454" key="org.intellij.images.editor.actions.BackgroundImageDialog" timestamp="1585403276603">
+      <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="640" y="377" width="672" height="286" key="org.intellij.images.editor.actions.BackgroundImageDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584683518360" />
+    <state x="1147" y="508" width="672" height="454" key="org.intellij.images.editor.actions.BackgroundImageDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1585403276603" />
     <state x="650" y="143" key="refactoring.ChangeSignatureDialog" timestamp="1578106204954">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -1002,14 +888,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/provincialAgentController/ProvincialAgentController.java</url>
-          <line>47</line>
-          <properties class="com.liuming.eshop.controller.provincialAgentController.ProvincialAgentController" method="findProvincialAgent">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/payController/PayController.java</url>
           <line>59</line>

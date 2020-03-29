@@ -5,8 +5,6 @@ import com.liuming.eshop.entity.itemEntity.Item;
 import com.liuming.eshop.entity.logisticsTemplateEntity.LogisticsTemplate;
 import com.liuming.eshop.entity.memberEntity.Member;
 import com.liuming.eshop.entity.ordersEntity.Orders;
-import com.liuming.eshop.entity.provincialAgentEntity.ProvincialAgent;
-import com.liuming.eshop.entity.provincialAgentItemEntity.ProvincialAgentItem;
 import com.liuming.eshop.mapper.commissionMapper.CommissionMapper;
 import com.liuming.eshop.mapper.couponDetailsMapper.CouponDetailsMapper;
 import com.liuming.eshop.mapper.couponMapper.CouponMapper;
@@ -14,8 +12,6 @@ import com.liuming.eshop.mapper.itemMapper.ItemMapper;
 import com.liuming.eshop.mapper.logisticsTemplateMapper.LogisticsTemplateMapper;
 import com.liuming.eshop.mapper.memberMapper.MemberMapper;
 import com.liuming.eshop.mapper.ordersMapper.OrdersMapper;
-import com.liuming.eshop.mapper.provincialAgentItemMapper.ProvincialAgentItemMapper;
-import com.liuming.eshop.mapper.provincialAgentMapper.ProvincialAgentMapper;
 import com.liuming.eshop.service.ordersService.OrdersService;
 import com.liuming.eshop.utils.CheckObjectIsNullUtils;
 import com.liuming.eshop.utils.DataResult;
@@ -57,12 +53,6 @@ public class OrdersServiceImpl implements OrdersService {
 
     @Resource
     private CouponDetailsMapper couponDetailsMapper;
-
-    @Resource
-    private ProvincialAgentMapper provincialAgentMapper;
-
-    @Resource
-    private ProvincialAgentItemMapper provincialAgentItemMapper;
 
     @Override
     public DataResult addOrders(Orders orders) {
