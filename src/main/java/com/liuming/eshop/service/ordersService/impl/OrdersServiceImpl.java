@@ -90,152 +90,10 @@ public class OrdersServiceImpl implements OrdersService {
                 Member member = memberMapper.selectByPrimaryKey(orders.getMemberId());
                 if (!checkObjectIsNullUtils.objCheckIsNull(member)) {
                     if (member.getMemberStatus() == 1) {
-                        //得到订单会员的上级省份信息
-                        Member preMember = memberMapper.selectByPrimaryKey(member.getPreMemberId());
-                        //会员存在并且状态正常
-                        //需要改动的表：会员增加省市区ID，省代基本信息表增加省ID
-                        //通过上级会员省份信息查询省代商品是否符合条件
-                        map = new HashMap();
-                        map.put("provinceCode", preMember.getMemberProvinceCode());
-                        List<ProvincialAgent> provincialAgentList = provincialAgentMapper.findProvincialAgent(map);
-                        if (provincialAgentList.size() > 0) {
-                            //判断商品是否存在
-                            //判断省ID，通过省ID得到省代，通过省代查询省代商品中是否有符合的商品信息
-                            map = new HashMap();
-                            /*map.put("provincialAgentId", provincialAgentList.get(0).getProvincialAgentId());
-                            map.put("itemId", orders.getItemId());
-                            map.put("provincialAgentItemStatus", 1);
-                            List<ProvincialAgentItem> provincialAgentItemList = provincialAgentItemMapper.findProvincialAgentItem(map);*/
-                            //通过省代商品库查询商品总库
-                            Item item = itemMapper.selectByPrimaryKey(orders.getItemId());
-                            orders.setCommissionId(item.getCommissionId());
-                            //查询该商品的物流模板，通过物流模板，将对应的物流资费加到订单总价中
-                            LogisticsTemplate logisticsTemplate = logisticsTemplateMapper.selectByPrimaryKey(item.getLogisticsTemplateId());
-
-                            if (logisticsTemplate.getLogisticsType() == 1 && logisticsTemplate.getLogisticsMode() == 2){
-                                //获取配置的运费信息
-                                /**
-                                 * 三种情况
-                                 * 1. 当物流件数 = 0时，总价 = 物流费用 * 购买数量
-                                 * 2. 当物流件数 > 购买数量时，总价 = 物流费用 * 购买数量
-                                 * 3. 当物流件数 <= 购买数量时，总价 = 购买数量（物流费用为0，相当于包邮）
-                                 */
-                                if (logisticsTemplate.getLogisticsNumber() == 0) {
-                                    //当物流件数 = 0时，物流总价 = 物流费用 * 购买数量
-                                    logisticsTotalPrice = logisticsTemplate.getLogisticsCost() * orders.getItemNum();
-                                    //订单总价 = 物流总价 + 单价 * 数量
-                                    totalPrice = logisticsTotalPrice + (orders.getUnitPrice() * orders.getItemNum());
-                                    orders.setTotalPrice(totalPrice);
-                                    orders.setOrdersId(IDUtils.getId());
-                                    //订单状态 0-取消订单 1-待付款 2-待发货 3-完成 4-退换货
-                                    orders.setOrdersStatus(1);
-                                    orders.setOrdersCreateDate(new Date());
-                                    orders.setOrdersUpdateDate(new Date());
-                                    int i = ordersMapper.insertSelective(orders);
-                                    if (i > 0) {
-                                        return DataResult.ok(orders.getItemId());
-                                    } else {
-                                        return DataResult.build(500, "新增订单失败");
-                                    }
-                                } else if (logisticsTemplate.getLogisticsNumber() > orders.getItemNum()) {
-                                    //当物流件数 > 购买数量时，物流总价 = 物流费用 * 购买数量
-                                    logisticsTotalPrice = logisticsTemplate.getLogisticsCost() * orders.getItemNum();
-                                    //订单总价 = 物流总价 + 单价 * 数量
-                                    totalPrice = logisticsTotalPrice + (orders.getUnitPrice() * orders.getItemNum());
-                                    orders.setTotalPrice(totalPrice);
-                                    orders.setOrdersId(IDUtils.getId());
-                                    //订单状态 0-取消订单 1-待付款 2-待发货 3-完成 4-退换货
-                                    orders.setOrdersStatus(1);
-                                    orders.setOrdersCreateDate(new Date());
-                                    orders.setOrdersUpdateDate(new Date());
-                                    int i = ordersMapper.insertSelective(orders);
-                                    if (i > 0) {
-                                        return DataResult.ok(orders.getItemId());
-                                    } else {
-                                        return DataResult.build(500, "新增订单失败");
-                                    }
-                                } else if (logisticsTemplate.getLogisticsNumber() <= orders.getItemNum()) {
-                                    //当物流件数 <= 购买数量时，物流总价 = 购买数量（物流费用为0，相当于包邮）
-                                    logisticsTotalPrice = 0;
-                                    //订单总价 = 物流总价 + 单价 * 数量
-                                    totalPrice = logisticsTotalPrice + (orders.getUnitPrice() * orders.getItemNum());
-                                    orders.setTotalPrice(totalPrice);
-                                    orders.setOrdersId(IDUtils.getId());
-                                    //订单状态 0-取消订单 1-待付款 2-待发货 3-完成 4-退换货
-                                    orders.setOrdersStatus(1);
-                                    orders.setOrdersCreateDate(new Date());
-                                    orders.setOrdersUpdateDate(new Date());
-                                    int i = ordersMapper.insertSelective(orders);
-                                    if (i > 0) {
-                                        return DataResult.ok(orders.getOrdersId());
-                                    } else {
-                                        return DataResult.build(500, "新增订单失败");
-                                    }
-                                } else {
-                                    return DataResult.build(500, "兄台，你这波操作有点迷啊，要不你退出系统以后，重新再上线购买试一下？");
-                                }
-                            } else if(logisticsTemplate.getLogisticsType() == 1 && logisticsTemplate.getLogisticsMode() == 1){
-                                //包邮免运费（直接将商品、会员等相关信息新增到订单表中）
-                                orders.setOrdersId(IDUtils.getId());
-                                //订单状态 0-取消订单 1-待付款 2-待发货 3-完成 4-退换货
-                                orders.setOrdersStatus(1);
-                                orders.setOrdersCreateDate(new Date());
-                                orders.setOrdersUpdateDate(new Date());
-                                int i = ordersMapper.insertSelective(orders);
-                                if (i > 0) {
-                                    return DataResult.ok(orders.getOrdersId());
-                                } else {
-                                    return DataResult.build(500, "新增订单失败");
-                                }
-                            } else {
-                                //自提（直接将商品、会员等相关信息新增到订单表中）
-                                orders.setOrdersId(IDUtils.getId());
-                                //订单状态 0-取消订单 1-待付款 2-待发货 3-完成 4-退换货
-                                orders.setOrdersStatus(1);
-                                orders.setOrdersCreateDate(new Date());
-                                orders.setOrdersUpdateDate(new Date());
-                                int i = ordersMapper.insertSelective(orders);
-                                if (i > 0) {
-                                    return DataResult.ok(orders.getOrdersId());
-                                } else {
-                                    return DataResult.build(500, "新增订单失败");
-                                }
-                            }
-                        } else {
-                            return DataResult.build(500, "您的上级没有对应的省份店铺，请刷新后重试或联系官方核实");
-                        }
-                    } else {
-                        return DataResult.build(500, "会员状态错误，请联系管理员");
-                    }
-                } else {
-                    return DataResult.build(500, "会员不存在");
-                }
-            } else {
-                return DataResult.build(500, "优惠券状态信息错误，请重试");
-            }
-        } else {
-            //优惠券不存在或者不可用
-            //判断会员是否存在
-            Member member = memberMapper.selectByPrimaryKey(orders.getMemberId());
-            if (!checkObjectIsNullUtils.objCheckIsNull(member)) {
-                if (member.getMemberStatus() == 1) {
-                    //得到订单会员的上级省份信息
-                    Member preMember = memberMapper.selectByPrimaryKey(member.getPreMemberId());
-                    //会员存在并且状态正常
-                    //需要改动的表：会员增加省市区ID，省代基本信息表增加省ID
-                    //通过上级会员省份信息查询省代商品是否符合条件
-                    map = new HashMap();
-                    map.put("provinceCode", preMember.getMemberProvinceCode());
-                    List<ProvincialAgent> provincialAgentList = provincialAgentMapper.findProvincialAgent(map);
-                    if (provincialAgentList.size() > 0) {
                         //判断商品是否存在
                         //判断省ID，通过省ID得到省代，通过省代查询省代商品中是否有符合的商品信息
-                        /*map = new HashMap();
-                        map.put("provincialAgentId", provincialAgentList.get(0).getProvincialAgentId());
-                        map.put("itemId", orders.getItemId());
-                        map.put("provincialAgentItemStatus", 1);
-                        List<ProvincialAgentItem> provincialAgentItemList = provincialAgentItemMapper.findProvincialAgentItem(map);*/
-                        //通过省代商品库查询商品总库
+                        map = new HashMap();
+                        //查询商品总库
                         Item item = itemMapper.selectByPrimaryKey(orders.getItemId());
                         orders.setCommissionId(item.getCommissionId());
                         //查询该商品的物流模板，通过物流模板，将对应的物流资费加到订单总价中
@@ -262,7 +120,7 @@ public class OrdersServiceImpl implements OrdersService {
                                 orders.setOrdersUpdateDate(new Date());
                                 int i = ordersMapper.insertSelective(orders);
                                 if (i > 0) {
-                                    return DataResult.ok(orders.getOrdersId());
+                                    return DataResult.ok(orders.getItemId());
                                 } else {
                                     return DataResult.build(500, "新增订单失败");
                                 }
@@ -279,7 +137,7 @@ public class OrdersServiceImpl implements OrdersService {
                                 orders.setOrdersUpdateDate(new Date());
                                 int i = ordersMapper.insertSelective(orders);
                                 if (i > 0) {
-                                    return DataResult.ok(orders.getOrdersId());
+                                    return DataResult.ok(orders.getItemId());
                                 } else {
                                     return DataResult.build(500, "新增订单失败");
                                 }
@@ -304,8 +162,6 @@ public class OrdersServiceImpl implements OrdersService {
                                 return DataResult.build(500, "兄台，你这波操作有点迷啊，要不你退出系统以后，重新再上线购买试一下？");
                             }
                         } else if(logisticsTemplate.getLogisticsType() == 1 && logisticsTemplate.getLogisticsMode() == 1){
-                            totalPrice = orders.getUnitPrice() * orders.getItemNum();
-                            orders.setTotalPrice(totalPrice);
                             //包邮免运费（直接将商品、会员等相关信息新增到订单表中）
                             orders.setOrdersId(IDUtils.getId());
                             //订单状态 0-取消订单 1-待付款 2-待发货 3-完成 4-退换货
@@ -319,8 +175,6 @@ public class OrdersServiceImpl implements OrdersService {
                                 return DataResult.build(500, "新增订单失败");
                             }
                         } else {
-                            totalPrice = orders.getUnitPrice() * orders.getItemNum();
-                            orders.setTotalPrice(totalPrice);
                             //自提（直接将商品、会员等相关信息新增到订单表中）
                             orders.setOrdersId(IDUtils.getId());
                             //订单状态 0-取消订单 1-待付款 2-待发货 3-完成 4-退换货
@@ -335,7 +189,125 @@ public class OrdersServiceImpl implements OrdersService {
                             }
                         }
                     } else {
-                        return DataResult.build(500, "您的上级没有对应的省份店铺，请刷新后重试或联系官方核实");
+                        return DataResult.build(500, "会员状态错误，请联系管理员");
+                    }
+                } else {
+                    return DataResult.build(500, "会员不存在");
+                }
+            } else {
+                return DataResult.build(500, "优惠券状态信息错误，请重试");
+            }
+        } else {
+            //优惠券不存在或者不可用
+            //判断会员是否存在
+            Member member = memberMapper.selectByPrimaryKey(orders.getMemberId());
+            if (!checkObjectIsNullUtils.objCheckIsNull(member)) {
+                if (member.getMemberStatus() == 1) {
+                    //判断商品是否存在
+                    //判断省ID，通过省ID得到省代，通过省代查询省代商品中是否有符合的商品信息
+                        /*map = new HashMap();
+                        map.put("provincialAgentId", provincialAgentList.get(0).getProvincialAgentId());
+                        map.put("itemId", orders.getItemId());
+                        map.put("provincialAgentItemStatus", 1);
+                        List<ProvincialAgentItem> provincialAgentItemList = provincialAgentItemMapper.findProvincialAgentItem(map);*/
+                    //查询商品总库
+                    Item item = itemMapper.selectByPrimaryKey(orders.getItemId());
+                    orders.setCommissionId(item.getCommissionId());
+                    //查询该商品的物流模板，通过物流模板，将对应的物流资费加到订单总价中
+                    LogisticsTemplate logisticsTemplate = logisticsTemplateMapper.selectByPrimaryKey(item.getLogisticsTemplateId());
+
+                    if (logisticsTemplate.getLogisticsType() == 1 && logisticsTemplate.getLogisticsMode() == 2){
+                        //获取配置的运费信息
+                        /**
+                         * 三种情况
+                         * 1. 当物流件数 = 0时，总价 = 物流费用 * 购买数量
+                         * 2. 当物流件数 > 购买数量时，总价 = 物流费用 * 购买数量
+                         * 3. 当物流件数 <= 购买数量时，总价 = 购买数量（物流费用为0，相当于包邮）
+                         */
+                        if (logisticsTemplate.getLogisticsNumber() == 0) {
+                            //当物流件数 = 0时，物流总价 = 物流费用 * 购买数量
+                            logisticsTotalPrice = logisticsTemplate.getLogisticsCost() * orders.getItemNum();
+                            //订单总价 = 物流总价 + 单价 * 数量
+                            totalPrice = logisticsTotalPrice + (orders.getUnitPrice() * orders.getItemNum());
+                            orders.setTotalPrice(totalPrice);
+                            orders.setOrdersId(IDUtils.getId());
+                            //订单状态 0-取消订单 1-待付款 2-待发货 3-完成 4-退换货
+                            orders.setOrdersStatus(1);
+                            orders.setOrdersCreateDate(new Date());
+                            orders.setOrdersUpdateDate(new Date());
+                            int i = ordersMapper.insertSelective(orders);
+                            if (i > 0) {
+                                return DataResult.ok(orders.getOrdersId());
+                            } else {
+                                return DataResult.build(500, "新增订单失败");
+                            }
+                        } else if (logisticsTemplate.getLogisticsNumber() > orders.getItemNum()) {
+                            //当物流件数 > 购买数量时，物流总价 = 物流费用 * 购买数量
+                            logisticsTotalPrice = logisticsTemplate.getLogisticsCost() * orders.getItemNum();
+                            //订单总价 = 物流总价 + 单价 * 数量
+                            totalPrice = logisticsTotalPrice + (orders.getUnitPrice() * orders.getItemNum());
+                            orders.setTotalPrice(totalPrice);
+                            orders.setOrdersId(IDUtils.getId());
+                            //订单状态 0-取消订单 1-待付款 2-待发货 3-完成 4-退换货
+                            orders.setOrdersStatus(1);
+                            orders.setOrdersCreateDate(new Date());
+                            orders.setOrdersUpdateDate(new Date());
+                            int i = ordersMapper.insertSelective(orders);
+                            if (i > 0) {
+                                return DataResult.ok(orders.getOrdersId());
+                            } else {
+                                return DataResult.build(500, "新增订单失败");
+                            }
+                        } else if (logisticsTemplate.getLogisticsNumber() <= orders.getItemNum()) {
+                            //当物流件数 <= 购买数量时，物流总价 = 购买数量（物流费用为0，相当于包邮）
+                            logisticsTotalPrice = 0;
+                            //订单总价 = 物流总价 + 单价 * 数量
+                            totalPrice = logisticsTotalPrice + (orders.getUnitPrice() * orders.getItemNum());
+                            orders.setTotalPrice(totalPrice);
+                            orders.setOrdersId(IDUtils.getId());
+                            //订单状态 0-取消订单 1-待付款 2-待发货 3-完成 4-退换货
+                            orders.setOrdersStatus(1);
+                            orders.setOrdersCreateDate(new Date());
+                            orders.setOrdersUpdateDate(new Date());
+                            int i = ordersMapper.insertSelective(orders);
+                            if (i > 0) {
+                                return DataResult.ok(orders.getOrdersId());
+                            } else {
+                                return DataResult.build(500, "新增订单失败");
+                            }
+                        } else {
+                            return DataResult.build(500, "兄台，你这波操作有点迷啊，要不你退出系统以后，重新再上线购买试一下？");
+                        }
+                    } else if(logisticsTemplate.getLogisticsType() == 1 && logisticsTemplate.getLogisticsMode() == 1){
+                        totalPrice = orders.getUnitPrice() * orders.getItemNum();
+                        orders.setTotalPrice(totalPrice);
+                        //包邮免运费（直接将商品、会员等相关信息新增到订单表中）
+                        orders.setOrdersId(IDUtils.getId());
+                        //订单状态 0-取消订单 1-待付款 2-待发货 3-完成 4-退换货
+                        orders.setOrdersStatus(1);
+                        orders.setOrdersCreateDate(new Date());
+                        orders.setOrdersUpdateDate(new Date());
+                        int i = ordersMapper.insertSelective(orders);
+                        if (i > 0) {
+                            return DataResult.ok(orders.getOrdersId());
+                        } else {
+                            return DataResult.build(500, "新增订单失败");
+                        }
+                    } else {
+                        totalPrice = orders.getUnitPrice() * orders.getItemNum();
+                        orders.setTotalPrice(totalPrice);
+                        //自提（直接将商品、会员等相关信息新增到订单表中）
+                        orders.setOrdersId(IDUtils.getId());
+                        //订单状态 0-取消订单 1-待付款 2-待发货 3-完成 4-退换货
+                        orders.setOrdersStatus(1);
+                        orders.setOrdersCreateDate(new Date());
+                        orders.setOrdersUpdateDate(new Date());
+                        int i = ordersMapper.insertSelective(orders);
+                        if (i > 0) {
+                            return DataResult.ok(orders.getOrdersId());
+                        } else {
+                            return DataResult.build(500, "新增订单失败");
+                        }
                     }
                 } else {
                     return DataResult.build(500, "会员状态错误，请联系管理员");

@@ -182,8 +182,8 @@ public class PayController {
                                 //修改订单的支付参数
                                 orders.setPayType(0);
                                 orders.setPayPrice((double)wxPayResult.getCash_fee()/100);
-                                orders.setOrdersStatus(2);
-                                orders.setPayResul(1);
+                                orders.setOrdersStatus(2);//订单状态 0-取消订单 1-待付款 2-已完成 3-退换货
+                                orders.setPayResul(1);//支付结果 0-待支付 1-支付成功 2-支付失败
                                 orders.setOrdersUpdateDate(new Date());
 
                                 int i = ordersMapper.updateByPrimaryKeySelective(orders);
