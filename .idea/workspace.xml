@@ -6,9 +6,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="791cd9c2-41dc-4aa5-928a-2dc824116e8b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eshop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/eshop.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/memberController/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/memberController/MemberController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/ordersController/OrdersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/ordersController/OrdersController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/payController/PayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/payController/PayController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/ordersService/impl/OrdersServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/service/ordersService/impl/OrdersServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/memberMapper/MemberMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/memberMapper/MemberMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/memberMapper/MemberMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liuming/eshop/mapper/memberMapper/MemberMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/EshopApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/EshopApplication.class" afterDir="false" />
@@ -90,6 +96,7 @@
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/itemMapper/ItemMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/itemMapper/ItemMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/memberLevelMapper/MemberLevelMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/memberLevelMapper/MemberLevelMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/memberMapper/MemberMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/memberMapper/MemberMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/memberMapper/MemberMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/memberMapper/MemberMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/pointsDetailsMapper/PointsDetailsMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/pointsDetailsMapper/PointsDetailsMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/pointsMapper/PointsMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/pointsMapper/PointsMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/provinceMapper/ProvinceMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/liuming/eshop/mapper/provinceMapper/ProvinceMapper.class" afterDir="false" />
@@ -227,11 +234,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop" />
       <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\java\com\liuming\eshop\shiro\entity\shiroUser" />
       <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\java\com\liuming\eshop\shiro\entity\shiroResources" />
       <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\resources" />
       <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\java\com\liuming\eshop\mapper\province" />
-      <recent name="D:\JetBrains\IntelliJ IDEA\IdeaProjects\eshop\src\main\resources\static\error" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.liuming.eshop" />
@@ -530,6 +537,9 @@
       <workItem from="1585483453659" duration="581000" />
       <workItem from="1585484068740" duration="1561000" />
       <workItem from="1585536820554" duration="7038000" />
+      <workItem from="1585562698946" duration="76000" />
+      <workItem from="1585614205704" duration="20512000" />
+      <workItem from="1585703629379" duration="19920000" />
     </task>
     <task id="LOCAL-00001" summary="update .gitignore">
       <created>1564110360341</created>
@@ -650,7 +660,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585485735943</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="上传删除省代有关的代码">
+      <created>1585562755293</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1585562755293</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -684,7 +701,8 @@
     <MESSAGE value="修改商品表代码，增加省代（店铺基本信息）代码" />
     <MESSAGE value="修改用户注册和登录代码，新增省代商品和查询省代商品代码" />
     <MESSAGE value="修改Github上的项目语言" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改Github上的项目语言" />
+    <MESSAGE value="上传删除省代有关的代码" />
+    <option name="LAST_COMMIT_MESSAGE" value="上传删除省代有关的代码" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="181" key="#Plugins" timestamp="1584675605654">
@@ -716,14 +734,15 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="427" y="448" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585384148332" />
-    <state x="1301" y="297" key="CommitChangelistDialog2" timestamp="1585485734790">
-      <screen x="0" y="0" width="3440" height="1400" />
-    </state>
-    <state x="1301" y="297" key="CommitChangelistDialog2/0.0.3440.1400@0.0.3440.1400" timestamp="1585485734790" />
-    <state width="630" height="466" key="DebuggerActiveHint" timestamp="1585378586663">
+    <state x="726" y="221" key="CommitChangelistDialog2" timestamp="1585562750085">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="630" height="466" key="DebuggerActiveHint/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585378586663" />
+    <state x="726" y="221" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585562750085" />
+    <state x="1301" y="297" key="CommitChangelistDialog2/0.0.3440.1400@0.0.3440.1400" timestamp="1585485734790" />
+    <state width="630" height="466" key="DebuggerActiveHint" timestamp="1585711473641">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="630" height="466" key="DebuggerActiveHint/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585711473641" />
     <state x="1238" y="354" key="FileChooserDialogImpl" timestamp="1585402868008">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
@@ -741,65 +760,65 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="823" y="453" key="GrepConsoleSound/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584782863230" />
-    <state width="1877" height="276" key="GridCell.Tab.0.bottom" timestamp="1585562635858">
+    <state width="1877" height="276" key="GridCell.Tab.0.bottom" timestamp="1585732217722">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="276" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585562635858" />
+    <state width="1877" height="276" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585732217722" />
     <state width="3397" height="392" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1585409508497" />
-    <state width="1877" height="276" key="GridCell.Tab.0.center" timestamp="1585562635858">
+    <state width="1877" height="276" key="GridCell.Tab.0.center" timestamp="1585732217722">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="276" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585562635858" />
+    <state width="1877" height="276" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585732217722" />
     <state width="3397" height="392" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1585409508497" />
-    <state width="1877" height="276" key="GridCell.Tab.0.left" timestamp="1585562635858">
+    <state width="1877" height="276" key="GridCell.Tab.0.left" timestamp="1585732217722">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="276" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585562635858" />
+    <state width="1877" height="276" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585732217722" />
     <state width="3397" height="392" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1585409508496" />
-    <state width="1877" height="276" key="GridCell.Tab.0.right" timestamp="1585562635858">
+    <state width="1877" height="276" key="GridCell.Tab.0.right" timestamp="1585732217722">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="276" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585562635858" />
+    <state width="1877" height="276" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585732217722" />
     <state width="3397" height="392" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1585409508497" />
-    <state width="1877" height="276" key="GridCell.Tab.1.bottom" timestamp="1585562635859">
+    <state width="1877" height="276" key="GridCell.Tab.1.bottom" timestamp="1585732217575">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="276" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585562635859" />
+    <state width="1877" height="276" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585732217575" />
     <state width="3397" height="392" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1585409508497" />
-    <state width="1877" height="276" key="GridCell.Tab.1.center" timestamp="1585562635859">
+    <state width="1877" height="276" key="GridCell.Tab.1.center" timestamp="1585732217575">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="276" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585562635859" />
+    <state width="1877" height="276" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585732217575" />
     <state width="3397" height="392" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1585409508497" />
-    <state width="1877" height="276" key="GridCell.Tab.1.left" timestamp="1585562635859">
+    <state width="1877" height="276" key="GridCell.Tab.1.left" timestamp="1585732217575">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="276" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585562635859" />
+    <state width="1877" height="276" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585732217575" />
     <state width="3397" height="392" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1585409508497" />
-    <state width="1877" height="276" key="GridCell.Tab.1.right" timestamp="1585562635859">
+    <state width="1877" height="276" key="GridCell.Tab.1.right" timestamp="1585732217575">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="276" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585562635859" />
+    <state width="1877" height="276" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585732217575" />
     <state width="3397" height="392" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1585409508497" />
-    <state width="1877" height="276" key="GridCell.Tab.2.bottom" timestamp="1585562635859">
+    <state width="1877" height="276" key="GridCell.Tab.2.bottom" timestamp="1585732217576">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="276" key="GridCell.Tab.2.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585562635859" />
+    <state width="1877" height="276" key="GridCell.Tab.2.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585732217576" />
     <state width="3397" height="392" key="GridCell.Tab.2.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1585409508498" />
-    <state width="1877" height="276" key="GridCell.Tab.2.center" timestamp="1585562635859">
+    <state width="1877" height="276" key="GridCell.Tab.2.center" timestamp="1585732217575">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="276" key="GridCell.Tab.2.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585562635859" />
+    <state width="1877" height="276" key="GridCell.Tab.2.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585732217575" />
     <state width="3397" height="392" key="GridCell.Tab.2.center/0.0.3440.1400@0.0.3440.1400" timestamp="1585409508498" />
-    <state width="1877" height="276" key="GridCell.Tab.2.left" timestamp="1585562635859">
+    <state width="1877" height="276" key="GridCell.Tab.2.left" timestamp="1585732217575">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="276" key="GridCell.Tab.2.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585562635859" />
+    <state width="1877" height="276" key="GridCell.Tab.2.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585732217575" />
     <state width="3397" height="392" key="GridCell.Tab.2.left/0.0.3440.1400@0.0.3440.1400" timestamp="1585409508497" />
-    <state width="1877" height="276" key="GridCell.Tab.2.right" timestamp="1585562635859">
+    <state width="1877" height="276" key="GridCell.Tab.2.right" timestamp="1585732217576">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="276" key="GridCell.Tab.2.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585562635859" />
+    <state width="1877" height="276" key="GridCell.Tab.2.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585732217576" />
     <state width="3397" height="392" key="GridCell.Tab.2.right/0.0.3440.1400@0.0.3440.1400" timestamp="1585409508498" />
     <state width="1877" height="276" key="GridCell.Tab.3.bottom" timestamp="1585377580737">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -822,10 +841,10 @@
     </state>
     <state x="485" y="164" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585363303661" />
     <state x="869" y="221" key="SettingsEditor/0.0.3440.1400@0.0.3440.1400" timestamp="1585484043965" />
-    <state x="989" y="345" key="Vcs.Push.Dialog.v2" timestamp="1585485743309">
-      <screen x="0" y="0" width="3440" height="1400" />
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2" timestamp="1585562759519">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585385071515" />
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585562759519" />
     <state x="989" y="345" key="Vcs.Push.Dialog.v2/0.0.3440.1400@0.0.3440.1400" timestamp="1585485743309" />
     <state x="702" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1578902591542">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -865,23 +884,33 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1579140510090" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1585288459424">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1585730290915">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585288459424" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585730290915" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/payController/PayController.java</url>
-          <line>59</line>
+          <line>65</line>
           <option name="timeStamp" value="32" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/payController/PayController.java</url>
-          <line>86</line>
+          <line>92</line>
           <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/memberController/MemberController.java</url>
+          <line>141</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/liuming/eshop/controller/memberController/MemberController.java</url>
+          <line>168</line>
+          <option name="timeStamp" value="35" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -894,5 +923,8 @@
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/eshop$EshopApplication.ic" NAME="EshopApplication Coverage Results" MODIFIED="1585732201509" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

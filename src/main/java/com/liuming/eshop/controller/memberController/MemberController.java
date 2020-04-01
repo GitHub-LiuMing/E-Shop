@@ -171,7 +171,7 @@ public class MemberController {
 
                 //TODO 后台查会员数据
 
-                return DataResult.ok();
+                return DataResult.ok(memberPhone);
             }
         } catch (Exception e) {
             e.printStackTrace();

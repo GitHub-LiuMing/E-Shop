@@ -35,4 +35,6 @@ public interface MemberMapper {
     List<Member> findMember(@Param("map") Map map);
 
     int updateMemberPassword(@Param("map") Map map);
+
+    Member findMemberByOpenId(@Param("openId") String openId);
 }

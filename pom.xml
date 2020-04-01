@@ -253,7 +253,17 @@
             <artifactId>xom</artifactId>
             <version>1.2.10</version>
         </dependency>
-        <!-- 微信支付 开始 -->
+
+        <dependency>
+            <groupId>com.github.javen205</groupId>
+            <artifactId>IJPay-All</artifactId>
+            <version>2.5.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jfinal</groupId>
+            <artifactId>enjoy</artifactId>
+            <version>4.3</version>
+        </dependency>
     </dependencies>
 
     <build>

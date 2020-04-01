@@ -1,6 +1,13 @@
 package com.liuming.eshop.controller.payController;
 
+import com.ijpay.core.enums.SignType;
+import com.ijpay.core.kit.*;
+import com.ijpay.wxpay.WxPayApi;
+import com.ijpay.wxpay.model.*;
+import com.liuming.eshop.entity.memberEntity.Member;
 import com.liuming.eshop.entity.ordersEntity.Orders;
+import com.liuming.eshop.mapper.memberMapper.MemberMapper;
+import com.liuming.eshop.service.memberService.MemberService;
 import com.liuming.eshop.service.ordersService.OrdersService;
 import com.liuming.eshop.mapper.ordersMapper.OrdersMapper;
 import com.liuming.eshop.service.payService.PayService;
@@ -8,11 +15,7 @@ import com.liuming.eshop.utils.DataResult;
 import com.liuming.eshop.utils.payUtils.*;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.ibatis.jdbc.Null;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -39,6 +42,9 @@ public class PayController {
 
     @Resource
     private OrdersMapper ordersMapper;
+
+    @Resource
+    private MemberMapper memberMapper;
 
     @RequestMapping("/toPay")
     public DataResult toPay(String ordersId){
@@ -187,6 +193,8 @@ public class PayController {
                                 orders.setOrdersUpdateDate(new Date());
 
                                 int i = ordersMapper.updateByPrimaryKeySelective(orders);
+
+                                //todo: 支付成功以后，要按照商品的佣金ID查询商品佣金分配情况，将分配后的金额存入对应会员的零钱表中
                                 if (i >= 1){
                                     writer.write(setXml("SUCCESS", "OK"));
                                     System.out.println("------------支付成功-------------");
@@ -222,5 +230,61 @@ public class PayController {
     public static String setXml(String return_code, String return_msg) {
         return "<xml><return_code><![CDATA[" + return_code + "]]></return_code><return_msg><![CDATA[" + return_msg
                 + "]]></return_msg></xml>";
+    }
+
+    /**
+     * 企业付款到零钱
+     */
+    @RequestMapping(value = "/transfer", method = {RequestMethod.POST, RequestMethod.GET})
+    @ResponseBody
+    public DataResult transfer(HttpServletRequest request, @RequestParam("openId") String openId, @RequestParam("reUserName") String reUserName,
+            @RequestParam("changePrice") double changePrice) {
+        //提现功能开始前期的业务逻辑判断
+
+        //通过openid查询用户信息，得到的用户数据查询零钱表，再判断零钱中的余额是否大于等于用户准备提现的金额changePrice
+        Member member = memberMapper.findMemberByOpenId(openId);
+        if (member != null){
+            //提现功能 开始
+            String ip = IPAdrressUtils.getIPAdrress(request);
+            //TODO：强制设置IP为本地IP（上线前需要注释掉）
+            if (StringUtils.isBlank(ip)) {
+                ip = "127.0.0.1";
+            }
+
+            String nonce_str = RandomStringGenerator.getRandomStringByLength(32);
+            Map<String, String> params = TransferModel.builder()
+                    .mch_appid(Configure.getAppID().trim())
+                    .mchid(Configure.getMch_id())
+                    .nonce_str(nonce_str)
+                    .partner_trade_no(WxPayKit.generateStr())
+                    .openid(openId)
+                    .check_name("FORCE_CHECK")
+                    .re_user_name(reUserName)
+                    .amount((int)(changePrice * 100) + "")
+                    .desc("提现")
+                    .spbill_create_ip(ip)
+                    .build()
+                    .createSign(Configure.getKey(), SignType.MD5, false);
+
+            // 提现
+            String transfers = WxPayApi.transfers(params, "D:\\JetBrains\\IntelliJ IDEA\\IdeaProjects\\eshop\\apiclient_cert.p12", Configure.getMch_id());
+            //log.info("提现结果:" + transfers);
+            System.out.println("提现结果:" + transfers);
+            Map<String, String> map = WxPayKit.xmlToMap(transfers);
+            String returnCode = map.get("return_code");
+            String resultCode = map.get("result_code");
+            if (WxPayKit.codeIsOk(returnCode) && WxPayKit.codeIsOk(resultCode)) {
+                // 提现成功
+                System.out.println("提现成功");
+                //提现成功以后的项目逻辑代码
+            } else {
+                // 提现失败
+                System.out.println("提现失败");
+            }
+            return DataResult.ok(transfers);
+            //提现功能 结束
+        } else {
+            return DataResult.build(500,"会员不存在");
+        }
     }
 }

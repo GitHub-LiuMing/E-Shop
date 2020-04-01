@@ -154,3 +154,4 @@ src/main/java/com/liuming/eshop/entity/memberEntity/
 src/main/java/com/liuming/eshop/mapper/memberMapper/
 src/main/resources/static/
 src/main/resources/templates/
+apiclient_cert.p12

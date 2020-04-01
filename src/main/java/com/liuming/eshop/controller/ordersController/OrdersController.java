@@ -30,10 +30,10 @@ public class OrdersController {
      */
     @RequestMapping("/addOrders")
     public DataResult addOrders(Orders orders) {
-        if (StringUtils.isNotBlank(orders.getItemId()) && StringUtils.isNotBlank(orders.getMemberId()) && StringUtils.isNotBlank(orders.getCommissionId()) && StringUtils.isNotBlank(orders.getMemberDistributionAddressId()) && orders.getItemNum() != null) {
+        if (StringUtils.isNotBlank(orders.getItemId()) && StringUtils.isNotBlank(orders.getMemberId()) && StringUtils.isNotBlank(orders.getCommissionId()) && orders.getItemNum() != null) {
             return ordersService.addOrders(orders);
         } else {
-            return DataResult.build(500, "商品ID、会员ID、佣金ID、会员配送地址管理ID不得为空");
+            return DataResult.build(500, "商品ID、会员ID、佣金ID不得为空");
         }
     }
 

@@ -714,4 +714,13 @@
     WHERE
         member_phone = #{map.memberPhone};
   </update>
+
+  <select id="findMemberByOpenId" resultMap="map">
+    SELECT
+        *
+    FROM
+        member
+    WHERE
+        member_wechat_open_id = #{openId,jdbcType=VARCHAR}
+  </select>
 </mapper>
