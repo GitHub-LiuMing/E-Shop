@@ -150,8 +150,7 @@ fabric.properties
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
-src/main/java/com/liuming/eshop/entity/memberEntity/
-src/main/java/com/liuming/eshop/mapper/memberMapper/
 src/main/resources/static/
 src/main/resources/templates/
+
 apiclient_cert.p12
