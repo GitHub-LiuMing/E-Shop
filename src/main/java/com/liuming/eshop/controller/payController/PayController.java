@@ -4,14 +4,17 @@ import com.ijpay.core.enums.SignType;
 import com.ijpay.core.kit.*;
 import com.ijpay.wxpay.WxPayApi;
 import com.ijpay.wxpay.model.*;
+import com.liuming.eshop.entity.changeEntity.Change;
 import com.liuming.eshop.entity.memberEntity.Member;
 import com.liuming.eshop.entity.ordersEntity.Orders;
+import com.liuming.eshop.mapper.changeMapper.ChangeMapper;
 import com.liuming.eshop.mapper.memberMapper.MemberMapper;
 import com.liuming.eshop.service.memberService.MemberService;
 import com.liuming.eshop.service.ordersService.OrdersService;
 import com.liuming.eshop.mapper.ordersMapper.OrdersMapper;
 import com.liuming.eshop.service.payService.PayService;
 import com.liuming.eshop.utils.DataResult;
+import com.liuming.eshop.utils.IDUtils;
 import com.liuming.eshop.utils.payUtils.*;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang3.StringUtils;
@@ -45,6 +48,9 @@ public class PayController {
 
     @Resource
     private MemberMapper memberMapper;
+
+    @Resource
+    private ChangeMapper changeMapper;
 
     @RequestMapping("/toPay")
     public DataResult toPay(String ordersId){
@@ -240,51 +246,90 @@ public class PayController {
     public DataResult transfer(HttpServletRequest request, @RequestParam("openId") String openId, @RequestParam("reUserName") String reUserName,
             @RequestParam("changePrice") double changePrice) {
         //提现功能开始前期的业务逻辑判断
+        if (1.00 <= changePrice && changePrice <= 5000.00){
+            //通过openid查询用户信息，得到的用户数据查询零钱表，再判断零钱中的余额是否大于等于用户准备提现的金额changePrice
+            Member member = memberMapper.findMemberByOpenId(openId);
+            if (member != null){
+                //查询该会员的零钱信息
+                List<Change> changeList = changeMapper.findChangeByMemberId(member.getMemberId());
+                if (changeList.size() > 0){
+                    //待提现 = 已收入 - 已提现
+                    double dtx = 0.00;
+                    double ysr = 0.00;
+                    double ytx = 0.00;
 
-        //通过openid查询用户信息，得到的用户数据查询零钱表，再判断零钱中的余额是否大于等于用户准备提现的金额changePrice
-        Member member = memberMapper.findMemberByOpenId(openId);
-        if (member != null){
-            //提现功能 开始
-            String ip = IPAdrressUtils.getIPAdrress(request);
-            //TODO：强制设置IP为本地IP（上线前需要注释掉）
-            if (StringUtils.isBlank(ip)) {
-                ip = "127.0.0.1";
-            }
+                    //直接通过数据库查询到相应数据
+                    ysr = changeMapper.findChangeByMemberIdAndType(member.getMemberId(), 0);
+                    ytx = changeMapper.findChangeByMemberIdAndType(member.getMemberId(), 2);
 
-            String nonce_str = RandomStringGenerator.getRandomStringByLength(32);
-            Map<String, String> params = TransferModel.builder()
-                    .mch_appid(Configure.getAppID().trim())
-                    .mchid(Configure.getMch_id())
-                    .nonce_str(nonce_str)
-                    .partner_trade_no(WxPayKit.generateStr())
-                    .openid(openId)
-                    .check_name("FORCE_CHECK")
-                    .re_user_name(reUserName)
-                    .amount((int)(changePrice * 100) + "")
-                    .desc("提现")
-                    .spbill_create_ip(ip)
-                    .build()
-                    .createSign(Configure.getKey(), SignType.MD5, false);
+                    BigDecimal bysr = new BigDecimal(Double.toString(ysr));
+                    BigDecimal bytx = new BigDecimal(Double.toString(ytx));
+                    dtx = bysr.subtract(bytx).doubleValue();
+                    if (changePrice <= dtx){
+                        //提现功能 开始
+                        String ip = IPAdrressUtils.getIPAdrress(request);
+                        //TODO：强制设置IP为本地IP（上线前需要注释掉）
+                        if (StringUtils.isBlank(ip)) {
+                            ip = "127.0.0.1";
+                        }
 
-            // 提现
-            String transfers = WxPayApi.transfers(params, "D:\\JetBrains\\IntelliJ IDEA\\IdeaProjects\\eshop\\apiclient_cert.p12", Configure.getMch_id());
-            //log.info("提现结果:" + transfers);
-            System.out.println("提现结果:" + transfers);
-            Map<String, String> map = WxPayKit.xmlToMap(transfers);
-            String returnCode = map.get("return_code");
-            String resultCode = map.get("result_code");
-            if (WxPayKit.codeIsOk(returnCode) && WxPayKit.codeIsOk(resultCode)) {
-                // 提现成功
-                System.out.println("提现成功");
-                //提现成功以后的项目逻辑代码
+                        String nonce_str = RandomStringGenerator.getRandomStringByLength(32);
+                        Map<String, String> params = TransferModel.builder()
+                                .mch_appid(Configure.getAppID().trim())
+                                .mchid(Configure.getMch_id())
+                                .nonce_str(nonce_str)
+                                .partner_trade_no(WxPayKit.generateStr())
+                                .openid(openId)
+                                .check_name("FORCE_CHECK")
+                                .re_user_name(reUserName)
+                                .amount((int)(changePrice * 100) + "")
+                                .desc("提现")
+                                .spbill_create_ip(ip)
+                                .build()
+                                .createSign(Configure.getKey(), SignType.MD5, false);
+
+                        // 提现
+                        String transfers = WxPayApi.transfers(params, "D:\\JetBrains\\IntelliJ IDEA\\IdeaProjects\\eshop\\apiclient_cert.p12", Configure.getMch_id());
+                        //log.info("提现结果:" + transfers);
+                        System.out.println("提现结果:" + transfers);
+                        Map<String, String> map = WxPayKit.xmlToMap(transfers);
+                        String returnCode = map.get("return_code");
+                        String resultCode = map.get("result_code");
+                        if (WxPayKit.codeIsOk(returnCode) && WxPayKit.codeIsOk(resultCode)) {
+                            // 提现成功
+                            System.out.println("提现成功");
+                            //提现成功以后的项目逻辑代码
+                            Change change = new Change();
+                            change.setChangeId(IDUtils.getId());
+                            change.setMemberId(member.getMemberId());
+                            change.setChangePrice(changePrice);
+                            change.setChangeType(2);
+                            change.setChangeStatus(1);
+                            change.setChangeCreateDate(new Date());
+                            change.setChangeUpdateDate(new Date());
+                            int i = changeMapper.insertSelective(change);
+                            if(i > 0){
+                                return DataResult.ok();
+                            } else {
+                                return DataResult.build(500,"提现失败，请联系客服");
+                            }
+                        } else {
+                            // 提现失败
+                            System.out.println("提现失败");
+                        }
+                        return DataResult.ok(transfers);
+                        //提现功能 结束
+                    } else {
+                        return DataResult.build(500,"您的待提现金额为：" + dtx + "，请准确输入");
+                    }
+                } else {
+                    return DataResult.build(500,"您的可提现金额不足");
+                }
             } else {
-                // 提现失败
-                System.out.println("提现失败");
+                return DataResult.build(500,"会员不存在");
             }
-            return DataResult.ok(transfers);
-            //提现功能 结束
         } else {
-            return DataResult.build(500,"会员不存在");
+            return DataResult.build(500,"您输入的提现金额超过微信官方许可范围，请根据页面提示金额进行提现");
         }
     }
 }

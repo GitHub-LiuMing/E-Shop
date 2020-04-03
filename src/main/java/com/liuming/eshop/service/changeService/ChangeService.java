@@ -7,4 +7,8 @@ public interface ChangeService {
     DataResult addChange(Change change);
 
     DataResult findChange(Change change);
+
+    DataResult findChangeByDTX(String memberId);
+
+    DataResult test(String memberId, int changeType);
 }

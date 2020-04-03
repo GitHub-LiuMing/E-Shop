@@ -2,6 +2,7 @@ package com.liuming.eshop.mapper.changeMapper;
 
 import com.liuming.eshop.entity.changeEntity.Change;
 import com.liuming.eshop.entity.changeEntity.ChangeExample;
+
 import java.util.List;
 import java.util.Map;
 
@@ -33,4 +34,8 @@ public interface ChangeMapper {
     int updateByPrimaryKey(Change record);
 
     List<Change> findChange(@Param("map") Map map);
+
+    List<Change> findChangeByMemberId(@Param("memberId") String memberId);
+
+    double findChangeByMemberIdAndType(@Param("memberId") String memberId, @Param("i")int i);
 }

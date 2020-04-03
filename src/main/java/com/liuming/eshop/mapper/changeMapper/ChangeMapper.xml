@@ -69,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    change_id, member_id, change_price, change_type, change_status, change_create_date, 
+    change_id, member_id, change_price, change_type, change_status, change_create_date,
     change_update_date
   </sql>
   <select id="selectByExample" resultMap="map" parameterType="com.liuming.eshop.entity.changeEntity.ChangeExample" >
@@ -78,7 +78,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from change
+    from `change`
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -87,31 +87,31 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="map" parameterType="java.lang.String" >
-    select 
+    select
     <include refid="Base_Column_List" />
-    from change
+    from `change`
     where change_id = #{changeId,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from change
+    delete from `change`
     where change_id = #{changeId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.liuming.eshop.entity.changeEntity.ChangeExample" >
-    delete from change
+    delete from `change`
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="com.liuming.eshop.entity.changeEntity.Change" >
-    insert into change (change_id, member_id, change_price, 
-      change_type, change_status, change_create_date, 
+    insert into `change` (change_id, member_id, change_price,
+      change_type, change_status, change_create_date,
       change_update_date)
-    values (#{changeId,jdbcType=VARCHAR}, #{memberId,jdbcType=VARCHAR}, #{changePrice,jdbcType=DOUBLE}, 
-      #{changeType,jdbcType=INTEGER}, #{changeStatus,jdbcType=INTEGER}, #{changeCreateDate,jdbcType=TIMESTAMP}, 
+    values (#{changeId,jdbcType=VARCHAR}, #{memberId,jdbcType=VARCHAR}, #{changePrice,jdbcType=DOUBLE},
+      #{changeType,jdbcType=INTEGER}, #{changeStatus,jdbcType=INTEGER}, #{changeCreateDate,jdbcType=TIMESTAMP},
       #{changeUpdateDate,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.liuming.eshop.entity.changeEntity.Change" >
-    insert into change
+    insert into `change`
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="changeId != null" >
         change_id,
@@ -160,13 +160,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.liuming.eshop.entity.changeEntity.ChangeExample" resultType="java.lang.Integer" >
-    select count(*) from change
+    select count(*) from `change`
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update change
+    update `change`
     <set >
       <if test="record.changeId != null" >
         change_id = #{record.changeId,jdbcType=VARCHAR},
@@ -195,20 +195,20 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update change
+    update `change`
     set change_id = #{record.changeId,jdbcType=VARCHAR},
-      member_id = #{record.memberId,jdbcType=VARCHAR},
-      change_price = #{record.changePrice,jdbcType=DOUBLE},
-      change_type = #{record.changeType,jdbcType=INTEGER},
-      change_status = #{record.changeStatus,jdbcType=INTEGER},
-      change_create_date = #{record.changeCreateDate,jdbcType=TIMESTAMP},
-      change_update_date = #{record.changeUpdateDate,jdbcType=TIMESTAMP}
+    member_id = #{record.memberId,jdbcType=VARCHAR},
+    change_price = #{record.changePrice,jdbcType=DOUBLE},
+    change_type = #{record.changeType,jdbcType=INTEGER},
+    change_status = #{record.changeStatus,jdbcType=INTEGER},
+    change_create_date = #{record.changeCreateDate,jdbcType=TIMESTAMP},
+    change_update_date = #{record.changeUpdateDate,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.liuming.eshop.entity.changeEntity.Change" >
-    update change
+    update `change`
     <set >
       <if test="memberId != null" >
         member_id = #{memberId,jdbcType=VARCHAR},
@@ -232,7 +232,7 @@
     where change_id = #{changeId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.liuming.eshop.entity.changeEntity.Change" >
-    update change
+    update `change`
     set member_id = #{memberId,jdbcType=VARCHAR},
       change_price = #{changePrice,jdbcType=DOUBLE},
       change_type = #{changeType,jdbcType=INTEGER},
@@ -246,7 +246,7 @@
     SELECT
     <include refid="Base_Column_List" />
     FROM
-        change
+        `change`
     WHERE
         1 = 1
     <if test="map.changeId != null" >
@@ -270,5 +270,25 @@
     <if test="map.changeUpdateDate != null" >
       AND change_update_date = #{map.changeUpdateDate,jdbcType=TIMESTAMP}
     </if>
+  </select>
+
+  <select id="findChangeByMemberId" resultMap="map">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM
+    `change`
+    WHERE
+    member_id = #{memberId,jdbcType=VARCHAR}
+  </select>
+
+  <select id="findChangeByMemberIdAndType" resultType="java.lang.Double">
+    SELECT
+    SUM(change_price)
+    FROM
+    `change`
+    WHERE
+    member_id = #{memberId,jdbcType=VARCHAR}
+    AND
+    change_type = #{i,jdbcType=INTEGER}
   </select>
 </mapper>

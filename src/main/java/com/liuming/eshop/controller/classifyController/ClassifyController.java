@@ -30,7 +30,7 @@ public class ClassifyController {
      * //@RequestBody(required=false) 如果参数类型支持null,则是false
      */
     @RequestMapping("/addClassify")
-    public DataResult addClassify(@RequestBody(required=false) Classify classify){
+    public DataResult addClassify(Classify classify){//@RequestBody(required=false)
         return classifyService.addClassify(classify);
     }
 

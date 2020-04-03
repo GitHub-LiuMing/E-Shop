@@ -4,6 +4,7 @@ import com.liuming.eshop.entity.changeEntity.Change;
 import com.liuming.eshop.service.changeService.ChangeService;
 import com.liuming.eshop.utils.DataResult;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,7 +19,7 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping("/change")
 public class ChangeController {
-    @Resource
+    @Autowired
     private ChangeService changeService;
 
     /**
@@ -47,5 +48,15 @@ public class ChangeController {
     @RequestMapping("/findChange")
     public DataResult findChange(Change change){
         return changeService.findChange(change);
+    }
+
+    @RequestMapping("/findChangeByDTX")
+    public DataResult findChangeByDTX(String memberId){
+        return changeService.findChangeByDTX(memberId);
+    }
+
+    @RequestMapping("/test")
+    public DataResult test (String memberId, int changeType){
+        return changeService.test(memberId, changeType);
     }
 }
