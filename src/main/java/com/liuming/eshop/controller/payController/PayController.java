@@ -5,11 +5,12 @@ import com.ijpay.core.kit.*;
 import com.ijpay.wxpay.WxPayApi;
 import com.ijpay.wxpay.model.*;
 import com.liuming.eshop.entity.changeEntity.Change;
+import com.liuming.eshop.entity.itemEntity.Item;
 import com.liuming.eshop.entity.memberEntity.Member;
 import com.liuming.eshop.entity.ordersEntity.Orders;
 import com.liuming.eshop.mapper.changeMapper.ChangeMapper;
+import com.liuming.eshop.mapper.itemMapper.ItemMapper;
 import com.liuming.eshop.mapper.memberMapper.MemberMapper;
-import com.liuming.eshop.service.memberService.MemberService;
 import com.liuming.eshop.service.ordersService.OrdersService;
 import com.liuming.eshop.mapper.ordersMapper.OrdersMapper;
 import com.liuming.eshop.service.payService.PayService;
@@ -51,6 +52,9 @@ public class PayController {
 
     @Resource
     private ChangeMapper changeMapper;
+
+    @Resource
+    private ItemMapper itemMapper;
 
     @RequestMapping("/toPay")
     public DataResult toPay(String ordersId){
@@ -200,10 +204,18 @@ public class PayController {
 
                                 int i = ordersMapper.updateByPrimaryKeySelective(orders);
 
-                                //todo: 支付成功以后，要按照商品的佣金ID查询商品佣金分配情况，将分配后的金额存入对应会员的零钱表中
                                 if (i >= 1){
-                                    writer.write(setXml("SUCCESS", "OK"));
-                                    System.out.println("------------支付成功-------------");
+                                    //TODO: 支付成功以后，要按照商品的佣金ID查询商品佣金分配情况，将分配后的金额存入对应会员的零钱表中
+                                    /**
+                                     * 根据orders查询item，根据item中的分类ID进行区分，只有会员和高级会员有佣金分配，其他的直接结束支付流程
+                                     */
+                                    Item item = itemMapper.selectByPrimaryKey(orders.getItemId());
+                                    if (StringUtils.equals(item.getClassifyId(),"3") && StringUtils.equals(item.getClassifyId(),"4")){
+                                        //当购买的商品属于会员专区和高级会员专区的时候，查询该商品的佣金ID
+                                    } else {
+                                        writer.write(setXml("SUCCESS", "OK"));
+                                        System.out.println("------------支付成功-------------");
+                                    }
                                 } else {
                                     writer.write(setXml("FAIL", "Update data timeout"));
                                     System.out.println("----------- 更新数据失败,请重试-------------");
@@ -288,8 +300,9 @@ public class PayController {
                                 .build()
                                 .createSign(Configure.getKey(), SignType.MD5, false);
 
+                        String path = ClientCustomSSL.class.getClassLoader().getResource("apiclient_cert.p12").getPath();
                         // 提现
-                        String transfers = WxPayApi.transfers(params, "D:\\JetBrains\\IntelliJ IDEA\\IdeaProjects\\eshop\\apiclient_cert.p12", Configure.getMch_id());
+                        String transfers = WxPayApi.transfers(params, path, Configure.getMch_id());
                         //log.info("提现结果:" + transfers);
                         System.out.println("提现结果:" + transfers);
                         Map<String, String> map = WxPayKit.xmlToMap(transfers);

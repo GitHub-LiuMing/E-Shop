@@ -50,6 +50,13 @@ public class ChangeController {
         return changeService.findChange(change);
     }
 
+    /**
+     * @Description 查询待提现
+     * @param memberId
+     * @return com.liuming.eshop.utils.DataResult
+     * @Author 鲸落
+     * @Date 2020.04.06 11:40
+     */
     @RequestMapping("/findChangeByDTX")
     public DataResult findChangeByDTX(String memberId){
         return changeService.findChangeByDTX(memberId);

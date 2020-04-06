@@ -152,5 +152,4 @@ hs_err_pid*
 
 src/main/resources/static/
 src/main/resources/templates/
-
-apiclient_cert.p12
+src/main/resources/apiclient_cert.p12
