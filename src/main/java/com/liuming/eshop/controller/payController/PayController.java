@@ -5,10 +5,14 @@ import com.ijpay.core.kit.*;
 import com.ijpay.wxpay.WxPayApi;
 import com.ijpay.wxpay.model.*;
 import com.liuming.eshop.entity.changeEntity.Change;
+import com.liuming.eshop.entity.classifyEntity.Classify;
+import com.liuming.eshop.entity.commissionEntity.Commission;
 import com.liuming.eshop.entity.itemEntity.Item;
 import com.liuming.eshop.entity.memberEntity.Member;
 import com.liuming.eshop.entity.ordersEntity.Orders;
 import com.liuming.eshop.mapper.changeMapper.ChangeMapper;
+import com.liuming.eshop.mapper.classifyMapper.ClassifyMapper;
+import com.liuming.eshop.mapper.commissionMapper.CommissionMapper;
 import com.liuming.eshop.mapper.itemMapper.ItemMapper;
 import com.liuming.eshop.mapper.memberMapper.MemberMapper;
 import com.liuming.eshop.service.ordersService.OrdersService;
@@ -42,9 +46,6 @@ public class PayController {
     private PayService payService;
 
     @Resource
-    private OrdersService ordersService;
-
-    @Resource
     private OrdersMapper ordersMapper;
 
     @Resource
@@ -55,6 +56,9 @@ public class PayController {
 
     @Resource
     private ItemMapper itemMapper;
+
+    @Resource
+    private CommissionMapper commissionMapper;
 
     @RequestMapping("/toPay")
     public DataResult toPay(String ordersId){
@@ -210,8 +214,194 @@ public class PayController {
                                      * 根据orders查询item，根据item中的分类ID进行区分，只有会员和高级会员有佣金分配，其他的直接结束支付流程
                                      */
                                     Item item = itemMapper.selectByPrimaryKey(orders.getItemId());
-                                    if (StringUtils.equals(item.getClassifyId(),"3") && StringUtils.equals(item.getClassifyId(),"4")){
-                                        //当购买的商品属于会员专区和高级会员专区的时候，查询该商品的佣金ID
+                                    //当购买的商品属于自购专区、会员专区和高级会员专区的时候，查询该商品的佣金ID
+                                    Commission commission = commissionMapper.selectByPrimaryKey(item.getCommissionId());
+                                    //根据订单查询会员身份
+                                    Member member = memberMapper.selectByPrimaryKey(orders.getMemberId());//得到当前购买人的会员类型和上级会员ID
+                                    //上级身份标识
+                                    int memberType;
+                                    //上级
+                                    Member preMember;
+                                    //根据购买人会员身份查询上级会员
+
+                                    //判断依据：1.判断我买的产品,2.判断我上级的身份，3.判断我的身份例如：我购买了39.9，我的上级是高级会员，并且我的等级是高级会员，我的上级得到直推8，我得到复购8
+                                    // 我是代理，我的上级是高级会员，我购买了39.9，那么我上级得到的直推奖是8块，我会得到复购的8
+                                    if (StringUtils.equals(item.getClassifyId(),"2")){
+                                        //自购分配佣金的逻辑
+                                    } else if(StringUtils.equals(item.getClassifyId(),"3")){
+                                        //会员专区分配佣金的逻辑
+                                        //判断我上级的身份
+                                        preMember = memberMapper.selectByPrimaryKey(member.getPreMemberId());
+                                        if (preMember.getMemberType() == 5){
+                                            //上级是会员39.9等级,分配对应佣金4
+                                            Change change = new Change();
+                                            change.setChangeId(IDUtils.getId());
+                                            change.setMemberId(preMember.getMemberId());
+                                            change.setChangePrice(commission.getHyHyZtPrice());
+                                            change.setChangeType(1);
+                                            change.setChangeStatus(1);
+                                            change.setChangeCreateDate(new Date());
+                                            change.setChangeUpdateDate(new Date());
+                                            changeMapper.insertSelective(change);
+                                        } else if(preMember.getMemberType() == 4 || preMember.getMemberType() == 3 || preMember.getMemberType() == 2){
+                                            //上级是高级会员399等级,分配对应佣金8,并且去查询复购情况,如果符合复购条件,给购买人零钱增加8
+                                            Change change = new Change();
+                                            change.setChangeId(IDUtils.getId());
+                                            change.setMemberId(preMember.getMemberId());
+                                            change.setChangePrice(commission.getGjHyZtPrice());
+                                            change.setChangeType(1);
+                                            change.setChangeStatus(1);
+                                            change.setChangeCreateDate(new Date());
+                                            change.setChangeUpdateDate(new Date());
+                                            changeMapper.insertSelective(change);
+                                            //查询购买人是否符合复购,如果符合复购给购买人零钱增加8
+                                            //orders in itemId,memberId,ordersStatus=2
+                                            Map map = new HashMap();
+                                            map.put("itemId",item.getItemId());
+                                            map.put("memberId",member.getMemberId());
+                                            map.put("ordersStatus",2);
+                                            List<Orders> orders1 = ordersMapper.findOrders(map);
+                                            if (orders1.size() > 1){
+                                                //购买人有复购,给购买人增加零钱8
+                                                Change change1 = new Change();
+                                                change1.setChangeId(IDUtils.getId());
+                                                change1.setMemberId(member.getMemberId());
+                                                change1.setChangePrice(commission.getGjHyFgPrice());
+                                                change1.setChangeType(1);
+                                                change1.setChangeStatus(1);
+                                                change1.setChangeCreateDate(new Date());
+                                                change1.setChangeUpdateDate(new Date());
+                                                changeMapper.insertSelective(change);
+                                            }
+                                        } else if(preMember.getMemberType() == 1){
+                                            //上级是代理商3999等级,分配对应佣金12,并且去查询复购情况,如果符合复购条件,给购买人零钱增加12
+                                            Change change = new Change();
+                                            change.setChangeId(IDUtils.getId());
+                                            change.setMemberId(preMember.getMemberId());
+                                            change.setChangePrice(commission.getDlHyZtPrice());
+                                            change.setChangeType(1);
+                                            change.setChangeStatus(1);
+                                            change.setChangeCreateDate(new Date());
+                                            change.setChangeUpdateDate(new Date());
+                                            changeMapper.insertSelective(change);
+                                            //查询购买人是否符合复购,如果符合复购给购买人零钱增加8
+                                            //orders in itemId,memberId,ordersStatus=2
+                                            Map map = new HashMap();
+                                            map.put("itemId",item.getItemId());
+                                            map.put("memberId",member.getMemberId());
+                                            map.put("ordersStatus",2);
+                                            List<Orders> orders1 = ordersMapper.findOrders(map);
+                                            if (orders1.size() > 1 && member.getMemberType() == 4){
+                                                //购买人有复购,给购买人增加零钱8
+                                                Change gjHyFg = new Change();
+                                                gjHyFg.setChangeId(IDUtils.getId());
+                                                gjHyFg.setMemberId(member.getMemberId());
+                                                gjHyFg.setChangePrice(commission.getGjHyFgPrice());
+                                                gjHyFg.setChangeType(1);
+                                                gjHyFg.setChangeStatus(1);
+                                                gjHyFg.setChangeCreateDate(new Date());
+                                                gjHyFg.setChangeUpdateDate(new Date());
+                                                changeMapper.insertSelective(gjHyFg);
+                                            } else if(orders1.size() > 1 && member.getMemberType() == 3){
+                                                //购买人有复购,给购买人增加零钱8
+                                                Change vipHyFg = new Change();
+                                                vipHyFg.setChangeId(IDUtils.getId());
+                                                vipHyFg.setMemberId(member.getMemberId());
+                                                vipHyFg.setChangePrice(commission.getVipHyFgPrice());
+                                                vipHyFg.setChangeType(1);
+                                                vipHyFg.setChangeStatus(1);
+                                                vipHyFg.setChangeCreateDate(new Date());
+                                                vipHyFg.setChangeUpdateDate(new Date());
+                                                changeMapper.insertSelective(vipHyFg);
+                                            } else if(orders1.size() > 1 && member.getMemberType() == 2){
+                                                //购买人有复购,给购买人增加零钱8
+                                                Change zzHyFg = new Change();
+                                                zzHyFg.setChangeId(IDUtils.getId());
+                                                zzHyFg.setMemberId(member.getMemberId());
+                                                zzHyFg.setChangePrice(commission.getZzHyFgPrice());
+                                                zzHyFg.setChangeType(1);
+                                                zzHyFg.setChangeStatus(1);
+                                                zzHyFg.setChangeCreateDate(new Date());
+                                                zzHyFg.setChangeUpdateDate(new Date());
+                                                changeMapper.insertSelective(zzHyFg);
+                                            } else if(orders1.size() > 1 && member.getMemberType() == 1){
+                                                //购买人有复购,给购买人增加零钱8
+                                                Change dlHyFg = new Change();
+                                                dlHyFg.setChangeId(IDUtils.getId());
+                                                dlHyFg.setMemberId(member.getMemberId());
+                                                dlHyFg.setChangePrice(commission.getDlHyFgPrice());
+                                                dlHyFg.setChangeType(1);
+                                                dlHyFg.setChangeStatus(1);
+                                                dlHyFg.setChangeCreateDate(new Date());
+                                                dlHyFg.setChangeUpdateDate(new Date());
+                                                changeMapper.insertSelective(dlHyFg);
+                                            }
+                                        }
+                                    } else if(StringUtils.equals(item.getClassifyId(),"4")){
+                                        //高级会员专区分配佣金的逻辑
+                                        //判断我上级的身份
+                                        preMember = memberMapper.selectByPrimaryKey(member.getPreMemberId());
+                                        //判断商品ID是否是3999,3999属于代理商,其他的属于高级会员
+                                        if(StringUtils.equals(orders.getItemId(),"3999")){
+                                            //判断商品ID是否是3999,3999属于代理商,其他的属于高级会员
+                                        } else {
+                                            if (preMember.getMemberType() == 5){
+                                                //上级是会员39.9等级,分配对应佣金75
+                                                Change change = new Change();
+                                                change.setChangeId(IDUtils.getId());
+                                                change.setMemberId(preMember.getMemberId());
+                                                change.setChangePrice(commission.getHyGjZtPrice());
+                                                change.setChangeType(1);
+                                                change.setChangeStatus(1);
+                                                change.setChangeCreateDate(new Date());
+                                                change.setChangeUpdateDate(new Date());
+                                                changeMapper.insertSelective(change);
+                                            } else if(preMember.getMemberType() == 4){
+                                                //上级是高级会员399等级,分配对应佣金150
+                                                Change change = new Change();
+                                                change.setChangeId(IDUtils.getId());
+                                                change.setMemberId(preMember.getMemberId());
+                                                change.setChangePrice(commission.getGjGjZtPrice());
+                                                change.setChangeType(1);
+                                                change.setChangeStatus(1);
+                                                change.setChangeCreateDate(new Date());
+                                                change.setChangeUpdateDate(new Date());
+                                                changeMapper.insertSelective(change);
+                                            } else if(preMember.getMemberType() == 3){
+                                                //上级是高级会员399等级,分配对应佣金170
+                                                Change change = new Change();
+                                                change.setChangeId(IDUtils.getId());
+                                                change.setMemberId(preMember.getMemberId());
+                                                change.setChangePrice(commission.getVipGjZtPrice());
+                                                change.setChangeType(1);
+                                                change.setChangeStatus(1);
+                                                change.setChangeCreateDate(new Date());
+                                                change.setChangeUpdateDate(new Date());
+                                                changeMapper.insertSelective(change);
+                                            } else if(preMember.getMemberType() == 2){
+                                                //上级是高级会员399等级,分配对应佣金200
+                                                Change change = new Change();
+                                                change.setChangeId(IDUtils.getId());
+                                                change.setMemberId(preMember.getMemberId());
+                                                change.setChangePrice(commission.getZzGjZtPrice());
+                                                change.setChangeType(1);
+                                                change.setChangeStatus(1);
+                                                change.setChangeCreateDate(new Date());
+                                                change.setChangeUpdateDate(new Date());
+                                                changeMapper.insertSelective(change);
+                                            } else if(preMember.getMemberType() == 1){
+                                                //上级是代理商3999等级,分配对应佣金200
+                                                Change change = new Change();
+                                                change.setChangeId(IDUtils.getId());
+                                                change.setMemberId(preMember.getMemberId());
+                                                change.setChangePrice(commission.getDlGjZtPrice());
+                                                change.setChangeType(1);
+                                                change.setChangeStatus(1);
+                                                change.setChangeCreateDate(new Date());
+                                                change.setChangeUpdateDate(new Date());
+                                                changeMapper.insertSelective(change);
+                                            }
+                                        }
                                     } else {
                                         writer.write(setXml("SUCCESS", "OK"));
                                         System.out.println("------------支付成功-------------");
@@ -344,5 +534,8 @@ public class PayController {
         } else {
             return DataResult.build(500,"您输入的提现金额超过微信官方许可范围，请根据页面提示金额进行提现");
         }
+    }
+
+    public static void main(String[] args) {
     }
 }
