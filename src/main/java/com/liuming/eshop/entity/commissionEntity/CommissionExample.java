@@ -2165,123 +2165,123 @@ public class CommissionExample {
             return (Criteria) this;
         }
 
-        public Criteria andDlDlZtPercentIsNull() {
-            addCriterion("dl_dl_zt_percent is null");
+        public Criteria andDlDlZtPriceIsNull() {
+            addCriterion("dl_dl_zt_price is null");
             return (Criteria) this;
         }
 
-        public Criteria andDlDlZtPercentIsNotNull() {
-            addCriterion("dl_dl_zt_percent is not null");
+        public Criteria andDlDlZtPriceIsNotNull() {
+            addCriterion("dl_dl_zt_price is not null");
             return (Criteria) this;
         }
 
-        public Criteria andDlDlZtPercentEqualTo(Double value) {
-            addCriterion("dl_dl_zt_percent =", value, "dlDlZtPercent");
+        public Criteria andDlDlZtPriceEqualTo(Double value) {
+            addCriterion("dl_dl_zt_price =", value, "dlDlZtPrice");
             return (Criteria) this;
         }
 
-        public Criteria andDlDlZtPercentNotEqualTo(Double value) {
-            addCriterion("dl_dl_zt_percent <>", value, "dlDlZtPercent");
+        public Criteria andDlDlZtPriceNotEqualTo(Double value) {
+            addCriterion("dl_dl_zt_price <>", value, "dlDlZtPrice");
             return (Criteria) this;
         }
 
-        public Criteria andDlDlZtPercentGreaterThan(Double value) {
-            addCriterion("dl_dl_zt_percent >", value, "dlDlZtPercent");
+        public Criteria andDlDlZtPriceGreaterThan(Double value) {
+            addCriterion("dl_dl_zt_price >", value, "dlDlZtPrice");
             return (Criteria) this;
         }
 
-        public Criteria andDlDlZtPercentGreaterThanOrEqualTo(Double value) {
-            addCriterion("dl_dl_zt_percent >=", value, "dlDlZtPercent");
+        public Criteria andDlDlZtPriceGreaterThanOrEqualTo(Double value) {
+            addCriterion("dl_dl_zt_price >=", value, "dlDlZtPrice");
             return (Criteria) this;
         }
 
-        public Criteria andDlDlZtPercentLessThan(Double value) {
-            addCriterion("dl_dl_zt_percent <", value, "dlDlZtPercent");
+        public Criteria andDlDlZtPriceLessThan(Double value) {
+            addCriterion("dl_dl_zt_price <", value, "dlDlZtPrice");
             return (Criteria) this;
         }
 
-        public Criteria andDlDlZtPercentLessThanOrEqualTo(Double value) {
-            addCriterion("dl_dl_zt_percent <=", value, "dlDlZtPercent");
+        public Criteria andDlDlZtPriceLessThanOrEqualTo(Double value) {
+            addCriterion("dl_dl_zt_price <=", value, "dlDlZtPrice");
             return (Criteria) this;
         }
 
-        public Criteria andDlDlZtPercentIn(List<Double> values) {
-            addCriterion("dl_dl_zt_percent in", values, "dlDlZtPercent");
+        public Criteria andDlDlZtPriceIn(List<Double> values) {
+            addCriterion("dl_dl_zt_price in", values, "dlDlZtPrice");
             return (Criteria) this;
         }
 
-        public Criteria andDlDlZtPercentNotIn(List<Double> values) {
-            addCriterion("dl_dl_zt_percent not in", values, "dlDlZtPercent");
+        public Criteria andDlDlZtPriceNotIn(List<Double> values) {
+            addCriterion("dl_dl_zt_price not in", values, "dlDlZtPrice");
             return (Criteria) this;
         }
 
-        public Criteria andDlDlZtPercentBetween(Double value1, Double value2) {
-            addCriterion("dl_dl_zt_percent between", value1, value2, "dlDlZtPercent");
+        public Criteria andDlDlZtPriceBetween(Double value1, Double value2) {
+            addCriterion("dl_dl_zt_price between", value1, value2, "dlDlZtPrice");
             return (Criteria) this;
         }
 
-        public Criteria andDlDlZtPercentNotBetween(Double value1, Double value2) {
-            addCriterion("dl_dl_zt_percent not between", value1, value2, "dlDlZtPercent");
+        public Criteria andDlDlZtPriceNotBetween(Double value1, Double value2) {
+            addCriterion("dl_dl_zt_price not between", value1, value2, "dlDlZtPrice");
             return (Criteria) this;
         }
 
-        public Criteria andDlDlJtPercentIsNull() {
-            addCriterion("dl_dl_jt_percent is null");
+        public Criteria andDlDlJtPriceIsNull() {
+            addCriterion("dl_dl_jt_price is null");
             return (Criteria) this;
         }
 
-        public Criteria andDlDlJtPercentIsNotNull() {
-            addCriterion("dl_dl_jt_percent is not null");
+        public Criteria andDlDlJtPriceIsNotNull() {
+            addCriterion("dl_dl_jt_price is not null");
             return (Criteria) this;
         }
 
-        public Criteria andDlDlJtPercentEqualTo(Double value) {
-            addCriterion("dl_dl_jt_percent =", value, "dlDlJtPercent");
+        public Criteria andDlDlJtPriceEqualTo(Double value) {
+            addCriterion("dl_dl_jt_price =", value, "dlDlJtPrice");
             return (Criteria) this;
         }
 
-        public Criteria andDlDlJtPercentNotEqualTo(Double value) {
-            addCriterion("dl_dl_jt_percent <>", value, "dlDlJtPercent");
+        public Criteria andDlDlJtPriceNotEqualTo(Double value) {
+            addCriterion("dl_dl_jt_price <>", value, "dlDlJtPrice");
             return (Criteria) this;
         }
 
-        public Criteria andDlDlJtPercentGreaterThan(Double value) {
-            addCriterion("dl_dl_jt_percent >", value, "dlDlJtPercent");
+        public Criteria andDlDlJtPriceGreaterThan(Double value) {
+            addCriterion("dl_dl_jt_price >", value, "dlDlJtPrice");
             return (Criteria) this;
         }
 
-        public Criteria andDlDlJtPercentGreaterThanOrEqualTo(Double value) {
-            addCriterion("dl_dl_jt_percent >=", value, "dlDlJtPercent");
+        public Criteria andDlDlJtPriceGreaterThanOrEqualTo(Double value) {
+            addCriterion("dl_dl_jt_price >=", value, "dlDlJtPrice");
             return (Criteria) this;
         }
 
-        public Criteria andDlDlJtPercentLessThan(Double value) {
-            addCriterion("dl_dl_jt_percent <", value, "dlDlJtPercent");
+        public Criteria andDlDlJtPriceLessThan(Double value) {
+            addCriterion("dl_dl_jt_price <", value, "dlDlJtPrice");
             return (Criteria) this;
         }
 
-        public Criteria andDlDlJtPercentLessThanOrEqualTo(Double value) {
-            addCriterion("dl_dl_jt_percent <=", value, "dlDlJtPercent");
+        public Criteria andDlDlJtPriceLessThanOrEqualTo(Double value) {
+            addCriterion("dl_dl_jt_price <=", value, "dlDlJtPrice");
             return (Criteria) this;
         }
 
-        public Criteria andDlDlJtPercentIn(List<Double> values) {
-            addCriterion("dl_dl_jt_percent in", values, "dlDlJtPercent");
+        public Criteria andDlDlJtPriceIn(List<Double> values) {
+            addCriterion("dl_dl_jt_price in", values, "dlDlJtPrice");
             return (Criteria) this;
         }
 
-        public Criteria andDlDlJtPercentNotIn(List<Double> values) {
-            addCriterion("dl_dl_jt_percent not in", values, "dlDlJtPercent");
+        public Criteria andDlDlJtPriceNotIn(List<Double> values) {
+            addCriterion("dl_dl_jt_price not in", values, "dlDlJtPrice");
             return (Criteria) this;
         }
 
-        public Criteria andDlDlJtPercentBetween(Double value1, Double value2) {
-            addCriterion("dl_dl_jt_percent between", value1, value2, "dlDlJtPercent");
+        public Criteria andDlDlJtPriceBetween(Double value1, Double value2) {
+            addCriterion("dl_dl_jt_price between", value1, value2, "dlDlJtPrice");
             return (Criteria) this;
         }
 
-        public Criteria andDlDlJtPercentNotBetween(Double value1, Double value2) {
-            addCriterion("dl_dl_jt_percent not between", value1, value2, "dlDlJtPercent");
+        public Criteria andDlDlJtPriceNotBetween(Double value1, Double value2) {
+            addCriterion("dl_dl_jt_price not between", value1, value2, "dlDlJtPrice");
             return (Criteria) this;
         }
 

@@ -36,8 +36,8 @@
     <result column="dl_hy_fg_price" property="dlHyFgPrice" jdbcType="DOUBLE" />
     <result column="dl_gj_zt_price" property="dlGjZtPrice" jdbcType="DOUBLE" />
     <result column="dl_gj_jt_price" property="dlGjJtPrice" jdbcType="DOUBLE" />
-    <result column="dl_dl_zt_percent" property="dlDlZtPercent" jdbcType="DOUBLE" />
-    <result column="dl_dl_jt_percent" property="dlDlJtPercent" jdbcType="DOUBLE" />
+    <result column="dl_dl_zt_price" property="dlDlZtPrice" jdbcType="DOUBLE" />
+    <result column="dl_dl_jt_price" property="dlDlJtPrice" jdbcType="DOUBLE" />
     <result column="commission_status" property="commissionStatus" jdbcType="INTEGER" />
     <result column="commission_created_date" property="commissionCreatedDate" jdbcType="TIMESTAMP" />
     <result column="commission_updated_date" property="commissionUpdatedDate" jdbcType="TIMESTAMP" />
@@ -107,7 +107,7 @@
     vip_gj_td_price, vip_dl_zt_price, vip_dl_jt_price, zz_hy_zt_price, zz_hy_td_price, 
     zz_hy_fg_price, zz_gj_zt_price, zz_gj_jj_price, zz_gj_td_price, zz_gj_pj_price, zz_dl_zt_price, 
     zz_dl_jt_price, dl_hy_zt_price, dl_hy_td_price, dl_hy_fg_price, dl_gj_zt_price, dl_gj_jt_price, 
-    dl_dl_zt_percent, dl_dl_jt_percent, commission_status, commission_created_date, commission_updated_date
+    dl_dl_zt_price, dl_dl_jt_price, commission_status, commission_created_date, commission_updated_date
   </sql>
   <select id="selectByExample" resultMap="map" parameterType="com.liuming.eshop.entity.commissionEntity.CommissionExample" >
     select
@@ -151,7 +151,7 @@
       zz_gj_jj_price, zz_gj_td_price, zz_gj_pj_price, 
       zz_dl_zt_price, zz_dl_jt_price, dl_hy_zt_price, 
       dl_hy_td_price, dl_hy_fg_price, dl_gj_zt_price, 
-      dl_gj_jt_price, dl_dl_zt_percent, dl_dl_jt_percent, 
+      dl_gj_jt_price, dl_dl_zt_price, dl_dl_jt_price, 
       commission_status, commission_created_date, 
       commission_updated_date)
     values (#{commissionId,jdbcType=VARCHAR}, #{commissionName,jdbcType=VARCHAR}, #{hyHyZtPrice,jdbcType=DOUBLE}, 
@@ -165,7 +165,7 @@
       #{zzGjJjPrice,jdbcType=DOUBLE}, #{zzGjTdPrice,jdbcType=DOUBLE}, #{zzGjPjPrice,jdbcType=DOUBLE}, 
       #{zzDlZtPrice,jdbcType=DOUBLE}, #{zzDlJtPrice,jdbcType=DOUBLE}, #{dlHyZtPrice,jdbcType=DOUBLE}, 
       #{dlHyTdPrice,jdbcType=DOUBLE}, #{dlHyFgPrice,jdbcType=DOUBLE}, #{dlGjZtPrice,jdbcType=DOUBLE}, 
-      #{dlGjJtPrice,jdbcType=DOUBLE}, #{dlDlZtPercent,jdbcType=DOUBLE}, #{dlDlJtPercent,jdbcType=DOUBLE}, 
+      #{dlGjJtPrice,jdbcType=DOUBLE}, #{dlDlZtPrice,jdbcType=DOUBLE}, #{dlDlJtPrice,jdbcType=DOUBLE}, 
       #{commissionStatus,jdbcType=INTEGER}, #{commissionCreatedDate,jdbcType=TIMESTAMP}, 
       #{commissionUpdatedDate,jdbcType=TIMESTAMP})
   </insert>
@@ -274,11 +274,11 @@
       <if test="dlGjJtPrice != null" >
         dl_gj_jt_price,
       </if>
-      <if test="dlDlZtPercent != null" >
-        dl_dl_zt_percent,
+      <if test="dlDlZtPrice != null" >
+        dl_dl_zt_price,
       </if>
-      <if test="dlDlJtPercent != null" >
-        dl_dl_jt_percent,
+      <if test="dlDlJtPrice != null" >
+        dl_dl_jt_price,
       </if>
       <if test="commissionStatus != null" >
         commission_status,
@@ -393,11 +393,11 @@
       <if test="dlGjJtPrice != null" >
         #{dlGjJtPrice,jdbcType=DOUBLE},
       </if>
-      <if test="dlDlZtPercent != null" >
-        #{dlDlZtPercent,jdbcType=DOUBLE},
+      <if test="dlDlZtPrice != null" >
+        #{dlDlZtPrice,jdbcType=DOUBLE},
       </if>
-      <if test="dlDlJtPercent != null" >
-        #{dlDlJtPercent,jdbcType=DOUBLE},
+      <if test="dlDlJtPrice != null" >
+        #{dlDlJtPrice,jdbcType=DOUBLE},
       </if>
       <if test="commissionStatus != null" >
         #{commissionStatus,jdbcType=INTEGER},
@@ -521,11 +521,11 @@
       <if test="record.dlGjJtPrice != null" >
         dl_gj_jt_price = #{record.dlGjJtPrice,jdbcType=DOUBLE},
       </if>
-      <if test="record.dlDlZtPercent != null" >
-        dl_dl_zt_percent = #{record.dlDlZtPercent,jdbcType=DOUBLE},
+      <if test="record.dlDlZtPrice != null" >
+        dl_dl_zt_price = #{record.dlDlZtPrice,jdbcType=DOUBLE},
       </if>
-      <if test="record.dlDlJtPercent != null" >
-        dl_dl_jt_percent = #{record.dlDlJtPercent,jdbcType=DOUBLE},
+      <if test="record.dlDlJtPrice != null" >
+        dl_dl_jt_price = #{record.dlDlJtPrice,jdbcType=DOUBLE},
       </if>
       <if test="record.commissionStatus != null" >
         commission_status = #{record.commissionStatus,jdbcType=INTEGER},
@@ -577,8 +577,8 @@
       dl_hy_fg_price = #{record.dlHyFgPrice,jdbcType=DOUBLE},
       dl_gj_zt_price = #{record.dlGjZtPrice,jdbcType=DOUBLE},
       dl_gj_jt_price = #{record.dlGjJtPrice,jdbcType=DOUBLE},
-      dl_dl_zt_percent = #{record.dlDlZtPercent,jdbcType=DOUBLE},
-      dl_dl_jt_percent = #{record.dlDlJtPercent,jdbcType=DOUBLE},
+      dl_dl_zt_price = #{record.dlDlZtPrice,jdbcType=DOUBLE},
+      dl_dl_jt_price = #{record.dlDlJtPrice,jdbcType=DOUBLE},
       commission_status = #{record.commissionStatus,jdbcType=INTEGER},
       commission_created_date = #{record.commissionCreatedDate,jdbcType=TIMESTAMP},
       commission_updated_date = #{record.commissionUpdatedDate,jdbcType=TIMESTAMP}
@@ -688,11 +688,11 @@
       <if test="dlGjJtPrice != null" >
         dl_gj_jt_price = #{dlGjJtPrice,jdbcType=DOUBLE},
       </if>
-      <if test="dlDlZtPercent != null" >
-        dl_dl_zt_percent = #{dlDlZtPercent,jdbcType=DOUBLE},
+      <if test="dlDlZtPrice != null" >
+        dl_dl_zt_price = #{dlDlZtPrice,jdbcType=DOUBLE},
       </if>
-      <if test="dlDlJtPercent != null" >
-        dl_dl_jt_percent = #{dlDlJtPercent,jdbcType=DOUBLE},
+      <if test="dlDlJtPrice != null" >
+        dl_dl_jt_price = #{dlDlJtPrice,jdbcType=DOUBLE},
       </if>
       <if test="commissionStatus != null" >
         commission_status = #{commissionStatus,jdbcType=INTEGER},
@@ -741,8 +741,8 @@
       dl_hy_fg_price = #{dlHyFgPrice,jdbcType=DOUBLE},
       dl_gj_zt_price = #{dlGjZtPrice,jdbcType=DOUBLE},
       dl_gj_jt_price = #{dlGjJtPrice,jdbcType=DOUBLE},
-      dl_dl_zt_percent = #{dlDlZtPercent,jdbcType=DOUBLE},
-      dl_dl_jt_percent = #{dlDlJtPercent,jdbcType=DOUBLE},
+      dl_dl_zt_price = #{dlDlZtPrice,jdbcType=DOUBLE},
+      dl_dl_jt_price = #{dlDlJtPrice,jdbcType=DOUBLE},
       commission_status = #{commissionStatus,jdbcType=INTEGER},
       commission_created_date = #{commissionCreatedDate,jdbcType=TIMESTAMP},
       commission_updated_date = #{commissionUpdatedDate,jdbcType=TIMESTAMP}
@@ -757,121 +757,121 @@
     WHERE
         1 = 1
     <if test="map.commissionId != null" >
-      commission_id = #{map.commissionId,jdbcType=VARCHAR},
+      AND commission_id = #{map.commissionId,jdbcType=VARCHAR}
     </if>
     <if test="map.commissionName != null" >
-      commission_name = #{map.commissionName,jdbcType=VARCHAR},
+      AND commission_name = #{map.commissionName,jdbcType=VARCHAR}
     </if>
     <if test="map.hyHyZtPrice != null" >
-      hy_hy_zt_price = #{map.hyHyZtPrice,jdbcType=DOUBLE},
+      AND hy_hy_zt_price = #{map.hyHyZtPrice,jdbcType=DOUBLE}
     </if>
     <if test="map.hyGjZtPrice != null" >
-      hy_gj_zt_price = #{map.hyGjZtPrice,jdbcType=DOUBLE},
+      AND hy_gj_zt_price = #{map.hyGjZtPrice,jdbcType=DOUBLE}
     </if>
     <if test="map.hyDlZtPrice != null" >
-      hy_dl_zt_price = #{map.hyDlZtPrice,jdbcType=DOUBLE},
+      AND hy_dl_zt_price = #{map.hyDlZtPrice,jdbcType=DOUBLE}
     </if>
     <if test="map.gjHyZtPrice != null" >
-      gj_hy_zt_price = #{map.gjHyZtPrice,jdbcType=DOUBLE},
+      AND gj_hy_zt_price = #{map.gjHyZtPrice,jdbcType=DOUBLE}
     </if>
     <if test="map.gjHyTdPrice != null" >
-      gj_hy_td_price = #{map.gjHyTdPrice,jdbcType=DOUBLE},
+      AND gj_hy_td_price = #{map.gjHyTdPrice,jdbcType=DOUBLE}
     </if>
     <if test="map.gjHyFgPrice != null" >
-      gj_hy_fg_price = #{map.gjHyFgPrice,jdbcType=DOUBLE},
+      AND gj_hy_fg_price = #{map.gjHyFgPrice,jdbcType=DOUBLE}
     </if>
     <if test="map.gjGjZtPrice != null" >
-      gj_gj_zt_price = #{map.gjGjZtPrice,jdbcType=DOUBLE},
+      AND gj_gj_zt_price = #{map.gjGjZtPrice,jdbcType=DOUBLE}
     </if>
     <if test="map.gjGjJtPrice != null" >
-      gj_gj_jt_price = #{map.gjGjJtPrice,jdbcType=DOUBLE},
+      AND gj_gj_jt_price = #{map.gjGjJtPrice,jdbcType=DOUBLE}
     </if>
     <if test="map.gjDlZtPrice != null" >
-      gj_dl_zt_price = #{map.gjDlZtPrice,jdbcType=DOUBLE},
+      AND gj_dl_zt_price = #{map.gjDlZtPrice,jdbcType=DOUBLE}
     </if>
     <if test="map.gjDlJtPrice != null" >
-      gj_dl_jt_price = #{map.gjDlJtPrice,jdbcType=DOUBLE},
+      AND gj_dl_jt_price = #{map.gjDlJtPrice,jdbcType=DOUBLE}
     </if>
     <if test="map.vipHyZtPrice != null" >
-      vip_hy_zt_price = #{map.vipHyZtPrice,jdbcType=DOUBLE},
+      AND vip_hy_zt_price = #{map.vipHyZtPrice,jdbcType=DOUBLE}
     </if>
     <if test="map.vipHyTdPrice != null" >
-      vip_hy_td_price = #{map.vipHyTdPrice,jdbcType=DOUBLE},
+      AND vip_hy_td_price = #{map.vipHyTdPrice,jdbcType=DOUBLE}
     </if>
     <if test="map.vipHyFgPrice != null" >
-      vip_hy_fg_price = #{map.vipHyFgPrice,jdbcType=DOUBLE},
+      AND vip_hy_fg_price = #{map.vipHyFgPrice,jdbcType=DOUBLE}
     </if>
     <if test="map.vipGjZtPrice != null" >
-      vip_gj_zt_price = #{map.vipGjZtPrice,jdbcType=DOUBLE},
+      AND vip_gj_zt_price = #{map.vipGjZtPrice,jdbcType=DOUBLE},
     </if>
     <if test="map.vipGjJtPrice != null" >
-      vip_gj_jt_price = #{map.vipGjJtPrice,jdbcType=DOUBLE},
+      AND vip_gj_jt_price = #{map.vipGjJtPrice,jdbcType=DOUBLE}
     </if>
     <if test="map.vipGjTdPrice != null" >
-      vip_gj_td_price = #{map.vipGjTdPrice,jdbcType=DOUBLE},
+      AND vip_gj_td_price = #{map.vipGjTdPrice,jdbcType=DOUBLE}
     </if>
     <if test="map.vipDlZtPrice != null" >
-      vip_dl_zt_price = #{map.vipDlZtPrice,jdbcType=DOUBLE},
+      AND vip_dl_zt_price = #{map.vipDlZtPrice,jdbcType=DOUBLE}
     </if>
     <if test="map.vipDlJtPrice != null" >
-      vip_dl_jt_price = #{map.vipDlJtPrice,jdbcType=DOUBLE},
+      AND vip_dl_jt_price = #{map.vipDlJtPrice,jdbcType=DOUBLE}
     </if>
     <if test="map.zzHyZtPrice != null" >
-      zz_hy_zt_price = #{map.zzHyZtPrice,jdbcType=DOUBLE},
+      AND zz_hy_zt_price = #{map.zzHyZtPrice,jdbcType=DOUBLE}
     </if>
     <if test="map.zzHyTdPrice != null" >
-      zz_hy_td_price = #{map.zzHyTdPrice,jdbcType=DOUBLE},
+      AND zz_hy_td_price = #{map.zzHyTdPrice,jdbcType=DOUBLE}
     </if>
     <if test="map.zzHyFgPrice != null" >
-      zz_hy_fg_price = #{map.zzHyFgPrice,jdbcType=DOUBLE},
+      AND zz_hy_fg_price = #{map.zzHyFgPrice,jdbcType=DOUBLE}
     </if>
     <if test="map.zzGjZtPrice != null" >
-      zz_gj_zt_price = #{map.zzGjZtPrice,jdbcType=DOUBLE},
+      AND zz_gj_zt_price = #{map.zzGjZtPrice,jdbcType=DOUBLE}
     </if>
     <if test="map.zzGjJjPrice != null" >
-      zz_gj_jj_price = #{map.zzGjJjPrice,jdbcType=DOUBLE},
+      AND zz_gj_jj_price = #{map.zzGjJjPrice,jdbcType=DOUBLE}
     </if>
     <if test="map.zzGjTdPrice != null" >
-      zz_gj_td_price = #{map.zzGjTdPrice,jdbcType=DOUBLE},
+      AND zz_gj_td_price = #{map.zzGjTdPrice,jdbcType=DOUBLE}
     </if>
     <if test="map.zzGjPjPrice != null" >
-      zz_gj_pj_price = #{map.zzGjPjPrice,jdbcType=DOUBLE},
+      AND zz_gj_pj_price = #{map.zzGjPjPrice,jdbcType=DOUBLE}
     </if>
     <if test="map.zzDlZtPrice != null" >
-      zz_dl_zt_price = #{map.zzDlZtPrice,jdbcType=DOUBLE},
+      AND zz_dl_zt_price = #{map.zzDlZtPrice,jdbcType=DOUBLE}
     </if>
     <if test="map.zzDlJtPrice != null" >
-      zz_dl_jt_price = #{map.zzDlJtPrice,jdbcType=DOUBLE},
+      AND zz_dl_jt_price = #{map.zzDlJtPrice,jdbcType=DOUBLE}
     </if>
     <if test="map.dlHyZtPrice != null" >
-      dl_hy_zt_price = #{map.dlHyZtPrice,jdbcType=DOUBLE},
+      AND dl_hy_zt_price = #{map.dlHyZtPrice,jdbcType=DOUBLE}
     </if>
     <if test="map.dlHyTdPrice != null" >
-      dl_hy_td_price = #{map.dlHyTdPrice,jdbcType=DOUBLE},
+      AND dl_hy_td_price = #{map.dlHyTdPrice,jdbcType=DOUBLE}
     </if>
     <if test="map.dlHyFgPrice != null" >
-      dl_hy_fg_price = #{map.dlHyFgPrice,jdbcType=DOUBLE},
+      AND dl_hy_fg_price = #{map.dlHyFgPrice,jdbcType=DOUBLE}
     </if>
     <if test="map.dlGjZtPrice != null" >
-      dl_gj_zt_price = #{map.dlGjZtPrice,jdbcType=DOUBLE},
+      AND dl_gj_zt_price = #{map.dlGjZtPrice,jdbcType=DOUBLE}
     </if>
     <if test="map.dlGjJtPrice != null" >
-      dl_gj_jt_price = #{map.dlGjJtPrice,jdbcType=DOUBLE},
+      AND dl_gj_jt_price = #{map.dlGjJtPrice,jdbcType=DOUBLE}
     </if>
-    <if test="map.dlDlZtPercent != null" >
-      dl_dl_zt_percent = #{map.dlDlZtPercent,jdbcType=DOUBLE},
+    <if test="map.dlDlZtPrice != null" >
+      AND dl_dl_zt_price = #{map.dlDlZtPrice,jdbcType=DOUBLE}
     </if>
-    <if test="map.dlDlJtPercent != null" >
-      dl_dl_jt_percent = #{map.dlDlJtPercent,jdbcType=DOUBLE},
+    <if test="map.dlDlJtPrice != null" >
+      AND dl_dl_jt_price = #{map.dlDlJtPrice,jdbcType=DOUBLE}
     </if>
     <if test="map.commissionStatus != null" >
-      commission_status = #{map.commissionStatus,jdbcType=INTEGER},
+      AND commission_status = #{map.commissionStatus,jdbcType=INTEGER}
     </if>
     <if test="map.commissionCreatedDate != null" >
-      commission_created_date = #{map.commissionCreatedDate,jdbcType=TIMESTAMP},
+      AND commission_created_date = #{map.commissionCreatedDate,jdbcType=TIMESTAMP}
     </if>
     <if test="map.commissionUpdatedDate != null" >
-      commission_updated_date = #{map.commissionUpdatedDate,jdbcType=TIMESTAMP},
+      AND commission_updated_date = #{map.commissionUpdatedDate,jdbcType=TIMESTAMP}
     </if>
   </select>
 </mapper>

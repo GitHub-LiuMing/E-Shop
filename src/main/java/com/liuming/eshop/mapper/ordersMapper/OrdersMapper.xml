@@ -7,17 +7,16 @@
     <result column="member_id" property="memberId" jdbcType="VARCHAR" />
     <result column="commission_id" property="commissionId" jdbcType="VARCHAR" />
     <result column="coupon_details_id" property="couponDetailsId" jdbcType="VARCHAR" />
-    <result column="member_distribution_address_id" property="memberDistributionAddressId" jdbcType="VARCHAR" />
     <result column="unit_price" property="unitPrice" jdbcType="DOUBLE" />
     <result column="item_num" property="itemNum" jdbcType="INTEGER" />
     <result column="total_price" property="totalPrice" jdbcType="DOUBLE" />
+    <result column="detailed_address" property="detailedAddress" jdbcType="VARCHAR" />
+    <result column="consignee" property="consignee" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
     <result column="sfsyyhq" property="sfsyyhq" jdbcType="INTEGER" />
     <result column="pay_type" property="payType" jdbcType="INTEGER" />
     <result column="pay_resul" property="payResul" jdbcType="INTEGER" />
     <result column="pay_price" property="payPrice" jdbcType="DOUBLE" />
-    <result column="gmt_created" property="gmtCreated" jdbcType="TIMESTAMP" />
-    <result column="gmt_payment" property="gmtPayment" jdbcType="TIMESTAMP" />
-    <result column="gmt_refund" property="gmtRefund" jdbcType="TIMESTAMP" />
     <result column="orders_status" property="ordersStatus" jdbcType="INTEGER" />
     <result column="orders_create_date" property="ordersCreateDate" jdbcType="TIMESTAMP" />
     <result column="orders_update_date" property="ordersUpdateDate" jdbcType="TIMESTAMP" />
@@ -84,9 +83,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    orders_id, item_id, member_id, commission_id, coupon_details_id, member_distribution_address_id, 
-    unit_price, item_num, total_price, sfsyyhq, pay_type, pay_resul, pay_price, gmt_created, 
-    gmt_payment, gmt_refund, orders_status, orders_create_date, orders_update_date
+    orders_id, item_id, member_id, commission_id, coupon_details_id, unit_price, item_num,
+    total_price, detailed_address, consignee, phone, sfsyyhq, pay_type, pay_resul, pay_price,
+    orders_status, orders_create_date, orders_update_date
   </sql>
   <sql id="Blob_Column_List" >
     orders_desc
@@ -122,7 +121,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="maps" parameterType="java.lang.String" >
-    select 
+    select
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
@@ -140,20 +139,20 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.liuming.eshop.entity.ordersEntity.Orders" >
-    insert into orders (orders_id, item_id, member_id, 
-      commission_id, coupon_details_id, member_distribution_address_id, 
-      unit_price, item_num, total_price, 
-      sfsyyhq, pay_type, pay_resul, 
-      pay_price, gmt_created, gmt_payment, 
-      gmt_refund, orders_status, orders_create_date, 
-      orders_update_date, orders_desc)
-    values (#{ordersId,jdbcType=VARCHAR}, #{itemId,jdbcType=VARCHAR}, #{memberId,jdbcType=VARCHAR}, 
-      #{commissionId,jdbcType=VARCHAR}, #{couponDetailsId,jdbcType=VARCHAR}, #{memberDistributionAddressId,jdbcType=VARCHAR}, 
-      #{unitPrice,jdbcType=DOUBLE}, #{itemNum,jdbcType=INTEGER}, #{totalPrice,jdbcType=DOUBLE}, 
-      #{sfsyyhq,jdbcType=INTEGER}, #{payType,jdbcType=INTEGER}, #{payResul,jdbcType=INTEGER}, 
-      #{payPrice,jdbcType=DOUBLE}, #{gmtCreated,jdbcType=TIMESTAMP}, #{gmtPayment,jdbcType=TIMESTAMP}, 
-      #{gmtRefund,jdbcType=TIMESTAMP}, #{ordersStatus,jdbcType=INTEGER}, #{ordersCreateDate,jdbcType=TIMESTAMP}, 
-      #{ordersUpdateDate,jdbcType=TIMESTAMP}, #{ordersDesc,jdbcType=LONGVARCHAR})
+    insert into orders (orders_id, item_id, member_id,
+      commission_id, coupon_details_id, unit_price,
+      item_num, total_price, detailed_address,
+      consignee, phone, sfsyyhq,
+      pay_type, pay_resul, pay_price,
+      orders_status, orders_create_date, orders_update_date,
+      orders_desc)
+    values (#{ordersId,jdbcType=VARCHAR}, #{itemId,jdbcType=VARCHAR}, #{memberId,jdbcType=VARCHAR},
+      #{commissionId,jdbcType=VARCHAR}, #{couponDetailsId,jdbcType=VARCHAR}, #{unitPrice,jdbcType=DOUBLE},
+      #{itemNum,jdbcType=INTEGER}, #{totalPrice,jdbcType=DOUBLE}, #{detailedAddress,jdbcType=VARCHAR},
+      #{consignee,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{sfsyyhq,jdbcType=INTEGER},
+      #{payType,jdbcType=INTEGER}, #{payResul,jdbcType=INTEGER}, #{payPrice,jdbcType=DOUBLE},
+      #{ordersStatus,jdbcType=INTEGER}, #{ordersCreateDate,jdbcType=TIMESTAMP}, #{ordersUpdateDate,jdbcType=TIMESTAMP},
+      #{ordersDesc,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.liuming.eshop.entity.ordersEntity.Orders" >
     insert into orders
@@ -173,9 +172,6 @@
       <if test="couponDetailsId != null" >
         coupon_details_id,
       </if>
-      <if test="memberDistributionAddressId != null" >
-        member_distribution_address_id,
-      </if>
       <if test="unitPrice != null" >
         unit_price,
       </if>
@@ -184,6 +180,15 @@
       </if>
       <if test="totalPrice != null" >
         total_price,
+      </if>
+      <if test="detailedAddress != null" >
+        detailed_address,
+      </if>
+      <if test="consignee != null" >
+        consignee,
+      </if>
+      <if test="phone != null" >
+        phone,
       </if>
       <if test="sfsyyhq != null" >
         sfsyyhq,
@@ -196,15 +201,6 @@
       </if>
       <if test="payPrice != null" >
         pay_price,
-      </if>
-      <if test="gmtCreated != null" >
-        gmt_created,
-      </if>
-      <if test="gmtPayment != null" >
-        gmt_payment,
-      </if>
-      <if test="gmtRefund != null" >
-        gmt_refund,
       </if>
       <if test="ordersStatus != null" >
         orders_status,
@@ -235,9 +231,6 @@
       <if test="couponDetailsId != null" >
         #{couponDetailsId,jdbcType=VARCHAR},
       </if>
-      <if test="memberDistributionAddressId != null" >
-        #{memberDistributionAddressId,jdbcType=VARCHAR},
-      </if>
       <if test="unitPrice != null" >
         #{unitPrice,jdbcType=DOUBLE},
       </if>
@@ -246,6 +239,15 @@
       </if>
       <if test="totalPrice != null" >
         #{totalPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="detailedAddress != null" >
+        #{detailedAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="consignee != null" >
+        #{consignee,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
       </if>
       <if test="sfsyyhq != null" >
         #{sfsyyhq,jdbcType=INTEGER},
@@ -258,15 +260,6 @@
       </if>
       <if test="payPrice != null" >
         #{payPrice,jdbcType=DOUBLE},
-      </if>
-      <if test="gmtCreated != null" >
-        #{gmtCreated,jdbcType=TIMESTAMP},
-      </if>
-      <if test="gmtPayment != null" >
-        #{gmtPayment,jdbcType=TIMESTAMP},
-      </if>
-      <if test="gmtRefund != null" >
-        #{gmtRefund,jdbcType=TIMESTAMP},
       </if>
       <if test="ordersStatus != null" >
         #{ordersStatus,jdbcType=INTEGER},
@@ -306,9 +299,6 @@
       <if test="record.couponDetailsId != null" >
         coupon_details_id = #{record.couponDetailsId,jdbcType=VARCHAR},
       </if>
-      <if test="record.memberDistributionAddressId != null" >
-        member_distribution_address_id = #{record.memberDistributionAddressId,jdbcType=VARCHAR},
-      </if>
       <if test="record.unitPrice != null" >
         unit_price = #{record.unitPrice,jdbcType=DOUBLE},
       </if>
@@ -317,6 +307,15 @@
       </if>
       <if test="record.totalPrice != null" >
         total_price = #{record.totalPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.detailedAddress != null" >
+        detailed_address = #{record.detailedAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.consignee != null" >
+        consignee = #{record.consignee,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null" >
+        phone = #{record.phone,jdbcType=VARCHAR},
       </if>
       <if test="record.sfsyyhq != null" >
         sfsyyhq = #{record.sfsyyhq,jdbcType=INTEGER},
@@ -329,15 +328,6 @@
       </if>
       <if test="record.payPrice != null" >
         pay_price = #{record.payPrice,jdbcType=DOUBLE},
-      </if>
-      <if test="record.gmtCreated != null" >
-        gmt_created = #{record.gmtCreated,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.gmtPayment != null" >
-        gmt_payment = #{record.gmtPayment,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.gmtRefund != null" >
-        gmt_refund = #{record.gmtRefund,jdbcType=TIMESTAMP},
       </if>
       <if test="record.ordersStatus != null" >
         orders_status = #{record.ordersStatus,jdbcType=INTEGER},
@@ -359,25 +349,24 @@
   <update id="updateByExampleWithBLOBs" parameterType="map" >
     update orders
     set orders_id = #{record.ordersId,jdbcType=VARCHAR},
-      item_id = #{record.itemId,jdbcType=VARCHAR},
-      member_id = #{record.memberId,jdbcType=VARCHAR},
-      commission_id = #{record.commissionId,jdbcType=VARCHAR},
-      coupon_details_id = #{record.couponDetailsId,jdbcType=VARCHAR},
-      member_distribution_address_id = #{record.memberDistributionAddressId,jdbcType=VARCHAR},
-      unit_price = #{record.unitPrice,jdbcType=DOUBLE},
-      item_num = #{record.itemNum,jdbcType=INTEGER},
-      total_price = #{record.totalPrice,jdbcType=DOUBLE},
-      sfsyyhq = #{record.sfsyyhq,jdbcType=INTEGER},
-      pay_type = #{record.payType,jdbcType=INTEGER},
-      pay_resul = #{record.payResul,jdbcType=INTEGER},
-      pay_price = #{record.payPrice,jdbcType=DOUBLE},
-      gmt_created = #{record.gmtCreated,jdbcType=TIMESTAMP},
-      gmt_payment = #{record.gmtPayment,jdbcType=TIMESTAMP},
-      gmt_refund = #{record.gmtRefund,jdbcType=TIMESTAMP},
-      orders_status = #{record.ordersStatus,jdbcType=INTEGER},
-      orders_create_date = #{record.ordersCreateDate,jdbcType=TIMESTAMP},
-      orders_update_date = #{record.ordersUpdateDate,jdbcType=TIMESTAMP},
-      orders_desc = #{record.ordersDesc,jdbcType=LONGVARCHAR}
+    item_id = #{record.itemId,jdbcType=VARCHAR},
+    member_id = #{record.memberId,jdbcType=VARCHAR},
+    commission_id = #{record.commissionId,jdbcType=VARCHAR},
+    coupon_details_id = #{record.couponDetailsId,jdbcType=VARCHAR},
+    unit_price = #{record.unitPrice,jdbcType=DOUBLE},
+    item_num = #{record.itemNum,jdbcType=INTEGER},
+    total_price = #{record.totalPrice,jdbcType=DOUBLE},
+    detailed_address = #{record.detailedAddress,jdbcType=VARCHAR},
+    consignee = #{record.consignee,jdbcType=VARCHAR},
+    phone = #{record.phone,jdbcType=VARCHAR},
+    sfsyyhq = #{record.sfsyyhq,jdbcType=INTEGER},
+    pay_type = #{record.payType,jdbcType=INTEGER},
+    pay_resul = #{record.payResul,jdbcType=INTEGER},
+    pay_price = #{record.payPrice,jdbcType=DOUBLE},
+    orders_status = #{record.ordersStatus,jdbcType=INTEGER},
+    orders_create_date = #{record.ordersCreateDate,jdbcType=TIMESTAMP},
+    orders_update_date = #{record.ordersUpdateDate,jdbcType=TIMESTAMP},
+    orders_desc = #{record.ordersDesc,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -385,24 +374,23 @@
   <update id="updateByExample" parameterType="map" >
     update orders
     set orders_id = #{record.ordersId,jdbcType=VARCHAR},
-      item_id = #{record.itemId,jdbcType=VARCHAR},
-      member_id = #{record.memberId,jdbcType=VARCHAR},
-      commission_id = #{record.commissionId,jdbcType=VARCHAR},
-      coupon_details_id = #{record.couponDetailsId,jdbcType=VARCHAR},
-      member_distribution_address_id = #{record.memberDistributionAddressId,jdbcType=VARCHAR},
-      unit_price = #{record.unitPrice,jdbcType=DOUBLE},
-      item_num = #{record.itemNum,jdbcType=INTEGER},
-      total_price = #{record.totalPrice,jdbcType=DOUBLE},
-      sfsyyhq = #{record.sfsyyhq,jdbcType=INTEGER},
-      pay_type = #{record.payType,jdbcType=INTEGER},
-      pay_resul = #{record.payResul,jdbcType=INTEGER},
-      pay_price = #{record.payPrice,jdbcType=DOUBLE},
-      gmt_created = #{record.gmtCreated,jdbcType=TIMESTAMP},
-      gmt_payment = #{record.gmtPayment,jdbcType=TIMESTAMP},
-      gmt_refund = #{record.gmtRefund,jdbcType=TIMESTAMP},
-      orders_status = #{record.ordersStatus,jdbcType=INTEGER},
-      orders_create_date = #{record.ordersCreateDate,jdbcType=TIMESTAMP},
-      orders_update_date = #{record.ordersUpdateDate,jdbcType=TIMESTAMP}
+    item_id = #{record.itemId,jdbcType=VARCHAR},
+    member_id = #{record.memberId,jdbcType=VARCHAR},
+    commission_id = #{record.commissionId,jdbcType=VARCHAR},
+    coupon_details_id = #{record.couponDetailsId,jdbcType=VARCHAR},
+    unit_price = #{record.unitPrice,jdbcType=DOUBLE},
+    item_num = #{record.itemNum,jdbcType=INTEGER},
+    total_price = #{record.totalPrice,jdbcType=DOUBLE},
+    detailed_address = #{record.detailedAddress,jdbcType=VARCHAR},
+    consignee = #{record.consignee,jdbcType=VARCHAR},
+    phone = #{record.phone,jdbcType=VARCHAR},
+    sfsyyhq = #{record.sfsyyhq,jdbcType=INTEGER},
+    pay_type = #{record.payType,jdbcType=INTEGER},
+    pay_resul = #{record.payResul,jdbcType=INTEGER},
+    pay_price = #{record.payPrice,jdbcType=DOUBLE},
+    orders_status = #{record.ordersStatus,jdbcType=INTEGER},
+    orders_create_date = #{record.ordersCreateDate,jdbcType=TIMESTAMP},
+    orders_update_date = #{record.ordersUpdateDate,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -422,9 +410,6 @@
       <if test="couponDetailsId != null" >
         coupon_details_id = #{couponDetailsId,jdbcType=VARCHAR},
       </if>
-      <if test="memberDistributionAddressId != null" >
-        member_distribution_address_id = #{memberDistributionAddressId,jdbcType=VARCHAR},
-      </if>
       <if test="unitPrice != null" >
         unit_price = #{unitPrice,jdbcType=DOUBLE},
       </if>
@@ -433,6 +418,15 @@
       </if>
       <if test="totalPrice != null" >
         total_price = #{totalPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="detailedAddress != null" >
+        detailed_address = #{detailedAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="consignee != null" >
+        consignee = #{consignee,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
       </if>
       <if test="sfsyyhq != null" >
         sfsyyhq = #{sfsyyhq,jdbcType=INTEGER},
@@ -445,15 +439,6 @@
       </if>
       <if test="payPrice != null" >
         pay_price = #{payPrice,jdbcType=DOUBLE},
-      </if>
-      <if test="gmtCreated != null" >
-        gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
-      </if>
-      <if test="gmtPayment != null" >
-        gmt_payment = #{gmtPayment,jdbcType=TIMESTAMP},
-      </if>
-      <if test="gmtRefund != null" >
-        gmt_refund = #{gmtRefund,jdbcType=TIMESTAMP},
       </if>
       <if test="ordersStatus != null" >
         orders_status = #{ordersStatus,jdbcType=INTEGER},
@@ -476,17 +461,16 @@
       member_id = #{memberId,jdbcType=VARCHAR},
       commission_id = #{commissionId,jdbcType=VARCHAR},
       coupon_details_id = #{couponDetailsId,jdbcType=VARCHAR},
-      member_distribution_address_id = #{memberDistributionAddressId,jdbcType=VARCHAR},
       unit_price = #{unitPrice,jdbcType=DOUBLE},
       item_num = #{itemNum,jdbcType=INTEGER},
       total_price = #{totalPrice,jdbcType=DOUBLE},
+      detailed_address = #{detailedAddress,jdbcType=VARCHAR},
+      consignee = #{consignee,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
       sfsyyhq = #{sfsyyhq,jdbcType=INTEGER},
       pay_type = #{payType,jdbcType=INTEGER},
       pay_resul = #{payResul,jdbcType=INTEGER},
       pay_price = #{payPrice,jdbcType=DOUBLE},
-      gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
-      gmt_payment = #{gmtPayment,jdbcType=TIMESTAMP},
-      gmt_refund = #{gmtRefund,jdbcType=TIMESTAMP},
       orders_status = #{ordersStatus,jdbcType=INTEGER},
       orders_create_date = #{ordersCreateDate,jdbcType=TIMESTAMP},
       orders_update_date = #{ordersUpdateDate,jdbcType=TIMESTAMP},
@@ -499,32 +483,31 @@
       member_id = #{memberId,jdbcType=VARCHAR},
       commission_id = #{commissionId,jdbcType=VARCHAR},
       coupon_details_id = #{couponDetailsId,jdbcType=VARCHAR},
-      member_distribution_address_id = #{memberDistributionAddressId,jdbcType=VARCHAR},
       unit_price = #{unitPrice,jdbcType=DOUBLE},
       item_num = #{itemNum,jdbcType=INTEGER},
       total_price = #{totalPrice,jdbcType=DOUBLE},
+      detailed_address = #{detailedAddress,jdbcType=VARCHAR},
+      consignee = #{consignee,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
       sfsyyhq = #{sfsyyhq,jdbcType=INTEGER},
       pay_type = #{payType,jdbcType=INTEGER},
       pay_resul = #{payResul,jdbcType=INTEGER},
       pay_price = #{payPrice,jdbcType=DOUBLE},
-      gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
-      gmt_payment = #{gmtPayment,jdbcType=TIMESTAMP},
-      gmt_refund = #{gmtRefund,jdbcType=TIMESTAMP},
       orders_status = #{ordersStatus,jdbcType=INTEGER},
       orders_create_date = #{ordersCreateDate,jdbcType=TIMESTAMP},
       orders_update_date = #{ordersUpdateDate,jdbcType=TIMESTAMP}
     where orders_id = #{ordersId,jdbcType=VARCHAR}
   </update>
-  
+
   <select id="findOrders" resultMap="maps">
     SELECT
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
     FROM
-        orders
+    orders
     WHERE
-        1 = 1
+    1 = 1
     <if test="map.ordersId != null" >
       AND orders_id = #{map.ordersId,jdbcType=VARCHAR}
     </if>
@@ -540,9 +523,6 @@
     <if test="map.couponDetailsId != null" >
       AND coupon_details_id = #{map.couponDetailsId,jdbcType=VARCHAR}
     </if>
-    <if test="map.memberDistributionAddressId != null" >
-      AND member_distribution_address_id = #{map.memberDistributionAddressId,jdbcType=VARCHAR}
-    </if>
     <if test="map.unitPrice != null" >
       AND unit_price = #{map.unitPrice,jdbcType=DOUBLE}
     </if>
@@ -551,6 +531,15 @@
     </if>
     <if test="map.totalPrice != null" >
       AND total_price = #{map.totalPrice,jdbcType=DOUBLE}
+    </if>
+    <if test="map.detailedAddress != null" >
+      AND detailed_address = #{map.detailedAddress,jdbcType=VARCHAR}
+    </if>
+    <if test="map.consignee != null" >
+      AND consignee = #{map.consignee,jdbcType=VARCHAR}
+    </if>
+    <if test="map.phone != null" >
+      AND phone = #{map.phone,jdbcType=VARCHAR}
     </if>
     <if test="map.sfsyyhq != null" >
       AND sfsyyhq = #{map.sfsyyhq,jdbcType=INTEGER}
@@ -564,15 +553,6 @@
     <if test="map.payPrice != null" >
       AND pay_price = #{map.payPrice,jdbcType=DOUBLE}
     </if>
-    <if test="map.gmtCreated != null" >
-      AND gmt_created = #{map.gmtCreated,jdbcType=TIMESTAMP}
-    </if>
-    <if test="map.gmtPayment != null" >
-      AND gmt_payment = #{map.gmtPayment,jdbcType=TIMESTAMP}
-    </if>
-    <if test="map.gmtRefund != null" >
-      AND gmt_refund = #{map.gmtRefund,jdbcType=TIMESTAMP}
-    </if>
     <if test="map.ordersStatus != null" >
       AND orders_status = #{map.ordersStatus,jdbcType=INTEGER}
     </if>
@@ -585,6 +565,7 @@
     <if test="map.ordersDesc != null" >
       AND orders_desc = #{map.ordersDesc,jdbcType=LONGVARCHAR}
     </if>
+    ORDER BY orders_update_date DESC
   </select>
 
   <select id="findOrdersId" resultType="com.liuming.eshop.entity.ordersEntity.Orders" parameterType="java.lang.String" >

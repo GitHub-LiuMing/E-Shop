@@ -16,13 +16,17 @@ public class Orders {
 
     private String couponDetailsId;
 
-    private String memberDistributionAddressId;
-
     private Double unitPrice;
 
     private Integer itemNum;
 
     private Double totalPrice;
+
+    private String detailedAddress;
+
+    private String consignee;
+
+    private String phone;
 
     private Integer sfsyyhq;
 
@@ -31,12 +35,6 @@ public class Orders {
     private Integer payResul;
 
     private Double payPrice;
-
-    private Date gmtCreated;
-
-    private Date gmtPayment;
-
-    private Date gmtRefund;
 
     private Integer ordersStatus;
 

@@ -84,8 +84,8 @@ public class CommissionServiceImpl implements CommissionService {
         map.put("dlHyFgPrice",commission.getDlHyFgPrice());
         map.put("dlGjZtPrice",commission.getDlGjZtPrice());
         map.put("dlGjJtPrice",commission.getDlGjJtPrice());
-        map.put("dlDlZtPercent",commission.getDlDlZtPercent());
-        map.put("dlDlJtPercent",commission.getDlDlJtPercent());
+        map.put("dlDlZtPercent",commission.getDlDlZtPrice());
+        map.put("dlDlJtPercent",commission.getDlDlJtPrice());
 
         map.put("commissionStatus",commission.getCommissionStatus());
         map.put("commissionCreatedDate",commission.getCommissionCreatedDate());

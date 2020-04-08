@@ -74,9 +74,9 @@ public class Commission {
 
     private Double dlGjJtPrice;
 
-    private Double dlDlZtPercent;
+    private Double dlDlZtPrice;
 
-    private Double dlDlJtPercent;
+    private Double dlDlJtPrice;
 
     private Integer commissionStatus;
 

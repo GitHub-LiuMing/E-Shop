@@ -344,6 +344,106 @@ public class PayController {
                                         //判断商品ID是否是3999,3999属于代理商,其他的属于高级会员
                                         if(StringUtils.equals(orders.getItemId(),"3999")){
                                             //判断商品ID是否是3999,3999属于代理商,其他的属于高级会员
+                                            if (preMember.getMemberType() == 5){
+                                                //上级是会员39.9等级,分配对应佣金75
+                                                Change change = new Change();
+                                                change.setChangeId(IDUtils.getId());
+                                                change.setMemberId(preMember.getMemberId());
+                                                change.setChangePrice(commission.getHyDlZtPrice());
+                                                change.setChangeType(1);
+                                                change.setChangeStatus(1);
+                                                change.setChangeCreateDate(new Date());
+                                                change.setChangeUpdateDate(new Date());
+                                                changeMapper.insertSelective(change);
+                                            } else if(preMember.getMemberType() == 4){
+                                                //上级是高级会员399等级,分配对应佣金150
+                                                Change change = new Change();
+                                                change.setChangeId(IDUtils.getId());
+                                                change.setMemberId(preMember.getMemberId());
+                                                change.setChangePrice(commission.getGjDlZtPrice());
+                                                change.setChangeType(1);
+                                                change.setChangeStatus(1);
+                                                change.setChangeCreateDate(new Date());
+                                                change.setChangeUpdateDate(new Date());
+                                                changeMapper.insertSelective(change);
+
+                                                //高级会员推荐代理间推
+                                                Member pre2Member = memberMapper.selectByPrimaryKey(preMember.getMemberId());
+                                                change.setChangeId(IDUtils.getId());
+                                                change.setMemberId(pre2Member.getMemberId());
+                                                change.setChangePrice(commission.getGjDlJtPrice());
+                                                change.setChangeType(1);
+                                                change.setChangeStatus(1);
+                                                change.setChangeCreateDate(new Date());
+                                                change.setChangeUpdateDate(new Date());
+                                                changeMapper.insertSelective(change);
+                                            } else if(preMember.getMemberType() == 3){
+                                                //上级是高级会员399等级,分配对应佣金170
+                                                Change change = new Change();
+                                                change.setChangeId(IDUtils.getId());
+                                                change.setMemberId(preMember.getMemberId());
+                                                change.setChangePrice(commission.getVipDlZtPrice());
+                                                change.setChangeType(1);
+                                                change.setChangeStatus(1);
+                                                change.setChangeCreateDate(new Date());
+                                                change.setChangeUpdateDate(new Date());
+                                                changeMapper.insertSelective(change);
+
+                                                //VIP推荐代理间推
+                                                Member pre2Member = memberMapper.selectByPrimaryKey(preMember.getMemberId());
+                                                change.setChangeId(IDUtils.getId());
+                                                change.setMemberId(pre2Member.getMemberId());
+                                                change.setChangePrice(commission.getVipDlJtPrice());
+                                                change.setChangeType(1);
+                                                change.setChangeStatus(1);
+                                                change.setChangeCreateDate(new Date());
+                                                change.setChangeUpdateDate(new Date());
+                                                changeMapper.insertSelective(change);
+                                            } else if(preMember.getMemberType() == 2){
+                                                //上级是高级会员399等级,分配对应佣金200
+                                                Change change = new Change();
+                                                change.setChangeId(IDUtils.getId());
+                                                change.setMemberId(preMember.getMemberId());
+                                                change.setChangePrice(commission.getZzDlZtPrice());
+                                                change.setChangeType(1);
+                                                change.setChangeStatus(1);
+                                                change.setChangeCreateDate(new Date());
+                                                change.setChangeUpdateDate(new Date());
+                                                changeMapper.insertSelective(change);
+
+                                                //至尊会员推荐代理间推
+                                                Member pre2Member = memberMapper.selectByPrimaryKey(preMember.getMemberId());
+                                                change.setChangeId(IDUtils.getId());
+                                                change.setMemberId(pre2Member.getMemberId());
+                                                change.setChangePrice(commission.getZzDlJtPrice());
+                                                change.setChangeType(1);
+                                                change.setChangeStatus(1);
+                                                change.setChangeCreateDate(new Date());
+                                                change.setChangeUpdateDate(new Date());
+                                                changeMapper.insertSelective(change);
+                                            } else if(preMember.getMemberType() == 1){
+                                                //上级是代理商3999等级,分配对应佣金200
+                                                Change change = new Change();
+                                                change.setChangeId(IDUtils.getId());
+                                                change.setMemberId(preMember.getMemberId());
+                                                change.setChangePrice(commission.getDlDlZtPrice());
+                                                change.setChangeType(1);
+                                                change.setChangeStatus(1);
+                                                change.setChangeCreateDate(new Date());
+                                                change.setChangeUpdateDate(new Date());
+                                                changeMapper.insertSelective(change);
+
+                                                //高级会员推荐代理间推
+                                                Member pre2Member = memberMapper.selectByPrimaryKey(preMember.getMemberId());
+                                                change.setChangeId(IDUtils.getId());
+                                                change.setMemberId(pre2Member.getMemberId());
+                                                change.setChangePrice(commission.getDlDlJtPrice());
+                                                change.setChangeType(1);
+                                                change.setChangeStatus(1);
+                                                change.setChangeCreateDate(new Date());
+                                                change.setChangeUpdateDate(new Date());
+                                                changeMapper.insertSelective(change);
+                                            }
                                         } else {
                                             if (preMember.getMemberType() == 5){
                                                 //上级是会员39.9等级,分配对应佣金75
@@ -367,12 +467,34 @@ public class PayController {
                                                 change.setChangeCreateDate(new Date());
                                                 change.setChangeUpdateDate(new Date());
                                                 changeMapper.insertSelective(change);
+
+                                                //高级会员推荐高级间推
+                                                Member pre2Member = memberMapper.selectByPrimaryKey(preMember.getMemberId());
+                                                change.setChangeId(IDUtils.getId());
+                                                change.setMemberId(pre2Member.getMemberId());
+                                                change.setChangePrice(commission.getGjGjJtPrice());
+                                                change.setChangeType(1);
+                                                change.setChangeStatus(1);
+                                                change.setChangeCreateDate(new Date());
+                                                change.setChangeUpdateDate(new Date());
+                                                changeMapper.insertSelective(change);
                                             } else if(preMember.getMemberType() == 3){
                                                 //上级是高级会员399等级,分配对应佣金170
                                                 Change change = new Change();
                                                 change.setChangeId(IDUtils.getId());
                                                 change.setMemberId(preMember.getMemberId());
                                                 change.setChangePrice(commission.getVipGjZtPrice());
+                                                change.setChangeType(1);
+                                                change.setChangeStatus(1);
+                                                change.setChangeCreateDate(new Date());
+                                                change.setChangeUpdateDate(new Date());
+                                                changeMapper.insertSelective(change);
+
+                                                //VIP推荐高级间推
+                                                Member pre2Member = memberMapper.selectByPrimaryKey(preMember.getMemberId());
+                                                change.setChangeId(IDUtils.getId());
+                                                change.setMemberId(pre2Member.getMemberId());
+                                                change.setChangePrice(commission.getVipGjJtPrice());
                                                 change.setChangeType(1);
                                                 change.setChangeStatus(1);
                                                 change.setChangeCreateDate(new Date());
@@ -389,12 +511,34 @@ public class PayController {
                                                 change.setChangeCreateDate(new Date());
                                                 change.setChangeUpdateDate(new Date());
                                                 changeMapper.insertSelective(change);
+
+                                                //至尊会员推荐高级间推
+                                                Member pre2Member = memberMapper.selectByPrimaryKey(preMember.getMemberId());
+                                                change.setChangeId(IDUtils.getId());
+                                                change.setMemberId(pre2Member.getMemberId());
+                                                change.setChangePrice(commission.getZzGjJjPrice());
+                                                change.setChangeType(1);
+                                                change.setChangeStatus(1);
+                                                change.setChangeCreateDate(new Date());
+                                                change.setChangeUpdateDate(new Date());
+                                                changeMapper.insertSelective(change);
                                             } else if(preMember.getMemberType() == 1){
                                                 //上级是代理商3999等级,分配对应佣金200
                                                 Change change = new Change();
                                                 change.setChangeId(IDUtils.getId());
                                                 change.setMemberId(preMember.getMemberId());
                                                 change.setChangePrice(commission.getDlGjZtPrice());
+                                                change.setChangeType(1);
+                                                change.setChangeStatus(1);
+                                                change.setChangeCreateDate(new Date());
+                                                change.setChangeUpdateDate(new Date());
+                                                changeMapper.insertSelective(change);
+
+                                                //代理推荐高级间推
+                                                Member pre2Member = memberMapper.selectByPrimaryKey(preMember.getMemberId());
+                                                change.setChangeId(IDUtils.getId());
+                                                change.setMemberId(pre2Member.getMemberId());
+                                                change.setChangePrice(commission.getDlGjJtPrice());
                                                 change.setChangeType(1);
                                                 change.setChangeStatus(1);
                                                 change.setChangeCreateDate(new Date());
