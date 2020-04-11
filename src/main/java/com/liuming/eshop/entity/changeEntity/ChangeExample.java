@@ -305,6 +305,76 @@ public class ChangeExample {
             return (Criteria) this;
         }
 
+        public Criteria andChangeDetailsIsNull() {
+            addCriterion("change_details is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andChangeDetailsIsNotNull() {
+            addCriterion("change_details is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andChangeDetailsEqualTo(String value) {
+            addCriterion("change_details =", value, "changeDetails");
+            return (Criteria) this;
+        }
+
+        public Criteria andChangeDetailsNotEqualTo(String value) {
+            addCriterion("change_details <>", value, "changeDetails");
+            return (Criteria) this;
+        }
+
+        public Criteria andChangeDetailsGreaterThan(String value) {
+            addCriterion("change_details >", value, "changeDetails");
+            return (Criteria) this;
+        }
+
+        public Criteria andChangeDetailsGreaterThanOrEqualTo(String value) {
+            addCriterion("change_details >=", value, "changeDetails");
+            return (Criteria) this;
+        }
+
+        public Criteria andChangeDetailsLessThan(String value) {
+            addCriterion("change_details <", value, "changeDetails");
+            return (Criteria) this;
+        }
+
+        public Criteria andChangeDetailsLessThanOrEqualTo(String value) {
+            addCriterion("change_details <=", value, "changeDetails");
+            return (Criteria) this;
+        }
+
+        public Criteria andChangeDetailsLike(String value) {
+            addCriterion("change_details like", value, "changeDetails");
+            return (Criteria) this;
+        }
+
+        public Criteria andChangeDetailsNotLike(String value) {
+            addCriterion("change_details not like", value, "changeDetails");
+            return (Criteria) this;
+        }
+
+        public Criteria andChangeDetailsIn(List<String> values) {
+            addCriterion("change_details in", values, "changeDetails");
+            return (Criteria) this;
+        }
+
+        public Criteria andChangeDetailsNotIn(List<String> values) {
+            addCriterion("change_details not in", values, "changeDetails");
+            return (Criteria) this;
+        }
+
+        public Criteria andChangeDetailsBetween(String value1, String value2) {
+            addCriterion("change_details between", value1, value2, "changeDetails");
+            return (Criteria) this;
+        }
+
+        public Criteria andChangeDetailsNotBetween(String value1, String value2) {
+            addCriterion("change_details not between", value1, value2, "changeDetails");
+            return (Criteria) this;
+        }
+
         public Criteria andChangeTypeIsNull() {
             addCriterion("change_type is null");
             return (Criteria) this;

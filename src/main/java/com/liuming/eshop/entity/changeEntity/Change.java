@@ -12,6 +12,8 @@ public class Change {
 
     private Double changePrice;
 
+    private String changeDetails;
+
     private Integer changeType;
 
     private Integer changeStatus;

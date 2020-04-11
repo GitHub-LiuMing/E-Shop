@@ -54,7 +54,7 @@ public class Commission {
 
     private Double zzGjZtPrice;
 
-    private Double zzGjJjPrice;
+    private Double zzGjJtPrice;
 
     private Double zzGjTdPrice;
 

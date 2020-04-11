@@ -1565,63 +1565,63 @@ public class CommissionExample {
             return (Criteria) this;
         }
 
-        public Criteria andZzGjJjPriceIsNull() {
-            addCriterion("zz_gj_jj_price is null");
+        public Criteria andZzGjJtPriceIsNull() {
+            addCriterion("zz_gj_jt_price is null");
             return (Criteria) this;
         }
 
-        public Criteria andZzGjJjPriceIsNotNull() {
-            addCriterion("zz_gj_jj_price is not null");
+        public Criteria andZzGjJtPriceIsNotNull() {
+            addCriterion("zz_gj_jt_price is not null");
             return (Criteria) this;
         }
 
-        public Criteria andZzGjJjPriceEqualTo(Double value) {
-            addCriterion("zz_gj_jj_price =", value, "zzGjJjPrice");
+        public Criteria andZzGjJtPriceEqualTo(Double value) {
+            addCriterion("zz_gj_jt_price =", value, "zzGjJtPrice");
             return (Criteria) this;
         }
 
-        public Criteria andZzGjJjPriceNotEqualTo(Double value) {
-            addCriterion("zz_gj_jj_price <>", value, "zzGjJjPrice");
+        public Criteria andZzGjJtPriceNotEqualTo(Double value) {
+            addCriterion("zz_gj_jt_price <>", value, "zzGjJtPrice");
             return (Criteria) this;
         }
 
-        public Criteria andZzGjJjPriceGreaterThan(Double value) {
-            addCriterion("zz_gj_jj_price >", value, "zzGjJjPrice");
+        public Criteria andZzGjJtPriceGreaterThan(Double value) {
+            addCriterion("zz_gj_jt_price >", value, "zzGjJtPrice");
             return (Criteria) this;
         }
 
-        public Criteria andZzGjJjPriceGreaterThanOrEqualTo(Double value) {
-            addCriterion("zz_gj_jj_price >=", value, "zzGjJjPrice");
+        public Criteria andZzGjJtPriceGreaterThanOrEqualTo(Double value) {
+            addCriterion("zz_gj_jt_price >=", value, "zzGjJtPrice");
             return (Criteria) this;
         }
 
-        public Criteria andZzGjJjPriceLessThan(Double value) {
-            addCriterion("zz_gj_jj_price <", value, "zzGjJjPrice");
+        public Criteria andZzGjJtPriceLessThan(Double value) {
+            addCriterion("zz_gj_jt_price <", value, "zzGjJtPrice");
             return (Criteria) this;
         }
 
-        public Criteria andZzGjJjPriceLessThanOrEqualTo(Double value) {
-            addCriterion("zz_gj_jj_price <=", value, "zzGjJjPrice");
+        public Criteria andZzGjJtPriceLessThanOrEqualTo(Double value) {
+            addCriterion("zz_gj_jt_price <=", value, "zzGjJtPrice");
             return (Criteria) this;
         }
 
-        public Criteria andZzGjJjPriceIn(List<Double> values) {
-            addCriterion("zz_gj_jj_price in", values, "zzGjJjPrice");
+        public Criteria andZzGjJtPriceIn(List<Double> values) {
+            addCriterion("zz_gj_jt_price in", values, "zzGjJtPrice");
             return (Criteria) this;
         }
 
-        public Criteria andZzGjJjPriceNotIn(List<Double> values) {
-            addCriterion("zz_gj_jj_price not in", values, "zzGjJjPrice");
+        public Criteria andZzGjJtPriceNotIn(List<Double> values) {
+            addCriterion("zz_gj_jt_price not in", values, "zzGjJtPrice");
             return (Criteria) this;
         }
 
-        public Criteria andZzGjJjPriceBetween(Double value1, Double value2) {
-            addCriterion("zz_gj_jj_price between", value1, value2, "zzGjJjPrice");
+        public Criteria andZzGjJtPriceBetween(Double value1, Double value2) {
+            addCriterion("zz_gj_jt_price between", value1, value2, "zzGjJtPrice");
             return (Criteria) this;
         }
 
-        public Criteria andZzGjJjPriceNotBetween(Double value1, Double value2) {
-            addCriterion("zz_gj_jj_price not between", value1, value2, "zzGjJjPrice");
+        public Criteria andZzGjJtPriceNotBetween(Double value1, Double value2) {
+            addCriterion("zz_gj_jt_price not between", value1, value2, "zzGjJtPrice");
             return (Criteria) this;
         }
 

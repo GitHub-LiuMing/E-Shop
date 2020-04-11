@@ -43,6 +43,7 @@ public class ChangeServiceImpl implements ChangeService {
         map.put("changeId",change.getChangeId());
         map.put("memberId",change.getMemberId());
         map.put("changePrice",change.getChangePrice());
+        map.put("changeDetails",change.getChangeDetails());
         map.put("changeType",change.getChangeType());
         map.put("changeStatus",change.getChangeStatus());
         map.put("changeCreateDate",change.getChangeCreateDate());

@@ -26,7 +26,7 @@
     <result column="zz_hy_td_price" property="zzHyTdPrice" jdbcType="DOUBLE" />
     <result column="zz_hy_fg_price" property="zzHyFgPrice" jdbcType="DOUBLE" />
     <result column="zz_gj_zt_price" property="zzGjZtPrice" jdbcType="DOUBLE" />
-    <result column="zz_gj_jj_price" property="zzGjJjPrice" jdbcType="DOUBLE" />
+    <result column="zz_gj_jt_price" property="zzGjJtPrice" jdbcType="DOUBLE" />
     <result column="zz_gj_td_price" property="zzGjTdPrice" jdbcType="DOUBLE" />
     <result column="zz_gj_pj_price" property="zzGjPjPrice" jdbcType="DOUBLE" />
     <result column="zz_dl_zt_price" property="zzDlZtPrice" jdbcType="DOUBLE" />
@@ -105,7 +105,7 @@
     gj_hy_td_price, gj_hy_fg_price, gj_gj_zt_price, gj_gj_jt_price, gj_dl_zt_price, gj_dl_jt_price, 
     vip_hy_zt_price, vip_hy_td_price, vip_hy_fg_price, vip_gj_zt_price, vip_gj_jt_price, 
     vip_gj_td_price, vip_dl_zt_price, vip_dl_jt_price, zz_hy_zt_price, zz_hy_td_price, 
-    zz_hy_fg_price, zz_gj_zt_price, zz_gj_jj_price, zz_gj_td_price, zz_gj_pj_price, zz_dl_zt_price, 
+    zz_hy_fg_price, zz_gj_zt_price, zz_gj_jt_price, zz_gj_td_price, zz_gj_pj_price, zz_dl_zt_price, 
     zz_dl_jt_price, dl_hy_zt_price, dl_hy_td_price, dl_hy_fg_price, dl_gj_zt_price, dl_gj_jt_price, 
     dl_dl_zt_price, dl_dl_jt_price, commission_status, commission_created_date, commission_updated_date
   </sql>
@@ -148,7 +148,7 @@
       vip_gj_zt_price, vip_gj_jt_price, vip_gj_td_price, 
       vip_dl_zt_price, vip_dl_jt_price, zz_hy_zt_price, 
       zz_hy_td_price, zz_hy_fg_price, zz_gj_zt_price, 
-      zz_gj_jj_price, zz_gj_td_price, zz_gj_pj_price, 
+      zz_gj_jt_price, zz_gj_td_price, zz_gj_pj_price, 
       zz_dl_zt_price, zz_dl_jt_price, dl_hy_zt_price, 
       dl_hy_td_price, dl_hy_fg_price, dl_gj_zt_price, 
       dl_gj_jt_price, dl_dl_zt_price, dl_dl_jt_price, 
@@ -162,7 +162,7 @@
       #{vipGjZtPrice,jdbcType=DOUBLE}, #{vipGjJtPrice,jdbcType=DOUBLE}, #{vipGjTdPrice,jdbcType=DOUBLE}, 
       #{vipDlZtPrice,jdbcType=DOUBLE}, #{vipDlJtPrice,jdbcType=DOUBLE}, #{zzHyZtPrice,jdbcType=DOUBLE}, 
       #{zzHyTdPrice,jdbcType=DOUBLE}, #{zzHyFgPrice,jdbcType=DOUBLE}, #{zzGjZtPrice,jdbcType=DOUBLE}, 
-      #{zzGjJjPrice,jdbcType=DOUBLE}, #{zzGjTdPrice,jdbcType=DOUBLE}, #{zzGjPjPrice,jdbcType=DOUBLE}, 
+      #{zzGjJtPrice,jdbcType=DOUBLE}, #{zzGjTdPrice,jdbcType=DOUBLE}, #{zzGjPjPrice,jdbcType=DOUBLE}, 
       #{zzDlZtPrice,jdbcType=DOUBLE}, #{zzDlJtPrice,jdbcType=DOUBLE}, #{dlHyZtPrice,jdbcType=DOUBLE}, 
       #{dlHyTdPrice,jdbcType=DOUBLE}, #{dlHyFgPrice,jdbcType=DOUBLE}, #{dlGjZtPrice,jdbcType=DOUBLE}, 
       #{dlGjJtPrice,jdbcType=DOUBLE}, #{dlDlZtPrice,jdbcType=DOUBLE}, #{dlDlJtPrice,jdbcType=DOUBLE}, 
@@ -244,8 +244,8 @@
       <if test="zzGjZtPrice != null" >
         zz_gj_zt_price,
       </if>
-      <if test="zzGjJjPrice != null" >
-        zz_gj_jj_price,
+      <if test="zzGjJtPrice != null" >
+        zz_gj_jt_price,
       </if>
       <if test="zzGjTdPrice != null" >
         zz_gj_td_price,
@@ -363,8 +363,8 @@
       <if test="zzGjZtPrice != null" >
         #{zzGjZtPrice,jdbcType=DOUBLE},
       </if>
-      <if test="zzGjJjPrice != null" >
-        #{zzGjJjPrice,jdbcType=DOUBLE},
+      <if test="zzGjJtPrice != null" >
+        #{zzGjJtPrice,jdbcType=DOUBLE},
       </if>
       <if test="zzGjTdPrice != null" >
         #{zzGjTdPrice,jdbcType=DOUBLE},
@@ -491,8 +491,8 @@
       <if test="record.zzGjZtPrice != null" >
         zz_gj_zt_price = #{record.zzGjZtPrice,jdbcType=DOUBLE},
       </if>
-      <if test="record.zzGjJjPrice != null" >
-        zz_gj_jj_price = #{record.zzGjJjPrice,jdbcType=DOUBLE},
+      <if test="record.zzGjJtPrice != null" >
+        zz_gj_jt_price = #{record.zzGjJtPrice,jdbcType=DOUBLE},
       </if>
       <if test="record.zzGjTdPrice != null" >
         zz_gj_td_price = #{record.zzGjTdPrice,jdbcType=DOUBLE},
@@ -567,7 +567,7 @@
       zz_hy_td_price = #{record.zzHyTdPrice,jdbcType=DOUBLE},
       zz_hy_fg_price = #{record.zzHyFgPrice,jdbcType=DOUBLE},
       zz_gj_zt_price = #{record.zzGjZtPrice,jdbcType=DOUBLE},
-      zz_gj_jj_price = #{record.zzGjJjPrice,jdbcType=DOUBLE},
+      zz_gj_jt_price = #{record.zzGjJtPrice,jdbcType=DOUBLE},
       zz_gj_td_price = #{record.zzGjTdPrice,jdbcType=DOUBLE},
       zz_gj_pj_price = #{record.zzGjPjPrice,jdbcType=DOUBLE},
       zz_dl_zt_price = #{record.zzDlZtPrice,jdbcType=DOUBLE},
@@ -658,8 +658,8 @@
       <if test="zzGjZtPrice != null" >
         zz_gj_zt_price = #{zzGjZtPrice,jdbcType=DOUBLE},
       </if>
-      <if test="zzGjJjPrice != null" >
-        zz_gj_jj_price = #{zzGjJjPrice,jdbcType=DOUBLE},
+      <if test="zzGjJtPrice != null" >
+        zz_gj_jt_price = #{zzGjJtPrice,jdbcType=DOUBLE},
       </if>
       <if test="zzGjTdPrice != null" >
         zz_gj_td_price = #{zzGjTdPrice,jdbcType=DOUBLE},
@@ -731,7 +731,7 @@
       zz_hy_td_price = #{zzHyTdPrice,jdbcType=DOUBLE},
       zz_hy_fg_price = #{zzHyFgPrice,jdbcType=DOUBLE},
       zz_gj_zt_price = #{zzGjZtPrice,jdbcType=DOUBLE},
-      zz_gj_jj_price = #{zzGjJjPrice,jdbcType=DOUBLE},
+      zz_gj_jt_price = #{zzGjJtPrice,jdbcType=DOUBLE},
       zz_gj_td_price = #{zzGjTdPrice,jdbcType=DOUBLE},
       zz_gj_pj_price = #{zzGjPjPrice,jdbcType=DOUBLE},
       zz_dl_zt_price = #{zzDlZtPrice,jdbcType=DOUBLE},
@@ -828,8 +828,8 @@
     <if test="map.zzGjZtPrice != null" >
       AND zz_gj_zt_price = #{map.zzGjZtPrice,jdbcType=DOUBLE}
     </if>
-    <if test="map.zzGjJjPrice != null" >
-      AND zz_gj_jj_price = #{map.zzGjJjPrice,jdbcType=DOUBLE}
+    <if test="map.zzGjJtPrice != null" >
+      AND zz_gj_jt_price = #{map.zzGjJtPrice,jdbcType=DOUBLE}
     </if>
     <if test="map.zzGjTdPrice != null" >
       AND zz_gj_td_price = #{map.zzGjTdPrice,jdbcType=DOUBLE}
