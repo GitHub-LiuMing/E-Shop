@@ -2,13 +2,19 @@ package com.liuming.eshop.controller.memberController;
 
 import com.alibaba.fastjson.JSONObject;
 import com.liuming.eshop.entity.memberEntity.Member;
+import com.liuming.eshop.entity.userEntity.User;
+import com.liuming.eshop.mapper.memberMapper.MemberMapper;
+import com.liuming.eshop.mapper.userMapper.UserMapper;
 import com.liuming.eshop.service.memberService.MemberService;
 import com.liuming.eshop.utils.DataResult;
+import com.lkx.util.ExcelUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.codec.Base64;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.crypto.Cipher;
@@ -17,6 +23,8 @@ import javax.crypto.spec.SecretKeySpec;
 import java.security.AlgorithmParameters;
 import java.security.Security;
 import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 
 /**
  * @Description 会员
@@ -29,6 +37,9 @@ import java.util.Arrays;
 public class MemberController {
     @Resource
     private MemberService memberService;
+
+    @Resource
+    private MemberMapper memberMapper;
 
     /**
      * @Description 新增会员
@@ -68,10 +79,36 @@ public class MemberController {
         return memberService.findMember(member);
     }
 
-    @RequestMapping("/importExportMember")
-    public DataResult importExportMember(){
+    @RequestMapping("/importMember")//exportMember
+    @ResponseBody
+    public DataResult importExportMember(MultipartFile file) throws Exception {
         // TODO: 2019/12/14 导入导出会员还没有做
-        return null;
+        List<Member> memberList = ExcelUtil.readXls(file.getBytes(), Member.class);
+        Member member = new Member();
+        int i = 0;
+        int s = 0;
+        for (Member members : memberList) {
+            member.setMemberId(members.getMemberId());
+            /*member.setMemberLevelId(members.getMemberLevelId());
+            member.setMemberLevelName(members.getMemberLevelName());*/
+            member.setMemberName(members.getMemberName());
+            member.setMemberType(members.getMemberType());
+            member.setMemberWechatOpenId(members.getMemberWechatOpenId());
+            member.setMemberWechatName(members.getMemberWechatName());
+            member.setMemberPhone(members.getMemberPhone());
+            member.setPreMemberId(members.getPreMemberId());
+            /*member.setPreMemberLevelId(members.getPreMemberLevelId());
+            member.setPreMemberLevelName(members.getPreMemberLevelName());*/
+            member.setMemberCreatedDate(members.getMemberCreatedDate());
+            member.setMemberUpdatedDate(new Date());
+            int ins = memberMapper.insertSelective(member);
+            if (ins >= 1){
+                i++;
+            } else {
+                s++;
+            }
+        }
+        return DataResult.ok("成功：" + i + "条，失败：" + s + "条");
     }
 
     /**

@@ -209,7 +209,6 @@ public class PayController {
                                 int i = ordersMapper.updateByPrimaryKeySelective(orders);
 
                                 if (i >= 1){
-                                    //TODO: 支付成功以后，要按照商品的佣金ID查询商品佣金分配情况，将分配后的金额存入对应会员的零钱表中
                                     /**
                                      * 根据orders查询item，根据item中的分类ID进行区分，只有会员和高级会员有佣金分配，其他的直接结束支付流程
                                      */
