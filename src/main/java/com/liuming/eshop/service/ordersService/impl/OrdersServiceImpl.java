@@ -332,11 +332,14 @@ public class OrdersServiceImpl implements OrdersService {
         map.put("detailedAddress",orders.getDetailedAddress());
         map.put("consignee",orders.getConsignee());
         map.put("phone",orders.getPhone());
+        map.put("courierNumber",orders.getCourierNumber());
+        map.put("courierServicesCompany",orders.getCourierServicesCompany());
         map.put("sfsyyhq",orders.getSfsyyhq());
         map.put("payType",orders.getPayType());
         map.put("payResul",orders.getPayResul());
         map.put("payPrice",orders.getPayPrice());
         map.put("ordersStatus",orders.getOrdersStatus());
+        map.put("ordersType",orders.getOrdersType());
         map.put("ordersCreateDate",orders.getOrdersCreateDate());
         map.put("ordersUpdateDate",orders.getOrdersUpdateDate());
         map.put("ordersDesc",orders.getOrdersDesc());

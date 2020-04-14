@@ -13,11 +13,14 @@
     <result column="detailed_address" property="detailedAddress" jdbcType="VARCHAR" />
     <result column="consignee" property="consignee" jdbcType="VARCHAR" />
     <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="courier_number" property="courierNumber" jdbcType="VARCHAR" />
+    <result column="courier_services_company" property="courierServicesCompany" jdbcType="VARCHAR" />
     <result column="sfsyyhq" property="sfsyyhq" jdbcType="INTEGER" />
     <result column="pay_type" property="payType" jdbcType="INTEGER" />
     <result column="pay_resul" property="payResul" jdbcType="INTEGER" />
     <result column="pay_price" property="payPrice" jdbcType="DOUBLE" />
     <result column="orders_status" property="ordersStatus" jdbcType="INTEGER" />
+    <result column="orders_type" property="ordersType" jdbcType="INTEGER" />
     <result column="orders_create_date" property="ordersCreateDate" jdbcType="TIMESTAMP" />
     <result column="orders_update_date" property="ordersUpdateDate" jdbcType="TIMESTAMP" />
   </resultMap>
@@ -83,9 +86,10 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    orders_id, item_id, member_id, commission_id, coupon_details_id, unit_price, item_num,
-    total_price, detailed_address, consignee, phone, sfsyyhq, pay_type, pay_resul, pay_price,
-    orders_status, orders_create_date, orders_update_date
+    orders_id, item_id, member_id, commission_id, coupon_details_id, unit_price, item_num, 
+    total_price, detailed_address, consignee, phone, courier_number, courier_services_company, 
+    sfsyyhq, pay_type, pay_resul, pay_price, orders_status, orders_type, orders_create_date, 
+    orders_update_date
   </sql>
   <sql id="Blob_Column_List" >
     orders_desc
@@ -139,19 +143,21 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.liuming.eshop.entity.ordersEntity.Orders" >
-    insert into orders (orders_id, item_id, member_id,
-      commission_id, coupon_details_id, unit_price,
-      item_num, total_price, detailed_address,
-      consignee, phone, sfsyyhq,
-      pay_type, pay_resul, pay_price,
-      orders_status, orders_create_date, orders_update_date,
+    insert into orders (orders_id, item_id, member_id, 
+      commission_id, coupon_details_id, unit_price, 
+      item_num, total_price, detailed_address, 
+      consignee, phone, courier_number, 
+      courier_services_company, sfsyyhq, pay_type, 
+      pay_resul, pay_price, orders_status, 
+      orders_type, orders_create_date, orders_update_date, 
       orders_desc)
-    values (#{ordersId,jdbcType=VARCHAR}, #{itemId,jdbcType=VARCHAR}, #{memberId,jdbcType=VARCHAR},
-      #{commissionId,jdbcType=VARCHAR}, #{couponDetailsId,jdbcType=VARCHAR}, #{unitPrice,jdbcType=DOUBLE},
-      #{itemNum,jdbcType=INTEGER}, #{totalPrice,jdbcType=DOUBLE}, #{detailedAddress,jdbcType=VARCHAR},
-      #{consignee,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{sfsyyhq,jdbcType=INTEGER},
-      #{payType,jdbcType=INTEGER}, #{payResul,jdbcType=INTEGER}, #{payPrice,jdbcType=DOUBLE},
-      #{ordersStatus,jdbcType=INTEGER}, #{ordersCreateDate,jdbcType=TIMESTAMP}, #{ordersUpdateDate,jdbcType=TIMESTAMP},
+    values (#{ordersId,jdbcType=VARCHAR}, #{itemId,jdbcType=VARCHAR}, #{memberId,jdbcType=VARCHAR}, 
+      #{commissionId,jdbcType=VARCHAR}, #{couponDetailsId,jdbcType=VARCHAR}, #{unitPrice,jdbcType=DOUBLE}, 
+      #{itemNum,jdbcType=INTEGER}, #{totalPrice,jdbcType=DOUBLE}, #{detailedAddress,jdbcType=VARCHAR}, 
+      #{consignee,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{courierNumber,jdbcType=VARCHAR}, 
+      #{courierServicesCompany,jdbcType=VARCHAR}, #{sfsyyhq,jdbcType=INTEGER}, #{payType,jdbcType=INTEGER}, 
+      #{payResul,jdbcType=INTEGER}, #{payPrice,jdbcType=DOUBLE}, #{ordersStatus,jdbcType=INTEGER}, 
+      #{ordersType,jdbcType=INTEGER}, #{ordersCreateDate,jdbcType=TIMESTAMP}, #{ordersUpdateDate,jdbcType=TIMESTAMP}, 
       #{ordersDesc,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.liuming.eshop.entity.ordersEntity.Orders" >
@@ -190,6 +196,12 @@
       <if test="phone != null" >
         phone,
       </if>
+      <if test="courierNumber != null" >
+        courier_number,
+      </if>
+      <if test="courierServicesCompany != null" >
+        courier_services_company,
+      </if>
       <if test="sfsyyhq != null" >
         sfsyyhq,
       </if>
@@ -204,6 +216,9 @@
       </if>
       <if test="ordersStatus != null" >
         orders_status,
+      </if>
+      <if test="ordersType != null" >
+        orders_type,
       </if>
       <if test="ordersCreateDate != null" >
         orders_create_date,
@@ -249,6 +264,12 @@
       <if test="phone != null" >
         #{phone,jdbcType=VARCHAR},
       </if>
+      <if test="courierNumber != null" >
+        #{courierNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="courierServicesCompany != null" >
+        #{courierServicesCompany,jdbcType=VARCHAR},
+      </if>
       <if test="sfsyyhq != null" >
         #{sfsyyhq,jdbcType=INTEGER},
       </if>
@@ -263,6 +284,9 @@
       </if>
       <if test="ordersStatus != null" >
         #{ordersStatus,jdbcType=INTEGER},
+      </if>
+      <if test="ordersType != null" >
+        #{ordersType,jdbcType=INTEGER},
       </if>
       <if test="ordersCreateDate != null" >
         #{ordersCreateDate,jdbcType=TIMESTAMP},
@@ -317,6 +341,12 @@
       <if test="record.phone != null" >
         phone = #{record.phone,jdbcType=VARCHAR},
       </if>
+      <if test="record.courierNumber != null" >
+        courier_number = #{record.courierNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.courierServicesCompany != null" >
+        courier_services_company = #{record.courierServicesCompany,jdbcType=VARCHAR},
+      </if>
       <if test="record.sfsyyhq != null" >
         sfsyyhq = #{record.sfsyyhq,jdbcType=INTEGER},
       </if>
@@ -331,6 +361,9 @@
       </if>
       <if test="record.ordersStatus != null" >
         orders_status = #{record.ordersStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.ordersType != null" >
+        orders_type = #{record.ordersType,jdbcType=INTEGER},
       </if>
       <if test="record.ordersCreateDate != null" >
         orders_create_date = #{record.ordersCreateDate,jdbcType=TIMESTAMP},
@@ -359,11 +392,14 @@
     detailed_address = #{record.detailedAddress,jdbcType=VARCHAR},
     consignee = #{record.consignee,jdbcType=VARCHAR},
     phone = #{record.phone,jdbcType=VARCHAR},
+    courier_number = #{record.courierNumber,jdbcType=VARCHAR},
+    courier_services_company = #{record.courierServicesCompany,jdbcType=VARCHAR},
     sfsyyhq = #{record.sfsyyhq,jdbcType=INTEGER},
     pay_type = #{record.payType,jdbcType=INTEGER},
     pay_resul = #{record.payResul,jdbcType=INTEGER},
     pay_price = #{record.payPrice,jdbcType=DOUBLE},
     orders_status = #{record.ordersStatus,jdbcType=INTEGER},
+    orders_type = #{record.ordersType,jdbcType=INTEGER},
     orders_create_date = #{record.ordersCreateDate,jdbcType=TIMESTAMP},
     orders_update_date = #{record.ordersUpdateDate,jdbcType=TIMESTAMP},
     orders_desc = #{record.ordersDesc,jdbcType=LONGVARCHAR}
@@ -384,11 +420,14 @@
     detailed_address = #{record.detailedAddress,jdbcType=VARCHAR},
     consignee = #{record.consignee,jdbcType=VARCHAR},
     phone = #{record.phone,jdbcType=VARCHAR},
+    courier_number = #{record.courierNumber,jdbcType=VARCHAR},
+    courier_services_company = #{record.courierServicesCompany,jdbcType=VARCHAR},
     sfsyyhq = #{record.sfsyyhq,jdbcType=INTEGER},
     pay_type = #{record.payType,jdbcType=INTEGER},
     pay_resul = #{record.payResul,jdbcType=INTEGER},
     pay_price = #{record.payPrice,jdbcType=DOUBLE},
     orders_status = #{record.ordersStatus,jdbcType=INTEGER},
+    orders_type = #{record.ordersType,jdbcType=INTEGER},
     orders_create_date = #{record.ordersCreateDate,jdbcType=TIMESTAMP},
     orders_update_date = #{record.ordersUpdateDate,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
@@ -428,6 +467,12 @@
       <if test="phone != null" >
         phone = #{phone,jdbcType=VARCHAR},
       </if>
+      <if test="courierNumber != null" >
+        courier_number = #{courierNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="courierServicesCompany != null" >
+        courier_services_company = #{courierServicesCompany,jdbcType=VARCHAR},
+      </if>
       <if test="sfsyyhq != null" >
         sfsyyhq = #{sfsyyhq,jdbcType=INTEGER},
       </if>
@@ -442,6 +487,9 @@
       </if>
       <if test="ordersStatus != null" >
         orders_status = #{ordersStatus,jdbcType=INTEGER},
+      </if>
+      <if test="ordersType != null" >
+        orders_type = #{ordersType,jdbcType=INTEGER},
       </if>
       <if test="ordersCreateDate != null" >
         orders_create_date = #{ordersCreateDate,jdbcType=TIMESTAMP},
@@ -467,11 +515,14 @@
       detailed_address = #{detailedAddress,jdbcType=VARCHAR},
       consignee = #{consignee,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
+      courier_number = #{courierNumber,jdbcType=VARCHAR},
+      courier_services_company = #{courierServicesCompany,jdbcType=VARCHAR},
       sfsyyhq = #{sfsyyhq,jdbcType=INTEGER},
       pay_type = #{payType,jdbcType=INTEGER},
       pay_resul = #{payResul,jdbcType=INTEGER},
       pay_price = #{payPrice,jdbcType=DOUBLE},
       orders_status = #{ordersStatus,jdbcType=INTEGER},
+      orders_type = #{ordersType,jdbcType=INTEGER},
       orders_create_date = #{ordersCreateDate,jdbcType=TIMESTAMP},
       orders_update_date = #{ordersUpdateDate,jdbcType=TIMESTAMP},
       orders_desc = #{ordersDesc,jdbcType=LONGVARCHAR}
@@ -489,11 +540,14 @@
       detailed_address = #{detailedAddress,jdbcType=VARCHAR},
       consignee = #{consignee,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
+      courier_number = #{courierNumber,jdbcType=VARCHAR},
+      courier_services_company = #{courierServicesCompany,jdbcType=VARCHAR},
       sfsyyhq = #{sfsyyhq,jdbcType=INTEGER},
       pay_type = #{payType,jdbcType=INTEGER},
       pay_resul = #{payResul,jdbcType=INTEGER},
       pay_price = #{payPrice,jdbcType=DOUBLE},
       orders_status = #{ordersStatus,jdbcType=INTEGER},
+      orders_type = #{ordersType,jdbcType=INTEGER},
       orders_create_date = #{ordersCreateDate,jdbcType=TIMESTAMP},
       orders_update_date = #{ordersUpdateDate,jdbcType=TIMESTAMP}
     where orders_id = #{ordersId,jdbcType=VARCHAR}

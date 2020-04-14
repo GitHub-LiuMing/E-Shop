@@ -7,6 +7,7 @@ import com.liuming.eshop.mapper.memberMapper.MemberMapper;
 import com.liuming.eshop.mapper.userMapper.UserMapper;
 import com.liuming.eshop.service.memberService.MemberService;
 import com.liuming.eshop.utils.DataResult;
+import com.lkx.util.Excel;
 import com.lkx.util.ExcelUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.codec.Base64;
@@ -20,11 +21,12 @@ import javax.annotation.Resource;
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
+import javax.servlet.http.HttpServletResponse;
 import java.security.AlgorithmParameters;
 import java.security.Security;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * @Description 会员
@@ -109,6 +111,26 @@ public class MemberController {
             }
         }
         return DataResult.ok("成功：" + i + "条，失败：" + s + "条");
+    }
+
+    @RequestMapping("/exportMember")
+    public void exportMember(HttpServletResponse httpServletResponse) throws Exception {
+        List<Member> memberList = new ArrayList<>();
+        Map map = new HashMap();
+        List<Member> member = memberMapper.findMember(map);
+        for(int i = 0;i<member.size();i++){
+            Member member1 = new Member();
+            member1.setMemberId(member.get(i).getMemberId());
+            member1.setMemberName(member.get(i).getMemberName());
+            member1.setMemberType(member.get(i).getMemberType());
+            member1.setMemberWechatOpenId(member.get(i).getMemberWechatOpenId());
+            member1.setMemberWechatName(member.get(i).getMemberWechatName());
+            member1.setMemberPhone(member.get(i).getMemberPhone());
+            member1.setPreMemberId(member.get(i).getPreMemberId());
+            member1.setMemberCreatedDate(member.get(i).getMemberCreatedDate());
+            memberList.add(member1);
+        }
+        ExcelUtil.exportExcelOutputStream(httpServletResponse, memberList, Member.class, "测试");
     }
 
     /**

@@ -28,6 +28,10 @@ public class Orders {
 
     private String phone;
 
+    private String courierNumber;
+
+    private String courierServicesCompany;
+
     private Integer sfsyyhq;
 
     private Integer payType;
@@ -37,6 +41,8 @@ public class Orders {
     private Double payPrice;
 
     private Integer ordersStatus;
+
+    private Integer ordersType;
 
     private Date ordersCreateDate;
 

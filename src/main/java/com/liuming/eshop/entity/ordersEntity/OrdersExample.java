@@ -845,6 +845,146 @@ public class OrdersExample {
             return (Criteria) this;
         }
 
+        public Criteria andCourierNumberIsNull() {
+            addCriterion("courier_number is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourierNumberIsNotNull() {
+            addCriterion("courier_number is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourierNumberEqualTo(String value) {
+            addCriterion("courier_number =", value, "courierNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourierNumberNotEqualTo(String value) {
+            addCriterion("courier_number <>", value, "courierNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourierNumberGreaterThan(String value) {
+            addCriterion("courier_number >", value, "courierNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourierNumberGreaterThanOrEqualTo(String value) {
+            addCriterion("courier_number >=", value, "courierNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourierNumberLessThan(String value) {
+            addCriterion("courier_number <", value, "courierNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourierNumberLessThanOrEqualTo(String value) {
+            addCriterion("courier_number <=", value, "courierNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourierNumberLike(String value) {
+            addCriterion("courier_number like", value, "courierNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourierNumberNotLike(String value) {
+            addCriterion("courier_number not like", value, "courierNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourierNumberIn(List<String> values) {
+            addCriterion("courier_number in", values, "courierNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourierNumberNotIn(List<String> values) {
+            addCriterion("courier_number not in", values, "courierNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourierNumberBetween(String value1, String value2) {
+            addCriterion("courier_number between", value1, value2, "courierNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourierNumberNotBetween(String value1, String value2) {
+            addCriterion("courier_number not between", value1, value2, "courierNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourierServicesCompanyIsNull() {
+            addCriterion("courier_services_company is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourierServicesCompanyIsNotNull() {
+            addCriterion("courier_services_company is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourierServicesCompanyEqualTo(String value) {
+            addCriterion("courier_services_company =", value, "courierServicesCompany");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourierServicesCompanyNotEqualTo(String value) {
+            addCriterion("courier_services_company <>", value, "courierServicesCompany");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourierServicesCompanyGreaterThan(String value) {
+            addCriterion("courier_services_company >", value, "courierServicesCompany");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourierServicesCompanyGreaterThanOrEqualTo(String value) {
+            addCriterion("courier_services_company >=", value, "courierServicesCompany");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourierServicesCompanyLessThan(String value) {
+            addCriterion("courier_services_company <", value, "courierServicesCompany");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourierServicesCompanyLessThanOrEqualTo(String value) {
+            addCriterion("courier_services_company <=", value, "courierServicesCompany");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourierServicesCompanyLike(String value) {
+            addCriterion("courier_services_company like", value, "courierServicesCompany");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourierServicesCompanyNotLike(String value) {
+            addCriterion("courier_services_company not like", value, "courierServicesCompany");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourierServicesCompanyIn(List<String> values) {
+            addCriterion("courier_services_company in", values, "courierServicesCompany");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourierServicesCompanyNotIn(List<String> values) {
+            addCriterion("courier_services_company not in", values, "courierServicesCompany");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourierServicesCompanyBetween(String value1, String value2) {
+            addCriterion("courier_services_company between", value1, value2, "courierServicesCompany");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourierServicesCompanyNotBetween(String value1, String value2) {
+            addCriterion("courier_services_company not between", value1, value2, "courierServicesCompany");
+            return (Criteria) this;
+        }
+
         public Criteria andSfsyyhqIsNull() {
             addCriterion("sfsyyhq is null");
             return (Criteria) this;
@@ -1142,6 +1282,66 @@ public class OrdersExample {
 
         public Criteria andOrdersStatusNotBetween(Integer value1, Integer value2) {
             addCriterion("orders_status not between", value1, value2, "ordersStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdersTypeIsNull() {
+            addCriterion("orders_type is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdersTypeIsNotNull() {
+            addCriterion("orders_type is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdersTypeEqualTo(Integer value) {
+            addCriterion("orders_type =", value, "ordersType");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdersTypeNotEqualTo(Integer value) {
+            addCriterion("orders_type <>", value, "ordersType");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdersTypeGreaterThan(Integer value) {
+            addCriterion("orders_type >", value, "ordersType");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdersTypeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("orders_type >=", value, "ordersType");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdersTypeLessThan(Integer value) {
+            addCriterion("orders_type <", value, "ordersType");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdersTypeLessThanOrEqualTo(Integer value) {
+            addCriterion("orders_type <=", value, "ordersType");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdersTypeIn(List<Integer> values) {
+            addCriterion("orders_type in", values, "ordersType");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdersTypeNotIn(List<Integer> values) {
+            addCriterion("orders_type not in", values, "ordersType");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdersTypeBetween(Integer value1, Integer value2) {
+            addCriterion("orders_type between", value1, value2, "ordersType");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdersTypeNotBetween(Integer value1, Integer value2) {
+            addCriterion("orders_type not between", value1, value2, "ordersType");
             return (Criteria) this;
         }
 

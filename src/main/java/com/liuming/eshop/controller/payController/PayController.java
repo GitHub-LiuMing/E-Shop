@@ -237,7 +237,7 @@ public class PayController {
                                             change.setChangeId(IDUtils.getId());
                                             change.setMemberId(preMember.getMemberId());
                                             change.setChangePrice(commission.getHyHyZtPrice());
-                                            change.setChangeDetails("直推奖金");
+                                            change.setChangeDetails(orders.getOrdersId() + "直推奖金");
                                             change.setChangeType(1);
                                             change.setChangeStatus(1);
                                             change.setChangeCreateDate(new Date());
@@ -251,13 +251,13 @@ public class PayController {
                                             //上面已经判断上级属于高级会员、VIP会员、至尊会员，所以现在只需要明确判断上级的具体等级
                                             if (preMember.getMemberType() == 4){
                                                 change.setChangePrice(commission.getGjHyZtPrice() + commission.getGjHyTdPrice());
-                                                change.setChangeDetails("直推奖金 + 团队承担奖金");
+                                                change.setChangeDetails(orders.getOrdersId() + "直推奖金 + 团队承担奖金");
                                             } else if(preMember.getMemberType() == 3){
                                                 change.setChangePrice(commission.getGjHyZtPrice() + commission.getVipHyTdPrice());
-                                                change.setChangeDetails("直推奖金 + 团队承担奖金");
+                                                change.setChangeDetails(orders.getOrdersId() + "直推奖金 + 团队承担奖金");
                                             } else {
                                                 change.setChangePrice(commission.getGjHyZtPrice() + commission.getZzHyTdPrice());
-                                                change.setChangeDetails("直推奖金 + 团队承担奖金");
+                                                change.setChangeDetails(orders.getOrdersId() + "直推奖金 + 团队承担奖金");
                                             }
                                             change.setChangeType(1);
                                             change.setChangeStatus(1);
@@ -278,13 +278,13 @@ public class PayController {
                                                 fgChange.setMemberId(member.getMemberId());
                                                 if (preMember.getMemberType() == 4){
                                                     fgChange.setChangePrice(commission.getGjHyFgPrice());
-                                                    fgChange.setChangeDetails("复购奖金");
+                                                    fgChange.setChangeDetails(orders.getOrdersId() + "复购奖金");
                                                 } else if(preMember.getMemberType() == 3){
                                                     fgChange.setChangePrice(commission.getVipHyFgPrice());
-                                                    fgChange.setChangeDetails("复购奖金");
+                                                    fgChange.setChangeDetails(orders.getOrdersId() + "复购奖金");
                                                 } else {
                                                     fgChange.setChangePrice(commission.getZzHyFgPrice());
-                                                    fgChange.setChangeDetails("复购奖金");
+                                                    fgChange.setChangeDetails(orders.getOrdersId() + "复购奖金");
                                                 }
                                                 fgChange.setChangeType(1);
                                                 fgChange.setChangeStatus(1);
@@ -298,7 +298,7 @@ public class PayController {
                                             change.setChangeId(IDUtils.getId());
                                             change.setMemberId(preMember.getMemberId());
                                             change.setChangePrice(commission.getDlHyZtPrice() + commission.getDlHyTdPrice());
-                                            change.setChangeDetails("直推奖金 + 团队承担奖金");
+                                            change.setChangeDetails(orders.getOrdersId() + "直推奖金 + 团队承担奖金");
                                             change.setChangeType(1);
                                             change.setChangeStatus(1);
                                             change.setChangeCreateDate(new Date());
@@ -317,7 +317,7 @@ public class PayController {
                                                 dlHyFg.setChangeId(IDUtils.getId());
                                                 dlHyFg.setMemberId(member.getMemberId());
                                                 dlHyFg.setChangePrice(commission.getDlHyFgPrice());
-                                                dlHyFg.setChangeDetails("复购奖金");
+                                                dlHyFg.setChangeDetails(orders.getOrdersId() + "复购奖金");
                                                 dlHyFg.setChangeType(1);
                                                 dlHyFg.setChangeStatus(1);
                                                 dlHyFg.setChangeCreateDate(new Date());
@@ -330,7 +330,7 @@ public class PayController {
                                         //判断我上级的身份
                                         preMember = memberMapper.selectByPrimaryKey(member.getPreMemberId());
                                         //判断商品ID是否是3999,3999属于代理商,其他的属于高级会员
-                                        if(StringUtils.equals(orders.getItemId(),"3999")){
+                                        if(StringUtils.equals(orders.getOrdersId(),"3999")){
                                             //判断商品ID是否是3999,3999属于代理商,其他的属于高级会员
                                             if (preMember.getMemberType() == 5){
                                                 //上级是会员39.9等级,分配对应佣金75
@@ -338,7 +338,7 @@ public class PayController {
                                                 change.setChangeId(IDUtils.getId());
                                                 change.setMemberId(preMember.getMemberId());
                                                 change.setChangePrice(commission.getHyDlZtPrice());
-                                                change.setChangeDetails("直推奖金");
+                                                change.setChangeDetails(orders.getOrdersId() + "直推奖金");
                                                 change.setChangeType(1);
                                                 change.setChangeStatus(1);
                                                 change.setChangeCreateDate(new Date());
@@ -350,7 +350,7 @@ public class PayController {
                                                 change.setChangeId(IDUtils.getId());
                                                 change.setMemberId(preMember.getMemberId());
                                                 change.setChangePrice(commission.getGjDlZtPrice());
-                                                change.setChangeDetails("直推奖金");
+                                                change.setChangeDetails(orders.getOrdersId() + "直推奖金");
                                                 change.setChangeType(1);
                                                 change.setChangeStatus(1);
                                                 change.setChangeCreateDate(new Date());
@@ -362,7 +362,7 @@ public class PayController {
                                                 change.setChangeId(IDUtils.getId());
                                                 change.setMemberId(pre2Member.getMemberId());
                                                 change.setChangePrice(commission.getGjDlJtPrice());
-                                                change.setChangeDetails("间推奖金");
+                                                change.setChangeDetails(orders.getOrdersId() + "间推奖金");
                                                 change.setChangeType(1);
                                                 change.setChangeStatus(1);
                                                 change.setChangeCreateDate(new Date());
@@ -374,7 +374,7 @@ public class PayController {
                                                 change.setChangeId(IDUtils.getId());
                                                 change.setMemberId(preMember.getMemberId());
                                                 change.setChangePrice(commission.getVipDlZtPrice());
-                                                change.setChangeDetails("直推奖金");
+                                                change.setChangeDetails(orders.getOrdersId() + "直推奖金");
                                                 change.setChangeType(1);
                                                 change.setChangeStatus(1);
                                                 change.setChangeCreateDate(new Date());
@@ -386,7 +386,7 @@ public class PayController {
                                                 change.setChangeId(IDUtils.getId());
                                                 change.setMemberId(pre2Member.getMemberId());
                                                 change.setChangePrice(commission.getVipDlJtPrice());
-                                                change.setChangeDetails("间推奖金");
+                                                change.setChangeDetails(orders.getOrdersId() + "间推奖金");
                                                 change.setChangeType(1);
                                                 change.setChangeStatus(1);
                                                 change.setChangeCreateDate(new Date());
@@ -398,7 +398,7 @@ public class PayController {
                                                 change.setChangeId(IDUtils.getId());
                                                 change.setMemberId(preMember.getMemberId());
                                                 change.setChangePrice(commission.getZzDlZtPrice());
-                                                change.setChangeDetails("直推奖金");
+                                                change.setChangeDetails(orders.getOrdersId() + "直推奖金");
                                                 change.setChangeType(1);
                                                 change.setChangeStatus(1);
                                                 change.setChangeCreateDate(new Date());
@@ -410,7 +410,7 @@ public class PayController {
                                                 change.setChangeId(IDUtils.getId());
                                                 change.setMemberId(pre2Member.getMemberId());
                                                 change.setChangePrice(commission.getZzDlJtPrice());
-                                                change.setChangeDetails("间推奖金");
+                                                change.setChangeDetails(orders.getOrdersId() + "间推奖金");
                                                 change.setChangeType(1);
                                                 change.setChangeStatus(1);
                                                 change.setChangeCreateDate(new Date());
@@ -422,7 +422,7 @@ public class PayController {
                                                 change.setChangeId(IDUtils.getId());
                                                 change.setMemberId(preMember.getMemberId());
                                                 change.setChangePrice(commission.getDlDlZtPrice());
-                                                change.setChangeDetails("直推奖金");
+                                                change.setChangeDetails(orders.getOrdersId() + "直推奖金");
                                                 change.setChangeType(1);
                                                 change.setChangeStatus(1);
                                                 change.setChangeCreateDate(new Date());
@@ -434,7 +434,7 @@ public class PayController {
                                                 change.setChangeId(IDUtils.getId());
                                                 change.setMemberId(pre2Member.getMemberId());
                                                 change.setChangePrice(commission.getDlDlJtPrice());
-                                                change.setChangeDetails("间推奖金");
+                                                change.setChangeDetails(orders.getOrdersId() + "间推奖金");
                                                 change.setChangeType(1);
                                                 change.setChangeStatus(1);
                                                 change.setChangeCreateDate(new Date());
@@ -448,7 +448,7 @@ public class PayController {
                                                 change.setChangeId(IDUtils.getId());
                                                 change.setMemberId(preMember.getMemberId());
                                                 change.setChangePrice(commission.getHyGjZtPrice());
-                                                change.setChangeDetails("直推奖金");
+                                                change.setChangeDetails(orders.getOrdersId() + "直推奖金");
                                                 change.setChangeType(1);
                                                 change.setChangeStatus(1);
                                                 change.setChangeCreateDate(new Date());
@@ -491,7 +491,7 @@ public class PayController {
                                                         vipgjtd.setChangeId(IDUtils.getId());
                                                         vipgjtd.setMemberId(memberList1.get(0).getMemberId());
                                                         vipgjtd.setChangePrice(commission.getVipGjTdPrice());
-                                                        vipgjtd.setChangeDetails("团队承担奖金");
+                                                        vipgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
                                                         vipgjtd.setChangeType(1);
                                                         vipgjtd.setChangeStatus(1);
                                                         vipgjtd.setChangeCreateDate(new Date());
@@ -503,7 +503,7 @@ public class PayController {
                                                         zzgjtd.setChangeId(IDUtils.getId());
                                                         zzgjtd.setMemberId(memberList1.get(1).getMemberId());
                                                         zzgjtd.setChangePrice(commission.getZzGjTdPrice());
-                                                        zzgjtd.setChangeDetails("团队承担奖金");
+                                                        zzgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
                                                         zzgjtd.setChangeType(1);
                                                         zzgjtd.setChangeStatus(1);
                                                         zzgjtd.setChangeCreateDate(new Date());
@@ -515,7 +515,7 @@ public class PayController {
                                                         zzgjpj.setChangeId(IDUtils.getId());
                                                         zzgjpj.setMemberId(memberList1.get(2).getMemberId());
                                                         zzgjpj.setChangePrice(commission.getZzGjPjPrice());
-                                                        zzgjpj.setChangeDetails("团队平级奖金");
+                                                        zzgjpj.setChangeDetails(orders.getOrdersId() + "团队平级奖金");
                                                         zzgjpj.setChangeType(1);
                                                         zzgjpj.setChangeStatus(1);
                                                         zzgjpj.setChangeCreateDate(new Date());
@@ -529,7 +529,7 @@ public class PayController {
                                                         zzgjtd.setChangeId(IDUtils.getId());
                                                         zzgjtd.setMemberId(memberList1.get(0).getMemberId());
                                                         zzgjtd.setChangePrice(commission.getZzGjTdPrice());
-                                                        zzgjtd.setChangeDetails("团队承担奖金");
+                                                        zzgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
                                                         zzgjtd.setChangeType(1);
                                                         zzgjtd.setChangeStatus(1);
                                                         zzgjtd.setChangeCreateDate(new Date());
@@ -541,7 +541,7 @@ public class PayController {
                                                         zzgjpj.setChangeId(IDUtils.getId());
                                                         zzgjpj.setMemberId(memberList1.get(1).getMemberId());
                                                         zzgjpj.setChangePrice(commission.getZzGjPjPrice());
-                                                        zzgjpj.setChangeDetails("团队平级奖金");
+                                                        zzgjpj.setChangeDetails(orders.getOrdersId() + "团队平级奖金");
                                                         zzgjpj.setChangeType(1);
                                                         zzgjpj.setChangeStatus(1);
                                                         zzgjpj.setChangeCreateDate(new Date());
@@ -555,7 +555,7 @@ public class PayController {
                                                         zzgjtd.setChangeId(IDUtils.getId());
                                                         zzgjtd.setMemberId(memberList1.get(0).getMemberId());
                                                         zzgjtd.setChangePrice(commission.getZzGjTdPrice());
-                                                        zzgjtd.setChangeDetails("团队承担奖金");
+                                                        zzgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
                                                         zzgjtd.setChangeType(1);
                                                         zzgjtd.setChangeStatus(1);
                                                         zzgjtd.setChangeCreateDate(new Date());
@@ -567,7 +567,7 @@ public class PayController {
                                                         vipgjtd.setChangeId(IDUtils.getId());
                                                         vipgjtd.setMemberId(memberList1.get(0).getMemberId());
                                                         vipgjtd.setChangePrice(commission.getVipGjTdPrice());
-                                                        vipgjtd.setChangeDetails("团队承担奖金");
+                                                        vipgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
                                                         vipgjtd.setChangeType(1);
                                                         vipgjtd.setChangeStatus(1);
                                                         vipgjtd.setChangeCreateDate(new Date());
@@ -581,7 +581,7 @@ public class PayController {
                                                 change.setChangeId(IDUtils.getId());
                                                 change.setMemberId(preMember.getMemberId());
                                                 change.setChangePrice(commission.getGjGjZtPrice());
-                                                change.setChangeDetails("直推奖金");
+                                                change.setChangeDetails(orders.getOrdersId() + "直推奖金");
                                                 change.setChangeType(1);
                                                 change.setChangeStatus(1);
                                                 change.setChangeCreateDate(new Date());
@@ -593,7 +593,7 @@ public class PayController {
                                                 change.setChangeId(IDUtils.getId());
                                                 change.setMemberId(pre2Member.getMemberId());
                                                 change.setChangePrice(commission.getGjGjJtPrice());
-                                                change.setChangeDetails("间推奖金");
+                                                change.setChangeDetails(orders.getOrdersId() + "间推奖金");
                                                 change.setChangeType(1);
                                                 change.setChangeStatus(1);
                                                 change.setChangeCreateDate(new Date());
@@ -636,7 +636,7 @@ public class PayController {
                                                         vipgjtd.setChangeId(IDUtils.getId());
                                                         vipgjtd.setMemberId(memberList1.get(0).getMemberId());
                                                         vipgjtd.setChangePrice(commission.getVipGjTdPrice());
-                                                        vipgjtd.setChangeDetails("团队承担奖金");
+                                                        vipgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
                                                         vipgjtd.setChangeType(1);
                                                         vipgjtd.setChangeStatus(1);
                                                         vipgjtd.setChangeCreateDate(new Date());
@@ -648,7 +648,7 @@ public class PayController {
                                                         zzgjtd.setChangeId(IDUtils.getId());
                                                         zzgjtd.setMemberId(memberList1.get(1).getMemberId());
                                                         zzgjtd.setChangePrice(commission.getZzGjTdPrice());
-                                                        zzgjtd.setChangeDetails("团队承担奖金");
+                                                        zzgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
                                                         zzgjtd.setChangeType(1);
                                                         zzgjtd.setChangeStatus(1);
                                                         zzgjtd.setChangeCreateDate(new Date());
@@ -660,7 +660,7 @@ public class PayController {
                                                         zzgjpj.setChangeId(IDUtils.getId());
                                                         zzgjpj.setMemberId(memberList1.get(2).getMemberId());
                                                         zzgjpj.setChangePrice(commission.getZzGjPjPrice());
-                                                        zzgjpj.setChangeDetails("团队平级奖金");
+                                                        zzgjpj.setChangeDetails(orders.getOrdersId() + "团队平级奖金");
                                                         zzgjpj.setChangeType(1);
                                                         zzgjpj.setChangeStatus(1);
                                                         zzgjpj.setChangeCreateDate(new Date());
@@ -674,7 +674,7 @@ public class PayController {
                                                         zzgjtd.setChangeId(IDUtils.getId());
                                                         zzgjtd.setMemberId(memberList1.get(0).getMemberId());
                                                         zzgjtd.setChangePrice(commission.getZzGjTdPrice());
-                                                        zzgjtd.setChangeDetails("团队承担奖金");
+                                                        zzgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
                                                         zzgjtd.setChangeType(1);
                                                         zzgjtd.setChangeStatus(1);
                                                         zzgjtd.setChangeCreateDate(new Date());
@@ -686,7 +686,7 @@ public class PayController {
                                                         zzgjpj.setChangeId(IDUtils.getId());
                                                         zzgjpj.setMemberId(memberList1.get(1).getMemberId());
                                                         zzgjpj.setChangePrice(commission.getZzGjPjPrice());
-                                                        zzgjpj.setChangeDetails("团队平级奖金");
+                                                        zzgjpj.setChangeDetails(orders.getOrdersId() + "团队平级奖金");
                                                         zzgjpj.setChangeType(1);
                                                         zzgjpj.setChangeStatus(1);
                                                         zzgjpj.setChangeCreateDate(new Date());
@@ -700,7 +700,7 @@ public class PayController {
                                                         zzgjtd.setChangeId(IDUtils.getId());
                                                         zzgjtd.setMemberId(memberList1.get(0).getMemberId());
                                                         zzgjtd.setChangePrice(commission.getZzGjTdPrice());
-                                                        zzgjtd.setChangeDetails("团队承担奖金");
+                                                        zzgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
                                                         zzgjtd.setChangeType(1);
                                                         zzgjtd.setChangeStatus(1);
                                                         zzgjtd.setChangeCreateDate(new Date());
@@ -712,7 +712,7 @@ public class PayController {
                                                         vipgjtd.setChangeId(IDUtils.getId());
                                                         vipgjtd.setMemberId(memberList1.get(0).getMemberId());
                                                         vipgjtd.setChangePrice(commission.getVipGjTdPrice());
-                                                        vipgjtd.setChangeDetails("团队承担奖金");
+                                                        vipgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
                                                         vipgjtd.setChangeType(1);
                                                         vipgjtd.setChangeStatus(1);
                                                         vipgjtd.setChangeCreateDate(new Date());
@@ -726,7 +726,7 @@ public class PayController {
                                                 change.setChangeId(IDUtils.getId());
                                                 change.setMemberId(preMember.getMemberId());
                                                 change.setChangePrice(commission.getVipGjZtPrice() + commission.getVipGjTdPrice());
-                                                change.setChangeDetails("直推奖金 + 团队承担奖金");
+                                                change.setChangeDetails(orders.getOrdersId() + "直推奖金 + 团队承担奖金");
                                                 change.setChangeType(1);
                                                 change.setChangeStatus(1);
                                                 change.setChangeCreateDate(new Date());
@@ -738,7 +738,7 @@ public class PayController {
                                                 change.setChangeId(IDUtils.getId());
                                                 change.setMemberId(pre2Member.getMemberId());
                                                 change.setChangePrice(commission.getVipGjJtPrice());
-                                                change.setChangeDetails("间推奖金");
+                                                change.setChangeDetails(orders.getOrdersId() + "间推奖金");
                                                 change.setChangeType(1);
                                                 change.setChangeStatus(1);
                                                 change.setChangeCreateDate(new Date());
@@ -774,7 +774,7 @@ public class PayController {
                                                         zzgjtd.setChangeId(IDUtils.getId());
                                                         zzgjtd.setMemberId(memberList1.get(0).getMemberId());
                                                         zzgjtd.setChangePrice(commission.getZzGjTdPrice());
-                                                        zzgjtd.setChangeDetails("团队承担奖金");
+                                                        zzgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
                                                         zzgjtd.setChangeType(1);
                                                         zzgjtd.setChangeStatus(1);
                                                         zzgjtd.setChangeCreateDate(new Date());
@@ -786,7 +786,7 @@ public class PayController {
                                                         zzgjpj.setChangeId(IDUtils.getId());
                                                         zzgjpj.setMemberId(memberList1.get(1).getMemberId());
                                                         zzgjpj.setChangePrice(commission.getZzGjPjPrice());
-                                                        zzgjpj.setChangeDetails("团队平级奖金");
+                                                        zzgjpj.setChangeDetails(orders.getOrdersId() + "团队平级奖金");
                                                         zzgjpj.setChangeType(1);
                                                         zzgjpj.setChangeStatus(1);
                                                         zzgjpj.setChangeCreateDate(new Date());
@@ -800,7 +800,7 @@ public class PayController {
                                                         zzgjpj.setChangeId(IDUtils.getId());
                                                         zzgjpj.setMemberId(memberList1.get(0).getMemberId());
                                                         zzgjpj.setChangePrice(commission.getZzGjPjPrice());
-                                                        zzgjpj.setChangeDetails("团队平级奖金");
+                                                        zzgjpj.setChangeDetails(orders.getOrdersId() + "团队平级奖金");
                                                         zzgjpj.setChangeType(1);
                                                         zzgjpj.setChangeStatus(1);
                                                         zzgjpj.setChangeCreateDate(new Date());
@@ -814,7 +814,7 @@ public class PayController {
                                                 change.setChangeId(IDUtils.getId());
                                                 change.setMemberId(preMember.getMemberId());
                                                 change.setChangePrice(commission.getZzGjZtPrice() + commission.getZzGjTdPrice() + commission.getVipGjTdPrice());
-                                                change.setChangeDetails("直推奖金 + 团队承担奖金");
+                                                change.setChangeDetails(orders.getOrdersId() + "直推奖金 + 团队承担奖金");
                                                 change.setChangeType(1);
                                                 change.setChangeStatus(1);
                                                 change.setChangeCreateDate(new Date());
@@ -826,7 +826,7 @@ public class PayController {
                                                 change.setChangeId(IDUtils.getId());
                                                 change.setMemberId(pre2Member.getMemberId());
                                                 change.setChangePrice(commission.getZzGjJtPrice());
-                                                change.setChangeDetails("直推奖金 + 团队承担奖金");
+                                                change.setChangeDetails(orders.getOrdersId() + "直推奖金 + 团队承担奖金");
                                                 change.setChangeType(1);
                                                 change.setChangeStatus(1);
                                                 change.setChangeCreateDate(new Date());
@@ -858,7 +858,7 @@ public class PayController {
                                                         zzgjpj.setChangeId(IDUtils.getId());
                                                         zzgjpj.setMemberId(memberList1.get(0).getMemberId());
                                                         zzgjpj.setChangePrice(commission.getZzGjPjPrice());
-                                                        zzgjpj.setChangeDetails("团队平级奖金");
+                                                        zzgjpj.setChangeDetails(orders.getOrdersId() + "团队平级奖金");
                                                         zzgjpj.setChangeType(1);
                                                         zzgjpj.setChangeStatus(1);
                                                         zzgjpj.setChangeCreateDate(new Date());
@@ -872,7 +872,7 @@ public class PayController {
                                                 change.setChangeId(IDUtils.getId());
                                                 change.setMemberId(preMember.getMemberId());
                                                 change.setChangePrice(commission.getDlGjZtPrice());
-                                                change.setChangeDetails("直推奖金");
+                                                change.setChangeDetails(orders.getOrdersId() + "直推奖金");
                                                 change.setChangeType(1);
                                                 change.setChangeStatus(1);
                                                 change.setChangeCreateDate(new Date());
@@ -884,7 +884,7 @@ public class PayController {
                                                 change.setChangeId(IDUtils.getId());
                                                 change.setMemberId(pre2Member.getMemberId());
                                                 change.setChangePrice(commission.getDlGjJtPrice());
-                                                change.setChangeDetails("间推奖金");
+                                                change.setChangeDetails(orders.getOrdersId() + "间推奖金");
                                                 change.setChangeType(1);
                                                 change.setChangeStatus(1);
                                                 change.setChangeCreateDate(new Date());
@@ -927,7 +927,7 @@ public class PayController {
                                                         vipgjtd.setChangeId(IDUtils.getId());
                                                         vipgjtd.setMemberId(memberList1.get(0).getMemberId());
                                                         vipgjtd.setChangePrice(commission.getVipGjTdPrice());
-                                                        vipgjtd.setChangeDetails("团队承担奖金");
+                                                        vipgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
                                                         vipgjtd.setChangeType(1);
                                                         vipgjtd.setChangeStatus(1);
                                                         vipgjtd.setChangeCreateDate(new Date());
@@ -939,7 +939,7 @@ public class PayController {
                                                         zzgjtd.setChangeId(IDUtils.getId());
                                                         zzgjtd.setMemberId(memberList1.get(1).getMemberId());
                                                         zzgjtd.setChangePrice(commission.getZzGjTdPrice());
-                                                        zzgjtd.setChangeDetails("团队承担奖金");
+                                                        zzgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
                                                         zzgjtd.setChangeType(1);
                                                         zzgjtd.setChangeStatus(1);
                                                         zzgjtd.setChangeCreateDate(new Date());
@@ -951,7 +951,7 @@ public class PayController {
                                                         zzgjpj.setChangeId(IDUtils.getId());
                                                         zzgjpj.setMemberId(memberList1.get(2).getMemberId());
                                                         zzgjpj.setChangePrice(commission.getZzGjPjPrice());
-                                                        zzgjpj.setChangeDetails("团队平级奖金");
+                                                        zzgjpj.setChangeDetails(orders.getOrdersId() + "团队平级奖金");
                                                         zzgjpj.setChangeType(1);
                                                         zzgjpj.setChangeStatus(1);
                                                         zzgjpj.setChangeCreateDate(new Date());
@@ -965,7 +965,7 @@ public class PayController {
                                                         zzgjtd.setChangeId(IDUtils.getId());
                                                         zzgjtd.setMemberId(memberList1.get(0).getMemberId());
                                                         zzgjtd.setChangePrice(commission.getZzGjTdPrice());
-                                                        zzgjtd.setChangeDetails("团队承担奖金");
+                                                        zzgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
                                                         zzgjtd.setChangeType(1);
                                                         zzgjtd.setChangeStatus(1);
                                                         zzgjtd.setChangeCreateDate(new Date());
@@ -977,7 +977,7 @@ public class PayController {
                                                         zzgjpj.setChangeId(IDUtils.getId());
                                                         zzgjpj.setMemberId(memberList1.get(1).getMemberId());
                                                         zzgjpj.setChangePrice(commission.getZzGjPjPrice());
-                                                        zzgjpj.setChangeDetails("团队平级奖金");
+                                                        zzgjpj.setChangeDetails(orders.getOrdersId() + "团队平级奖金");
                                                         zzgjpj.setChangeType(1);
                                                         zzgjpj.setChangeStatus(1);
                                                         zzgjpj.setChangeCreateDate(new Date());
@@ -991,7 +991,7 @@ public class PayController {
                                                         zzgjtd.setChangeId(IDUtils.getId());
                                                         zzgjtd.setMemberId(memberList1.get(0).getMemberId());
                                                         zzgjtd.setChangePrice(commission.getZzGjTdPrice());
-                                                        zzgjtd.setChangeDetails("团队承担奖金");
+                                                        zzgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
                                                         zzgjtd.setChangeType(1);
                                                         zzgjtd.setChangeStatus(1);
                                                         zzgjtd.setChangeCreateDate(new Date());
@@ -1003,7 +1003,7 @@ public class PayController {
                                                         vipgjtd.setChangeId(IDUtils.getId());
                                                         vipgjtd.setMemberId(memberList1.get(0).getMemberId());
                                                         vipgjtd.setChangePrice(commission.getVipGjTdPrice());
-                                                        vipgjtd.setChangeDetails("团队承担奖金");
+                                                        vipgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
                                                         vipgjtd.setChangeType(1);
                                                         vipgjtd.setChangeStatus(1);
                                                         vipgjtd.setChangeCreateDate(new Date());
