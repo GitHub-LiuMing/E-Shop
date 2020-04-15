@@ -62,6 +62,42 @@ public class ChangeController {
         return changeService.findChangeByDTX(memberId);
     }
 
+    /**
+     * @Description 查询佣金总额
+     * @param memberId
+     * @return com.liuming.eshop.utils.DataResult
+     * @Author 鲸落
+     * @Date 2020.04.15 16:08
+     */
+    @RequestMapping("/findChangeByYJZE")
+    public DataResult findChangeByYJZE(String memberId){
+        return changeService.findChangeByYJZE(memberId);
+    }
+
+    /**
+     * @Description 查询待收益
+     * @param memberId
+     * @return com.liuming.eshop.utils.DataResult
+     * @Author 鲸落
+     * @Date 2020.04.15 16:08
+     */
+    @RequestMapping("/findChangeByDSY")
+    public DataResult findChangeByDSY(String memberId){
+        return changeService.findChangeByDSY(memberId);
+    }
+
+    /**
+     * @Description 查询已提现
+     * @param memberId
+     * @return com.liuming.eshop.utils.DataResult
+     * @Author 鲸落
+     * @Date 2020.04.15 16:08
+     */
+    @RequestMapping("/findChangeByYTX")
+    public DataResult findChangeByYTX(String memberId){
+        return changeService.findChangeByYTX(memberId);
+    }
+
     @RequestMapping("/test")
     public DataResult test (String memberId, int changeType){
         return changeService.test(memberId, changeType);

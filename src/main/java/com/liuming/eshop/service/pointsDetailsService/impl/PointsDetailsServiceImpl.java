@@ -3,6 +3,7 @@ package com.liuming.eshop.service.pointsDetailsService.impl;
 import com.liuming.eshop.entity.pointsDetailsEntity.PointsDetails;
 import com.liuming.eshop.mapper.pointsDetailsMapper.PointsDetailsMapper;
 import com.liuming.eshop.service.pointsDetailsService.PointsDetailsService;
+import com.liuming.eshop.utils.CheckObjectIsNullUtils;
 import com.liuming.eshop.utils.DataResult;
 import com.liuming.eshop.utils.IDUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -25,6 +26,7 @@ public class PointsDetailsServiceImpl implements PointsDetailsService {
 
     @Override
     public DataResult addPointsDetails(PointsDetails pointsDetails) {
+        CheckObjectIsNullUtils checkObjectIsNullUtils = new CheckObjectIsNullUtils();
         if (StringUtils.isNotBlank(pointsDetails.getMemberId()) ) {
             if (pointsDetails.getPointsDetailsType() != null){
                 //&& StringUtils.isNotBlank(pointsDetails.getWechatName()) && StringUtils.isNotBlank(pointsDetails.getPhone())
@@ -32,26 +34,51 @@ public class PointsDetailsServiceImpl implements PointsDetailsService {
                 Map pointsDetailsDescLimit1Map = new HashMap();
                 pointsDetailsDescLimit1Map.put("memberId", pointsDetails.getMemberId());
                 PointsDetails pointsDetailsDescLimit1 = pointsDetailsMapper.findPointsDetailsDescLimit1(pointsDetailsDescLimit1Map);
-
-                pointsDetails.setPointsDetailsId(IDUtils.getId());
-                pointsDetails.setBeforeModifyPoints(pointsDetailsDescLimit1.getAfterModifyPoints());
-                pointsDetails.setModifyPoints(0);
-                pointsDetails.setAfterModifyPoints(pointsDetailsDescLimit1.getAfterModifyPoints() + pointsDetails.getModifyPoints());
-                pointsDetails.setPointsDetailsType(pointsDetails.getPointsDetailsType());
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                if (pointsDetails.getPointsDetailsType() == 0){
-                    //0-签到 "签到送积分"
-                    pointsDetails.setPointsDetailsDetails("签到送积分");
-                    pointsDetails.setRemark(simpleDateFormat.format(new Date()) + " 签到送积分");
-                } else if (pointsDetails.getPointsDetailsType() == 1){
-                    //1-订单 "订单"+订单号+"兑换积分"
-                    pointsDetails.setPointsDetailsDetails(pointsDetails.getPointsDetailsDetails());
-                    pointsDetails.setRemark("购物消费");
+                if (!checkObjectIsNullUtils.objCheckIsNull(pointsDetailsDescLimit1)){
+                    pointsDetails.setPointsDetailsId(IDUtils.getId());
+                    pointsDetails.setBeforeModifyPoints(pointsDetailsDescLimit1.getAfterModifyPoints());
+                    pointsDetails.setPointsDetailsType(pointsDetails.getPointsDetailsType());
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    if (pointsDetails.getPointsDetailsType() == 0){
+                        //0-签到 "签到送积分"
+                        pointsDetails.setModifyPoints(1);
+                        pointsDetails.setAfterModifyPoints(pointsDetailsDescLimit1.getAfterModifyPoints() + pointsDetails.getModifyPoints());
+                        pointsDetails.setPointsDetailsDetails("签到送积分");
+                        pointsDetails.setRemark(simpleDateFormat.format(new Date()) + " 签到送积分");
+                    } else if (pointsDetails.getPointsDetailsType() == 1){
+                        //1-订单 "订单"+订单号+"兑换积分"
+                        pointsDetails.setModifyPoints(2);
+                        pointsDetails.setAfterModifyPoints(pointsDetailsDescLimit1.getAfterModifyPoints() + pointsDetails.getModifyPoints());
+                        pointsDetails.setPointsDetailsDetails(pointsDetails.getPointsDetailsDetails());
+                        pointsDetails.setRemark("购物消费");
+                    }
+                    pointsDetails.setPointsDetailsStatus(1);
+                    pointsDetails.setPointsDetailsCreatedDate(new Date());
+                    pointsDetails.setPointsDetailsUpdatedDate(new Date());
+                    return DataResult.ok(pointsDetailsDescLimit1);
+                } else {
+                    pointsDetails.setPointsDetailsId(IDUtils.getId());
+                    pointsDetails.setBeforeModifyPoints(0);
+                    pointsDetails.setPointsDetailsType(pointsDetails.getPointsDetailsType());
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    if (pointsDetails.getPointsDetailsType() == 0){
+                        //0-签到 "签到送积分"
+                        pointsDetails.setModifyPoints(1);
+                        pointsDetails.setAfterModifyPoints(pointsDetailsDescLimit1.getAfterModifyPoints() + pointsDetails.getModifyPoints());
+                        pointsDetails.setPointsDetailsDetails("签到送积分");
+                        pointsDetails.setRemark(simpleDateFormat.format(new Date()) + " 签到送积分");
+                    } else if (pointsDetails.getPointsDetailsType() == 1){
+                        //1-订单 "订单"+订单号+"兑换积分"
+                        pointsDetails.setModifyPoints(2);
+                        pointsDetails.setAfterModifyPoints(pointsDetailsDescLimit1.getAfterModifyPoints() + pointsDetails.getModifyPoints());
+                        pointsDetails.setPointsDetailsDetails(pointsDetails.getPointsDetailsDetails());
+                        pointsDetails.setRemark("购物消费");
+                    }
+                    pointsDetails.setPointsDetailsStatus(1);
+                    pointsDetails.setPointsDetailsCreatedDate(new Date());
+                    pointsDetails.setPointsDetailsUpdatedDate(new Date());
+                    return DataResult.ok(pointsDetailsDescLimit1);
                 }
-                pointsDetails.setPointsDetailsStatus(1);
-                pointsDetails.setPointsDetailsCreatedDate(new Date());
-                pointsDetails.setPointsDetailsUpdatedDate(new Date());
-                return DataResult.ok(pointsDetailsDescLimit1);
             }
             return DataResult.build(500, "积分类型不得为空");
         }
@@ -64,6 +91,11 @@ public class PointsDetailsServiceImpl implements PointsDetailsService {
         map.put("memberId", memberId);
         List<PointsDetails> pointsDetailsList = pointsDetailsMapper.findPointsDetails(map);
         return DataResult.ok(pointsDetailsList);
+    }
+
+    @Override
+    public DataResult updatePointsDetails(PointsDetails pointsDetails) {
+        return null;
     }
 
     public static void main(String[] args) {

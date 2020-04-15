@@ -48,4 +48,13 @@ public class PointsDetailsController {
             return DataResult.build(500,"会员ID不得为空");
         }
     }
+
+    @RequestMapping("/updatePointsDetails")
+    public DataResult updatePointsDetails(PointsDetails pointsDetails){
+        if (StringUtils.isNotBlank(pointsDetails.getMemberId())){
+            return pointsDetailsService.updatePointsDetails(pointsDetails);
+        } else {
+            return DataResult.build(500,"会员ID不得为空");
+        }
+    }
 }

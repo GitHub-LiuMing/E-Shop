@@ -11,4 +11,10 @@ public interface ChangeService {
     DataResult findChangeByDTX(String memberId);
 
     DataResult test(String memberId, int changeType);
+
+    DataResult findChangeByYJZE(String memberId);
+
+    DataResult findChangeByDSY(String memberId);
+
+    DataResult findChangeByYTX(String memberId);
 }

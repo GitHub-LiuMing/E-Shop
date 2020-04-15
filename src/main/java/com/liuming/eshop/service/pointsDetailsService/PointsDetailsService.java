@@ -7,4 +7,6 @@ public interface PointsDetailsService {
     DataResult addPointsDetails(PointsDetails pointsDetails);
 
     DataResult findPointsDetails(String memberId);
+
+    DataResult updatePointsDetails(PointsDetails pointsDetails);
 }

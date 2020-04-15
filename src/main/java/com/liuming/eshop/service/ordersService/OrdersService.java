@@ -9,4 +9,6 @@ public interface OrdersService {
     DataResult findOrders(Orders orders);
 
     DataResult updateOrders(Orders orders);
+
+    DataResult addOrdersByPoints(Orders orders);
 }

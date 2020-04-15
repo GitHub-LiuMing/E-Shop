@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.liuming.eshop.mapper.pointsDetailsMapper.PointsDetailsMapper" >
-  <resultMap id="BaseResultMap" type="com.liuming.eshop.entity.pointsDetailsEntity.PointsDetails" >
+  <resultMap id="map" type="com.liuming.eshop.entity.pointsDetailsEntity.PointsDetails" >
     <id column="points_details_id" property="pointsDetailsId" jdbcType="VARCHAR" />
     <result column="member_id" property="memberId" jdbcType="VARCHAR" />
     <result column="member_wechat_name" property="memberWechatName" jdbcType="VARCHAR" />
@@ -79,7 +79,7 @@
     modify_points, after_modify_points, points_details_type, points_details_details, 
     points_details_status, remark, points_details_created_date, points_details_updated_date
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.liuming.eshop.entity.pointsDetailsEntity.PointsDetailsExample" >
+  <select id="selectByExample" resultMap="map" parameterType="com.liuming.eshop.entity.pointsDetailsEntity.PointsDetailsExample" >
     select
     <if test="distinct" >
       distinct
@@ -93,7 +93,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="map" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from points_details
@@ -337,7 +337,7 @@
     where points_details_id = #{pointsDetailsId,jdbcType=VARCHAR}
   </update>
 
-  <select id="findPointsDetailsDescLimit1" resultMap="BaseResultMap">
+  <select id="findPointsDetailsDescLimit1" resultMap="map">
     SELECT
     <include refid="Base_Column_List" />
     FROM
@@ -349,7 +349,7 @@
 	LIMIT 1
   </select>
 
-  <select id="findPointsDetails" resultMap="BaseResultMap">
+  <select id="findPointsDetails" resultMap="map">
     SELECT
     <include refid="Base_Column_List" />
     FROM
@@ -392,5 +392,17 @@
     <if test="map.pointsDetailsUpdatedDate != null" >
       AND points_details_updated_date = #{map.pointsDetailsUpdatedDate,jdbcType=TIMESTAMP}
     </if>
+  </select>
+  
+  <select id="findPointsDetailsByAfter" parameterType="java.lang.String" resultMap="map">
+    SELECT
+        *,
+        max( points_details_updated_date )
+    FROM
+        points_details
+    WHERE
+        member_id = #{memberId}
+    GROUP BY
+        member_id;
   </select>
 </mapper>

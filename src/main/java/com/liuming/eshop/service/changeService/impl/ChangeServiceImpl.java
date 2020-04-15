@@ -58,6 +58,7 @@ public class ChangeServiceImpl implements ChangeService {
         double dtx = 0.00;
         double ysr = 0.00;
         double ytx = 0.00;
+
         ysr = changeMapper.findChangeByMemberIdAndType(memberId, 0);
         ytx = changeMapper.findChangeByMemberIdAndType(memberId, 2);
 
@@ -66,6 +67,56 @@ public class ChangeServiceImpl implements ChangeService {
         dtx = bysr.subtract(bytx).doubleValue();
         System.out.println(dtx);
         return DataResult.ok(dtx);
+    }
+
+    @Override
+    public DataResult findChangeByYJZE(String memberId) {
+        //佣金总额 = 已提现 + 待提现
+        double yjze = 0.00;
+        double ytx = 0.00;
+        double dtx = 0.00;
+
+        ytx = changeMapper.findChangeByMemberIdAndType(memberId, 2);
+        dtx = changeMapper.findChangeByMemberIdAndType(memberId, 3);
+
+        BigDecimal bytx = new BigDecimal(Double.toString(ytx));
+        BigDecimal bdtx = new BigDecimal(Double.toString(dtx));
+        yjze = bytx.add(bdtx).doubleValue();
+        System.out.println(yjze);
+        return DataResult.ok(yjze);
+    }
+
+    @Override
+    public DataResult findChangeByDSY(String memberId) {
+        //待收益
+        double dsy = 0.00;
+
+        dsy = changeMapper.findChangeByMemberIdAndType(memberId, 1);
+
+        System.out.println(dsy);
+        return DataResult.ok(dsy);
+    }
+
+    @Override
+    public DataResult findChangeByYTX(String memberId) {
+        //已提现 = 已收入 - 待收入 - 待提现
+        double ytx = 0.00;
+        double ysr = 0.00;
+        double dsr = 0.00;
+        double dtx = 0.00;
+
+        ysr = changeMapper.findChangeByMemberIdAndType(memberId, 0);
+        dsr = changeMapper.findChangeByMemberIdAndType(memberId, 1);
+        dtx = changeMapper.findChangeByMemberIdAndType(memberId, 3);
+
+        BigDecimal bysr = new BigDecimal(Double.toString(ysr));
+        BigDecimal bdsr = new BigDecimal(Double.toString(dsr));
+        BigDecimal bdtx = new BigDecimal(Double.toString(dtx));
+        double ddtx = bysr.subtract(bdsr).doubleValue();
+        BigDecimal bddtx = new BigDecimal(Double.toString(dtx));
+        ytx = bddtx.subtract(bdtx).doubleValue();
+        System.out.println(ytx);
+        return DataResult.ok(ytx);
     }
 
     @Override

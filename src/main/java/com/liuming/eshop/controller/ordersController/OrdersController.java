@@ -38,6 +38,22 @@ public class OrdersController {
     }
 
     /**
+     * @Description 添加积分兑换商品订单
+     * @param orders
+     * @return com.liuming.eshop.utils.DataResult
+     * @Author 鲸落
+     * @Date 2020.04.15 10:08
+     */
+    @RequestMapping("/addOrdersByPoints")
+    public DataResult addOrdersByPoints(Orders orders){
+        if (StringUtils.isNotBlank(orders.getItemId()) && StringUtils.isNotBlank(orders.getMemberId()) && StringUtils.isNotBlank(orders.getCommissionId()) && orders.getItemNum() != null) {
+            return ordersService.addOrdersByPoints(orders);
+        } else {
+            return DataResult.build(500, "商品ID、会员ID、佣金ID不得为空");
+        }
+    }
+
+    /**
      * @Description 查询订单
      * @param orders
      * @return com.liuming.eshop.utils.DataResult

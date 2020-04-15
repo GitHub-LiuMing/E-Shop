@@ -723,4 +723,21 @@
     WHERE
         member_wechat_open_id = #{openId,jdbcType=VARCHAR}
   </select>
+
+  <update id="updateMember" parameterType="map" >
+    UPDATE member
+    <set >
+      <if test="memberType != null" >
+        member_type = #{memberType,jdbcType=INTEGER},
+      </if>
+      <if test="memberStatus != null" >
+        member_status = #{memberStatus,jdbcType=INTEGER},
+      </if>
+      <if test="memberUpdatedDate != null" >
+        member_updated_date = #{memberUpdatedDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    WHERE
+        member_id = #{map.memberId};
+  </update>
 </mapper>

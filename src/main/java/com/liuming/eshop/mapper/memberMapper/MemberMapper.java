@@ -37,4 +37,6 @@ public interface MemberMapper {
     int updateMemberPassword(@Param("map") Map map);
 
     Member findMemberByOpenId(@Param("openId") String openId);
+
+    int updateMember(@Param("map") Map map);
 }

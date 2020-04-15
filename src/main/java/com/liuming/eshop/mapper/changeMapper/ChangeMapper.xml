@@ -298,7 +298,7 @@
 
   <select id="findChangeByMemberIdAndType" resultType="java.lang.Double">
     SELECT
-    SUM(change_price)
+    COALESCE(SUM(change_price),0)
     FROM
     `change`
     WHERE

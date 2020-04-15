@@ -114,9 +114,12 @@ public class MemberController {
     }
 
     @RequestMapping("/exportMember")
-    public void exportMember(HttpServletResponse httpServletResponse) throws Exception {
+    public void exportMember(HttpServletResponse httpServletResponse, String memberId) throws Exception {
         List<Member> memberList = new ArrayList<>();
         Map map = new HashMap();
+        if (StringUtils.isNotBlank(memberId)){
+            map.put("preMemberId", memberId);
+        }
         List<Member> member = memberMapper.findMember(map);
         for(int i = 0;i<member.size();i++){
             Member member1 = new Member();
@@ -236,5 +239,21 @@ public class MemberController {
             e.printStackTrace();
         }
         return DataResult.ok();
+    }
+
+    /**
+     * @Description 更新会员
+     * @param member
+     * @return com.liuming.eshop.utils.DataResult
+     * @Author 鲸落
+     * @Date 2020.04.15 15:02
+     */
+    @RequestMapping("/updateMember")
+    public DataResult updateMember(Member member){
+        if (StringUtils.isNotBlank(member.getMemberId())){
+            return memberService.updateMember(member);
+        } else {
+            return DataResult.build(500,"会员信息不存在");
+        }
     }
 }

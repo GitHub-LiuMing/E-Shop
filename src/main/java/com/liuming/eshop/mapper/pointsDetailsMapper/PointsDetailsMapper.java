@@ -35,4 +35,6 @@ public interface PointsDetailsMapper {
     PointsDetails findPointsDetailsDescLimit1(@Param("map") Map pointsDetailsDescLimit1Map);
 
     List<PointsDetails> findPointsDetails(@Param("map") Map map);
+
+    PointsDetails findPointsDetailsByAfter(String memberId);
 }

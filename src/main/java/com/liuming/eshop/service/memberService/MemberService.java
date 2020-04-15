@@ -13,4 +13,6 @@ public interface MemberService {
     DataResult findMemberPassword(Member member);
 
     DataResult updateMemberPassword(Member member);
+
+    DataResult updateMember(Member member);
 }
