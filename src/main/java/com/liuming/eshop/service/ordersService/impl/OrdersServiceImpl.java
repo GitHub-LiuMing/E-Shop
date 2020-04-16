@@ -22,6 +22,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -165,6 +166,8 @@ public class OrdersServiceImpl implements OrdersService {
                                 return DataResult.build(500, "兄台，你这波操作有点迷啊，要不你退出系统以后，重新再上线购买试一下？");
                             }
                         } else if (logisticsTemplate.getLogisticsType() == 1 && logisticsTemplate.getLogisticsMode() == 1) {
+                            totalPrice = orders.getUnitPrice() * orders.getItemNum();
+                            orders.setTotalPrice(totalPrice);
                             //包邮免运费（直接将商品、会员等相关信息新增到订单表中）
                             orders.setOrdersId(IDUtils.getId());
                             //订单状态 0-取消订单 1-待付款 2-待发货 3-完成 4-退换货
@@ -178,6 +181,8 @@ public class OrdersServiceImpl implements OrdersService {
                                 return DataResult.build(500, "新增订单失败");
                             }
                         } else {
+                            totalPrice = orders.getUnitPrice() * orders.getItemNum();
+                            orders.setTotalPrice(totalPrice);
                             //自提（直接将商品、会员等相关信息新增到订单表中）
                             orders.setOrdersId(IDUtils.getId());
                             //订单状态 0-取消订单 1-待付款 2-待发货 3-完成 4-退换货
@@ -397,6 +402,19 @@ public class OrdersServiceImpl implements OrdersService {
                             orders.setOrdersUpdateDate(new Date());
                             int i = ordersMapper.insertSelective(orders);
                             if (i > 0) {
+                                PointsDetails pointsDetails1 = new PointsDetails();
+                                pointsDetails.setPointsDetailsId(IDUtils.getId());
+                                //todo: 上线前最好加上微信昵称和手机号码字段
+                                pointsDetails.setBeforeModifyPoints(pointsDetails1.getAfterModifyPoints());
+                                pointsDetails.setPointsDetailsType(1);
+                                pointsDetails.setModifyPoints(item.getGmsxjf());
+                                pointsDetails.setAfterModifyPoints(pointsDetails1.getAfterModifyPoints() - item.getGmsxjf());
+                                pointsDetails.setPointsDetailsDetails("订单消费");
+                                pointsDetails.setRemark(item.getItemId() + "订单消费");
+                                pointsDetails.setPointsDetailsStatus(1);
+                                pointsDetails.setPointsDetailsCreatedDate(new Date());
+                                pointsDetails.setPointsDetailsUpdatedDate(new Date());
+                                pointsDetailsMapper.insertSelective(pointsDetails);
                                 return DataResult.ok(orders.getItemId());
                             } else {
                                 return DataResult.build(500, "新增订单失败");
@@ -414,6 +432,19 @@ public class OrdersServiceImpl implements OrdersService {
                             orders.setOrdersUpdateDate(new Date());
                             int i = ordersMapper.insertSelective(orders);
                             if (i > 0) {
+                                PointsDetails pointsDetails1 = new PointsDetails();
+                                pointsDetails.setPointsDetailsId(IDUtils.getId());
+                                //todo: 上线前最好加上微信昵称和手机号码字段
+                                pointsDetails.setBeforeModifyPoints(pointsDetails1.getAfterModifyPoints());
+                                pointsDetails.setPointsDetailsType(1);
+                                pointsDetails.setModifyPoints(item.getGmsxjf());
+                                pointsDetails.setAfterModifyPoints(pointsDetails1.getAfterModifyPoints() - item.getGmsxjf());
+                                pointsDetails.setPointsDetailsDetails("订单消费");
+                                pointsDetails.setRemark(item.getItemId() + "订单消费");
+                                pointsDetails.setPointsDetailsStatus(1);
+                                pointsDetails.setPointsDetailsCreatedDate(new Date());
+                                pointsDetails.setPointsDetailsUpdatedDate(new Date());
+                                pointsDetailsMapper.insertSelective(pointsDetails);
                                 return DataResult.ok(orders.getItemId());
                             } else {
                                 return DataResult.build(500, "新增订单失败");
@@ -431,6 +462,19 @@ public class OrdersServiceImpl implements OrdersService {
                             orders.setOrdersUpdateDate(new Date());
                             int i = ordersMapper.insertSelective(orders);
                             if (i > 0) {
+                                PointsDetails pointsDetails1 = new PointsDetails();
+                                pointsDetails.setPointsDetailsId(IDUtils.getId());
+                                //todo: 上线前最好加上微信昵称和手机号码字段
+                                pointsDetails.setBeforeModifyPoints(pointsDetails1.getAfterModifyPoints());
+                                pointsDetails.setPointsDetailsType(1);
+                                pointsDetails.setModifyPoints(item.getGmsxjf());
+                                pointsDetails.setAfterModifyPoints(pointsDetails1.getAfterModifyPoints() - item.getGmsxjf());
+                                pointsDetails.setPointsDetailsDetails("订单消费");
+                                pointsDetails.setRemark(item.getItemId() + "订单消费");
+                                pointsDetails.setPointsDetailsStatus(1);
+                                pointsDetails.setPointsDetailsCreatedDate(new Date());
+                                pointsDetails.setPointsDetailsUpdatedDate(new Date());
+                                pointsDetailsMapper.insertSelective(pointsDetails);
                                 return DataResult.ok(orders.getOrdersId());
                             } else {
                                 return DataResult.build(500, "新增订单失败");
@@ -439,6 +483,8 @@ public class OrdersServiceImpl implements OrdersService {
                             return DataResult.build(500, "兄台，你这波操作有点迷啊，要不你退出系统以后，重新再上线购买试一下？");
                         }
                     } else if (logisticsTemplate.getLogisticsType() == 1 && logisticsTemplate.getLogisticsMode() == 1) {
+                        totalPrice = orders.getUnitPrice() * orders.getItemNum();
+                        orders.setTotalPrice(totalPrice);
                         //包邮免运费（直接将商品、会员等相关信息新增到订单表中）
                         orders.setOrdersId(IDUtils.getId());
                         //订单状态 0-取消订单 1-待付款 2-待发货 3-完成 4-退换货
@@ -447,11 +493,26 @@ public class OrdersServiceImpl implements OrdersService {
                         orders.setOrdersUpdateDate(new Date());
                         int i = ordersMapper.insertSelective(orders);
                         if (i > 0) {
+                            PointsDetails pointsDetails1 = new PointsDetails();
+                            pointsDetails.setPointsDetailsId(IDUtils.getId());
+                            //todo: 上线前最好加上微信昵称和手机号码字段
+                            pointsDetails.setBeforeModifyPoints(pointsDetails1.getAfterModifyPoints());
+                            pointsDetails.setPointsDetailsType(1);
+                            pointsDetails.setModifyPoints(item.getGmsxjf());
+                            pointsDetails.setAfterModifyPoints(pointsDetails1.getAfterModifyPoints() - item.getGmsxjf());
+                            pointsDetails.setPointsDetailsDetails("订单消费");
+                            pointsDetails.setRemark(item.getItemId() + "订单消费");
+                            pointsDetails.setPointsDetailsStatus(1);
+                            pointsDetails.setPointsDetailsCreatedDate(new Date());
+                            pointsDetails.setPointsDetailsUpdatedDate(new Date());
+                            pointsDetailsMapper.insertSelective(pointsDetails);
                             return DataResult.ok(orders.getOrdersId());
                         } else {
                             return DataResult.build(500, "新增订单失败");
                         }
                     } else {
+                        totalPrice = orders.getUnitPrice() * orders.getItemNum();
+                        orders.setTotalPrice(totalPrice);
                         //自提（直接将商品、会员等相关信息新增到订单表中）
                         orders.setOrdersId(IDUtils.getId());
                         //订单状态 0-取消订单 1-待付款 2-待发货 3-完成 4-退换货
@@ -460,6 +521,19 @@ public class OrdersServiceImpl implements OrdersService {
                         orders.setOrdersUpdateDate(new Date());
                         int i = ordersMapper.insertSelective(orders);
                         if (i > 0) {
+                            PointsDetails pointsDetails1 = new PointsDetails();
+                            pointsDetails.setPointsDetailsId(IDUtils.getId());
+                            //todo: 上线前最好加上微信昵称和手机号码字段
+                            pointsDetails.setBeforeModifyPoints(pointsDetails1.getAfterModifyPoints());
+                            pointsDetails.setPointsDetailsType(1);
+                            pointsDetails.setModifyPoints(item.getGmsxjf());
+                            pointsDetails.setAfterModifyPoints(pointsDetails1.getAfterModifyPoints() - item.getGmsxjf());
+                            pointsDetails.setPointsDetailsDetails("订单消费");
+                            pointsDetails.setRemark(item.getItemId() + "订单消费");
+                            pointsDetails.setPointsDetailsStatus(1);
+                            pointsDetails.setPointsDetailsCreatedDate(new Date());
+                            pointsDetails.setPointsDetailsUpdatedDate(new Date());
+                            pointsDetailsMapper.insertSelective(pointsDetails);
                             return DataResult.ok(orders.getOrdersId());
                         } else {
                             return DataResult.build(500, "新增订单失败");
@@ -469,9 +543,7 @@ public class OrdersServiceImpl implements OrdersService {
                     return DataResult.build(500, "你的积分不足以购买该数量的商品");
                 }
             } else {
-                System.out.println("0");
-                pointsDetails.setAfterModifyPoints(0);
-                if (pointsDetails.getAfterModifyPoints() >= item.getGmsxjf() * orders.getItemNum()) {
+                if (0 >= item.getGmsxjf() * orders.getItemNum()) {
                     orders.setCommissionId(item.getCommissionId());
                     //查询该商品的物流模板，通过物流模板，将对应的物流资费加到订单总价中
                     LogisticsTemplate logisticsTemplate = logisticsTemplateMapper.selectByPrimaryKey(item.getLogisticsTemplateId());
@@ -497,6 +569,19 @@ public class OrdersServiceImpl implements OrdersService {
                             orders.setOrdersUpdateDate(new Date());
                             int i = ordersMapper.insertSelective(orders);
                             if (i > 0) {
+                                PointsDetails pointsDetails1 = new PointsDetails();
+                                pointsDetails.setPointsDetailsId(IDUtils.getId());
+                                //todo: 上线前最好加上微信昵称和手机号码字段
+                                pointsDetails.setBeforeModifyPoints(0);
+                                pointsDetails.setPointsDetailsType(1);
+                                pointsDetails.setModifyPoints(item.getGmsxjf());
+                                pointsDetails.setAfterModifyPoints(0 - item.getGmsxjf());
+                                pointsDetails.setPointsDetailsDetails("订单消费");
+                                pointsDetails.setRemark(item.getItemId() + "订单消费");
+                                pointsDetails.setPointsDetailsStatus(1);
+                                pointsDetails.setPointsDetailsCreatedDate(new Date());
+                                pointsDetails.setPointsDetailsUpdatedDate(new Date());
+                                pointsDetailsMapper.insertSelective(pointsDetails);
                                 return DataResult.ok(orders.getItemId());
                             } else {
                                 return DataResult.build(500, "新增订单失败");
@@ -514,6 +599,19 @@ public class OrdersServiceImpl implements OrdersService {
                             orders.setOrdersUpdateDate(new Date());
                             int i = ordersMapper.insertSelective(orders);
                             if (i > 0) {
+                                PointsDetails pointsDetails1 = new PointsDetails();
+                                pointsDetails.setPointsDetailsId(IDUtils.getId());
+                                //todo: 上线前最好加上微信昵称和手机号码字段
+                                pointsDetails.setBeforeModifyPoints(0);
+                                pointsDetails.setPointsDetailsType(1);
+                                pointsDetails.setModifyPoints(item.getGmsxjf());
+                                pointsDetails.setAfterModifyPoints(0 - item.getGmsxjf());
+                                pointsDetails.setPointsDetailsDetails("订单消费");
+                                pointsDetails.setRemark(item.getItemId() + "订单消费");
+                                pointsDetails.setPointsDetailsStatus(1);
+                                pointsDetails.setPointsDetailsCreatedDate(new Date());
+                                pointsDetails.setPointsDetailsUpdatedDate(new Date());
+                                pointsDetailsMapper.insertSelective(pointsDetails);
                                 return DataResult.ok(orders.getItemId());
                             } else {
                                 return DataResult.build(500, "新增订单失败");
@@ -531,6 +629,19 @@ public class OrdersServiceImpl implements OrdersService {
                             orders.setOrdersUpdateDate(new Date());
                             int i = ordersMapper.insertSelective(orders);
                             if (i > 0) {
+                                PointsDetails pointsDetails1 = new PointsDetails();
+                                pointsDetails.setPointsDetailsId(IDUtils.getId());
+                                //todo: 上线前最好加上微信昵称和手机号码字段
+                                pointsDetails.setBeforeModifyPoints(0);
+                                pointsDetails.setPointsDetailsType(1);
+                                pointsDetails.setModifyPoints(item.getGmsxjf());
+                                pointsDetails.setAfterModifyPoints(0 - item.getGmsxjf());
+                                pointsDetails.setPointsDetailsDetails("订单消费");
+                                pointsDetails.setRemark(item.getItemId() + "订单消费");
+                                pointsDetails.setPointsDetailsStatus(1);
+                                pointsDetails.setPointsDetailsCreatedDate(new Date());
+                                pointsDetails.setPointsDetailsUpdatedDate(new Date());
+                                pointsDetailsMapper.insertSelective(pointsDetails);
                                 return DataResult.ok(orders.getOrdersId());
                             } else {
                                 return DataResult.build(500, "新增订单失败");
@@ -539,6 +650,8 @@ public class OrdersServiceImpl implements OrdersService {
                             return DataResult.build(500, "兄台，你这波操作有点迷啊，要不你退出系统以后，重新再上线购买试一下？");
                         }
                     } else if (logisticsTemplate.getLogisticsType() == 1 && logisticsTemplate.getLogisticsMode() == 1) {
+                        totalPrice = orders.getUnitPrice() * orders.getItemNum();
+                        orders.setTotalPrice(totalPrice);
                         //包邮免运费（直接将商品、会员等相关信息新增到订单表中）
                         orders.setOrdersId(IDUtils.getId());
                         //订单状态 0-取消订单 1-待付款 2-待发货 3-完成 4-退换货
@@ -547,11 +660,26 @@ public class OrdersServiceImpl implements OrdersService {
                         orders.setOrdersUpdateDate(new Date());
                         int i = ordersMapper.insertSelective(orders);
                         if (i > 0) {
+                            PointsDetails pointsDetails1 = new PointsDetails();
+                            pointsDetails.setPointsDetailsId(IDUtils.getId());
+                            //todo: 上线前最好加上微信昵称和手机号码字段
+                            pointsDetails.setBeforeModifyPoints(0);
+                            pointsDetails.setPointsDetailsType(1);
+                            pointsDetails.setModifyPoints(item.getGmsxjf());
+                            pointsDetails.setAfterModifyPoints(0 - item.getGmsxjf());
+                            pointsDetails.setPointsDetailsDetails("订单消费");
+                            pointsDetails.setRemark(item.getItemId() + "订单消费");
+                            pointsDetails.setPointsDetailsStatus(1);
+                            pointsDetails.setPointsDetailsCreatedDate(new Date());
+                            pointsDetails.setPointsDetailsUpdatedDate(new Date());
+                            pointsDetailsMapper.insertSelective(pointsDetails);
                             return DataResult.ok(orders.getOrdersId());
                         } else {
                             return DataResult.build(500, "新增订单失败");
                         }
                     } else {
+                        totalPrice = orders.getUnitPrice() * orders.getItemNum();
+                        orders.setTotalPrice(totalPrice);
                         //自提（直接将商品、会员等相关信息新增到订单表中）
                         orders.setOrdersId(IDUtils.getId());
                         //订单状态 0-取消订单 1-待付款 2-待发货 3-完成 4-退换货
@@ -560,6 +688,19 @@ public class OrdersServiceImpl implements OrdersService {
                         orders.setOrdersUpdateDate(new Date());
                         int i = ordersMapper.insertSelective(orders);
                         if (i > 0) {
+                            PointsDetails pointsDetails1 = new PointsDetails();
+                            pointsDetails.setPointsDetailsId(IDUtils.getId());
+                            //todo: 上线前最好加上微信昵称和手机号码字段
+                            pointsDetails.setBeforeModifyPoints(0);
+                            pointsDetails.setPointsDetailsType(1);
+                            pointsDetails.setModifyPoints(item.getGmsxjf());
+                            pointsDetails.setAfterModifyPoints(0 - item.getGmsxjf());
+                            pointsDetails.setPointsDetailsDetails("订单消费");
+                            pointsDetails.setRemark(item.getItemId() + "订单消费");
+                            pointsDetails.setPointsDetailsStatus(1);
+                            pointsDetails.setPointsDetailsCreatedDate(new Date());
+                            pointsDetails.setPointsDetailsUpdatedDate(new Date());
+                            pointsDetailsMapper.insertSelective(pointsDetails);
                             return DataResult.ok(orders.getOrdersId());
                         } else {
                             return DataResult.build(500, "新增订单失败");

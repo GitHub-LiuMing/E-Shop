@@ -55,6 +55,7 @@ public class PointsDetailsServiceImpl implements PointsDetailsService {
                     pointsDetails.setPointsDetailsStatus(1);
                     pointsDetails.setPointsDetailsCreatedDate(new Date());
                     pointsDetails.setPointsDetailsUpdatedDate(new Date());
+                    pointsDetailsMapper.insertSelective(pointsDetails);
                     return DataResult.ok(pointsDetailsDescLimit1);
                 } else {
                     pointsDetails.setPointsDetailsId(IDUtils.getId());
@@ -77,6 +78,52 @@ public class PointsDetailsServiceImpl implements PointsDetailsService {
                     pointsDetails.setPointsDetailsStatus(1);
                     pointsDetails.setPointsDetailsCreatedDate(new Date());
                     pointsDetails.setPointsDetailsUpdatedDate(new Date());
+                    pointsDetailsMapper.insertSelective(pointsDetails);
+                    return DataResult.ok(pointsDetailsDescLimit1);
+                }
+            }
+            return DataResult.build(500, "积分类型不得为空");
+        }
+        return DataResult.build(500, "用户信息获取失败");
+    }
+
+    @Override
+    public DataResult adjustPointsDetails(PointsDetails pointsDetails) {
+        CheckObjectIsNullUtils checkObjectIsNullUtils = new CheckObjectIsNullUtils();
+        if (StringUtils.isNotBlank(pointsDetails.getMemberId()) ) {
+            if (pointsDetails.getPointsDetailsType() != null){
+                //先查询该用户最后一条数据中的变动后的积分,如果是第一条数据,就将变动前的积分设定为0,然后插入表
+                Map pointsDetailsDescLimit1Map = new HashMap();
+                pointsDetailsDescLimit1Map.put("memberId", pointsDetails.getMemberId());
+                PointsDetails pointsDetailsDescLimit1 = pointsDetailsMapper.findPointsDetailsDescLimit1(pointsDetailsDescLimit1Map);
+                if (pointsDetailsDescLimit1 != null){
+                    pointsDetails.setPointsDetailsId(IDUtils.getId());
+                    //todo: 上线前最好加上微信昵称和手机号码字段
+                    pointsDetails.setBeforeModifyPoints(pointsDetailsDescLimit1.getAfterModifyPoints());
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    pointsDetails.setModifyPoints(pointsDetails.getModifyPoints());
+                    pointsDetails.setAfterModifyPoints(pointsDetailsDescLimit1.getAfterModifyPoints() + pointsDetails.getModifyPoints());
+                    pointsDetails.setPointsDetailsDetails("管理员调整积分");
+                    pointsDetails.setRemark(simpleDateFormat.format(new Date()) + "管理员调整积分");
+                    pointsDetails.setPointsDetailsType(2);
+                    pointsDetails.setPointsDetailsStatus(1);
+                    pointsDetails.setPointsDetailsCreatedDate(new Date());
+                    pointsDetails.setPointsDetailsUpdatedDate(new Date());
+                    pointsDetailsMapper.insertSelective(pointsDetails);
+                    return DataResult.ok(pointsDetailsDescLimit1);
+                } else {
+                    pointsDetails.setPointsDetailsId(IDUtils.getId());
+                    pointsDetails.setBeforeModifyPoints(0);
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    pointsDetails.setModifyPoints(pointsDetails.getModifyPoints());
+                    pointsDetails.setAfterModifyPoints(0 + pointsDetails.getModifyPoints());
+                    pointsDetails.setPointsDetailsDetails("管理员调整积分");
+                    pointsDetails.setRemark(simpleDateFormat.format(new Date()) + " 管理员调整积分");
+                    pointsDetails.setPointsDetailsType(2);
+                    pointsDetails.setPointsDetailsStatus(1);
+                    pointsDetails.setPointsDetailsCreatedDate(new Date());
+                    pointsDetails.setPointsDetailsUpdatedDate(new Date());
+                    pointsDetailsMapper.insertSelective(pointsDetails);
                     return DataResult.ok(pointsDetailsDescLimit1);
                 }
             }
@@ -107,5 +154,11 @@ public class PointsDetailsServiceImpl implements PointsDetailsService {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String format = simpleDateFormat.format(new Date());
         System.out.println(format);
+    }
+
+    @Override
+    public DataResult findPointsDetailsByAfter(String memberId) {
+        PointsDetails pointsDetailsMax = pointsDetailsMapper.findPointsDetailsByAfter(memberId);
+        return DataResult.ok(pointsDetailsMax);
     }
 }

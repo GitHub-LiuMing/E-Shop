@@ -134,6 +134,7 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public DataResult updateMember(Member member) {
         Map map = new HashMap();
+        map.put("memberId", member.getMemberId());
         map.put("memberType", member.getMemberType());
         map.put("memberStatus", member.getMemberStatus());
         map.put("memberUpdatedDate", new Date());

@@ -29,8 +29,20 @@ public class PointsDetailsController {
      * @Date 2019.08.06 16:52
      */
     @RequestMapping("/addPointsDetails")
-    public DataResult addPointsDetails(@RequestBody PointsDetails pointsDetails){
+    public DataResult addPointsDetails(PointsDetails pointsDetails){
         return pointsDetailsService.addPointsDetails(pointsDetails);
+    }
+
+    /**
+     * @Description 调整积分
+     * @param pointsDetails
+     * @return com.liuming.eshop.utils.DataResult
+     * @Author 鲸落
+     * @Date 2020.04.16 14:53
+     */
+    @RequestMapping("/adjustPointsDetails")
+    public DataResult adjustPointsDetails(PointsDetails pointsDetails){
+        return pointsDetailsService.adjustPointsDetails(pointsDetails);
     }
 
     /**
@@ -53,6 +65,22 @@ public class PointsDetailsController {
     public DataResult updatePointsDetails(PointsDetails pointsDetails){
         if (StringUtils.isNotBlank(pointsDetails.getMemberId())){
             return pointsDetailsService.updatePointsDetails(pointsDetails);
+        } else {
+            return DataResult.build(500,"会员ID不得为空");
+        }
+    }
+
+    /**
+     * @Description 根据会员ID查询最新的一条积分详情记录
+     * @param memberId
+     * @return com.liuming.eshop.utils.DataResult
+     * @Author 鲸落
+     * @Date 2020.04.16 14:34
+     */
+    @RequestMapping("/findPointsDetailsByAfter")
+    public DataResult findPointsDetailsByAfter(String memberId){
+        if (StringUtils.isNotBlank(memberId)){
+            return pointsDetailsService.findPointsDetailsByAfter(memberId);
         } else {
             return DataResult.build(500,"会员ID不得为空");
         }

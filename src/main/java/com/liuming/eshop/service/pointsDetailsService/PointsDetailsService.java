@@ -9,4 +9,8 @@ public interface PointsDetailsService {
     DataResult findPointsDetails(String memberId);
 
     DataResult updatePointsDetails(PointsDetails pointsDetails);
+
+    DataResult findPointsDetailsByAfter(String memberId);
+
+    DataResult adjustPointsDetails(PointsDetails pointsDetails);
 }

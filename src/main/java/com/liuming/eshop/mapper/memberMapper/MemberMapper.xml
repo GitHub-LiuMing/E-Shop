@@ -727,14 +727,14 @@
   <update id="updateMember" parameterType="map" >
     UPDATE member
     <set >
-      <if test="memberType != null" >
-        member_type = #{memberType,jdbcType=INTEGER},
+      <if test="map.memberType != null" >
+        member_type = #{map.memberType},
       </if>
-      <if test="memberStatus != null" >
-        member_status = #{memberStatus,jdbcType=INTEGER},
+      <if test="map.memberStatus != null" >
+        member_status = #{map.memberStatus},
       </if>
-      <if test="memberUpdatedDate != null" >
-        member_updated_date = #{memberUpdatedDate,jdbcType=TIMESTAMP},
+      <if test="map.memberUpdatedDate != null" >
+        member_updated_date = #{map.memberUpdatedDate},
       </if>
     </set>
     WHERE

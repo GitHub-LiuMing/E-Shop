@@ -127,6 +127,7 @@ public class PayController {
         JSONObject jsonObject = JSONObject.fromObject(resp);
         System.out.println(jsonObject);
         String packages = "prepay_id=" + jsonObject.get("prepay_id");
+        System.out.println(jsonObject.get("prepay_id"));
         SortedMap<String, String> finalpackage = new TreeMap<String, String>();
         finalpackage.put("appId", Configure.getAppID());
         finalpackage.put("timeStamp", nonce_str);

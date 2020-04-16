@@ -343,7 +343,7 @@
     FROM
 	    points_details
     WHERE
-	    user_id = #{map.userId}
+        member_id = #{map.memberId}
     ORDER BY
 	    points_details_id DESC
 	LIMIT 1
@@ -396,12 +396,9 @@
   
   <select id="findPointsDetailsByAfter" parameterType="java.lang.String" resultMap="map">
     SELECT
-        *,
-        max( points_details_updated_date )
+        *
     FROM
-        points_details
-    WHERE
-        member_id = #{memberId}
+        ( SELECT * FROM points_details WHERE member_id = #{memberId} ORDER BY points_details_updated_date DESC ) a
     GROUP BY
         member_id;
   </select>
