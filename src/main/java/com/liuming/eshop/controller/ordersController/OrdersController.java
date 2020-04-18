@@ -1,13 +1,21 @@
 package com.liuming.eshop.controller.ordersController;
 
+import com.arronlong.httpclientutil.HttpClientUtil;
+import com.arronlong.httpclientutil.common.HttpConfig;
 import com.liuming.eshop.entity.ordersEntity.Orders;
 import com.liuming.eshop.service.ordersService.OrdersService;
 import com.liuming.eshop.utils.DataResult;
+import com.liuming.eshop.utils.payUtils.MD5Util;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.http.HttpRequest;
+import org.apache.http.client.utils.HttpClientUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.io.BufferedReader;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @Description 订单
@@ -62,6 +70,7 @@ public class OrdersController {
      */
     @RequestMapping("/findOrders")
     public DataResult findOrders(Orders orders){
+
         return ordersService.findOrders(orders);
     }
 
@@ -72,5 +81,29 @@ public class OrdersController {
         } else {
             return DataResult.build(500,"订单ID不得为空");
         }
+    }
+
+    /**
+     * @Description 调用快递100查询快递信息
+     * @param com
+     * @param num
+     * @return com.liuming.eshop.utils.DataResult
+     * @Author 鲸落
+     * @Date 2020.04.17 11:50
+     */
+    @RequestMapping("/findCourier")
+    public DataResult findCourier(String com, String num) throws Exception {
+        String customer = "8582FDD72894805968ED1108CA9B65A0";
+        String key = "sZsvbvYv4318";
+
+        String param = "{\"com\":\"" + com + "\",\"num\":\"" + num + "\"}";
+        String sign = MD5Util.MD5Encode(param + key + customer, "").toUpperCase();
+        Map params = new HashMap();
+        params.put("param", param);
+        params.put("sign", sign);
+        params.put("customer", customer);
+        HttpConfig config = HttpConfig.custom().url("https://poll.kuaidi100.com/poll/query.do").map(params);
+        String resp = HttpClientUtil.post(config);
+        return DataResult.ok(resp);
     }
 }

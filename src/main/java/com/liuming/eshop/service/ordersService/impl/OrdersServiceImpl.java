@@ -5,6 +5,7 @@ import com.liuming.eshop.entity.itemEntity.Item;
 import com.liuming.eshop.entity.logisticsTemplateEntity.LogisticsTemplate;
 import com.liuming.eshop.entity.memberEntity.Member;
 import com.liuming.eshop.entity.ordersEntity.Orders;
+import com.liuming.eshop.entity.ordersEntity.OrdersOrItem;
 import com.liuming.eshop.entity.pointsDetailsEntity.PointsDetails;
 import com.liuming.eshop.mapper.commissionMapper.CommissionMapper;
 import com.liuming.eshop.mapper.couponDetailsMapper.CouponDetailsMapper;
@@ -23,10 +24,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @Description
@@ -352,7 +350,15 @@ public class OrdersServiceImpl implements OrdersService {
         map.put("ordersUpdateDate", orders.getOrdersUpdateDate());
         map.put("ordersDesc", orders.getOrdersDesc());
         List<Orders> ordersList = ordersMapper.findOrders(map);
-        return DataResult.ok(ordersList);
+        List<OrdersOrItem> ordersOrItemList = new ArrayList<>();
+        for (Orders orders1 : ordersList) {
+            Item item = itemMapper.selectByPrimaryKey(orders1.getItemId());
+            OrdersOrItem ordersOrItem = new OrdersOrItem();
+            ordersOrItem.setOrders(orders1);
+            ordersOrItem.setItems(item);
+            ordersOrItemList.add(ordersOrItem);
+        }
+        return DataResult.ok(ordersOrItemList);
     }
 
     @Override

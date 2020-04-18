@@ -61,6 +61,13 @@ public class PointsDetailsController {
         }
     }
 
+    /**
+     * @Description 更新积分详情
+     * @param pointsDetails
+     * @return com.liuming.eshop.utils.DataResult
+     * @Author 鲸落
+     * @Date 2020.04.17 11:11
+     */
     @RequestMapping("/updatePointsDetails")
     public DataResult updatePointsDetails(PointsDetails pointsDetails){
         if (StringUtils.isNotBlank(pointsDetails.getMemberId())){

@@ -5,17 +5,14 @@ import com.ijpay.core.kit.*;
 import com.ijpay.wxpay.WxPayApi;
 import com.ijpay.wxpay.model.*;
 import com.liuming.eshop.entity.changeEntity.Change;
-import com.liuming.eshop.entity.classifyEntity.Classify;
 import com.liuming.eshop.entity.commissionEntity.Commission;
 import com.liuming.eshop.entity.itemEntity.Item;
 import com.liuming.eshop.entity.memberEntity.Member;
 import com.liuming.eshop.entity.ordersEntity.Orders;
 import com.liuming.eshop.mapper.changeMapper.ChangeMapper;
-import com.liuming.eshop.mapper.classifyMapper.ClassifyMapper;
 import com.liuming.eshop.mapper.commissionMapper.CommissionMapper;
 import com.liuming.eshop.mapper.itemMapper.ItemMapper;
 import com.liuming.eshop.mapper.memberMapper.MemberMapper;
-import com.liuming.eshop.service.ordersService.OrdersService;
 import com.liuming.eshop.mapper.ordersMapper.OrdersMapper;
 import com.liuming.eshop.service.payService.PayService;
 import com.liuming.eshop.utils.DataResult;
@@ -210,6 +207,8 @@ public class PayController {
                                 int i = ordersMapper.updateByPrimaryKeySelective(orders);
 
                                 if (i >= 1){
+                                    writer.write(setXml("SUCCESS", "OK"));
+                                    System.out.println("------------支付成功-------------");
                                     /**
                                      * 根据orders查询item，根据item中的分类ID进行区分，只有会员和高级会员有佣金分配，其他的直接结束支付流程
                                      */
@@ -232,87 +231,95 @@ public class PayController {
                                         //会员专区分配佣金的逻辑
                                         //判断我上级的身份
                                         preMember = memberMapper.selectByPrimaryKey(member.getPreMemberId());
-                                        if (preMember.getMemberType() == 5){
-                                            //上级是会员39.9等级,分配对应佣金4
-                                            Change change = new Change();
-                                            change.setChangeId(IDUtils.getId());
-                                            change.setMemberId(preMember.getMemberId());
-                                            change.setChangePrice(commission.getHyHyZtPrice());
-                                            change.setChangeDetails(orders.getOrdersId() + "直推奖金");
-                                            change.setChangeType(1);
-                                            change.setChangeStatus(1);
-                                            change.setChangeCreateDate(new Date());
-                                            change.setChangeUpdateDate(new Date());
-                                            changeMapper.insertSelective(change);
-                                        } else if(preMember.getMemberType() == 4 || preMember.getMemberType() == 3 || preMember.getMemberType() == 2){
-                                            //上级是高级会员399等级,分配对应佣金8,并且去查询复购情况,如果符合复购条件,给购买人零钱增加8
-                                            Change change = new Change();
-                                            change.setChangeId(IDUtils.getId());
-                                            change.setMemberId(preMember.getMemberId());
-                                            //上面已经判断上级属于高级会员、VIP会员、至尊会员，所以现在只需要明确判断上级的具体等级
-                                            if (preMember.getMemberType() == 4){
-                                                change.setChangePrice(commission.getGjHyZtPrice() + commission.getGjHyTdPrice());
+                                        if (preMember != null){
+                                            if (preMember.getMemberType() == 5){
+                                                //上级是会员39.9等级,分配对应佣金4
+                                                Change change = new Change();
+                                                change.setChangeId(IDUtils.getId());
+                                                change.setMemberId(preMember.getMemberId());
+                                                change.setChangePrice(commission.getHyHyZtPrice());
+                                                change.setChangeDetails(orders.getOrdersId() + "直推奖金");
+                                                change.setChangeType(1);
+                                                change.setChangeStatus(1);
+                                                change.setChangeCreateDate(new Date());
+                                                change.setChangeUpdateDate(new Date());
+                                                changeMapper.insertSelective(change);
+                                            } else if(preMember.getMemberType() == 4 || preMember.getMemberType() == 3 || preMember.getMemberType() == 2){
+                                                //上级是高级会员399等级,分配对应佣金8,并且去查询复购情况,如果符合复购条件,给购买人零钱增加8
+                                                Change change = new Change();
+                                                change.setChangeId(IDUtils.getId());
+                                                change.setMemberId(preMember.getMemberId());
+                                                //上面已经判断上级属于高级会员、VIP会员、至尊会员，所以现在只需要明确判断上级的具体等级
+                                                if (preMember.getMemberType() == 4){
+                                                    change.setChangePrice(commission.getGjHyZtPrice() + commission.getGjHyTdPrice());
+                                                    change.setChangeDetails(orders.getOrdersId() + "直推奖金 + 团队承担奖金");
+                                                } else if(preMember.getMemberType() == 3){
+                                                    change.setChangePrice(commission.getGjHyZtPrice() + commission.getVipHyTdPrice());
+                                                    change.setChangeDetails(orders.getOrdersId() + "直推奖金 + 团队承担奖金");
+                                                } else {
+                                                    change.setChangePrice(commission.getGjHyZtPrice() + commission.getZzHyTdPrice());
+                                                    change.setChangeDetails(orders.getOrdersId() + "直推奖金 + 团队承担奖金");
+                                                }
+                                                change.setChangeType(1);
+                                                change.setChangeStatus(1);
+                                                change.setChangeCreateDate(new Date());
+                                                change.setChangeUpdateDate(new Date());
+                                                changeMapper.insertSelective(change);
+                                            } else if(preMember.getMemberType() == 1){
+                                                //上级是代理商3999等级,分配对应佣金12,并且去查询复购情况,如果符合复购条件,给购买人零钱增加12
+                                                Change change = new Change();
+                                                change.setChangeId(IDUtils.getId());
+                                                change.setMemberId(preMember.getMemberId());
+                                                change.setChangePrice(commission.getDlHyZtPrice() + commission.getDlHyTdPrice());
                                                 change.setChangeDetails(orders.getOrdersId() + "直推奖金 + 团队承担奖金");
-                                            } else if(preMember.getMemberType() == 3){
-                                                change.setChangePrice(commission.getGjHyZtPrice() + commission.getVipHyTdPrice());
-                                                change.setChangeDetails(orders.getOrdersId() + "直推奖金 + 团队承担奖金");
-                                            } else {
-                                                change.setChangePrice(commission.getGjHyZtPrice() + commission.getZzHyTdPrice());
-                                                change.setChangeDetails(orders.getOrdersId() + "直推奖金 + 团队承担奖金");
+                                                change.setChangeType(1);
+                                                change.setChangeStatus(1);
+                                                change.setChangeCreateDate(new Date());
+                                                change.setChangeUpdateDate(new Date());
+                                                changeMapper.insertSelective(change);
                                             }
-                                            change.setChangeType(1);
-                                            change.setChangeStatus(1);
-                                            change.setChangeCreateDate(new Date());
-                                            change.setChangeUpdateDate(new Date());
-                                            changeMapper.insertSelective(change);
-                                            //查询购买人是否符合复购,如果符合复购给购买人零钱增加8
-                                            //orders in itemId,memberId,ordersStatus=2
                                             Map map = new HashMap();
                                             map.put("itemId",item.getItemId());
                                             map.put("memberId",member.getMemberId());
                                             map.put("ordersStatus",2);
                                             List<Orders> orders1 = ordersMapper.findOrders(map);
-                                            if (orders1.size() > 1){
+                                            if (orders1.size() > 1 && member.getMemberType() == 4){
                                                 //购买人有复购,给购买人增加零钱8
                                                 Change fgChange = new Change();
                                                 fgChange.setChangeId(IDUtils.getId());
                                                 fgChange.setMemberId(member.getMemberId());
-                                                if (preMember.getMemberType() == 4){
-                                                    fgChange.setChangePrice(commission.getGjHyFgPrice());
-                                                    fgChange.setChangeDetails(orders.getOrdersId() + "复购奖金");
-                                                } else if(preMember.getMemberType() == 3){
-                                                    fgChange.setChangePrice(commission.getVipHyFgPrice());
-                                                    fgChange.setChangeDetails(orders.getOrdersId() + "复购奖金");
-                                                } else {
-                                                    fgChange.setChangePrice(commission.getZzHyFgPrice());
-                                                    fgChange.setChangeDetails(orders.getOrdersId() + "复购奖金");
-                                                }
+                                                fgChange.setChangePrice(commission.getGjHyFgPrice());
+                                                fgChange.setChangeDetails(orders.getOrdersId() + "复购奖金");
                                                 fgChange.setChangeType(1);
                                                 fgChange.setChangeStatus(1);
                                                 fgChange.setChangeCreateDate(new Date());
                                                 fgChange.setChangeUpdateDate(new Date());
                                                 changeMapper.insertSelective(fgChange);
-                                            }
-                                        } else if(preMember.getMemberType() == 1){
-                                            //上级是代理商3999等级,分配对应佣金12,并且去查询复购情况,如果符合复购条件,给购买人零钱增加12
-                                            Change change = new Change();
-                                            change.setChangeId(IDUtils.getId());
-                                            change.setMemberId(preMember.getMemberId());
-                                            change.setChangePrice(commission.getDlHyZtPrice() + commission.getDlHyTdPrice());
-                                            change.setChangeDetails(orders.getOrdersId() + "直推奖金 + 团队承担奖金");
-                                            change.setChangeType(1);
-                                            change.setChangeStatus(1);
-                                            change.setChangeCreateDate(new Date());
-                                            change.setChangeUpdateDate(new Date());
-                                            changeMapper.insertSelective(change);
-                                            //查询购买人是否符合复购,如果符合复购给购买人零钱增加8
-                                            //orders in itemId,memberId,ordersStatus=2
-                                            Map map = new HashMap();
-                                            map.put("itemId",item.getItemId());
-                                            map.put("memberId",member.getMemberId());
-                                            map.put("ordersStatus",2);
-                                            List<Orders> orders1 = ordersMapper.findOrders(map);
-                                            if (orders1.size() > 1 && member.getMemberType() == 1){
+                                            } else if(orders1.size() > 1 && member.getMemberType() == 3){
+                                                //购买人有复购,给购买人增加零钱8
+                                                Change fgChange = new Change();
+                                                fgChange.setChangeId(IDUtils.getId());
+                                                fgChange.setMemberId(member.getMemberId());
+                                                fgChange.setChangePrice(commission.getVipHyFgPrice());
+                                                fgChange.setChangeDetails(orders.getOrdersId() + "复购奖金");
+                                                fgChange.setChangeType(1);
+                                                fgChange.setChangeStatus(1);
+                                                fgChange.setChangeCreateDate(new Date());
+                                                fgChange.setChangeUpdateDate(new Date());
+                                                changeMapper.insertSelective(fgChange);
+                                            } else if(orders1.size() > 1 && member.getMemberType() == 2){
+                                                //购买人有复购,给购买人增加零钱8
+                                                Change fgChange = new Change();
+                                                fgChange.setChangeId(IDUtils.getId());
+                                                fgChange.setMemberId(member.getMemberId());
+                                                fgChange.setChangePrice(commission.getZzHyFgPrice());
+                                                fgChange.setChangeDetails(orders.getOrdersId() + "复购奖金");
+                                                fgChange.setChangeType(1);
+                                                fgChange.setChangeStatus(1);
+                                                fgChange.setChangeCreateDate(new Date());
+                                                fgChange.setChangeUpdateDate(new Date());
+                                                changeMapper.insertSelective(fgChange);
+                                            } else if(orders1.size() > 1 && member.getMemberType() == 1){
                                                 //购买人有复购,给购买人增加零钱8
                                                 Change dlHyFg = new Change();
                                                 dlHyFg.setChangeId(IDUtils.getId());
@@ -325,691 +332,1085 @@ public class PayController {
                                                 dlHyFg.setChangeUpdateDate(new Date());
                                                 changeMapper.insertSelective(dlHyFg);
                                             }
+                                            //查询七次会员信息
+                                            String memberId = null;
+                                            List<Member> memberList = new ArrayList<>();
+                                            for (int num = 0; num < 6; num++){
+                                                if (memberList.size() == 0){
+                                                    memberId = preMember.getMemberId();
+                                                }
+                                                Member member1 = memberMapper.selectByPrimaryKey(memberId);
+                                                if (member1 != null){
+                                                    memberId = member1.getPreMemberId();
+                                                    memberList.add(member1);
+                                                }
+                                            }
+
+                                            int dlnum = 0;
+                                            List<Member> memberList1 = new ArrayList<>();
+
+                                            for (int m = 0; m < memberList.size(); m++){
+                                                if (memberList.get(m).getMemberType() == 1){
+                                                    if(dlnum == 0){
+                                                        memberList1.add(memberList.get(m));
+                                                    }
+                                                    dlnum += 1;
+                                                }
+                                            }
+                                            if(memberList1.size() == 1){
+                                                if (memberList1.get(0).getMemberType() == 1){
+                                                    //代理会员团队管理奖
+                                                    Change dlhytd = new Change();
+                                                    dlhytd.setChangeId(IDUtils.getId());
+                                                    dlhytd.setMemberId(memberList1.get(0).getMemberId());
+                                                    dlhytd.setChangePrice(commission.getDlHyTdPrice());
+                                                    dlhytd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
+                                                    dlhytd.setChangeType(1);
+                                                    dlhytd.setChangeStatus(1);
+                                                    dlhytd.setChangeCreateDate(new Date());
+                                                    dlhytd.setChangeUpdateDate(new Date());
+                                                    changeMapper.insertSelective(dlhytd);
+                                                }
+                                            }
                                         }
                                     } else if(StringUtils.equals(item.getClassifyId(),"4")){
                                         //高级会员专区分配佣金的逻辑
                                         //判断我上级的身份
                                         preMember = memberMapper.selectByPrimaryKey(member.getPreMemberId());
-                                        //判断商品ID是否是3999,3999属于代理商,其他的属于高级会员
-                                        if(StringUtils.equals(orders.getOrdersId(),"3999")){
+                                        if (preMember != null){
                                             //判断商品ID是否是3999,3999属于代理商,其他的属于高级会员
-                                            if (preMember.getMemberType() == 5){
-                                                //上级是会员39.9等级,分配对应佣金75
-                                                Change change = new Change();
-                                                change.setChangeId(IDUtils.getId());
-                                                change.setMemberId(preMember.getMemberId());
-                                                change.setChangePrice(commission.getHyDlZtPrice());
-                                                change.setChangeDetails(orders.getOrdersId() + "直推奖金");
-                                                change.setChangeType(1);
-                                                change.setChangeStatus(1);
-                                                change.setChangeCreateDate(new Date());
-                                                change.setChangeUpdateDate(new Date());
-                                                changeMapper.insertSelective(change);
-                                            } else if(preMember.getMemberType() == 4){
-                                                //上级是高级会员399等级,分配对应佣金150
-                                                Change change = new Change();
-                                                change.setChangeId(IDUtils.getId());
-                                                change.setMemberId(preMember.getMemberId());
-                                                change.setChangePrice(commission.getGjDlZtPrice());
-                                                change.setChangeDetails(orders.getOrdersId() + "直推奖金");
-                                                change.setChangeType(1);
-                                                change.setChangeStatus(1);
-                                                change.setChangeCreateDate(new Date());
-                                                change.setChangeUpdateDate(new Date());
-                                                changeMapper.insertSelective(change);
+                                            if(StringUtils.equals(orders.getOrdersId(),"3999")){
+                                                //判断商品ID是否是3999,3999属于代理商,其他的属于高级会员
+                                                if (preMember.getMemberType() == 5){
+                                                    //上级是会员39.9等级,分配对应佣金75
+                                                    Change change = new Change();
+                                                    change.setChangeId(IDUtils.getId());
+                                                    change.setMemberId(preMember.getMemberId());
+                                                    change.setChangePrice(commission.getHyDlZtPrice());
+                                                    change.setChangeDetails(orders.getOrdersId() + "直推奖金");
+                                                    change.setChangeType(1);
+                                                    change.setChangeStatus(1);
+                                                    change.setChangeCreateDate(new Date());
+                                                    change.setChangeUpdateDate(new Date());
+                                                    changeMapper.insertSelective(change);
+                                                } else if(preMember.getMemberType() == 4){
+                                                    //上级是高级会员399等级,分配对应佣金150
+                                                    Change change = new Change();
+                                                    change.setChangeId(IDUtils.getId());
+                                                    change.setMemberId(preMember.getMemberId());
+                                                    change.setChangePrice(commission.getGjDlZtPrice());
+                                                    change.setChangeDetails(orders.getOrdersId() + "直推奖金");
+                                                    change.setChangeType(1);
+                                                    change.setChangeStatus(1);
+                                                    change.setChangeCreateDate(new Date());
+                                                    change.setChangeUpdateDate(new Date());
+                                                    changeMapper.insertSelective(change);
 
-                                                //高级会员推荐代理间推
-                                                Member pre2Member = memberMapper.selectByPrimaryKey(preMember.getMemberId());
-                                                change.setChangeId(IDUtils.getId());
-                                                change.setMemberId(pre2Member.getMemberId());
-                                                change.setChangePrice(commission.getGjDlJtPrice());
-                                                change.setChangeDetails(orders.getOrdersId() + "间推奖金");
-                                                change.setChangeType(1);
-                                                change.setChangeStatus(1);
-                                                change.setChangeCreateDate(new Date());
-                                                change.setChangeUpdateDate(new Date());
-                                                changeMapper.insertSelective(change);
-                                            } else if(preMember.getMemberType() == 3){
-                                                //上级是高级会员399等级,分配对应佣金170
-                                                Change change = new Change();
-                                                change.setChangeId(IDUtils.getId());
-                                                change.setMemberId(preMember.getMemberId());
-                                                change.setChangePrice(commission.getVipDlZtPrice());
-                                                change.setChangeDetails(orders.getOrdersId() + "直推奖金");
-                                                change.setChangeType(1);
-                                                change.setChangeStatus(1);
-                                                change.setChangeCreateDate(new Date());
-                                                change.setChangeUpdateDate(new Date());
-                                                changeMapper.insertSelective(change);
-
-                                                //VIP推荐代理间推
-                                                Member pre2Member = memberMapper.selectByPrimaryKey(preMember.getMemberId());
-                                                change.setChangeId(IDUtils.getId());
-                                                change.setMemberId(pre2Member.getMemberId());
-                                                change.setChangePrice(commission.getVipDlJtPrice());
-                                                change.setChangeDetails(orders.getOrdersId() + "间推奖金");
-                                                change.setChangeType(1);
-                                                change.setChangeStatus(1);
-                                                change.setChangeCreateDate(new Date());
-                                                change.setChangeUpdateDate(new Date());
-                                                changeMapper.insertSelective(change);
-                                            } else if(preMember.getMemberType() == 2){
-                                                //上级是高级会员399等级,分配对应佣金200
-                                                Change change = new Change();
-                                                change.setChangeId(IDUtils.getId());
-                                                change.setMemberId(preMember.getMemberId());
-                                                change.setChangePrice(commission.getZzDlZtPrice());
-                                                change.setChangeDetails(orders.getOrdersId() + "直推奖金");
-                                                change.setChangeType(1);
-                                                change.setChangeStatus(1);
-                                                change.setChangeCreateDate(new Date());
-                                                change.setChangeUpdateDate(new Date());
-                                                changeMapper.insertSelective(change);
-
-                                                //至尊会员推荐代理间推
-                                                Member pre2Member = memberMapper.selectByPrimaryKey(preMember.getMemberId());
-                                                change.setChangeId(IDUtils.getId());
-                                                change.setMemberId(pre2Member.getMemberId());
-                                                change.setChangePrice(commission.getZzDlJtPrice());
-                                                change.setChangeDetails(orders.getOrdersId() + "间推奖金");
-                                                change.setChangeType(1);
-                                                change.setChangeStatus(1);
-                                                change.setChangeCreateDate(new Date());
-                                                change.setChangeUpdateDate(new Date());
-                                                changeMapper.insertSelective(change);
-                                            } else if(preMember.getMemberType() == 1){
-                                                //上级是代理商3999等级,分配对应佣金200
-                                                Change change = new Change();
-                                                change.setChangeId(IDUtils.getId());
-                                                change.setMemberId(preMember.getMemberId());
-                                                change.setChangePrice(commission.getDlDlZtPrice());
-                                                change.setChangeDetails(orders.getOrdersId() + "直推奖金");
-                                                change.setChangeType(1);
-                                                change.setChangeStatus(1);
-                                                change.setChangeCreateDate(new Date());
-                                                change.setChangeUpdateDate(new Date());
-                                                changeMapper.insertSelective(change);
-
-                                                //高级会员推荐代理间推
-                                                Member pre2Member = memberMapper.selectByPrimaryKey(preMember.getMemberId());
-                                                change.setChangeId(IDUtils.getId());
-                                                change.setMemberId(pre2Member.getMemberId());
-                                                change.setChangePrice(commission.getDlDlJtPrice());
-                                                change.setChangeDetails(orders.getOrdersId() + "间推奖金");
-                                                change.setChangeType(1);
-                                                change.setChangeStatus(1);
-                                                change.setChangeCreateDate(new Date());
-                                                change.setChangeUpdateDate(new Date());
-                                                changeMapper.insertSelective(change);
-                                            }
-                                        } else {
-                                            if (preMember.getMemberType() == 5){
-                                                //上级是会员39.9等级,分配对应佣金75
-                                                Change change = new Change();
-                                                change.setChangeId(IDUtils.getId());
-                                                change.setMemberId(preMember.getMemberId());
-                                                change.setChangePrice(commission.getHyGjZtPrice());
-                                                change.setChangeDetails(orders.getOrdersId() + "直推奖金");
-                                                change.setChangeType(1);
-                                                change.setChangeStatus(1);
-                                                change.setChangeCreateDate(new Date());
-                                                change.setChangeUpdateDate(new Date());
-                                                changeMapper.insertSelective(change);
-
-                                                //查询七次会员信息
-                                                String memberId = preMember.getMemberId();
-                                                List<Member> memberList = new ArrayList<>();
-                                                for (int num = 0; num < 6; num++){
-                                                    Member member1 = memberMapper.selectByPrimaryKey(memberId);
-                                                    memberList.add(member1);
-                                                }
-
-                                                int vipnum = 0;
-                                                int zznum = 0;
-                                                List<Member> memberList1 = new ArrayList<>();
-
-                                                for (int m = 0; m < memberList.size(); m++){
-                                                    if (memberList.get(m).getMemberType() == 3){
-                                                        if(vipnum == 0){
-                                                            memberList1.add(memberList.get(m));
+                                                    //高级会员推荐代理间推
+                                                    Member pre2Member = memberMapper.selectByPrimaryKey(preMember.getPreMemberId());
+                                                    if (pre2Member != null){
+                                                        if (pre2Member.getMemberType() == 4){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getGjDlJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + " 高级代理间推奖金4");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
+                                                        } else if (pre2Member.getMemberType() == 3){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getVipDlJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + " VIP代理间推奖金4");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
+                                                        } else if (pre2Member.getMemberType() == 2){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getZzDlJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + " 至尊代理间推奖金4");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
+                                                        } else if (pre2Member.getMemberType() == 1){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getDlDlJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + " 代理代理间推奖金4");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
                                                         }
-                                                        vipnum += 1;
                                                     }
-                                                    if (memberList.get(m).getMemberType() == 2){
-                                                        if(zznum == 0){
-                                                            memberList1.add(memberList.get(m));
+                                                } else if(preMember.getMemberType() == 3){
+                                                    //上级是高级会员399等级,分配对应佣金170
+                                                    Change change = new Change();
+                                                    change.setChangeId(IDUtils.getId());
+                                                    change.setMemberId(preMember.getMemberId());
+                                                    change.setChangePrice(commission.getVipDlZtPrice());
+                                                    change.setChangeDetails(orders.getOrdersId() + "直推奖金");
+                                                    change.setChangeType(1);
+                                                    change.setChangeStatus(1);
+                                                    change.setChangeCreateDate(new Date());
+                                                    change.setChangeUpdateDate(new Date());
+                                                    changeMapper.insertSelective(change);
+
+                                                    //VIP推荐代理间推
+                                                    Member pre2Member = memberMapper.selectByPrimaryKey(preMember.getPreMemberId());
+                                                    if (pre2Member != null){
+                                                        if (pre2Member.getMemberType() == 4){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getGjDlJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + " 高级代理间推奖金3");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
+                                                        } else if (pre2Member.getMemberType() == 3){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getVipDlJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + " VIP代理间推奖金3");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
+                                                        } else if (pre2Member.getMemberType() == 2){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getZzDlJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + " 至尊代理间推奖金3");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
+                                                        } else if (pre2Member.getMemberType() == 1){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getDlDlJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + " 代理代理间推奖金3");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
                                                         }
-                                                        if(zznum == 1){
-                                                            memberList1.add(memberList.get(m));
+                                                    }
+                                                } else if(preMember.getMemberType() == 2){
+                                                    //上级是高级会员399等级,分配对应佣金200
+                                                    Change change = new Change();
+                                                    change.setChangeId(IDUtils.getId());
+                                                    change.setMemberId(preMember.getMemberId());
+                                                    change.setChangePrice(commission.getZzDlZtPrice());
+                                                    change.setChangeDetails(orders.getOrdersId() + "直推奖金");
+                                                    change.setChangeType(1);
+                                                    change.setChangeStatus(1);
+                                                    change.setChangeCreateDate(new Date());
+                                                    change.setChangeUpdateDate(new Date());
+                                                    changeMapper.insertSelective(change);
+
+                                                    //至尊会员推荐代理间推
+                                                    Member pre2Member = memberMapper.selectByPrimaryKey(preMember.getPreMemberId());
+                                                    if (pre2Member != null){
+                                                        if (pre2Member.getMemberType() == 4){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getGjDlJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + " 高级代理间推奖金2");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
+                                                        } else if (pre2Member.getMemberType() == 3){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getVipDlJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + " VIP代理间推奖金2");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
+                                                        } else if (pre2Member.getMemberType() == 2){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getZzDlJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + " 至尊代理间推奖金2");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
+                                                        } else if (pre2Member.getMemberType() == 1){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getDlDlJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + " 代理代理间推奖金2");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
                                                         }
-                                                        zznum += 1;
                                                     }
-                                                }
-                                                if (memberList1.size() == 3){
-                                                    if (memberList1.get(0).getMemberType() == 3 && memberList1.get(1).getMemberType() == 2 && memberList1.get(2).getMemberType() == 2){
-                                                        //VIP高级团队管理奖
-                                                        Change vipgjtd = new Change();
-                                                        vipgjtd.setChangeId(IDUtils.getId());
-                                                        vipgjtd.setMemberId(memberList1.get(0).getMemberId());
-                                                        vipgjtd.setChangePrice(commission.getVipGjTdPrice());
-                                                        vipgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
-                                                        vipgjtd.setChangeType(1);
-                                                        vipgjtd.setChangeStatus(1);
-                                                        vipgjtd.setChangeCreateDate(new Date());
-                                                        vipgjtd.setChangeUpdateDate(new Date());
-                                                        changeMapper.insertSelective(vipgjtd);
+                                                } else if(preMember.getMemberType() == 1){
+                                                    //上级是代理商3999等级,分配对应佣金200
+                                                    Change change = new Change();
+                                                    change.setChangeId(IDUtils.getId());
+                                                    change.setMemberId(preMember.getMemberId());
+                                                    change.setChangePrice(commission.getDlDlZtPrice());
+                                                    change.setChangeDetails(orders.getOrdersId() + "直推奖金");
+                                                    change.setChangeType(1);
+                                                    change.setChangeStatus(1);
+                                                    change.setChangeCreateDate(new Date());
+                                                    change.setChangeUpdateDate(new Date());
+                                                    changeMapper.insertSelective(change);
 
-                                                        //至尊高级团队管理奖
-                                                        Change zzgjtd = new Change();
-                                                        zzgjtd.setChangeId(IDUtils.getId());
-                                                        zzgjtd.setMemberId(memberList1.get(1).getMemberId());
-                                                        zzgjtd.setChangePrice(commission.getZzGjTdPrice());
-                                                        zzgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
-                                                        zzgjtd.setChangeType(1);
-                                                        zzgjtd.setChangeStatus(1);
-                                                        zzgjtd.setChangeCreateDate(new Date());
-                                                        zzgjtd.setChangeUpdateDate(new Date());
-                                                        changeMapper.insertSelective(zzgjtd);
-
-                                                        //至尊高级团队平级奖
-                                                        Change zzgjpj = new Change();
-                                                        zzgjpj.setChangeId(IDUtils.getId());
-                                                        zzgjpj.setMemberId(memberList1.get(2).getMemberId());
-                                                        zzgjpj.setChangePrice(commission.getZzGjPjPrice());
-                                                        zzgjpj.setChangeDetails(orders.getOrdersId() + "团队平级奖金");
-                                                        zzgjpj.setChangeType(1);
-                                                        zzgjpj.setChangeStatus(1);
-                                                        zzgjpj.setChangeCreateDate(new Date());
-                                                        zzgjpj.setChangeUpdateDate(new Date());
-                                                        changeMapper.insertSelective(zzgjpj);
-                                                    }
-                                                } else if(memberList1.size() == 2){
-                                                    if (memberList1.get(0).getMemberType() == 2 && memberList1.get(1).getMemberType() == 2){
-                                                        //至尊高级团队管理奖
-                                                        Change zzgjtd = new Change();
-                                                        zzgjtd.setChangeId(IDUtils.getId());
-                                                        zzgjtd.setMemberId(memberList1.get(0).getMemberId());
-                                                        zzgjtd.setChangePrice(commission.getZzGjTdPrice());
-                                                        zzgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
-                                                        zzgjtd.setChangeType(1);
-                                                        zzgjtd.setChangeStatus(1);
-                                                        zzgjtd.setChangeCreateDate(new Date());
-                                                        zzgjtd.setChangeUpdateDate(new Date());
-                                                        changeMapper.insertSelective(zzgjtd);
-
-                                                        //至尊高级团队平级奖
-                                                        Change zzgjpj = new Change();
-                                                        zzgjpj.setChangeId(IDUtils.getId());
-                                                        zzgjpj.setMemberId(memberList1.get(1).getMemberId());
-                                                        zzgjpj.setChangePrice(commission.getZzGjPjPrice());
-                                                        zzgjpj.setChangeDetails(orders.getOrdersId() + "团队平级奖金");
-                                                        zzgjpj.setChangeType(1);
-                                                        zzgjpj.setChangeStatus(1);
-                                                        zzgjpj.setChangeCreateDate(new Date());
-                                                        zzgjpj.setChangeUpdateDate(new Date());
-                                                        changeMapper.insertSelective(zzgjpj);
-                                                    }
-                                                } else if(memberList1.size() == 1){
-                                                    if (memberList1.get(0).getMemberType() == 2){
-                                                        //至尊高级团队管理奖
-                                                        Change zzgjtd = new Change();
-                                                        zzgjtd.setChangeId(IDUtils.getId());
-                                                        zzgjtd.setMemberId(memberList1.get(0).getMemberId());
-                                                        zzgjtd.setChangePrice(commission.getZzGjTdPrice());
-                                                        zzgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
-                                                        zzgjtd.setChangeType(1);
-                                                        zzgjtd.setChangeStatus(1);
-                                                        zzgjtd.setChangeCreateDate(new Date());
-                                                        zzgjtd.setChangeUpdateDate(new Date());
-                                                        changeMapper.insertSelective(zzgjtd);
-                                                    } else if(memberList1.get(0).getMemberType() == 3) {
-                                                        //VIP高级团队管理奖
-                                                        Change vipgjtd = new Change();
-                                                        vipgjtd.setChangeId(IDUtils.getId());
-                                                        vipgjtd.setMemberId(memberList1.get(0).getMemberId());
-                                                        vipgjtd.setChangePrice(commission.getVipGjTdPrice());
-                                                        vipgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
-                                                        vipgjtd.setChangeType(1);
-                                                        vipgjtd.setChangeStatus(1);
-                                                        vipgjtd.setChangeCreateDate(new Date());
-                                                        vipgjtd.setChangeUpdateDate(new Date());
-                                                        changeMapper.insertSelective(vipgjtd);
-                                                    }
-                                                }
-                                            } else if(preMember.getMemberType() == 4){
-                                                //上级是高级会员399等级,分配对应佣金150
-                                                Change change = new Change();
-                                                change.setChangeId(IDUtils.getId());
-                                                change.setMemberId(preMember.getMemberId());
-                                                change.setChangePrice(commission.getGjGjZtPrice());
-                                                change.setChangeDetails(orders.getOrdersId() + "直推奖金");
-                                                change.setChangeType(1);
-                                                change.setChangeStatus(1);
-                                                change.setChangeCreateDate(new Date());
-                                                change.setChangeUpdateDate(new Date());
-                                                changeMapper.insertSelective(change);
-
-                                                //高级会员推荐高级间推
-                                                Member pre2Member = memberMapper.selectByPrimaryKey(preMember.getMemberId());
-                                                change.setChangeId(IDUtils.getId());
-                                                change.setMemberId(pre2Member.getMemberId());
-                                                change.setChangePrice(commission.getGjGjJtPrice());
-                                                change.setChangeDetails(orders.getOrdersId() + "间推奖金");
-                                                change.setChangeType(1);
-                                                change.setChangeStatus(1);
-                                                change.setChangeCreateDate(new Date());
-                                                change.setChangeUpdateDate(new Date());
-                                                changeMapper.insertSelective(change);
-
-                                                //查询七次会员信息
-                                                String memberId = preMember.getMemberId();
-                                                List<Member> memberList = new ArrayList<>();
-                                                for (int num = 0; num < 6; num++){
-                                                    Member member1 = memberMapper.selectByPrimaryKey(memberId);
-                                                    memberList.add(member1);
-                                                }
-
-                                                int vipnum = 0;
-                                                int zznum = 0;
-                                                List<Member> memberList1 = new ArrayList<>();
-
-                                                for (int m = 0; m < memberList.size(); m++){
-                                                    if (memberList.get(m).getMemberType() == 3){
-                                                        if(vipnum == 0){
-                                                            memberList1.add(memberList.get(m));
+                                                    //高级会员推荐代理间推
+                                                    Member pre2Member = memberMapper.selectByPrimaryKey(preMember.getPreMemberId());
+                                                    if (pre2Member != null){
+                                                        if (pre2Member.getMemberType() == 4){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getGjDlJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + " 高级代理间推奖金1");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
+                                                        } else if (pre2Member.getMemberType() == 3){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getVipDlJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + " VIP代理间推奖金1");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
+                                                        } else if (pre2Member.getMemberType() == 2){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getZzDlJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + " 至尊代理间推奖金1");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
+                                                        } else if (pre2Member.getMemberType() == 1){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getDlDlJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + " 代理代理间推奖金1");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
                                                         }
-                                                        vipnum += 1;
                                                     }
-                                                    if (memberList.get(m).getMemberType() == 2){
-                                                        if(zznum == 0){
-                                                            memberList1.add(memberList.get(m));
+                                                }
+                                            } else {
+                                                //商品是399
+                                                if (preMember.getMemberType() == 5){
+                                                    //上级是会员39.9等级,分配对应佣金75
+                                                    Change change = new Change();
+                                                    change.setChangeId(IDUtils.getId());
+                                                    change.setMemberId(preMember.getMemberId());
+                                                    change.setChangePrice(commission.getHyGjZtPrice());
+                                                    change.setChangeDetails(orders.getOrdersId() + "直推奖金");
+                                                    change.setChangeType(1);
+                                                    change.setChangeStatus(1);
+                                                    change.setChangeCreateDate(new Date());
+                                                    change.setChangeUpdateDate(new Date());
+                                                    changeMapper.insertSelective(change);
+
+                                                    //根据上上级各身份等级分配间推奖金
+                                                    Member pre2Member = memberMapper.selectByPrimaryKey(preMember.getPreMemberId());
+                                                    if (pre2Member != null){
+                                                        if (pre2Member.getMemberType() == 4){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getGjGjJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + " 高级高级间推奖金4");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
+                                                        } else if (pre2Member.getMemberType() == 3){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getVipGjJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + " VIP高级间推奖金3");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
+                                                        } else if (pre2Member.getMemberType() == 2){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getZzGjJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + " 至尊高级间推奖金2");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
+                                                        } else if (pre2Member.getMemberType() == 1){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getDlGjJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + " 代理高级间推奖金1");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
                                                         }
-                                                        if(zznum == 1){
-                                                            memberList1.add(memberList.get(m));
+
+                                                        //查询七次会员信息
+                                                        String memberId = null;
+                                                        List<Member> memberList = new ArrayList<>();
+                                                        for (int num = 0; num < 6; num++){
+                                                            if (memberList.size() == 0){
+                                                                memberId = preMember.getMemberId();
+                                                            }
+                                                            Member member1 = memberMapper.selectByPrimaryKey(memberId);
+                                                            if (member1 != null){
+                                                                memberId = member1.getPreMemberId();
+                                                                memberList.add(member1);
+                                                            }
                                                         }
-                                                        zznum += 1;
-                                                    }
-                                                }
-                                                if (memberList1.size() == 3){
-                                                    if (memberList1.get(0).getMemberType() == 3 && memberList1.get(1).getMemberType() == 2 && memberList1.get(2).getMemberType() == 2){
-                                                        //VIP高级团队管理奖
-                                                        Change vipgjtd = new Change();
-                                                        vipgjtd.setChangeId(IDUtils.getId());
-                                                        vipgjtd.setMemberId(memberList1.get(0).getMemberId());
-                                                        vipgjtd.setChangePrice(commission.getVipGjTdPrice());
-                                                        vipgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
-                                                        vipgjtd.setChangeType(1);
-                                                        vipgjtd.setChangeStatus(1);
-                                                        vipgjtd.setChangeCreateDate(new Date());
-                                                        vipgjtd.setChangeUpdateDate(new Date());
-                                                        changeMapper.insertSelective(vipgjtd);
 
-                                                        //至尊高级团队管理奖
-                                                        Change zzgjtd = new Change();
-                                                        zzgjtd.setChangeId(IDUtils.getId());
-                                                        zzgjtd.setMemberId(memberList1.get(1).getMemberId());
-                                                        zzgjtd.setChangePrice(commission.getZzGjTdPrice());
-                                                        zzgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
-                                                        zzgjtd.setChangeType(1);
-                                                        zzgjtd.setChangeStatus(1);
-                                                        zzgjtd.setChangeCreateDate(new Date());
-                                                        zzgjtd.setChangeUpdateDate(new Date());
-                                                        changeMapper.insertSelective(zzgjtd);
+                                                        int vipnum = 0;
+                                                        int zznum = 0;
+                                                        List<Member> memberList1 = new ArrayList<>();
 
-                                                        //至尊高级团队平级奖
-                                                        Change zzgjpj = new Change();
-                                                        zzgjpj.setChangeId(IDUtils.getId());
-                                                        zzgjpj.setMemberId(memberList1.get(2).getMemberId());
-                                                        zzgjpj.setChangePrice(commission.getZzGjPjPrice());
-                                                        zzgjpj.setChangeDetails(orders.getOrdersId() + "团队平级奖金");
-                                                        zzgjpj.setChangeType(1);
-                                                        zzgjpj.setChangeStatus(1);
-                                                        zzgjpj.setChangeCreateDate(new Date());
-                                                        zzgjpj.setChangeUpdateDate(new Date());
-                                                        changeMapper.insertSelective(zzgjpj);
-                                                    }
-                                                } else if(memberList1.size() == 2){
-                                                    if (memberList1.get(0).getMemberType() == 2 && memberList1.get(1).getMemberType() == 2){
-                                                        //至尊高级团队管理奖
-                                                        Change zzgjtd = new Change();
-                                                        zzgjtd.setChangeId(IDUtils.getId());
-                                                        zzgjtd.setMemberId(memberList1.get(0).getMemberId());
-                                                        zzgjtd.setChangePrice(commission.getZzGjTdPrice());
-                                                        zzgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
-                                                        zzgjtd.setChangeType(1);
-                                                        zzgjtd.setChangeStatus(1);
-                                                        zzgjtd.setChangeCreateDate(new Date());
-                                                        zzgjtd.setChangeUpdateDate(new Date());
-                                                        changeMapper.insertSelective(zzgjtd);
-
-                                                        //至尊高级团队平级奖
-                                                        Change zzgjpj = new Change();
-                                                        zzgjpj.setChangeId(IDUtils.getId());
-                                                        zzgjpj.setMemberId(memberList1.get(1).getMemberId());
-                                                        zzgjpj.setChangePrice(commission.getZzGjPjPrice());
-                                                        zzgjpj.setChangeDetails(orders.getOrdersId() + "团队平级奖金");
-                                                        zzgjpj.setChangeType(1);
-                                                        zzgjpj.setChangeStatus(1);
-                                                        zzgjpj.setChangeCreateDate(new Date());
-                                                        zzgjpj.setChangeUpdateDate(new Date());
-                                                        changeMapper.insertSelective(zzgjpj);
-                                                    }
-                                                } else if(memberList1.size() == 1){
-                                                    if (memberList1.get(0).getMemberType() == 2){
-                                                        //至尊高级团队管理奖
-                                                        Change zzgjtd = new Change();
-                                                        zzgjtd.setChangeId(IDUtils.getId());
-                                                        zzgjtd.setMemberId(memberList1.get(0).getMemberId());
-                                                        zzgjtd.setChangePrice(commission.getZzGjTdPrice());
-                                                        zzgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
-                                                        zzgjtd.setChangeType(1);
-                                                        zzgjtd.setChangeStatus(1);
-                                                        zzgjtd.setChangeCreateDate(new Date());
-                                                        zzgjtd.setChangeUpdateDate(new Date());
-                                                        changeMapper.insertSelective(zzgjtd);
-                                                    } else if(memberList1.get(0).getMemberType() == 3) {
-                                                        //VIP高级团队管理奖
-                                                        Change vipgjtd = new Change();
-                                                        vipgjtd.setChangeId(IDUtils.getId());
-                                                        vipgjtd.setMemberId(memberList1.get(0).getMemberId());
-                                                        vipgjtd.setChangePrice(commission.getVipGjTdPrice());
-                                                        vipgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
-                                                        vipgjtd.setChangeType(1);
-                                                        vipgjtd.setChangeStatus(1);
-                                                        vipgjtd.setChangeCreateDate(new Date());
-                                                        vipgjtd.setChangeUpdateDate(new Date());
-                                                        changeMapper.insertSelective(vipgjtd);
-                                                    }
-                                                }
-                                            } else if(preMember.getMemberType() == 3){
-                                                //上级是VIP会员399等级,分配对应佣金170
-                                                Change change = new Change();
-                                                change.setChangeId(IDUtils.getId());
-                                                change.setMemberId(preMember.getMemberId());
-                                                change.setChangePrice(commission.getVipGjZtPrice() + commission.getVipGjTdPrice());
-                                                change.setChangeDetails(orders.getOrdersId() + "直推奖金 + 团队承担奖金");
-                                                change.setChangeType(1);
-                                                change.setChangeStatus(1);
-                                                change.setChangeCreateDate(new Date());
-                                                change.setChangeUpdateDate(new Date());
-                                                changeMapper.insertSelective(change);
-
-                                                //VIP推荐高级间推
-                                                Member pre2Member = memberMapper.selectByPrimaryKey(preMember.getMemberId());
-                                                change.setChangeId(IDUtils.getId());
-                                                change.setMemberId(pre2Member.getMemberId());
-                                                change.setChangePrice(commission.getVipGjJtPrice());
-                                                change.setChangeDetails(orders.getOrdersId() + "间推奖金");
-                                                change.setChangeType(1);
-                                                change.setChangeStatus(1);
-                                                change.setChangeCreateDate(new Date());
-                                                change.setChangeUpdateDate(new Date());
-                                                changeMapper.insertSelective(change);
-
-                                                //查询七次会员信息
-                                                String memberId = preMember.getPreMemberId();
-                                                List<Member> memberList = new ArrayList<>();
-                                                for (int num = 0; num < 6; num++){
-                                                    Member member1 = memberMapper.selectByPrimaryKey(memberId);
-                                                    memberList.add(member1);
-                                                }
-
-                                                int zznum = 0;
-                                                List<Member> memberList1 = new ArrayList<>();
-
-                                                for (int m = 0; m < memberList.size(); m++){
-                                                    if (memberList.get(m).getMemberType() == 2){
-                                                        if(zznum == 0){
-                                                            memberList1.add(memberList.get(m));
+                                                        for (int m = 0; m < memberList.size(); m++){
+                                                            if (memberList.get(m).getMemberType() == 3){
+                                                                if(vipnum == 0){
+                                                                    memberList1.add(memberList.get(m));
+                                                                }
+                                                                vipnum += 1;
+                                                            }
+                                                            if (memberList.get(m).getMemberType() == 2){
+                                                                if(zznum == 0){
+                                                                    memberList1.add(memberList.get(m));
+                                                                }
+                                                                if(zznum == 1){
+                                                                    memberList1.add(memberList.get(m));
+                                                                }
+                                                                zznum += 1;
+                                                            }
                                                         }
-                                                        if(zznum == 1){
-                                                            memberList1.add(memberList.get(m));
+                                                        if (memberList1.size() == 3){
+                                                            if (memberList1.get(0).getMemberType() == 3 && memberList1.get(1).getMemberType() == 2 && memberList1.get(2).getMemberType() == 2){
+                                                                //VIP高级团队管理奖
+                                                                Change vipgjtd = new Change();
+                                                                vipgjtd.setChangeId(IDUtils.getId());
+                                                                vipgjtd.setMemberId(memberList1.get(0).getMemberId());
+                                                                vipgjtd.setChangePrice(commission.getVipGjTdPrice());
+                                                                vipgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
+                                                                vipgjtd.setChangeType(1);
+                                                                vipgjtd.setChangeStatus(1);
+                                                                vipgjtd.setChangeCreateDate(new Date());
+                                                                vipgjtd.setChangeUpdateDate(new Date());
+                                                                changeMapper.insertSelective(vipgjtd);
+
+                                                                //至尊高级团队管理奖
+                                                                Change zzgjtd = new Change();
+                                                                zzgjtd.setChangeId(IDUtils.getId());
+                                                                zzgjtd.setMemberId(memberList1.get(1).getMemberId());
+                                                                zzgjtd.setChangePrice(commission.getZzGjTdPrice());
+                                                                zzgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
+                                                                zzgjtd.setChangeType(1);
+                                                                zzgjtd.setChangeStatus(1);
+                                                                zzgjtd.setChangeCreateDate(new Date());
+                                                                zzgjtd.setChangeUpdateDate(new Date());
+                                                                changeMapper.insertSelective(zzgjtd);
+
+                                                                //至尊高级团队平级奖
+                                                                Change zzgjpj = new Change();
+                                                                zzgjpj.setChangeId(IDUtils.getId());
+                                                                zzgjpj.setMemberId(memberList1.get(2).getMemberId());
+                                                                zzgjpj.setChangePrice(commission.getZzGjPjPrice());
+                                                                zzgjpj.setChangeDetails(orders.getOrdersId() + "团队平级奖金");
+                                                                zzgjpj.setChangeType(1);
+                                                                zzgjpj.setChangeStatus(1);
+                                                                zzgjpj.setChangeCreateDate(new Date());
+                                                                zzgjpj.setChangeUpdateDate(new Date());
+                                                                changeMapper.insertSelective(zzgjpj);
+                                                            }
+                                                        } else if(memberList1.size() == 2){
+                                                            if (memberList1.get(0).getMemberType() == 2 && memberList1.get(1).getMemberType() == 2){
+                                                                //至尊高级团队管理奖
+                                                                Change zzgjtd = new Change();
+                                                                zzgjtd.setChangeId(IDUtils.getId());
+                                                                zzgjtd.setMemberId(memberList1.get(0).getMemberId());
+                                                                zzgjtd.setChangePrice(commission.getZzGjTdPrice());
+                                                                zzgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
+                                                                zzgjtd.setChangeType(1);
+                                                                zzgjtd.setChangeStatus(1);
+                                                                zzgjtd.setChangeCreateDate(new Date());
+                                                                zzgjtd.setChangeUpdateDate(new Date());
+                                                                changeMapper.insertSelective(zzgjtd);
+
+                                                                //至尊高级团队平级奖
+                                                                Change zzgjpj = new Change();
+                                                                zzgjpj.setChangeId(IDUtils.getId());
+                                                                zzgjpj.setMemberId(memberList1.get(1).getMemberId());
+                                                                zzgjpj.setChangePrice(commission.getZzGjPjPrice());
+                                                                zzgjpj.setChangeDetails(orders.getOrdersId() + "团队平级奖金");
+                                                                zzgjpj.setChangeType(1);
+                                                                zzgjpj.setChangeStatus(1);
+                                                                zzgjpj.setChangeCreateDate(new Date());
+                                                                zzgjpj.setChangeUpdateDate(new Date());
+                                                                changeMapper.insertSelective(zzgjpj);
+                                                            }
+                                                        } else if(memberList1.size() == 1){
+                                                            if (memberList1.get(0).getMemberType() == 2){
+                                                                //至尊高级团队管理奖
+                                                                Change zzgjtd = new Change();
+                                                                zzgjtd.setChangeId(IDUtils.getId());
+                                                                zzgjtd.setMemberId(memberList1.get(0).getMemberId());
+                                                                zzgjtd.setChangePrice(commission.getZzGjTdPrice());
+                                                                zzgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
+                                                                zzgjtd.setChangeType(1);
+                                                                zzgjtd.setChangeStatus(1);
+                                                                zzgjtd.setChangeCreateDate(new Date());
+                                                                zzgjtd.setChangeUpdateDate(new Date());
+                                                                changeMapper.insertSelective(zzgjtd);
+                                                            } else if(memberList1.get(0).getMemberType() == 3) {
+                                                                //VIP高级团队管理奖
+                                                                Change vipgjtd = new Change();
+                                                                vipgjtd.setChangeId(IDUtils.getId());
+                                                                vipgjtd.setMemberId(memberList1.get(0).getMemberId());
+                                                                vipgjtd.setChangePrice(commission.getVipGjTdPrice());
+                                                                vipgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
+                                                                vipgjtd.setChangeType(1);
+                                                                vipgjtd.setChangeStatus(1);
+                                                                vipgjtd.setChangeCreateDate(new Date());
+                                                                vipgjtd.setChangeUpdateDate(new Date());
+                                                                changeMapper.insertSelective(vipgjtd);
+                                                            }
                                                         }
-                                                        zznum += 1;
                                                     }
-                                                }
-                                                if(memberList1.size() == 2){
-                                                    if (memberList1.get(0).getMemberType() == 2 && memberList1.get(1).getMemberType() == 2){
-                                                        //至尊高级团队管理奖
-                                                        Change zzgjtd = new Change();
-                                                        zzgjtd.setChangeId(IDUtils.getId());
-                                                        zzgjtd.setMemberId(memberList1.get(0).getMemberId());
-                                                        zzgjtd.setChangePrice(commission.getZzGjTdPrice());
-                                                        zzgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
-                                                        zzgjtd.setChangeType(1);
-                                                        zzgjtd.setChangeStatus(1);
-                                                        zzgjtd.setChangeCreateDate(new Date());
-                                                        zzgjtd.setChangeUpdateDate(new Date());
-                                                        changeMapper.insertSelective(zzgjtd);
+                                                } else if(preMember.getMemberType() == 4){
+                                                    //上级是高级会员399等级,分配对应佣金150
+                                                    Change change = new Change();
+                                                    change.setChangeId(IDUtils.getId());
+                                                    change.setMemberId(preMember.getMemberId());
+                                                    change.setChangePrice(commission.getGjGjZtPrice());
+                                                    change.setChangeDetails(orders.getOrdersId() + "直推奖金");
+                                                    change.setChangeType(1);
+                                                    change.setChangeStatus(1);
+                                                    change.setChangeCreateDate(new Date());
+                                                    change.setChangeUpdateDate(new Date());
+                                                    changeMapper.insertSelective(change);
 
-                                                        //至尊高级团队平级奖
-                                                        Change zzgjpj = new Change();
-                                                        zzgjpj.setChangeId(IDUtils.getId());
-                                                        zzgjpj.setMemberId(memberList1.get(1).getMemberId());
-                                                        zzgjpj.setChangePrice(commission.getZzGjPjPrice());
-                                                        zzgjpj.setChangeDetails(orders.getOrdersId() + "团队平级奖金");
-                                                        zzgjpj.setChangeType(1);
-                                                        zzgjpj.setChangeStatus(1);
-                                                        zzgjpj.setChangeCreateDate(new Date());
-                                                        zzgjpj.setChangeUpdateDate(new Date());
-                                                        changeMapper.insertSelective(zzgjpj);
-                                                    }
-                                                } else if(memberList1.size() == 1){
-                                                    if(memberList1.get(0).getMemberType() == 2) {
-                                                        //至尊高级团队平级奖
-                                                        Change zzgjpj = new Change();
-                                                        zzgjpj.setChangeId(IDUtils.getId());
-                                                        zzgjpj.setMemberId(memberList1.get(0).getMemberId());
-                                                        zzgjpj.setChangePrice(commission.getZzGjPjPrice());
-                                                        zzgjpj.setChangeDetails(orders.getOrdersId() + "团队平级奖金");
-                                                        zzgjpj.setChangeType(1);
-                                                        zzgjpj.setChangeStatus(1);
-                                                        zzgjpj.setChangeCreateDate(new Date());
-                                                        zzgjpj.setChangeUpdateDate(new Date());
-                                                        changeMapper.insertSelective(zzgjpj);
-                                                    }
-                                                }
-                                            } else if(preMember.getMemberType() == 2){
-                                                //上级是至尊会员399等级,分配对应佣金200
-                                                Change change = new Change();
-                                                change.setChangeId(IDUtils.getId());
-                                                change.setMemberId(preMember.getMemberId());
-                                                change.setChangePrice(commission.getZzGjZtPrice() + commission.getZzGjTdPrice() + commission.getVipGjTdPrice());
-                                                change.setChangeDetails(orders.getOrdersId() + "直推奖金 + 团队承担奖金");
-                                                change.setChangeType(1);
-                                                change.setChangeStatus(1);
-                                                change.setChangeCreateDate(new Date());
-                                                change.setChangeUpdateDate(new Date());
-                                                changeMapper.insertSelective(change);
-
-                                                //至尊会员推荐高级间推
-                                                Member pre2Member = memberMapper.selectByPrimaryKey(preMember.getMemberId());
-                                                change.setChangeId(IDUtils.getId());
-                                                change.setMemberId(pre2Member.getMemberId());
-                                                change.setChangePrice(commission.getZzGjJtPrice());
-                                                change.setChangeDetails(orders.getOrdersId() + "直推奖金 + 团队承担奖金");
-                                                change.setChangeType(1);
-                                                change.setChangeStatus(1);
-                                                change.setChangeCreateDate(new Date());
-                                                change.setChangeUpdateDate(new Date());
-                                                changeMapper.insertSelective(change);
-
-                                                //查询七次会员信息
-                                                String memberId = preMember.getMemberId();
-                                                List<Member> memberList = new ArrayList<>();
-                                                for (int num = 0; num < 6; num++){
-                                                    Member member1 = memberMapper.selectByPrimaryKey(memberId);
-                                                }
-
-                                                int zznum = 0;
-                                                List<Member> memberList1 = new ArrayList<>();
-                                                for (int m = 0; m < memberList.size(); m++){
-                                                    if (memberList.get(m).getMemberType() == 2){
-                                                        if(zznum == 0){
-                                                            memberList1.add(memberList.get(m));
+                                                    //高级会员推荐高级间推
+                                                    Member pre2Member = memberMapper.selectByPrimaryKey(preMember.getPreMemberId());
+                                                    if (pre2Member != null){
+                                                        if (pre2Member.getMemberType() == 4){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getGjGjJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + "间推奖金");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
+                                                        } else if (pre2Member.getMemberType() == 3){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getVipGjJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + "间推奖金");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
+                                                        } else if (pre2Member.getMemberType() == 2){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getZzGjJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + "间推奖金");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
+                                                        } else if (pre2Member.getMemberType() == 1){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getDlGjJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + "间推奖金");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
                                                         }
-                                                        zznum += 1;
-                                                    }
-                                                }
 
-                                                if(memberList1.size() == 1){
-                                                    if (memberList1.get(0).getMemberType() == 2){
-                                                        //至尊高级团队平级奖
-                                                        Change zzgjpj = new Change();
-                                                        zzgjpj.setChangeId(IDUtils.getId());
-                                                        zzgjpj.setMemberId(memberList1.get(0).getMemberId());
-                                                        zzgjpj.setChangePrice(commission.getZzGjPjPrice());
-                                                        zzgjpj.setChangeDetails(orders.getOrdersId() + "团队平级奖金");
-                                                        zzgjpj.setChangeType(1);
-                                                        zzgjpj.setChangeStatus(1);
-                                                        zzgjpj.setChangeCreateDate(new Date());
-                                                        zzgjpj.setChangeUpdateDate(new Date());
-                                                        changeMapper.insertSelective(zzgjpj);
-                                                    }
-                                                }
-                                            } else if(preMember.getMemberType() == 1){
-                                                //上级是代理商3999等级,分配对应佣金200
-                                                Change change = new Change();
-                                                change.setChangeId(IDUtils.getId());
-                                                change.setMemberId(preMember.getMemberId());
-                                                change.setChangePrice(commission.getDlGjZtPrice());
-                                                change.setChangeDetails(orders.getOrdersId() + "直推奖金");
-                                                change.setChangeType(1);
-                                                change.setChangeStatus(1);
-                                                change.setChangeCreateDate(new Date());
-                                                change.setChangeUpdateDate(new Date());
-                                                changeMapper.insertSelective(change);
-
-                                                //代理推荐高级间推
-                                                Member pre2Member = memberMapper.selectByPrimaryKey(preMember.getMemberId());
-                                                change.setChangeId(IDUtils.getId());
-                                                change.setMemberId(pre2Member.getMemberId());
-                                                change.setChangePrice(commission.getDlGjJtPrice());
-                                                change.setChangeDetails(orders.getOrdersId() + "间推奖金");
-                                                change.setChangeType(1);
-                                                change.setChangeStatus(1);
-                                                change.setChangeCreateDate(new Date());
-                                                change.setChangeUpdateDate(new Date());
-                                                changeMapper.insertSelective(change);
-
-                                                //查询七次会员信息
-                                                String memberId = preMember.getMemberId();
-                                                List<Member> memberList = new ArrayList<>();
-                                                for (int num = 0; num < 6; num++){
-                                                    Member member1 = memberMapper.selectByPrimaryKey(memberId);
-                                                    memberList.add(member1);
-                                                }
-
-                                                int vipnum = 0;
-                                                int zznum = 0;
-                                                List<Member> memberList1 = new ArrayList<>();
-
-                                                for (int m = 0; m < memberList.size(); m++){
-                                                    if (memberList.get(m).getMemberType() == 3){
-                                                        if(vipnum == 0){
-                                                            memberList1.add(memberList.get(m));
+                                                        //查询七次会员信息
+                                                        String memberId = null;
+                                                        List<Member> memberList = new ArrayList<>();
+                                                        for (int num = 0; num < 6; num++){
+                                                            if (memberList.size() == 0){
+                                                                memberId = preMember.getMemberId();
+                                                            }
+                                                            Member member1 = memberMapper.selectByPrimaryKey(memberId);
+                                                            if (member1 != null){
+                                                                memberId = member1.getPreMemberId();
+                                                                memberList.add(member1);
+                                                            }
                                                         }
-                                                        vipnum += 1;
-                                                    }
-                                                    if (memberList.get(m).getMemberType() == 2){
-                                                        if(zznum == 0){
-                                                            memberList1.add(memberList.get(m));
+
+                                                        int vipnum = 0;
+                                                        int zznum = 0;
+                                                        List<Member> memberList1 = new ArrayList<>();
+
+                                                        for (int m = 0; m < memberList.size(); m++){
+                                                            if (memberList.get(m).getMemberType() == 3){
+                                                                if(vipnum == 0){
+                                                                    memberList1.add(memberList.get(m));
+                                                                }
+                                                                vipnum += 1;
+                                                            }
+                                                            if (memberList.get(m).getMemberType() == 2){
+                                                                if(zznum == 0){
+                                                                    memberList1.add(memberList.get(m));
+                                                                }
+                                                                if(zznum == 1){
+                                                                    memberList1.add(memberList.get(m));
+                                                                }
+                                                                zznum += 1;
+                                                            }
                                                         }
-                                                        if(zznum == 1){
-                                                            memberList1.add(memberList.get(m));
+                                                        if (memberList1.size() == 3){
+                                                            if (memberList1.get(0).getMemberType() == 3 && memberList1.get(1).getMemberType() == 2 && memberList1.get(2).getMemberType() == 2){
+                                                                //VIP高级团队管理奖
+                                                                Change vipgjtd = new Change();
+                                                                vipgjtd.setChangeId(IDUtils.getId());
+                                                                vipgjtd.setMemberId(memberList1.get(0).getMemberId());
+                                                                vipgjtd.setChangePrice(commission.getVipGjTdPrice());
+                                                                vipgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
+                                                                vipgjtd.setChangeType(1);
+                                                                vipgjtd.setChangeStatus(1);
+                                                                vipgjtd.setChangeCreateDate(new Date());
+                                                                vipgjtd.setChangeUpdateDate(new Date());
+                                                                changeMapper.insertSelective(vipgjtd);
+
+                                                                //至尊高级团队管理奖
+                                                                Change zzgjtd = new Change();
+                                                                zzgjtd.setChangeId(IDUtils.getId());
+                                                                zzgjtd.setMemberId(memberList1.get(1).getMemberId());
+                                                                zzgjtd.setChangePrice(commission.getZzGjTdPrice());
+                                                                zzgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
+                                                                zzgjtd.setChangeType(1);
+                                                                zzgjtd.setChangeStatus(1);
+                                                                zzgjtd.setChangeCreateDate(new Date());
+                                                                zzgjtd.setChangeUpdateDate(new Date());
+                                                                changeMapper.insertSelective(zzgjtd);
+
+                                                                //至尊高级团队平级奖
+                                                                Change zzgjpj = new Change();
+                                                                zzgjpj.setChangeId(IDUtils.getId());
+                                                                zzgjpj.setMemberId(memberList1.get(2).getMemberId());
+                                                                zzgjpj.setChangePrice(commission.getZzGjPjPrice());
+                                                                zzgjpj.setChangeDetails(orders.getOrdersId() + "团队平级奖金");
+                                                                zzgjpj.setChangeType(1);
+                                                                zzgjpj.setChangeStatus(1);
+                                                                zzgjpj.setChangeCreateDate(new Date());
+                                                                zzgjpj.setChangeUpdateDate(new Date());
+                                                                changeMapper.insertSelective(zzgjpj);
+                                                            }
+                                                        } else if(memberList1.size() == 2){
+                                                            if (memberList1.get(0).getMemberType() == 2 && memberList1.get(1).getMemberType() == 2){
+                                                                //至尊高级团队管理奖
+                                                                Change zzgjtd = new Change();
+                                                                zzgjtd.setChangeId(IDUtils.getId());
+                                                                zzgjtd.setMemberId(memberList1.get(0).getMemberId());
+                                                                zzgjtd.setChangePrice(commission.getZzGjTdPrice());
+                                                                zzgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
+                                                                zzgjtd.setChangeType(1);
+                                                                zzgjtd.setChangeStatus(1);
+                                                                zzgjtd.setChangeCreateDate(new Date());
+                                                                zzgjtd.setChangeUpdateDate(new Date());
+                                                                changeMapper.insertSelective(zzgjtd);
+
+                                                                //至尊高级团队平级奖
+                                                                Change zzgjpj = new Change();
+                                                                zzgjpj.setChangeId(IDUtils.getId());
+                                                                zzgjpj.setMemberId(memberList1.get(1).getMemberId());
+                                                                zzgjpj.setChangePrice(commission.getZzGjPjPrice());
+                                                                zzgjpj.setChangeDetails(orders.getOrdersId() + "团队平级奖金");
+                                                                zzgjpj.setChangeType(1);
+                                                                zzgjpj.setChangeStatus(1);
+                                                                zzgjpj.setChangeCreateDate(new Date());
+                                                                zzgjpj.setChangeUpdateDate(new Date());
+                                                                changeMapper.insertSelective(zzgjpj);
+                                                            }
+                                                        } else if(memberList1.size() == 1){
+                                                            if (memberList1.get(0).getMemberType() == 2){
+                                                                //至尊高级团队管理奖
+                                                                Change zzgjtd = new Change();
+                                                                zzgjtd.setChangeId(IDUtils.getId());
+                                                                zzgjtd.setMemberId(memberList1.get(0).getMemberId());
+                                                                zzgjtd.setChangePrice(commission.getZzGjTdPrice());
+                                                                zzgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
+                                                                zzgjtd.setChangeType(1);
+                                                                zzgjtd.setChangeStatus(1);
+                                                                zzgjtd.setChangeCreateDate(new Date());
+                                                                zzgjtd.setChangeUpdateDate(new Date());
+                                                                changeMapper.insertSelective(zzgjtd);
+                                                            } else if(memberList1.get(0).getMemberType() == 3) {
+                                                                //VIP高级团队管理奖
+                                                                Change vipgjtd = new Change();
+                                                                vipgjtd.setChangeId(IDUtils.getId());
+                                                                vipgjtd.setMemberId(memberList1.get(0).getMemberId());
+                                                                vipgjtd.setChangePrice(commission.getVipGjTdPrice());
+                                                                vipgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
+                                                                vipgjtd.setChangeType(1);
+                                                                vipgjtd.setChangeStatus(1);
+                                                                vipgjtd.setChangeCreateDate(new Date());
+                                                                vipgjtd.setChangeUpdateDate(new Date());
+                                                                changeMapper.insertSelective(vipgjtd);
+                                                            }
                                                         }
-                                                        zznum += 1;
                                                     }
-                                                }
-                                                if (memberList1.size() == 3){
-                                                    if (memberList1.get(0).getMemberType() == 3 && memberList1.get(1).getMemberType() == 2 && memberList1.get(2).getMemberType() == 2){
-                                                        //VIP高级团队管理奖
-                                                        Change vipgjtd = new Change();
-                                                        vipgjtd.setChangeId(IDUtils.getId());
-                                                        vipgjtd.setMemberId(memberList1.get(0).getMemberId());
-                                                        vipgjtd.setChangePrice(commission.getVipGjTdPrice());
-                                                        vipgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
-                                                        vipgjtd.setChangeType(1);
-                                                        vipgjtd.setChangeStatus(1);
-                                                        vipgjtd.setChangeCreateDate(new Date());
-                                                        vipgjtd.setChangeUpdateDate(new Date());
-                                                        changeMapper.insertSelective(vipgjtd);
+                                                } else if(preMember.getMemberType() == 3){
+                                                    //上级是VIP会员399等级,分配对应佣金170
+                                                    Change change = new Change();
+                                                    change.setChangeId(IDUtils.getId());
+                                                    change.setMemberId(preMember.getMemberId());
+                                                    change.setChangePrice(commission.getVipGjZtPrice() + commission.getVipGjTdPrice());
+                                                    change.setChangeDetails(orders.getOrdersId() + "直推奖金 + 团队承担奖金");
+                                                    change.setChangeType(1);
+                                                    change.setChangeStatus(1);
+                                                    change.setChangeCreateDate(new Date());
+                                                    change.setChangeUpdateDate(new Date());
+                                                    changeMapper.insertSelective(change);
 
-                                                        //至尊高级团队管理奖
-                                                        Change zzgjtd = new Change();
-                                                        zzgjtd.setChangeId(IDUtils.getId());
-                                                        zzgjtd.setMemberId(memberList1.get(1).getMemberId());
-                                                        zzgjtd.setChangePrice(commission.getZzGjTdPrice());
-                                                        zzgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
-                                                        zzgjtd.setChangeType(1);
-                                                        zzgjtd.setChangeStatus(1);
-                                                        zzgjtd.setChangeCreateDate(new Date());
-                                                        zzgjtd.setChangeUpdateDate(new Date());
-                                                        changeMapper.insertSelective(zzgjtd);
+                                                    //VIP推荐高级间推
+                                                    Member pre2Member = memberMapper.selectByPrimaryKey(preMember.getPreMemberId());
+                                                    if (pre2Member != null){
+                                                        if (pre2Member.getMemberType() == 4){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getGjGjJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + "间推奖金");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
+                                                        } else if (pre2Member.getMemberType() == 3){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getVipGjJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + "间推奖金");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
+                                                        } else if (pre2Member.getMemberType() == 2){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getZzGjJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + "间推奖金");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
+                                                        } else if (pre2Member.getMemberType() == 1){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getDlGjJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + "间推奖金");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
+                                                        }
 
-                                                        //至尊高级团队平级奖
-                                                        Change zzgjpj = new Change();
-                                                        zzgjpj.setChangeId(IDUtils.getId());
-                                                        zzgjpj.setMemberId(memberList1.get(2).getMemberId());
-                                                        zzgjpj.setChangePrice(commission.getZzGjPjPrice());
-                                                        zzgjpj.setChangeDetails(orders.getOrdersId() + "团队平级奖金");
-                                                        zzgjpj.setChangeType(1);
-                                                        zzgjpj.setChangeStatus(1);
-                                                        zzgjpj.setChangeCreateDate(new Date());
-                                                        zzgjpj.setChangeUpdateDate(new Date());
-                                                        changeMapper.insertSelective(zzgjpj);
+                                                        //查询七次会员信息
+                                                        String memberId = null;
+                                                        List<Member> memberList = new ArrayList<>();
+                                                        for (int num = 0; num < 6; num++){
+                                                            if (memberList.size() == 0){
+                                                                memberId = preMember.getMemberId();
+                                                            }
+                                                            Member member1 = memberMapper.selectByPrimaryKey(memberId);
+                                                            if (member1 != null){
+                                                                memberId = member1.getPreMemberId();
+                                                                memberList.add(member1);
+                                                            }
+                                                        }
+
+                                                        int zznum = 0;
+                                                        List<Member> memberList1 = new ArrayList<>();
+
+                                                        for (int m = 0; m < memberList.size(); m++){
+                                                            if (memberList.get(m).getMemberType() == 2){
+                                                                if(zznum == 0){
+                                                                    memberList1.add(memberList.get(m));
+                                                                }
+                                                                if(zznum == 1){
+                                                                    memberList1.add(memberList.get(m));
+                                                                }
+                                                                zznum += 1;
+                                                            }
+                                                        }
+                                                        if(memberList1.size() == 2){
+                                                            if (memberList1.get(0).getMemberType() == 2 && memberList1.get(1).getMemberType() == 2){
+                                                                //至尊高级团队管理奖
+                                                                Change zzgjtd = new Change();
+                                                                zzgjtd.setChangeId(IDUtils.getId());
+                                                                zzgjtd.setMemberId(memberList1.get(0).getMemberId());
+                                                                zzgjtd.setChangePrice(commission.getZzGjTdPrice());
+                                                                zzgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
+                                                                zzgjtd.setChangeType(1);
+                                                                zzgjtd.setChangeStatus(1);
+                                                                zzgjtd.setChangeCreateDate(new Date());
+                                                                zzgjtd.setChangeUpdateDate(new Date());
+                                                                changeMapper.insertSelective(zzgjtd);
+
+                                                                //至尊高级团队平级奖
+                                                                Change zzgjpj = new Change();
+                                                                zzgjpj.setChangeId(IDUtils.getId());
+                                                                zzgjpj.setMemberId(memberList1.get(1).getMemberId());
+                                                                zzgjpj.setChangePrice(commission.getZzGjPjPrice());
+                                                                zzgjpj.setChangeDetails(orders.getOrdersId() + "团队平级奖金");
+                                                                zzgjpj.setChangeType(1);
+                                                                zzgjpj.setChangeStatus(1);
+                                                                zzgjpj.setChangeCreateDate(new Date());
+                                                                zzgjpj.setChangeUpdateDate(new Date());
+                                                                changeMapper.insertSelective(zzgjpj);
+                                                            }
+                                                        } else if(memberList1.size() == 1){
+                                                            if(memberList1.get(0).getMemberType() == 2) {
+                                                                //至尊高级团队平级奖
+                                                                Change zzgjpj = new Change();
+                                                                zzgjpj.setChangeId(IDUtils.getId());
+                                                                zzgjpj.setMemberId(memberList1.get(0).getMemberId());
+                                                                zzgjpj.setChangePrice(commission.getZzGjTdPrice());
+                                                                zzgjpj.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
+                                                                zzgjpj.setChangeType(1);
+                                                                zzgjpj.setChangeStatus(1);
+                                                                zzgjpj.setChangeCreateDate(new Date());
+                                                                zzgjpj.setChangeUpdateDate(new Date());
+                                                                changeMapper.insertSelective(zzgjpj);
+                                                            }
+                                                        }
                                                     }
-                                                } else if(memberList1.size() == 2){
-                                                    if (memberList1.get(0).getMemberType() == 2 && memberList1.get(1).getMemberType() == 2){
-                                                        //至尊高级团队管理奖
-                                                        Change zzgjtd = new Change();
-                                                        zzgjtd.setChangeId(IDUtils.getId());
-                                                        zzgjtd.setMemberId(memberList1.get(0).getMemberId());
-                                                        zzgjtd.setChangePrice(commission.getZzGjTdPrice());
-                                                        zzgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
-                                                        zzgjtd.setChangeType(1);
-                                                        zzgjtd.setChangeStatus(1);
-                                                        zzgjtd.setChangeCreateDate(new Date());
-                                                        zzgjtd.setChangeUpdateDate(new Date());
-                                                        changeMapper.insertSelective(zzgjtd);
+                                                } else if(preMember.getMemberType() == 2){
+                                                    //上级是至尊会员399等级,分配对应佣金200
+                                                    Change change = new Change();
+                                                    change.setChangeId(IDUtils.getId());
+                                                    change.setMemberId(preMember.getMemberId());
+                                                    change.setChangePrice(commission.getZzGjZtPrice() + commission.getZzGjTdPrice() + commission.getVipGjTdPrice());
+                                                    change.setChangeDetails(orders.getOrdersId() + "直推奖金 + 团队承担奖金");
+                                                    change.setChangeType(1);
+                                                    change.setChangeStatus(1);
+                                                    change.setChangeCreateDate(new Date());
+                                                    change.setChangeUpdateDate(new Date());
+                                                    changeMapper.insertSelective(change);
 
-                                                        //至尊高级团队平级奖
-                                                        Change zzgjpj = new Change();
-                                                        zzgjpj.setChangeId(IDUtils.getId());
-                                                        zzgjpj.setMemberId(memberList1.get(1).getMemberId());
-                                                        zzgjpj.setChangePrice(commission.getZzGjPjPrice());
-                                                        zzgjpj.setChangeDetails(orders.getOrdersId() + "团队平级奖金");
-                                                        zzgjpj.setChangeType(1);
-                                                        zzgjpj.setChangeStatus(1);
-                                                        zzgjpj.setChangeCreateDate(new Date());
-                                                        zzgjpj.setChangeUpdateDate(new Date());
-                                                        changeMapper.insertSelective(zzgjpj);
+                                                    //至尊会员推荐高级间推
+                                                    Member pre2Member = memberMapper.selectByPrimaryKey(preMember.getPreMemberId());
+                                                    if (pre2Member != null){
+                                                        if (pre2Member.getMemberType() == 4){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getGjGjJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + "间推奖金");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
+                                                        } else if (pre2Member.getMemberType() == 3){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getVipGjJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + "间推奖金");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
+                                                        } else if (pre2Member.getMemberType() == 2){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getZzGjJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + "间推奖金");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
+                                                        } else if (pre2Member.getMemberType() == 1){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getDlGjJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + "间推奖金");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
+                                                        }
+
+                                                        //TODO 问题严重 判断preMember.getPreMemberId是否为空，如果不为空，则直接赋值，如果为空，则不再继续往上查询
+                                                        //查询七次会员信息
+                                                        String memberId = null;
+                                                        List<Member> memberList = new ArrayList<>();
+                                                        for (int num = 0; num < 6; num++){
+                                                            if (memberList.size() == 0){
+                                                                memberId = preMember.getMemberId();
+                                                            }
+                                                            Member member1 = memberMapper.selectByPrimaryKey(memberId);
+                                                            if (member1 != null){
+                                                                memberId = member1.getPreMemberId();
+                                                                memberList.add(member1);
+                                                            }
+                                                        }
+
+                                                        int zznum = 0;
+                                                        List<Member> memberList1 = new ArrayList<>();
+                                                        memberList1.add(preMember);
+                                                        for (int m = 0; m < memberList.size(); m++){
+                                                            if (memberList.get(m).getMemberType() == 2){
+                                                                if(zznum == 0){
+                                                                    memberList1.add(memberList.get(m));
+                                                                }
+                                                                zznum += 1;
+                                                            }
+                                                        }
+
+                                                        if(memberList1.size() == 2){
+                                                            if (memberList1.get(1).getMemberType() == 2){
+                                                                //至尊高级团队平级奖
+                                                                Change zzgjpj = new Change();
+                                                                zzgjpj.setChangeId(IDUtils.getId());
+                                                                zzgjpj.setMemberId(memberList1.get(1).getMemberId());
+                                                                zzgjpj.setChangePrice(commission.getZzGjPjPrice());
+                                                                zzgjpj.setChangeDetails(orders.getOrdersId() + "团队平级奖金");
+                                                                zzgjpj.setChangeType(1);
+                                                                zzgjpj.setChangeStatus(1);
+                                                                zzgjpj.setChangeCreateDate(new Date());
+                                                                zzgjpj.setChangeUpdateDate(new Date());
+                                                                changeMapper.insertSelective(zzgjpj);
+                                                            }
+                                                        }
                                                     }
-                                                } else if(memberList1.size() == 1){
-                                                    if (memberList1.get(0).getMemberType() == 2){
-                                                        //至尊高级团队管理奖
-                                                        Change zzgjtd = new Change();
-                                                        zzgjtd.setChangeId(IDUtils.getId());
-                                                        zzgjtd.setMemberId(memberList1.get(0).getMemberId());
-                                                        zzgjtd.setChangePrice(commission.getZzGjTdPrice());
-                                                        zzgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
-                                                        zzgjtd.setChangeType(1);
-                                                        zzgjtd.setChangeStatus(1);
-                                                        zzgjtd.setChangeCreateDate(new Date());
-                                                        zzgjtd.setChangeUpdateDate(new Date());
-                                                        changeMapper.insertSelective(zzgjtd);
-                                                    } else if(memberList1.get(0).getMemberType() == 3) {
-                                                        //VIP高级团队管理奖
-                                                        Change vipgjtd = new Change();
-                                                        vipgjtd.setChangeId(IDUtils.getId());
-                                                        vipgjtd.setMemberId(memberList1.get(0).getMemberId());
-                                                        vipgjtd.setChangePrice(commission.getVipGjTdPrice());
-                                                        vipgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
-                                                        vipgjtd.setChangeType(1);
-                                                        vipgjtd.setChangeStatus(1);
-                                                        vipgjtd.setChangeCreateDate(new Date());
-                                                        vipgjtd.setChangeUpdateDate(new Date());
-                                                        changeMapper.insertSelective(vipgjtd);
+                                                } else if(preMember.getMemberType() == 1){
+                                                    //上级是代理商3999等级,分配对应佣金200
+                                                    Change change = new Change();
+                                                    change.setChangeId(IDUtils.getId());
+                                                    change.setMemberId(preMember.getMemberId());
+                                                    change.setChangePrice(commission.getDlGjZtPrice());
+                                                    change.setChangeDetails(orders.getOrdersId() + "直推奖金");
+                                                    change.setChangeType(1);
+                                                    change.setChangeStatus(1);
+                                                    change.setChangeCreateDate(new Date());
+                                                    change.setChangeUpdateDate(new Date());
+                                                    changeMapper.insertSelective(change);
+
+                                                    //代理推荐高级间推
+                                                    Member pre2Member = memberMapper.selectByPrimaryKey(preMember.getPreMemberId());
+                                                    if (pre2Member != null){
+                                                        if (pre2Member.getMemberType() == 4){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getGjGjJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + "间推奖金");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
+                                                        } else if (pre2Member.getMemberType() == 3){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getVipGjJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + "间推奖金");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
+                                                        } else if (pre2Member.getMemberType() == 2){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getZzGjJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + "间推奖金");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
+                                                        } else if (pre2Member.getMemberType() == 1){
+                                                            change.setChangeId(IDUtils.getId());
+                                                            change.setMemberId(pre2Member.getMemberId());
+                                                            change.setChangePrice(commission.getDlGjJtPrice());
+                                                            change.setChangeDetails(orders.getOrdersId() + "间推奖金");
+                                                            change.setChangeType(1);
+                                                            change.setChangeStatus(1);
+                                                            change.setChangeCreateDate(new Date());
+                                                            change.setChangeUpdateDate(new Date());
+                                                            changeMapper.insertSelective(change);
+                                                        }
+
+                                                        //查询七次会员信息
+                                                        String memberId = null;
+                                                        List<Member> memberList = new ArrayList<>();
+                                                        for (int num = 0; num < 6; num++){
+                                                            if (memberList.size() == 0){
+                                                                memberId = preMember.getMemberId();
+                                                            }
+                                                            Member member1 = memberMapper.selectByPrimaryKey(memberId);
+                                                            if (member1 != null){
+                                                                memberId = member1.getPreMemberId();
+                                                                memberList.add(member1);
+                                                            }
+                                                        }
+
+                                                        int vipnum = 0;
+                                                        int zznum = 0;
+                                                        List<Member> memberList1 = new ArrayList<>();
+
+                                                        for (int m = 0; m < memberList.size(); m++){
+                                                            if (memberList.get(m).getMemberType() == 3){
+                                                                if(vipnum == 0){
+                                                                    memberList1.add(memberList.get(m));
+                                                                }
+                                                                vipnum += 1;
+                                                            }
+                                                            if (memberList.get(m).getMemberType() == 2){
+                                                                if(zznum == 0){
+                                                                    memberList1.add(memberList.get(m));
+                                                                }
+                                                                if(zznum == 1){
+                                                                    memberList1.add(memberList.get(m));
+                                                                }
+                                                                zznum += 1;
+                                                            }
+                                                        }
+                                                        if (memberList1.size() == 3){
+                                                            if (memberList1.get(0).getMemberType() == 3 && memberList1.get(1).getMemberType() == 2 && memberList1.get(2).getMemberType() == 2){
+                                                                //VIP高级团队管理奖
+                                                                Change vipgjtd = new Change();
+                                                                vipgjtd.setChangeId(IDUtils.getId());
+                                                                vipgjtd.setMemberId(memberList1.get(0).getMemberId());
+                                                                vipgjtd.setChangePrice(commission.getVipGjTdPrice());
+                                                                vipgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
+                                                                vipgjtd.setChangeType(1);
+                                                                vipgjtd.setChangeStatus(1);
+                                                                vipgjtd.setChangeCreateDate(new Date());
+                                                                vipgjtd.setChangeUpdateDate(new Date());
+                                                                changeMapper.insertSelective(vipgjtd);
+
+                                                                //至尊高级团队管理奖
+                                                                Change zzgjtd = new Change();
+                                                                zzgjtd.setChangeId(IDUtils.getId());
+                                                                zzgjtd.setMemberId(memberList1.get(1).getMemberId());
+                                                                zzgjtd.setChangePrice(commission.getZzGjTdPrice());
+                                                                zzgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
+                                                                zzgjtd.setChangeType(1);
+                                                                zzgjtd.setChangeStatus(1);
+                                                                zzgjtd.setChangeCreateDate(new Date());
+                                                                zzgjtd.setChangeUpdateDate(new Date());
+                                                                changeMapper.insertSelective(zzgjtd);
+
+                                                                //至尊高级团队平级奖
+                                                                Change zzgjpj = new Change();
+                                                                zzgjpj.setChangeId(IDUtils.getId());
+                                                                zzgjpj.setMemberId(memberList1.get(2).getMemberId());
+                                                                zzgjpj.setChangePrice(commission.getZzGjPjPrice());
+                                                                zzgjpj.setChangeDetails(orders.getOrdersId() + "团队平级奖金");
+                                                                zzgjpj.setChangeType(1);
+                                                                zzgjpj.setChangeStatus(1);
+                                                                zzgjpj.setChangeCreateDate(new Date());
+                                                                zzgjpj.setChangeUpdateDate(new Date());
+                                                                changeMapper.insertSelective(zzgjpj);
+                                                            }
+                                                        } else if(memberList1.size() == 2){
+                                                            if (memberList1.get(0).getMemberType() == 2 && memberList1.get(1).getMemberType() == 2){
+                                                                //至尊高级团队管理奖
+                                                                Change zzgjtd = new Change();
+                                                                zzgjtd.setChangeId(IDUtils.getId());
+                                                                zzgjtd.setMemberId(memberList1.get(0).getMemberId());
+                                                                zzgjtd.setChangePrice(commission.getZzGjTdPrice());
+                                                                zzgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
+                                                                zzgjtd.setChangeType(1);
+                                                                zzgjtd.setChangeStatus(1);
+                                                                zzgjtd.setChangeCreateDate(new Date());
+                                                                zzgjtd.setChangeUpdateDate(new Date());
+                                                                changeMapper.insertSelective(zzgjtd);
+
+                                                                //至尊高级团队平级奖
+                                                                Change zzgjpj = new Change();
+                                                                zzgjpj.setChangeId(IDUtils.getId());
+                                                                zzgjpj.setMemberId(memberList1.get(1).getMemberId());
+                                                                zzgjpj.setChangePrice(commission.getZzGjPjPrice());
+                                                                zzgjpj.setChangeDetails(orders.getOrdersId() + "团队平级奖金");
+                                                                zzgjpj.setChangeType(1);
+                                                                zzgjpj.setChangeStatus(1);
+                                                                zzgjpj.setChangeCreateDate(new Date());
+                                                                zzgjpj.setChangeUpdateDate(new Date());
+                                                                changeMapper.insertSelective(zzgjpj);
+                                                            }
+                                                        } else if(memberList1.size() == 1){
+                                                            if (memberList1.get(0).getMemberType() == 2){
+                                                                //至尊高级团队管理奖
+                                                                Change zzgjtd = new Change();
+                                                                zzgjtd.setChangeId(IDUtils.getId());
+                                                                zzgjtd.setMemberId(memberList1.get(0).getMemberId());
+                                                                zzgjtd.setChangePrice(commission.getZzGjTdPrice());
+                                                                zzgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
+                                                                zzgjtd.setChangeType(1);
+                                                                zzgjtd.setChangeStatus(1);
+                                                                zzgjtd.setChangeCreateDate(new Date());
+                                                                zzgjtd.setChangeUpdateDate(new Date());
+                                                                changeMapper.insertSelective(zzgjtd);
+                                                            } else if(memberList1.get(0).getMemberType() == 3) {
+                                                                //VIP高级团队管理奖
+                                                                Change vipgjtd = new Change();
+                                                                vipgjtd.setChangeId(IDUtils.getId());
+                                                                vipgjtd.setMemberId(memberList1.get(0).getMemberId());
+                                                                vipgjtd.setChangePrice(commission.getVipGjTdPrice());
+                                                                vipgjtd.setChangeDetails(orders.getOrdersId() + "团队承担奖金");
+                                                                vipgjtd.setChangeType(1);
+                                                                vipgjtd.setChangeStatus(1);
+                                                                vipgjtd.setChangeCreateDate(new Date());
+                                                                vipgjtd.setChangeUpdateDate(new Date());
+                                                                changeMapper.insertSelective(vipgjtd);
+                                                            }
+                                                        }
                                                     }
                                                 }
                                             }
@@ -1120,8 +1521,6 @@ public class PayController {
                                             }
                                         }
                                     }
-                                    writer.write(setXml("SUCCESS", "OK"));
-                                    System.out.println("------------支付成功-------------");
                                 } else {
                                     writer.write(setXml("FAIL", "Update data timeout"));
                                     System.out.println("----------- 更新数据失败,请重试-------------");

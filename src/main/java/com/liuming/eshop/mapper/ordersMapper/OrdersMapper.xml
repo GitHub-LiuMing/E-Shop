@@ -27,6 +27,54 @@
   <resultMap id="maps" type="com.liuming.eshop.entity.ordersEntity.Orders" extends="map" >
     <result column="orders_desc" property="ordersDesc" jdbcType="LONGVARCHAR" />
   </resultMap>
+
+  <resultMap id="orderoritem" type="com.liuming.eshop.entity.ordersEntity.OrdersOrItem" >
+    <id column="orders_id" property="ordersId" jdbcType="VARCHAR" />
+    <result column="item_id" property="itemId" jdbcType="VARCHAR" />
+    <result column="member_id" property="memberId" jdbcType="VARCHAR" />
+    <result column="commission_id" property="commissionId" jdbcType="VARCHAR" />
+    <result column="coupon_details_id" property="couponDetailsId" jdbcType="VARCHAR" />
+    <result column="unit_price" property="unitPrice" jdbcType="DOUBLE" />
+    <result column="item_num" property="itemNum" jdbcType="INTEGER" />
+    <result column="total_price" property="totalPrice" jdbcType="DOUBLE" />
+    <result column="detailed_address" property="detailedAddress" jdbcType="VARCHAR" />
+    <result column="consignee" property="consignee" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="courier_number" property="courierNumber" jdbcType="VARCHAR" />
+    <result column="courier_services_company" property="courierServicesCompany" jdbcType="VARCHAR" />
+    <result column="sfsyyhq" property="sfsyyhq" jdbcType="INTEGER" />
+    <result column="pay_type" property="payType" jdbcType="INTEGER" />
+    <result column="pay_resul" property="payResul" jdbcType="INTEGER" />
+    <result column="pay_price" property="payPrice" jdbcType="DOUBLE" />
+    <result column="orders_status" property="ordersStatus" jdbcType="INTEGER" />
+    <result column="orders_type" property="ordersType" jdbcType="INTEGER" />
+    <result column="orders_create_date" property="ordersCreateDate" jdbcType="TIMESTAMP" />
+    <result column="orders_update_date" property="ordersUpdateDate" jdbcType="TIMESTAMP" />
+    <result column="item_name" property="itemName" jdbcType="VARCHAR" />
+    <result column="classify_id" property="classifyId" jdbcType="VARCHAR" />
+    <result column="classify_name" property="classifyName" jdbcType="VARCHAR" />
+    <result column="commission_id" property="commissionId" jdbcType="VARCHAR" />
+    <result column="logistics_template_id" property="logisticsTemplateId" jdbcType="VARCHAR" />
+    <result column="item_original_price" property="itemOriginalPrice" jdbcType="DOUBLE" />
+    <result column="item_present_price" property="itemPresentPrice" jdbcType="DOUBLE" />
+    <result column="item_url" property="itemUrl" jdbcType="VARCHAR" />
+    <result column="stock_num" property="stockNum" jdbcType="INTEGER" />
+    <result column="sales_num" property="salesNum" jdbcType="INTEGER" />
+    <result column="member_discounted_status" property="memberDiscountedStatus" jdbcType="INTEGER" />
+    <result column="member_discounted" property="memberDiscounted" jdbcType="DOUBLE" />
+    <result column="not_member_discounted_status" property="notMemberDiscountedStatus" jdbcType="INTEGER" />
+    <result column="not_member_discounted" property="notMemberDiscounted" jdbcType="DOUBLE" />
+    <result column="gmsxjf" property="gmsxjf" jdbcType="INTEGER" />
+    <result column="mrxg" property="mrxg" jdbcType="INTEGER" />
+    <result column="mrmtxg" property="mrmtxg" jdbcType="INTEGER" />
+    <result column="item_status" property="itemStatus" jdbcType="INTEGER" />
+    <result column="item_type" property="itemType" jdbcType="INTEGER" />
+    <result column="item_created_date" property="itemCreatedDate" jdbcType="TIMESTAMP" />
+    <result column="item_updated_date" property="itemUpdatedDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="orderoritems" type="com.liuming.eshop.entity.ordersEntity.OrdersOrItem" extends="orderoritem" >
+    <result column="orders_desc" property="ordersDesc" jdbcType="LONGVARCHAR" />
+  </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
