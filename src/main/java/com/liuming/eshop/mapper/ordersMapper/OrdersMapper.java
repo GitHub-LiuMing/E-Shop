@@ -1,10 +1,11 @@
 package com.liuming.eshop.mapper.ordersMapper;
 
-import com.liuming.eshop.entity.ordersEntity.Orders;
-import com.liuming.eshop.entity.ordersEntity.OrdersExample;
 import java.util.List;
 import java.util.Map;
 
+import com.liuming.eshop.entity.ordersEntity.Orders;
+import com.liuming.eshop.entity.ordersEntity.OrdersExample;
+import com.liuming.eshop.entity.ordersEntity.OrdersWithBLOBs;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -16,29 +17,31 @@ public interface OrdersMapper {
 
     int deleteByPrimaryKey(String ordersId);
 
-    int insert(Orders record);
+    int insert(OrdersWithBLOBs record);
 
-    int insertSelective(Orders record);
+    int insertSelective(OrdersWithBLOBs record);
 
-    List<Orders> selectByExampleWithBLOBs(OrdersExample example);
+    List<OrdersWithBLOBs> selectByExampleWithBLOBs(OrdersExample example);
 
     List<Orders> selectByExample(OrdersExample example);
 
-    Orders selectByPrimaryKey(String ordersId);
+    OrdersWithBLOBs selectByPrimaryKey(String ordersId);
 
-    int updateByExampleSelective(@Param("record") Orders record, @Param("example") OrdersExample example);
+    int updateByExampleSelective(@Param("record") OrdersWithBLOBs record, @Param("example") OrdersExample example);
 
-    int updateByExampleWithBLOBs(@Param("record") Orders record, @Param("example") OrdersExample example);
+    int updateByExampleWithBLOBs(@Param("record") OrdersWithBLOBs record, @Param("example") OrdersExample example);
 
     int updateByExample(@Param("record") Orders record, @Param("example") OrdersExample example);
 
-    int updateByPrimaryKeySelective(Orders record);
+    int updateByPrimaryKeySelective(OrdersWithBLOBs record);
 
-    int updateByPrimaryKeyWithBLOBs(Orders record);
+    int updateByPrimaryKeyWithBLOBs(OrdersWithBLOBs record);
 
     int updateByPrimaryKey(Orders record);
 
-    List<Orders> findOrders(@Param("map") Map map);
+    List<OrdersWithBLOBs> findOrders(@Param("map") Map map);
 
-    Orders findOrdersId(String ordersId);
+    OrdersWithBLOBs findOrdersId(String ordersId);
+
+    List<OrdersWithBLOBs> findOrdersByIsNullMCAndToDays(@Param("format") String format);
 }

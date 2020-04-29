@@ -92,4 +92,20 @@ public class PointsDetailsController {
             return DataResult.build(500,"会员ID不得为空");
         }
     }
+
+    /**
+     * @Description 查询会员的当日签到情况
+     * @param memberId
+     * @return com.liuming.eshop.utils.DataResult
+     * @Author 鲸落
+     * @Date 2020.04.21 14:58
+     */
+    @RequestMapping("/findPointsDetailsByIdAndToDays")
+    public DataResult findPointsDetailsByIdAndToDays(String memberId){
+        if (StringUtils.isNotBlank(memberId)){
+            return pointsDetailsService.findPointsDetailsByIdAndToDays(memberId);
+        } else {
+            return DataResult.build(500,"会员ID不得为空");
+        }
+    }
 }

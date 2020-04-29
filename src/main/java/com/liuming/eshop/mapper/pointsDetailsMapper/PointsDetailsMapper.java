@@ -36,5 +36,7 @@ public interface PointsDetailsMapper {
 
     List<PointsDetails> findPointsDetails(@Param("map") Map map);
 
-    PointsDetails findPointsDetailsByAfter(String memberId);
+    PointsDetails findPointsDetailsByAfter(@Param("memberId") String memberId);
+
+    List<PointsDetails> findPointsDetailsByidAndtoDays(@Param("memberId") String memberId, @Param("format") String format);
 }

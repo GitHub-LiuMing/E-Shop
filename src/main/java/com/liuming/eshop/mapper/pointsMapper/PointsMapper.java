@@ -32,4 +32,8 @@ public interface PointsMapper {
     int updateByPrimaryKeySelective(Points record);
 
     int updateByPrimaryKey(Points record);
+
+    List<Points> findPointsDetailsByidAndtoDays(@Param("format") String format);
+
+    List<Points> findPoints();
 }

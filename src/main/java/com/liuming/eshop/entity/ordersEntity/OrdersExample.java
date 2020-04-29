@@ -985,6 +985,76 @@ public class OrdersExample {
             return (Criteria) this;
         }
 
+        public Criteria andMemberCommentUrlIsNull() {
+            addCriterion("member_comment_url is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberCommentUrlIsNotNull() {
+            addCriterion("member_comment_url is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberCommentUrlEqualTo(String value) {
+            addCriterion("member_comment_url =", value, "memberCommentUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberCommentUrlNotEqualTo(String value) {
+            addCriterion("member_comment_url <>", value, "memberCommentUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberCommentUrlGreaterThan(String value) {
+            addCriterion("member_comment_url >", value, "memberCommentUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberCommentUrlGreaterThanOrEqualTo(String value) {
+            addCriterion("member_comment_url >=", value, "memberCommentUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberCommentUrlLessThan(String value) {
+            addCriterion("member_comment_url <", value, "memberCommentUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberCommentUrlLessThanOrEqualTo(String value) {
+            addCriterion("member_comment_url <=", value, "memberCommentUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberCommentUrlLike(String value) {
+            addCriterion("member_comment_url like", value, "memberCommentUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberCommentUrlNotLike(String value) {
+            addCriterion("member_comment_url not like", value, "memberCommentUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberCommentUrlIn(List<String> values) {
+            addCriterion("member_comment_url in", values, "memberCommentUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberCommentUrlNotIn(List<String> values) {
+            addCriterion("member_comment_url not in", values, "memberCommentUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberCommentUrlBetween(String value1, String value2) {
+            addCriterion("member_comment_url between", value1, value2, "memberCommentUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberCommentUrlNotBetween(String value1, String value2) {
+            addCriterion("member_comment_url not between", value1, value2, "memberCommentUrl");
+            return (Criteria) this;
+        }
+
         public Criteria andSfsyyhqIsNull() {
             addCriterion("sfsyyhq is null");
             return (Criteria) this;

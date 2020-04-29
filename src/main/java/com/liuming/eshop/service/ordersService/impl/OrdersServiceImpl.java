@@ -6,6 +6,8 @@ import com.liuming.eshop.entity.logisticsTemplateEntity.LogisticsTemplate;
 import com.liuming.eshop.entity.memberEntity.Member;
 import com.liuming.eshop.entity.ordersEntity.Orders;
 import com.liuming.eshop.entity.ordersEntity.OrdersOrItem;
+import com.liuming.eshop.entity.ordersEntity.OrdersOrItemOrMember;
+import com.liuming.eshop.entity.ordersEntity.OrdersWithBLOBs;
 import com.liuming.eshop.entity.pointsDetailsEntity.PointsDetails;
 import com.liuming.eshop.mapper.commissionMapper.CommissionMapper;
 import com.liuming.eshop.mapper.couponDetailsMapper.CouponDetailsMapper;
@@ -19,11 +21,11 @@ import com.liuming.eshop.service.ordersService.OrdersService;
 import com.liuming.eshop.utils.CheckObjectIsNullUtils;
 import com.liuming.eshop.utils.DataResult;
 import com.liuming.eshop.utils.IDUtils;
+import com.liuming.eshop.utils.StringReplaceUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -59,7 +61,7 @@ public class OrdersServiceImpl implements OrdersService {
     private PointsDetailsMapper pointsDetailsMapper;
 
     @Override
-    public DataResult addOrders(Orders orders) {
+    public DataResult addOrders(OrdersWithBLOBs orders) {
         /**
          * 先对是否使用优惠券进行判断
          * 如果使用优惠券，就通过优惠券ID查询该用户是否有未使用的优惠券优惠券相关信息
@@ -325,7 +327,9 @@ public class OrdersServiceImpl implements OrdersService {
     }
 
     @Override
-    public DataResult findOrders(Orders orders) {
+    public DataResult findOrders(OrdersWithBLOBs orders) {
+        List<OrdersOrItemOrMember> ordersOrItemOrMemberList = new ArrayList<>();
+
         Map map = new HashMap();
         map.put("ordersId", orders.getOrdersId());
         map.put("itemId", orders.getItemId());
@@ -349,20 +353,27 @@ public class OrdersServiceImpl implements OrdersService {
         map.put("ordersCreateDate", orders.getOrdersCreateDate());
         map.put("ordersUpdateDate", orders.getOrdersUpdateDate());
         map.put("ordersDesc", orders.getOrdersDesc());
-        List<Orders> ordersList = ordersMapper.findOrders(map);
+        List<OrdersWithBLOBs> ordersList = ordersMapper.findOrders(map);
         List<OrdersOrItem> ordersOrItemList = new ArrayList<>();
-        for (Orders orders1 : ordersList) {
+        for (OrdersWithBLOBs orders1 : ordersList) {
             Item item = itemMapper.selectByPrimaryKey(orders1.getItemId());
-            OrdersOrItem ordersOrItem = new OrdersOrItem();
-            ordersOrItem.setOrders(orders1);
-            ordersOrItem.setItems(item);
-            ordersOrItemList.add(ordersOrItem);
+            Member member = memberMapper.selectByPrimaryKey(orders1.getMemberId());
+            member.setMemberWechatName(StringReplaceUtils.checkNameLength(member.getMemberWechatName()));
+
+            OrdersOrItemOrMember ordersOrItemOrMember = new OrdersOrItemOrMember();
+            ordersOrItemOrMember.setOrders(orders1);
+            ordersOrItemOrMember.setItems(item);
+            ordersOrItemOrMember.setMember(member);
+//            OrdersOrItem ordersOrItem = new OrdersOrItem();
+//            ordersOrItem.setOrders(orders1);
+//            ordersOrItem.setItems(item);
+            ordersOrItemOrMemberList.add(ordersOrItemOrMember);
         }
-        return DataResult.ok(ordersOrItemList);
+        return DataResult.ok(ordersOrItemOrMemberList);
     }
 
     @Override
-    public DataResult updateOrders(Orders orders) {
+    public DataResult updateOrders(OrdersWithBLOBs orders) {
         int i = ordersMapper.updateByPrimaryKeySelective(orders);
         if (i > 0) {
             return DataResult.build(200, "订单更新成功");
@@ -372,7 +383,7 @@ public class OrdersServiceImpl implements OrdersService {
     }
 
     @Override
-    public DataResult addOrdersByPoints(Orders orders) {
+    public DataResult addOrdersByPoints(OrdersWithBLOBs orders) {
         CheckObjectIsNullUtils checkObjectIsNullUtils = new CheckObjectIsNullUtils();
         Integer logisticsTotalPrice;
         double totalPrice;
@@ -411,10 +422,10 @@ public class OrdersServiceImpl implements OrdersService {
                                 PointsDetails pointsDetails1 = new PointsDetails();
                                 pointsDetails.setPointsDetailsId(IDUtils.getId());
                                 //todo: 上线前最好加上微信昵称和手机号码字段
-                                pointsDetails.setBeforeModifyPoints(pointsDetails1.getAfterModifyPoints());
+                                pointsDetails.setBeforeModifyPoints(pointsDetails.getAfterModifyPoints());
                                 pointsDetails.setPointsDetailsType(1);
                                 pointsDetails.setModifyPoints(item.getGmsxjf());
-                                pointsDetails.setAfterModifyPoints(pointsDetails1.getAfterModifyPoints() - item.getGmsxjf());
+                                pointsDetails.setAfterModifyPoints(pointsDetails.getAfterModifyPoints() - item.getGmsxjf());
                                 pointsDetails.setPointsDetailsDetails("订单消费");
                                 pointsDetails.setRemark(item.getItemId() + "订单消费");
                                 pointsDetails.setPointsDetailsStatus(1);
@@ -441,10 +452,10 @@ public class OrdersServiceImpl implements OrdersService {
                                 PointsDetails pointsDetails1 = new PointsDetails();
                                 pointsDetails.setPointsDetailsId(IDUtils.getId());
                                 //todo: 上线前最好加上微信昵称和手机号码字段
-                                pointsDetails.setBeforeModifyPoints(pointsDetails1.getAfterModifyPoints());
+                                pointsDetails.setBeforeModifyPoints(pointsDetails.getAfterModifyPoints());
                                 pointsDetails.setPointsDetailsType(1);
                                 pointsDetails.setModifyPoints(item.getGmsxjf());
-                                pointsDetails.setAfterModifyPoints(pointsDetails1.getAfterModifyPoints() - item.getGmsxjf());
+                                pointsDetails.setAfterModifyPoints(pointsDetails.getAfterModifyPoints() - item.getGmsxjf());
                                 pointsDetails.setPointsDetailsDetails("订单消费");
                                 pointsDetails.setRemark(item.getItemId() + "订单消费");
                                 pointsDetails.setPointsDetailsStatus(1);
@@ -471,10 +482,10 @@ public class OrdersServiceImpl implements OrdersService {
                                 PointsDetails pointsDetails1 = new PointsDetails();
                                 pointsDetails.setPointsDetailsId(IDUtils.getId());
                                 //todo: 上线前最好加上微信昵称和手机号码字段
-                                pointsDetails.setBeforeModifyPoints(pointsDetails1.getAfterModifyPoints());
+                                pointsDetails.setBeforeModifyPoints(pointsDetails.getAfterModifyPoints());
                                 pointsDetails.setPointsDetailsType(1);
                                 pointsDetails.setModifyPoints(item.getGmsxjf());
-                                pointsDetails.setAfterModifyPoints(pointsDetails1.getAfterModifyPoints() - item.getGmsxjf());
+                                pointsDetails.setAfterModifyPoints(pointsDetails.getAfterModifyPoints() - item.getGmsxjf());
                                 pointsDetails.setPointsDetailsDetails("订单消费");
                                 pointsDetails.setRemark(item.getItemId() + "订单消费");
                                 pointsDetails.setPointsDetailsStatus(1);
@@ -502,10 +513,10 @@ public class OrdersServiceImpl implements OrdersService {
                             PointsDetails pointsDetails1 = new PointsDetails();
                             pointsDetails.setPointsDetailsId(IDUtils.getId());
                             //todo: 上线前最好加上微信昵称和手机号码字段
-                            pointsDetails.setBeforeModifyPoints(pointsDetails1.getAfterModifyPoints());
+                            pointsDetails.setBeforeModifyPoints(pointsDetails.getAfterModifyPoints());
                             pointsDetails.setPointsDetailsType(1);
                             pointsDetails.setModifyPoints(item.getGmsxjf());
-                            pointsDetails.setAfterModifyPoints(pointsDetails1.getAfterModifyPoints() - item.getGmsxjf());
+                            pointsDetails.setAfterModifyPoints(pointsDetails.getAfterModifyPoints() - item.getGmsxjf());
                             pointsDetails.setPointsDetailsDetails("订单消费");
                             pointsDetails.setRemark(item.getItemId() + "订单消费");
                             pointsDetails.setPointsDetailsStatus(1);
@@ -530,10 +541,10 @@ public class OrdersServiceImpl implements OrdersService {
                             PointsDetails pointsDetails1 = new PointsDetails();
                             pointsDetails.setPointsDetailsId(IDUtils.getId());
                             //todo: 上线前最好加上微信昵称和手机号码字段
-                            pointsDetails.setBeforeModifyPoints(pointsDetails1.getAfterModifyPoints());
+                            pointsDetails.setBeforeModifyPoints(pointsDetails.getAfterModifyPoints());
                             pointsDetails.setPointsDetailsType(1);
                             pointsDetails.setModifyPoints(item.getGmsxjf());
-                            pointsDetails.setAfterModifyPoints(pointsDetails1.getAfterModifyPoints() - item.getGmsxjf());
+                            pointsDetails.setAfterModifyPoints(pointsDetails.getAfterModifyPoints() - item.getGmsxjf());
                             pointsDetails.setPointsDetailsDetails("订单消费");
                             pointsDetails.setRemark(item.getItemId() + "订单消费");
                             pointsDetails.setPointsDetailsStatus(1);

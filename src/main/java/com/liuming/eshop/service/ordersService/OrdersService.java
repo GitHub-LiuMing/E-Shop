@@ -1,14 +1,14 @@
 package com.liuming.eshop.service.ordersService;
 
-import com.liuming.eshop.entity.ordersEntity.Orders;
+import com.liuming.eshop.entity.ordersEntity.OrdersWithBLOBs;
 import com.liuming.eshop.utils.DataResult;
 
 public interface OrdersService {
-    DataResult addOrders(Orders orders);
+    DataResult addOrders(OrdersWithBLOBs orders);
 
-    DataResult findOrders(Orders orders);
+    DataResult findOrders(OrdersWithBLOBs orders);
 
-    DataResult updateOrders(Orders orders);
+    DataResult addOrdersByPoints(OrdersWithBLOBs orders);
 
-    DataResult addOrdersByPoints(Orders orders);
+    DataResult updateOrders(OrdersWithBLOBs orders);
 }

@@ -9,10 +9,7 @@ import com.liuming.eshop.utils.IDUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @Description
@@ -43,8 +40,6 @@ public class MemberServiceImpl implements MemberService {
     public DataResult findMember(Member member) {
         Map map = new HashMap();
         map.put("memberId", member.getMemberId());
-        map.put("memberLevelId", member.getMemberLevelId());
-        map.put("memberLevelName", member.getMemberLevelName());
         map.put("memberName", member.getMemberName());
         map.put("memberType", member.getMemberType());
         map.put("memberGender", member.getMemberGender());
@@ -69,8 +64,6 @@ public class MemberServiceImpl implements MemberService {
         map.put("preMemberId", member.getPreMemberId());
         map.put("preMemberName", member.getPreMemberName());
         map.put("preMemberPhone", member.getPreMemberPhone());
-        map.put("preMemberLevelId", member.getPreMemberLevelId());
-        map.put("preMemberLevelName", member.getPreMemberLevelName());
         map.put("memberCreatedDate", member.getMemberCreatedDate());
         map.put("memberUpdatedDate", member.getMemberUpdatedDate());
         List<Member> memberList = memberMapper.findMember(map);
@@ -83,8 +76,6 @@ public class MemberServiceImpl implements MemberService {
         member.setMemberPassword(BCrypt.hashpw(member.getMemberPassword(), BCrypt.gensalt()));
         member.setMemberCreatedDate(new Date());
         member.setMemberUpdatedDate(new Date());
-        member.setMemberLevelId("201911131414218960269");
-        member.setMemberLevelName("高级会员1");
         member.setMemberProvinceCode(27);
         member.setMemberProvinceName("陕西省");
         member.setMemberCityCode(309);
@@ -144,5 +135,33 @@ public class MemberServiceImpl implements MemberService {
         } else {
             return DataResult.build(500, "会员信息更新失败，请重试");
         }
+    }
+
+    @Override
+    public DataResult findMemberById1(String memberId) {
+        Map map = new HashMap();
+        map.put("preMemberId",memberId);
+        List<Member> member = memberMapper.findMember(map);
+        return DataResult.ok(member);
+    }
+
+    @Override
+    public DataResult findMemberById2(String memberId) {
+        List<Member> memberList = new ArrayList<>();
+        Map map = new HashMap();
+        map.put("preMemberId",memberId);
+        List<Member> member = memberMapper.findMember(map);
+        if (member.size() > 0){
+            for (Member member1 : member) {
+                map.put("preMemberId",member1.getMemberId());
+                List<Member> member2 = memberMapper.findMember(map);
+                if (member2.size() > 0){
+                    for (int i = 0; i < member2.size(); i++) {
+                        memberList.add(member2.get(i));
+                    }
+                }
+            }
+        }
+        return DataResult.ok(memberList);
     }
 }

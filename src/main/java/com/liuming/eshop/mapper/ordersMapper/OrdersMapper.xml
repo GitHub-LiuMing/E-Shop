@@ -15,6 +15,7 @@
     <result column="phone" property="phone" jdbcType="VARCHAR" />
     <result column="courier_number" property="courierNumber" jdbcType="VARCHAR" />
     <result column="courier_services_company" property="courierServicesCompany" jdbcType="VARCHAR" />
+    <result column="member_comment_url" property="memberCommentUrl" jdbcType="VARCHAR" />
     <result column="sfsyyhq" property="sfsyyhq" jdbcType="INTEGER" />
     <result column="pay_type" property="payType" jdbcType="INTEGER" />
     <result column="pay_resul" property="payResul" jdbcType="INTEGER" />
@@ -24,56 +25,10 @@
     <result column="orders_create_date" property="ordersCreateDate" jdbcType="TIMESTAMP" />
     <result column="orders_update_date" property="ordersUpdateDate" jdbcType="TIMESTAMP" />
   </resultMap>
-  <resultMap id="maps" type="com.liuming.eshop.entity.ordersEntity.Orders" extends="map" >
+  <resultMap id="maps" type="com.liuming.eshop.entity.ordersEntity.OrdersWithBLOBs" extends="map" >
     <result column="orders_desc" property="ordersDesc" jdbcType="LONGVARCHAR" />
-  </resultMap>
-
-  <resultMap id="orderoritem" type="com.liuming.eshop.entity.ordersEntity.OrdersOrItem" >
-    <id column="orders_id" property="ordersId" jdbcType="VARCHAR" />
-    <result column="item_id" property="itemId" jdbcType="VARCHAR" />
-    <result column="member_id" property="memberId" jdbcType="VARCHAR" />
-    <result column="commission_id" property="commissionId" jdbcType="VARCHAR" />
-    <result column="coupon_details_id" property="couponDetailsId" jdbcType="VARCHAR" />
-    <result column="unit_price" property="unitPrice" jdbcType="DOUBLE" />
-    <result column="item_num" property="itemNum" jdbcType="INTEGER" />
-    <result column="total_price" property="totalPrice" jdbcType="DOUBLE" />
-    <result column="detailed_address" property="detailedAddress" jdbcType="VARCHAR" />
-    <result column="consignee" property="consignee" jdbcType="VARCHAR" />
-    <result column="phone" property="phone" jdbcType="VARCHAR" />
-    <result column="courier_number" property="courierNumber" jdbcType="VARCHAR" />
-    <result column="courier_services_company" property="courierServicesCompany" jdbcType="VARCHAR" />
-    <result column="sfsyyhq" property="sfsyyhq" jdbcType="INTEGER" />
-    <result column="pay_type" property="payType" jdbcType="INTEGER" />
-    <result column="pay_resul" property="payResul" jdbcType="INTEGER" />
-    <result column="pay_price" property="payPrice" jdbcType="DOUBLE" />
-    <result column="orders_status" property="ordersStatus" jdbcType="INTEGER" />
-    <result column="orders_type" property="ordersType" jdbcType="INTEGER" />
-    <result column="orders_create_date" property="ordersCreateDate" jdbcType="TIMESTAMP" />
-    <result column="orders_update_date" property="ordersUpdateDate" jdbcType="TIMESTAMP" />
-    <result column="item_name" property="itemName" jdbcType="VARCHAR" />
-    <result column="classify_id" property="classifyId" jdbcType="VARCHAR" />
-    <result column="classify_name" property="classifyName" jdbcType="VARCHAR" />
-    <result column="commission_id" property="commissionId" jdbcType="VARCHAR" />
-    <result column="logistics_template_id" property="logisticsTemplateId" jdbcType="VARCHAR" />
-    <result column="item_original_price" property="itemOriginalPrice" jdbcType="DOUBLE" />
-    <result column="item_present_price" property="itemPresentPrice" jdbcType="DOUBLE" />
-    <result column="item_url" property="itemUrl" jdbcType="VARCHAR" />
-    <result column="stock_num" property="stockNum" jdbcType="INTEGER" />
-    <result column="sales_num" property="salesNum" jdbcType="INTEGER" />
-    <result column="member_discounted_status" property="memberDiscountedStatus" jdbcType="INTEGER" />
-    <result column="member_discounted" property="memberDiscounted" jdbcType="DOUBLE" />
-    <result column="not_member_discounted_status" property="notMemberDiscountedStatus" jdbcType="INTEGER" />
-    <result column="not_member_discounted" property="notMemberDiscounted" jdbcType="DOUBLE" />
-    <result column="gmsxjf" property="gmsxjf" jdbcType="INTEGER" />
-    <result column="mrxg" property="mrxg" jdbcType="INTEGER" />
-    <result column="mrmtxg" property="mrmtxg" jdbcType="INTEGER" />
-    <result column="item_status" property="itemStatus" jdbcType="INTEGER" />
-    <result column="item_type" property="itemType" jdbcType="INTEGER" />
-    <result column="item_created_date" property="itemCreatedDate" jdbcType="TIMESTAMP" />
-    <result column="item_updated_date" property="itemUpdatedDate" jdbcType="TIMESTAMP" />
-  </resultMap>
-  <resultMap id="orderoritems" type="com.liuming.eshop.entity.ordersEntity.OrdersOrItem" extends="orderoritem" >
-    <result column="orders_desc" property="ordersDesc" jdbcType="LONGVARCHAR" />
+    <result column="member_comment" property="memberComment" jdbcType="LONGVARCHAR" />
+    <result column="business_reply" property="businessReply" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -136,11 +91,11 @@
   <sql id="Base_Column_List" >
     orders_id, item_id, member_id, commission_id, coupon_details_id, unit_price, item_num, 
     total_price, detailed_address, consignee, phone, courier_number, courier_services_company, 
-    sfsyyhq, pay_type, pay_resul, pay_price, orders_status, orders_type, orders_create_date, 
-    orders_update_date
+    member_comment_url, sfsyyhq, pay_type, pay_resul, pay_price, orders_status, orders_type, 
+    orders_create_date, orders_update_date
   </sql>
   <sql id="Blob_Column_List" >
-    orders_desc
+    orders_desc, member_comment, business_reply
   </sql>
   <select id="selectByExampleWithBLOBs" resultMap="maps" parameterType="com.liuming.eshop.entity.ordersEntity.OrdersExample" >
     select
@@ -190,25 +145,29 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.liuming.eshop.entity.ordersEntity.Orders" >
+  <insert id="insert" parameterType="com.liuming.eshop.entity.ordersEntity.OrdersWithBLOBs" >
     insert into orders (orders_id, item_id, member_id, 
       commission_id, coupon_details_id, unit_price, 
       item_num, total_price, detailed_address, 
       consignee, phone, courier_number, 
-      courier_services_company, sfsyyhq, pay_type, 
-      pay_resul, pay_price, orders_status, 
-      orders_type, orders_create_date, orders_update_date, 
-      orders_desc)
+      courier_services_company, member_comment_url, 
+      sfsyyhq, pay_type, pay_resul, 
+      pay_price, orders_status, orders_type, 
+      orders_create_date, orders_update_date, 
+      orders_desc, member_comment, business_reply
+      )
     values (#{ordersId,jdbcType=VARCHAR}, #{itemId,jdbcType=VARCHAR}, #{memberId,jdbcType=VARCHAR}, 
       #{commissionId,jdbcType=VARCHAR}, #{couponDetailsId,jdbcType=VARCHAR}, #{unitPrice,jdbcType=DOUBLE}, 
       #{itemNum,jdbcType=INTEGER}, #{totalPrice,jdbcType=DOUBLE}, #{detailedAddress,jdbcType=VARCHAR}, 
       #{consignee,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{courierNumber,jdbcType=VARCHAR}, 
-      #{courierServicesCompany,jdbcType=VARCHAR}, #{sfsyyhq,jdbcType=INTEGER}, #{payType,jdbcType=INTEGER}, 
-      #{payResul,jdbcType=INTEGER}, #{payPrice,jdbcType=DOUBLE}, #{ordersStatus,jdbcType=INTEGER}, 
-      #{ordersType,jdbcType=INTEGER}, #{ordersCreateDate,jdbcType=TIMESTAMP}, #{ordersUpdateDate,jdbcType=TIMESTAMP}, 
-      #{ordersDesc,jdbcType=LONGVARCHAR})
+      #{courierServicesCompany,jdbcType=VARCHAR}, #{memberCommentUrl,jdbcType=VARCHAR}, 
+      #{sfsyyhq,jdbcType=INTEGER}, #{payType,jdbcType=INTEGER}, #{payResul,jdbcType=INTEGER}, 
+      #{payPrice,jdbcType=DOUBLE}, #{ordersStatus,jdbcType=INTEGER}, #{ordersType,jdbcType=INTEGER}, 
+      #{ordersCreateDate,jdbcType=TIMESTAMP}, #{ordersUpdateDate,jdbcType=TIMESTAMP}, 
+      #{ordersDesc,jdbcType=LONGVARCHAR}, #{memberComment,jdbcType=LONGVARCHAR}, #{businessReply,jdbcType=LONGVARCHAR}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.liuming.eshop.entity.ordersEntity.Orders" >
+  <insert id="insertSelective" parameterType="com.liuming.eshop.entity.ordersEntity.OrdersWithBLOBs" >
     insert into orders
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="ordersId != null" >
@@ -250,6 +209,9 @@
       <if test="courierServicesCompany != null" >
         courier_services_company,
       </if>
+      <if test="memberCommentUrl != null" >
+        member_comment_url,
+      </if>
       <if test="sfsyyhq != null" >
         sfsyyhq,
       </if>
@@ -276,6 +238,12 @@
       </if>
       <if test="ordersDesc != null" >
         orders_desc,
+      </if>
+      <if test="memberComment != null" >
+        member_comment,
+      </if>
+      <if test="businessReply != null" >
+        business_reply,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -318,6 +286,9 @@
       <if test="courierServicesCompany != null" >
         #{courierServicesCompany,jdbcType=VARCHAR},
       </if>
+      <if test="memberCommentUrl != null" >
+        #{memberCommentUrl,jdbcType=VARCHAR},
+      </if>
       <if test="sfsyyhq != null" >
         #{sfsyyhq,jdbcType=INTEGER},
       </if>
@@ -344,6 +315,12 @@
       </if>
       <if test="ordersDesc != null" >
         #{ordersDesc,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="memberComment != null" >
+        #{memberComment,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="businessReply != null" >
+        #{businessReply,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -395,6 +372,9 @@
       <if test="record.courierServicesCompany != null" >
         courier_services_company = #{record.courierServicesCompany,jdbcType=VARCHAR},
       </if>
+      <if test="record.memberCommentUrl != null" >
+        member_comment_url = #{record.memberCommentUrl,jdbcType=VARCHAR},
+      </if>
       <if test="record.sfsyyhq != null" >
         sfsyyhq = #{record.sfsyyhq,jdbcType=INTEGER},
       </if>
@@ -422,6 +402,12 @@
       <if test="record.ordersDesc != null" >
         orders_desc = #{record.ordersDesc,jdbcType=LONGVARCHAR},
       </if>
+      <if test="record.memberComment != null" >
+        member_comment = #{record.memberComment,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.businessReply != null" >
+        business_reply = #{record.businessReply,jdbcType=LONGVARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -442,6 +428,7 @@
     phone = #{record.phone,jdbcType=VARCHAR},
     courier_number = #{record.courierNumber,jdbcType=VARCHAR},
     courier_services_company = #{record.courierServicesCompany,jdbcType=VARCHAR},
+    member_comment_url = #{record.memberCommentUrl,jdbcType=VARCHAR},
     sfsyyhq = #{record.sfsyyhq,jdbcType=INTEGER},
     pay_type = #{record.payType,jdbcType=INTEGER},
     pay_resul = #{record.payResul,jdbcType=INTEGER},
@@ -450,7 +437,9 @@
     orders_type = #{record.ordersType,jdbcType=INTEGER},
     orders_create_date = #{record.ordersCreateDate,jdbcType=TIMESTAMP},
     orders_update_date = #{record.ordersUpdateDate,jdbcType=TIMESTAMP},
-    orders_desc = #{record.ordersDesc,jdbcType=LONGVARCHAR}
+    orders_desc = #{record.ordersDesc,jdbcType=LONGVARCHAR},
+    member_comment = #{record.memberComment,jdbcType=LONGVARCHAR},
+    business_reply = #{record.businessReply,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -470,6 +459,7 @@
     phone = #{record.phone,jdbcType=VARCHAR},
     courier_number = #{record.courierNumber,jdbcType=VARCHAR},
     courier_services_company = #{record.courierServicesCompany,jdbcType=VARCHAR},
+    member_comment_url = #{record.memberCommentUrl,jdbcType=VARCHAR},
     sfsyyhq = #{record.sfsyyhq,jdbcType=INTEGER},
     pay_type = #{record.payType,jdbcType=INTEGER},
     pay_resul = #{record.payResul,jdbcType=INTEGER},
@@ -482,7 +472,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.liuming.eshop.entity.ordersEntity.Orders" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.liuming.eshop.entity.ordersEntity.OrdersWithBLOBs" >
     update orders
     <set >
       <if test="itemId != null" >
@@ -521,6 +511,9 @@
       <if test="courierServicesCompany != null" >
         courier_services_company = #{courierServicesCompany,jdbcType=VARCHAR},
       </if>
+      <if test="memberCommentUrl != null" >
+        member_comment_url = #{memberCommentUrl,jdbcType=VARCHAR},
+      </if>
       <if test="sfsyyhq != null" >
         sfsyyhq = #{sfsyyhq,jdbcType=INTEGER},
       </if>
@@ -548,10 +541,16 @@
       <if test="ordersDesc != null" >
         orders_desc = #{ordersDesc,jdbcType=LONGVARCHAR},
       </if>
+      <if test="memberComment != null" >
+        member_comment = #{memberComment,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="businessReply != null" >
+        business_reply = #{businessReply,jdbcType=LONGVARCHAR},
+      </if>
     </set>
     where orders_id = #{ordersId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.liuming.eshop.entity.ordersEntity.Orders" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.liuming.eshop.entity.ordersEntity.OrdersWithBLOBs" >
     update orders
     set item_id = #{itemId,jdbcType=VARCHAR},
       member_id = #{memberId,jdbcType=VARCHAR},
@@ -565,6 +564,7 @@
       phone = #{phone,jdbcType=VARCHAR},
       courier_number = #{courierNumber,jdbcType=VARCHAR},
       courier_services_company = #{courierServicesCompany,jdbcType=VARCHAR},
+      member_comment_url = #{memberCommentUrl,jdbcType=VARCHAR},
       sfsyyhq = #{sfsyyhq,jdbcType=INTEGER},
       pay_type = #{payType,jdbcType=INTEGER},
       pay_resul = #{payResul,jdbcType=INTEGER},
@@ -573,7 +573,9 @@
       orders_type = #{ordersType,jdbcType=INTEGER},
       orders_create_date = #{ordersCreateDate,jdbcType=TIMESTAMP},
       orders_update_date = #{ordersUpdateDate,jdbcType=TIMESTAMP},
-      orders_desc = #{ordersDesc,jdbcType=LONGVARCHAR}
+      orders_desc = #{ordersDesc,jdbcType=LONGVARCHAR},
+      member_comment = #{memberComment,jdbcType=LONGVARCHAR},
+      business_reply = #{businessReply,jdbcType=LONGVARCHAR}
     where orders_id = #{ordersId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.liuming.eshop.entity.ordersEntity.Orders" >
@@ -590,6 +592,7 @@
       phone = #{phone,jdbcType=VARCHAR},
       courier_number = #{courierNumber,jdbcType=VARCHAR},
       courier_services_company = #{courierServicesCompany,jdbcType=VARCHAR},
+      member_comment_url = #{memberCommentUrl,jdbcType=VARCHAR},
       sfsyyhq = #{sfsyyhq,jdbcType=INTEGER},
       pay_type = #{payType,jdbcType=INTEGER},
       pay_resul = #{payResul,jdbcType=INTEGER},
@@ -643,6 +646,9 @@
     <if test="map.phone != null" >
       AND phone = #{map.phone,jdbcType=VARCHAR}
     </if>
+    <if test="map.memberCommentUrl != null" >
+      AND member_comment_url = #{map.memberCommentUrl,jdbcType=VARCHAR}
+    </if>
     <if test="map.sfsyyhq != null" >
       AND sfsyyhq = #{map.sfsyyhq,jdbcType=INTEGER}
     </if>
@@ -658,6 +664,9 @@
     <if test="map.ordersStatus != null" >
       AND orders_status = #{map.ordersStatus,jdbcType=INTEGER}
     </if>
+    <if test="map.ordersType != null" >
+      AND orders_type = #{map.ordersType,jdbcType=INTEGER}
+    </if>
     <if test="map.ordersCreateDate != null" >
       AND orders_create_date = #{map.ordersCreateDate,jdbcType=TIMESTAMP}
     </if>
@@ -667,10 +676,16 @@
     <if test="map.ordersDesc != null" >
       AND orders_desc = #{map.ordersDesc,jdbcType=LONGVARCHAR}
     </if>
+    <if test="map.memberComment != null" >
+      AND member_comment = #{map.memberComment,jdbcType=LONGVARCHAR}
+    </if>
+    <if test="map.businessReply != null" >
+      AND business_reply = #{map.businessReply,jdbcType=LONGVARCHAR}
+    </if>
     ORDER BY orders_update_date DESC
   </select>
 
-  <select id="findOrdersId" resultType="com.liuming.eshop.entity.ordersEntity.Orders" parameterType="java.lang.String" >
+  <select id="findOrdersId" resultType="com.liuming.eshop.entity.ordersEntity.OrdersWithBLOBs" parameterType="java.lang.String" >
     SELECT
     <include refid="Base_Column_List" />
     ,
@@ -679,5 +694,17 @@
     orders
     WHERE
     orders_id = #{ordersId,jdbcType=VARCHAR}
+  </select>
+
+  <select id="findOrdersByIsNullMCAndToDays" parameterType="java.lang.String" resultMap="maps">
+    SELECT
+        *
+    FROM
+        orders
+    WHERE
+        ISNULL( member_comment )
+        AND to_days ( orders_update_date ) &lt;= to_days(#{format}
+
+        )
   </select>
 </mapper>

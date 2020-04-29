@@ -15,4 +15,8 @@ public interface MemberService {
     DataResult updateMemberPassword(Member member);
 
     DataResult updateMember(Member member);
+
+    DataResult findMemberById1(String memberId);
+
+    DataResult findMemberById2(String memberId);
 }

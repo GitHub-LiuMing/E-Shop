@@ -13,4 +13,6 @@ public interface PointsDetailsService {
     DataResult findPointsDetailsByAfter(String memberId);
 
     DataResult adjustPointsDetails(PointsDetails pointsDetails);
+
+    DataResult findPointsDetailsByIdAndToDays(String memberId);
 }

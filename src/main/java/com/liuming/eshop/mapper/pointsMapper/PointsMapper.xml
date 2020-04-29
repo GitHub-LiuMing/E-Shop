@@ -225,4 +225,22 @@
       points_updated_date = #{pointsUpdatedDate,jdbcType=TIMESTAMP}
     where points_id = #{pointsId,jdbcType=VARCHAR}
   </update>
+
+  <select id="findPointsDetailsByidAndtoDays" parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT
+        *
+    FROM
+        points
+    WHERE
+        to_days ( points_created_date ) = to_days(
+        #{format}
+        )
+  </select>
+
+  <select id="findPoints" resultMap="BaseResultMap">
+    SELECT
+        *
+    FROM
+        points
+  </select>
 </mapper>

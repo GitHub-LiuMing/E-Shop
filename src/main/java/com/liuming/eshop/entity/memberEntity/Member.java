@@ -10,10 +10,6 @@ public class Member {
     @Excel(title = "会员ID")
     private String memberId;
 
-    private String memberLevelId;
-
-    private String memberLevelName;
-
     @Excel(title = "会员名")
     private String memberName;
 
@@ -65,10 +61,6 @@ public class Member {
     private String preMemberName;
 
     private String preMemberPhone;
-
-    private String preMemberLevelId;
-
-    private String preMemberLevelName;
 
     @Excel(title = "创建时间")
     private Date memberCreatedDate;

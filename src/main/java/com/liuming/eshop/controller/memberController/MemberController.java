@@ -54,17 +54,12 @@ public class MemberController {
      */
     @RequestMapping("/addMember")
     public DataResult addMember(Member member){
-        if (StringUtils.isNotBlank(member.getPreMemberId()) && StringUtils.isNotBlank(member.getPreMemberName()) && StringUtils.isNotBlank(member.getPreMemberPhone()) && StringUtils.isNotBlank(member.getPreMemberLevelId()) && StringUtils.isNotBlank(member.getPreMemberLevelName())){
-            //上级信息必须有
-            if (StringUtils.isNotBlank(member.getMemberLevelId()) && StringUtils.isNotBlank(member.getMemberLevelName())){
-                //会员等级信息获取失败
-                if (StringUtils.isNotBlank(member.getMemberName()) && member.getMemberType() != null && StringUtils.isNotBlank(member.getMemberWechatName()) && StringUtils.isNotBlank(member.getMemberWechatOpenId())){
-                    return memberService.addMember(member);
-                } else {
-                    return DataResult.build(500,"会员个人信息获取失败");
-                }
+        if (StringUtils.isNotBlank(member.getPreMemberId()) && StringUtils.isNotBlank(member.getPreMemberName()) && StringUtils.isNotBlank(member.getPreMemberPhone())){
+            //会员等级信息获取失败
+            if (StringUtils.isNotBlank(member.getMemberName()) && member.getMemberType() != null && StringUtils.isNotBlank(member.getMemberWechatName()) && StringUtils.isNotBlank(member.getMemberWechatOpenId())){
+                return memberService.addMember(member);
             } else {
-                return DataResult.build(500,"会员等级获取信息失败");
+                return DataResult.build(500,"会员个人信息获取失败");
             }
         } else {
             return DataResult.build(500,"上级信息获取失败，请重试");
@@ -256,6 +251,69 @@ public class MemberController {
             return memberService.updateMember(member);
         } else {
             return DataResult.build(500,"会员信息不存在");
+        }
+    }
+
+    /**
+     * @Description 根据会员ID查询下级会员
+     * @param memberId 会员ID
+     * @param i 查询几级会员
+     * @return com.liuming.eshop.utils.DataResult
+     * @Author 鲸落
+     * @Date 2020.04.23 16:18
+     */
+    @RequestMapping("/findMemberById")
+    public DataResult findMemberById(String memberId, int i){
+        if (StringUtils.isNotBlank(memberId) && i == 1){
+            return memberService.findMemberById1(memberId);
+        } else if(StringUtils.isNotBlank(memberId) && i == 2){
+            return memberService.findMemberById2(memberId);
+        }else {
+            return DataResult.build(500,"会员ID获取失败");
+        }
+    }
+
+    @RequestMapping("/t")
+    public void t(String preMemberId){
+        Member preMember;
+        preMember = memberMapper.selectByPrimaryKey(preMemberId);
+        //查询七次会员信息
+        String memberId = null;
+        List<Member> memberList = new ArrayList<>();
+        Go: {
+            for (int num = 0; num < 6; num++){
+                if (preMember.getPreMemberId() != null){
+                    if (memberList.size() == 0){
+                        memberId = preMember.getMemberId();
+                    }
+                    Member member1 = memberMapper.selectByPrimaryKey(memberId);
+                    if (member1 != null){
+                        memberId = member1.getPreMemberId();
+                        memberList.add(member1);
+                    }
+                } else {
+                    break Go;
+                }
+            }
+        }
+
+
+        int zznum = 0;
+        List<Member> memberList1 = new ArrayList<>();
+        for (int m = 0; m < memberList.size(); m++){
+            if (memberList.get(m).getMemberType() == 2){
+                if(zznum <= 2){
+                    memberList1.add(memberList.get(m));
+                }
+                zznum += 1;
+            }
+        }
+
+        if(memberList1.size() == 2){
+            if (memberList1.get(1).getMemberType() == 2){
+                //至尊高级团队平级奖
+                System.out.println("至尊高级团队平级奖");
+            }
         }
     }
 }

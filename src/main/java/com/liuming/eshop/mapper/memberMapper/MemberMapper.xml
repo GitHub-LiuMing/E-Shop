@@ -3,8 +3,6 @@
 <mapper namespace="com.liuming.eshop.mapper.memberMapper.MemberMapper" >
   <resultMap id="map" type="com.liuming.eshop.entity.memberEntity.Member" >
     <id column="member_id" property="memberId" jdbcType="VARCHAR" />
-    <result column="member_level_id" property="memberLevelId" jdbcType="VARCHAR" />
-    <result column="member_level_name" property="memberLevelName" jdbcType="VARCHAR" />
     <result column="member_name" property="memberName" jdbcType="VARCHAR" />
     <result column="member_type" property="memberType" jdbcType="INTEGER" />
     <result column="member_gender" property="memberGender" jdbcType="INTEGER" />
@@ -28,8 +26,6 @@
     <result column="pre_member_id" property="preMemberId" jdbcType="VARCHAR" />
     <result column="pre_member_name" property="preMemberName" jdbcType="VARCHAR" />
     <result column="pre_member_phone" property="preMemberPhone" jdbcType="VARCHAR" />
-    <result column="pre_member_level_id" property="preMemberLevelId" jdbcType="VARCHAR" />
-    <result column="pre_member_level_name" property="preMemberLevelName" jdbcType="VARCHAR" />
     <result column="member_created_date" property="memberCreatedDate" jdbcType="TIMESTAMP" />
     <result column="member_updated_date" property="memberUpdatedDate" jdbcType="TIMESTAMP" />
   </resultMap>
@@ -92,12 +88,12 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    member_id, member_level_id, member_level_name, member_name, member_type, member_gender, 
-    member_birthdate, member_id_no, member_wechat_open_id, member_wechat_name, member_phone, 
-    member_head_portrait_url, member_password, member_salt, member_province_code, member_province_name, 
-    member_city_code, member_city_name, member_district_code, member_district_name, member_address_desc, 
-    member_certification, member_status, pre_member_id, pre_member_name, pre_member_phone, 
-    pre_member_level_id, pre_member_level_name, member_created_date, member_updated_date
+    member_id, member_name, member_type, member_gender, member_birthdate, member_id_no,
+    member_wechat_open_id, member_wechat_name, member_phone, member_head_portrait_url,
+    member_password, member_salt, member_province_code, member_province_name, member_city_code,
+    member_city_name, member_district_code, member_district_name, member_address_desc,
+    member_certification, member_status, pre_member_id, pre_member_name, pre_member_phone,
+    member_created_date, member_updated_date
   </sql>
   <select id="selectByExample" resultMap="map" parameterType="com.liuming.eshop.entity.memberEntity.MemberExample" >
     select
@@ -114,7 +110,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="map" parameterType="java.lang.String" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from member
     where member_id = #{memberId,jdbcType=VARCHAR}
@@ -130,42 +126,32 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.liuming.eshop.entity.memberEntity.Member" >
-    insert into member (member_id, member_level_id, member_level_name, 
-      member_name, member_type, member_gender, 
-      member_birthdate, member_id_no, member_wechat_open_id, 
-      member_wechat_name, member_phone, member_head_portrait_url, 
-      member_password, member_salt, member_province_code, 
-      member_province_name, member_city_code, member_city_name, 
-      member_district_code, member_district_name, 
-      member_address_desc, member_certification, 
-      member_status, pre_member_id, pre_member_name, 
-      pre_member_phone, pre_member_level_id, pre_member_level_name, 
-      member_created_date, member_updated_date
-      )
-    values (#{memberId,jdbcType=VARCHAR}, #{memberLevelId,jdbcType=VARCHAR}, #{memberLevelName,jdbcType=VARCHAR}, 
-      #{memberName,jdbcType=VARCHAR}, #{memberType,jdbcType=INTEGER}, #{memberGender,jdbcType=INTEGER}, 
-      #{memberBirthdate,jdbcType=DATE}, #{memberIdNo,jdbcType=VARCHAR}, #{memberWechatOpenId,jdbcType=VARCHAR}, 
-      #{memberWechatName,jdbcType=VARCHAR}, #{memberPhone,jdbcType=VARCHAR}, #{memberHeadPortraitUrl,jdbcType=VARCHAR}, 
-      #{memberPassword,jdbcType=VARCHAR}, #{memberSalt,jdbcType=VARCHAR}, #{memberProvinceCode,jdbcType=INTEGER}, 
-      #{memberProvinceName,jdbcType=VARCHAR}, #{memberCityCode,jdbcType=INTEGER}, #{memberCityName,jdbcType=VARCHAR}, 
-      #{memberDistrictCode,jdbcType=INTEGER}, #{memberDistrictName,jdbcType=VARCHAR}, 
-      #{memberAddressDesc,jdbcType=VARCHAR}, #{memberCertification,jdbcType=INTEGER}, 
-      #{memberStatus,jdbcType=INTEGER}, #{preMemberId,jdbcType=VARCHAR}, #{preMemberName,jdbcType=VARCHAR}, 
-      #{preMemberPhone,jdbcType=VARCHAR}, #{preMemberLevelId,jdbcType=VARCHAR}, #{preMemberLevelName,jdbcType=VARCHAR}, 
-      #{memberCreatedDate,jdbcType=TIMESTAMP}, #{memberUpdatedDate,jdbcType=TIMESTAMP}
-      )
+    insert into member (member_id, member_name, member_type,
+      member_gender, member_birthdate, member_id_no,
+      member_wechat_open_id, member_wechat_name, member_phone,
+      member_head_portrait_url, member_password,
+      member_salt, member_province_code, member_province_name,
+      member_city_code, member_city_name, member_district_code,
+      member_district_name, member_address_desc,
+      member_certification, member_status, pre_member_id,
+      pre_member_name, pre_member_phone, member_created_date,
+      member_updated_date)
+    values (#{memberId,jdbcType=VARCHAR}, #{memberName,jdbcType=VARCHAR}, #{memberType,jdbcType=INTEGER},
+      #{memberGender,jdbcType=INTEGER}, #{memberBirthdate,jdbcType=DATE}, #{memberIdNo,jdbcType=VARCHAR},
+      #{memberWechatOpenId,jdbcType=VARCHAR}, #{memberWechatName,jdbcType=VARCHAR}, #{memberPhone,jdbcType=VARCHAR},
+      #{memberHeadPortraitUrl,jdbcType=VARCHAR}, #{memberPassword,jdbcType=VARCHAR},
+      #{memberSalt,jdbcType=VARCHAR}, #{memberProvinceCode,jdbcType=INTEGER}, #{memberProvinceName,jdbcType=VARCHAR},
+      #{memberCityCode,jdbcType=INTEGER}, #{memberCityName,jdbcType=VARCHAR}, #{memberDistrictCode,jdbcType=INTEGER},
+      #{memberDistrictName,jdbcType=VARCHAR}, #{memberAddressDesc,jdbcType=VARCHAR},
+      #{memberCertification,jdbcType=INTEGER}, #{memberStatus,jdbcType=INTEGER}, #{preMemberId,jdbcType=VARCHAR},
+      #{preMemberName,jdbcType=VARCHAR}, #{preMemberPhone,jdbcType=VARCHAR}, #{memberCreatedDate,jdbcType=TIMESTAMP},
+      #{memberUpdatedDate,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.liuming.eshop.entity.memberEntity.Member" >
     insert into member
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="memberId != null" >
         member_id,
-      </if>
-      <if test="memberLevelId != null" >
-        member_level_id,
-      </if>
-      <if test="memberLevelName != null" >
-        member_level_name,
       </if>
       <if test="memberName != null" >
         member_name,
@@ -236,12 +222,6 @@
       <if test="preMemberPhone != null" >
         pre_member_phone,
       </if>
-      <if test="preMemberLevelId != null" >
-        pre_member_level_id,
-      </if>
-      <if test="preMemberLevelName != null" >
-        pre_member_level_name,
-      </if>
       <if test="memberCreatedDate != null" >
         member_created_date,
       </if>
@@ -252,12 +232,6 @@
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="memberId != null" >
         #{memberId,jdbcType=VARCHAR},
-      </if>
-      <if test="memberLevelId != null" >
-        #{memberLevelId,jdbcType=VARCHAR},
-      </if>
-      <if test="memberLevelName != null" >
-        #{memberLevelName,jdbcType=VARCHAR},
       </if>
       <if test="memberName != null" >
         #{memberName,jdbcType=VARCHAR},
@@ -328,12 +302,6 @@
       <if test="preMemberPhone != null" >
         #{preMemberPhone,jdbcType=VARCHAR},
       </if>
-      <if test="preMemberLevelId != null" >
-        #{preMemberLevelId,jdbcType=VARCHAR},
-      </if>
-      <if test="preMemberLevelName != null" >
-        #{preMemberLevelName,jdbcType=VARCHAR},
-      </if>
       <if test="memberCreatedDate != null" >
         #{memberCreatedDate,jdbcType=TIMESTAMP},
       </if>
@@ -353,12 +321,6 @@
     <set >
       <if test="record.memberId != null" >
         member_id = #{record.memberId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.memberLevelId != null" >
-        member_level_id = #{record.memberLevelId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.memberLevelName != null" >
-        member_level_name = #{record.memberLevelName,jdbcType=VARCHAR},
       </if>
       <if test="record.memberName != null" >
         member_name = #{record.memberName,jdbcType=VARCHAR},
@@ -429,12 +391,6 @@
       <if test="record.preMemberPhone != null" >
         pre_member_phone = #{record.preMemberPhone,jdbcType=VARCHAR},
       </if>
-      <if test="record.preMemberLevelId != null" >
-        pre_member_level_id = #{record.preMemberLevelId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.preMemberLevelName != null" >
-        pre_member_level_name = #{record.preMemberLevelName,jdbcType=VARCHAR},
-      </if>
       <if test="record.memberCreatedDate != null" >
         member_created_date = #{record.memberCreatedDate,jdbcType=TIMESTAMP},
       </if>
@@ -449,35 +405,31 @@
   <update id="updateByExample" parameterType="map" >
     update member
     set member_id = #{record.memberId,jdbcType=VARCHAR},
-      member_level_id = #{record.memberLevelId,jdbcType=VARCHAR},
-      member_level_name = #{record.memberLevelName,jdbcType=VARCHAR},
-      member_name = #{record.memberName,jdbcType=VARCHAR},
-      member_type = #{record.memberType,jdbcType=INTEGER},
-      member_gender = #{record.memberGender,jdbcType=INTEGER},
-      member_birthdate = #{record.memberBirthdate,jdbcType=DATE},
-      member_id_no = #{record.memberIdNo,jdbcType=VARCHAR},
-      member_wechat_open_id = #{record.memberWechatOpenId,jdbcType=VARCHAR},
-      member_wechat_name = #{record.memberWechatName,jdbcType=VARCHAR},
-      member_phone = #{record.memberPhone,jdbcType=VARCHAR},
-      member_head_portrait_url = #{record.memberHeadPortraitUrl,jdbcType=VARCHAR},
-      member_password = #{record.memberPassword,jdbcType=VARCHAR},
-      member_salt = #{record.memberSalt,jdbcType=VARCHAR},
-      member_province_code = #{record.memberProvinceCode,jdbcType=INTEGER},
-      member_province_name = #{record.memberProvinceName,jdbcType=VARCHAR},
-      member_city_code = #{record.memberCityCode,jdbcType=INTEGER},
-      member_city_name = #{record.memberCityName,jdbcType=VARCHAR},
-      member_district_code = #{record.memberDistrictCode,jdbcType=INTEGER},
-      member_district_name = #{record.memberDistrictName,jdbcType=VARCHAR},
-      member_address_desc = #{record.memberAddressDesc,jdbcType=VARCHAR},
-      member_certification = #{record.memberCertification,jdbcType=INTEGER},
-      member_status = #{record.memberStatus,jdbcType=INTEGER},
-      pre_member_id = #{record.preMemberId,jdbcType=VARCHAR},
-      pre_member_name = #{record.preMemberName,jdbcType=VARCHAR},
-      pre_member_phone = #{record.preMemberPhone,jdbcType=VARCHAR},
-      pre_member_level_id = #{record.preMemberLevelId,jdbcType=VARCHAR},
-      pre_member_level_name = #{record.preMemberLevelName,jdbcType=VARCHAR},
-      member_created_date = #{record.memberCreatedDate,jdbcType=TIMESTAMP},
-      member_updated_date = #{record.memberUpdatedDate,jdbcType=TIMESTAMP}
+    member_name = #{record.memberName,jdbcType=VARCHAR},
+    member_type = #{record.memberType,jdbcType=INTEGER},
+    member_gender = #{record.memberGender,jdbcType=INTEGER},
+    member_birthdate = #{record.memberBirthdate,jdbcType=DATE},
+    member_id_no = #{record.memberIdNo,jdbcType=VARCHAR},
+    member_wechat_open_id = #{record.memberWechatOpenId,jdbcType=VARCHAR},
+    member_wechat_name = #{record.memberWechatName,jdbcType=VARCHAR},
+    member_phone = #{record.memberPhone,jdbcType=VARCHAR},
+    member_head_portrait_url = #{record.memberHeadPortraitUrl,jdbcType=VARCHAR},
+    member_password = #{record.memberPassword,jdbcType=VARCHAR},
+    member_salt = #{record.memberSalt,jdbcType=VARCHAR},
+    member_province_code = #{record.memberProvinceCode,jdbcType=INTEGER},
+    member_province_name = #{record.memberProvinceName,jdbcType=VARCHAR},
+    member_city_code = #{record.memberCityCode,jdbcType=INTEGER},
+    member_city_name = #{record.memberCityName,jdbcType=VARCHAR},
+    member_district_code = #{record.memberDistrictCode,jdbcType=INTEGER},
+    member_district_name = #{record.memberDistrictName,jdbcType=VARCHAR},
+    member_address_desc = #{record.memberAddressDesc,jdbcType=VARCHAR},
+    member_certification = #{record.memberCertification,jdbcType=INTEGER},
+    member_status = #{record.memberStatus,jdbcType=INTEGER},
+    pre_member_id = #{record.preMemberId,jdbcType=VARCHAR},
+    pre_member_name = #{record.preMemberName,jdbcType=VARCHAR},
+    pre_member_phone = #{record.preMemberPhone,jdbcType=VARCHAR},
+    member_created_date = #{record.memberCreatedDate,jdbcType=TIMESTAMP},
+    member_updated_date = #{record.memberUpdatedDate,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -485,12 +437,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.liuming.eshop.entity.memberEntity.Member" >
     update member
     <set >
-      <if test="memberLevelId != null" >
-        member_level_id = #{memberLevelId,jdbcType=VARCHAR},
-      </if>
-      <if test="memberLevelName != null" >
-        member_level_name = #{memberLevelName,jdbcType=VARCHAR},
-      </if>
       <if test="memberName != null" >
         member_name = #{memberName,jdbcType=VARCHAR},
       </if>
@@ -560,12 +506,6 @@
       <if test="preMemberPhone != null" >
         pre_member_phone = #{preMemberPhone,jdbcType=VARCHAR},
       </if>
-      <if test="preMemberLevelId != null" >
-        pre_member_level_id = #{preMemberLevelId,jdbcType=VARCHAR},
-      </if>
-      <if test="preMemberLevelName != null" >
-        pre_member_level_name = #{preMemberLevelName,jdbcType=VARCHAR},
-      </if>
       <if test="memberCreatedDate != null" >
         member_created_date = #{memberCreatedDate,jdbcType=TIMESTAMP},
       </if>
@@ -577,9 +517,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.liuming.eshop.entity.memberEntity.Member" >
     update member
-    set member_level_id = #{memberLevelId,jdbcType=VARCHAR},
-      member_level_name = #{memberLevelName,jdbcType=VARCHAR},
-      member_name = #{memberName,jdbcType=VARCHAR},
+    set member_name = #{memberName,jdbcType=VARCHAR},
       member_type = #{memberType,jdbcType=INTEGER},
       member_gender = #{memberGender,jdbcType=INTEGER},
       member_birthdate = #{memberBirthdate,jdbcType=DATE},
@@ -602,8 +540,6 @@
       pre_member_id = #{preMemberId,jdbcType=VARCHAR},
       pre_member_name = #{preMemberName,jdbcType=VARCHAR},
       pre_member_phone = #{preMemberPhone,jdbcType=VARCHAR},
-      pre_member_level_id = #{preMemberLevelId,jdbcType=VARCHAR},
-      pre_member_level_name = #{preMemberLevelName,jdbcType=VARCHAR},
       member_created_date = #{memberCreatedDate,jdbcType=TIMESTAMP},
       member_updated_date = #{memberUpdatedDate,jdbcType=TIMESTAMP}
     where member_id = #{memberId,jdbcType=VARCHAR}
@@ -613,17 +549,11 @@
     SELECT
     <include refid="Base_Column_List" />
     FROM
-        member
+    member
     WHERE
-        1 = 1
+    1 = 1
     <if test="map.memberId != null" >
       AND member_id = #{map.memberId,jdbcType=VARCHAR}
-    </if>
-    <if test="map.memberLevelId != null" >
-      AND member_level_id = #{map.memberLevelId,jdbcType=VARCHAR}
-    </if>
-    <if test="map.memberLevelName != null" >
-      AND member_level_name = #{map.memberLevelName,jdbcType=VARCHAR}
     </if>
     <if test="map.memberName != null" >
       AND member_name = #{map.memberName,jdbcType=VARCHAR}
@@ -694,12 +624,6 @@
     <if test="map.preMemberPhone != null" >
       AND pre_member_phone = #{map.preMemberPhone,jdbcType=VARCHAR}
     </if>
-    <if test="map.preMemberLevelId != null" >
-      AND pre_member_level_id = #{map.preMemberLevelId,jdbcType=VARCHAR}
-    </if>
-    <if test="map.preMemberLevelName != null" >
-      AND pre_member_level_name = #{map.preMemberLevelName,jdbcType=VARCHAR}
-    </if>
     <if test="map.memberCreatedDate != null" >
       AND member_created_date = #{map.memberCreatedDate,jdbcType=TIMESTAMP}
     </if>
@@ -738,6 +662,6 @@
       </if>
     </set>
     WHERE
-        member_id = #{map.memberId};
+    member_id = #{map.memberId};
   </update>
 </mapper>

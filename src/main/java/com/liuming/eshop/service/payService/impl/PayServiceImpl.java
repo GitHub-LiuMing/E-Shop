@@ -1,6 +1,7 @@
 package com.liuming.eshop.service.payService.impl;
 
 import com.liuming.eshop.entity.ordersEntity.Orders;
+import com.liuming.eshop.entity.ordersEntity.OrdersWithBLOBs;
 import com.liuming.eshop.service.payService.PayService;
 import com.liuming.eshop.utils.DataResult;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,7 @@ public class PayServiceImpl implements PayService {
 
     @Override
     public DataResult toPay(String ordersId) {
-        Orders orders = new Orders();
+        OrdersWithBLOBs orders = new OrdersWithBLOBs();
         orders.setOrdersId(ordersId);
         orders.setPayType(1);
         orders.setOrdersUpdateDate(new Date());

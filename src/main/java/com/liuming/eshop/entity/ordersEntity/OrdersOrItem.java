@@ -13,7 +13,7 @@ import java.util.Date;
  */
 @Data
 public class OrdersOrItem {
-    private Orders orders;
+    private OrdersWithBLOBs orders;
 
     private Item items;
 }

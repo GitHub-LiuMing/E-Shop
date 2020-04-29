@@ -32,6 +32,8 @@ public class Orders {
 
     private String courierServicesCompany;
 
+    private String memberCommentUrl;
+
     private Integer sfsyyhq;
 
     private Integer payType;
@@ -47,6 +49,4 @@ public class Orders {
     private Date ordersCreateDate;
 
     private Date ordersUpdateDate;
-
-    private String ordersDesc;
 }

@@ -402,4 +402,16 @@
     GROUP BY
         member_id;
   </select>
+
+  <select id="findPointsDetailsByidAndtoDays" parameterType="java.lang.String" resultMap="map">
+    SELECT
+        *
+    FROM
+        points_details
+    WHERE
+        member_id = #{memberId}
+        AND to_days ( points_details_updated_date ) = to_days(
+        #{format}
+        )
+  </select>
 </mapper>
