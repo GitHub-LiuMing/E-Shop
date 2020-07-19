@@ -12,7 +12,7 @@ import java.io.IOException;
 /**
  * @Description 七牛云图片上传
  * @ClassName QiniuController
- * @Author 张孙峰
+ * @Author 鲸落
  * @date 2019.09.18 14:21
  */
 @RestController
@@ -26,7 +26,7 @@ public class QiniuController {
      * @param file 上传文件
      * @param request
      * @return com.liuming.eshop.utils.DataResult
-     * @Author 张孙峰
+     * @Author 鲸落
      * @Date 2019.09.20 14:08
      */
     @RequestMapping(value = "/upload", method = RequestMethod.POST)

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @Descripti 市
  * @ClassName CityController
- * @Author 张孙峰
+ * @Author 鲸落
  * @date 2019.07.30 14:12
  */
 @RestController
@@ -24,7 +24,7 @@ public class CityController {
      * @Description 查询市
      * @param provinceCode 省份代码
      * @return com.liuming.eshop.utils.DataResult
-     * @Author 张孙峰
+     * @Author 鲸落
      * @Date 2019.07.30 15:01
      */
     @RequestMapping("/findCity")

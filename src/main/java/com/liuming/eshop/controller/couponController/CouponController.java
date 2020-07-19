@@ -12,7 +12,7 @@ import javax.annotation.Resource;
 /**
  * @Description 优惠券
  * @ClassName CouponController
- * @Author 张孙峰
+ * @Author 鲸落
  * @date 2020.01.04 14:37
  */
 @RestController

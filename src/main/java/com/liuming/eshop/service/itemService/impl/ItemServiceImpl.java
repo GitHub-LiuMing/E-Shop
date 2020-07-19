@@ -18,7 +18,7 @@ import java.util.Map;
 /**
  * @Description 商品基础库
  * @ClassName ItemServiceImpl
- * @Author 张孙峰
+ * @Author 鲸落
  * @date 2019.11.11 14:36
  */
 @Service

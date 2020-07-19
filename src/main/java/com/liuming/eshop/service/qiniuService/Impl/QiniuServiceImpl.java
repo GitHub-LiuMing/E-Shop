@@ -18,7 +18,7 @@ import java.util.UUID;
 /**
  * @Description 七牛云图片上传
  * @ClassName QiniuServiceImpl
- * @Author 张孙峰
+ * @Author 鲸落
  * @date 2019.09.18 14:35
  */
 @Service

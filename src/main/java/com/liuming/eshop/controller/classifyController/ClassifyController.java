@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @Description 分类管理
  * @ClassName ClassifyController
- * @Author 张孙峰
+ * @Author 鲸落
  * @date 2019.08.06 15:35
  */
 @RestController
@@ -24,7 +24,7 @@ public class ClassifyController {
      * @Description 添加分类
      * @param classify
      * @return com.liuming.eshop.utils.DataResult
-     * @Author 张孙峰
+     * @Author 鲸落
      * @Date 2019.08.06 16:53
      *
      * //@RequestBody(required=false) 如果参数类型支持null,则是false
@@ -38,7 +38,7 @@ public class ClassifyController {
      * @Description 查询分类
      * @param classify
      * @return com.liuming.eshop.utils.DataResult
-     * @Author 张孙峰
+     * @Author 鲸落
      * @Date 2019.08.07 13:49
      */
     @RequestMapping("/findClassify")

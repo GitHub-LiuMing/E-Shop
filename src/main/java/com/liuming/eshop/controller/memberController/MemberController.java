@@ -33,7 +33,7 @@ import java.util.*;
 /**
  * @Description 会员
  * @ClassName MemberController
- * @Author 张孙峰
+ * @Author 鲸落
  * @date 2019.12.12 15:00
  */
 @RestController
@@ -49,7 +49,7 @@ public class MemberController {
      * @Description 新增会员
      * @param member
      * @return com.liuming.eshop.utils.DataResult
-     * @Author 张孙峰
+     * @Author 鲸落
      * @Date 2019.12.14 09:26
      */
     @RequestMapping("/addMember")
@@ -70,7 +70,7 @@ public class MemberController {
      * @Description 查询会员（密码不能用作解析数据，无法加密和解密，所以该接口无法对密码这个参数进行查询）
      * @param member
      * @return com.liuming.eshop.utils.DataResult
-     * @Author 张孙峰
+     * @Author 鲸落
      * @Date 2019.12.14 10:55
      */
     @RequestMapping("/findMember")
@@ -183,9 +183,6 @@ public class MemberController {
      * @param encryptedData 加密数据
      * @param sessionKey 会话密钥
      * @param iv
-     * @param memberWechatOpenId 微信OpenID
-     * @param memberWechatName 微信昵称
-     * @param memberHeadPortraitUrl 微信头像
      * @return com.liuming.eshop.utils.DataResult
      * @Author 鲸落
      * @Date 2020.03.21 15:21
@@ -193,10 +190,7 @@ public class MemberController {
     @RequestMapping("/getPurePhoneNumber")
     public DataResult getPhoneNumber(String encryptedData,
                                  String sessionKey,
-                                 String iv,
-                                 String memberWechatOpenId,
-                                 String memberWechatName,
-                                 String memberHeadPortraitUrl){
+                                 String iv){
         // 被加密的数据
         byte[] dataByte = Base64.decode(encryptedData);
         // 加密秘钥

@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * @Description 自定义响应结构
  * @ClassName DataResult
- * @author 张孙峰
+ * @author 鲸落
  * @date 2018.03.02 10:39:51
  */
 public class DataResult {
@@ -63,7 +63,7 @@ public class DataResult {
      * @Description 参数不问为空
      * @Title build
      * @return DataResult
-     * @author 张孙峰
+     * @author 鲸落
      * @date 2018.03.02 10:33:08
      */
     public static DataResult build() {
@@ -124,7 +124,7 @@ public class DataResult {
      * @param jsonData Json数据
      * @param clazz MayiDBResult中的Object类型
      * @return DataResult
-     * @author 张孙峰
+     * @author 鲸落
      * @date 2018.03.02 10:33:36
      */
     public static DataResult formatToPojo(String jsonData, Class<?> clazz) {
@@ -153,7 +153,7 @@ public class DataResult {
      * @Title format
      * @param json
      * @return DataResult
-     * @author 张孙峰
+     * @author 鲸落
      * @date 2018.03.02 10:34:09
      */
     public static DataResult format(String json) {
@@ -171,7 +171,7 @@ public class DataResult {
      * @param jsonData Json数据
      * @param clazz 集合中的类型
      * @return DataResult
-     * @author 张孙峰
+     * @author 鲸落
      * @date 2018.03.02 10:34:22
      */
     public static DataResult formatToList(String jsonData, Class<?> clazz) {

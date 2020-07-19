@@ -13,7 +13,7 @@ import javax.annotation.Resource;
 /**
  * @Description 商品
  * @ClassName ItemController
- * @Author 张孙峰
+ * @Author 鲸落
  * @date 2019.11.11 14:33
  */
 @RestController
@@ -26,7 +26,7 @@ public class ItemController {
      * @Description 新增商品
      * @param item
      * @return com.liuming.eshop.utils.DataResult
-     * @Author 张孙峰
+     * @Author 鲸落
      * @Date 2019.12.17 15:12
      */
     @RequestMapping("/addItem")
@@ -50,7 +50,7 @@ public class ItemController {
      * @param pageSize
      * @param item
      * @return com.liuming.eshop.utils.DataResult
-     * @Author 张孙峰
+     * @Author 鲸落
      * @Date 2019.12.14 17:36
      */
     @RequestMapping("/findItem")
@@ -63,7 +63,7 @@ public class ItemController {
      * @Description 修改商品
      * @param item
      * @return com.liuming.eshop.utils.DataResult
-     * @Author 张孙峰
+     * @Author 鲸落
      * @Date 2020.01.04 11:12
      */
     @RequestMapping("/updateItem")

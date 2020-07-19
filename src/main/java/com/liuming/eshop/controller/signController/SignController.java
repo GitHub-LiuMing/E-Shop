@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @Description 签到
  * @ClassName SignController
- * @Author 张孙峰
+ * @Author 鲸落
  * @date 2019.08.05 10:58
  */
 @RestController
@@ -24,7 +24,7 @@ public class SignController {
      * @Description 添加签到规则
      * @param sign
      * @return com.liuming.eshop.utils.DataResult
-     * @Author 张孙峰
+     * @Author 鲸落
      * @Date 2019.08.05 15:05
      */
     @RequestMapping("/addSign")

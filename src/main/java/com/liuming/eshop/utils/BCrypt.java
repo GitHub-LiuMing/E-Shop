@@ -670,7 +670,7 @@ public class BCrypt {
 		 * @param password 原始数据
 		 * @param salt 盐值
 		 * @return java.lang.String
-		 * @Author 张孙峰
+		 * @Author 鲸落
 		 * @Date 2019.07.26 14:09
 		 */
 		BCrypt B;
@@ -781,7 +781,7 @@ public class BCrypt {
 		/**
 		 * @Description 获取盐值
 		 * @return java.lang.String
-		 * @Author 张孙峰
+		 * @Author 鲸落
 		 * @Date 2019.07.26 15:35
 		 */
 		return gensalt(GENSALT_DEFAULT_LOG2_ROUNDS);
@@ -800,7 +800,7 @@ public class BCrypt {
 		 * @param plaintext 新数据
 		 * @param hashed 原始数据
 		 * @return boolean
-		 * @Author 张孙峰
+		 * @Author 鲸落
 		 * @Date 2019.07.26 15:50
 		 */
 		byte hashed_bytes[];
