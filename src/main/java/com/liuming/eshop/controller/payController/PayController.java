@@ -1638,6 +1638,7 @@ public class PayController {
                         writer.write(setXml("FAIL", wxPayResult.getReturn_msg()));
                         System.out.println("---------微信支付返回Fail----------" + wxPayResult.getReturn_msg());
                     }
+
                     if (writer != null) {
                         writer.close();
                     }
