@@ -116,7 +116,7 @@ public class OrdersController {
     private ExecutorService taskExe = new ThreadPoolExecutor(1,20,200L,TimeUnit.MILLISECONDS,new LinkedBlockingQueue<Runnable>(),namedThreadFactory);
 
     /**
-     * @Description 定时增加评论（每次服务器重启，都需要执行该代码）
+     * @Description 定时增加评论（每次服务器重启，都需要执行该代码）（熟悉定时任务流程）
      * @return void
      * @Author 鲸落
      * @Date 2020.04.23 11:04
