@@ -11,7 +11,7 @@ import javax.jms.Queue;
 import javax.jms.Topic;
 
 /**
- * @Description 
+ * @Description 后期需要更深入了解该实现流程
  * @ClassName activemqController
  * @Author 鲸落
  * @date 2020.06.17 17:03
