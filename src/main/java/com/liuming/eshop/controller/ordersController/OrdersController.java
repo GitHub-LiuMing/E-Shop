@@ -89,7 +89,7 @@ public class OrdersController {
     }
 
     /**
-     * @Description 调用快递100查询快递信息
+     * @Description 调用快递100查询快递信息（了解实现流程）
      * @param com
      * @param num
      * @return com.liuming.eshop.utils.DataResult
